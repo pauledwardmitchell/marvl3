@@ -6,16 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import axios from 'axios'
 
-const colors = [
-  'Red',
-  'Orange',
-  'Yellow',
-  'Green',
-  'Blue',
-  'Purple',
-  'Black',
-  'White',
-];
 
 const fruit = [
 "Doors",
@@ -58,12 +48,12 @@ const fruit = [
 const style = {
   position: 'relative',
   margin: 'auto',
-  marginTop: 20,
+  marginTop: 100,
   paddingTop: 3,
   paddingLeft: 20,
   paddingRight: 20,
   paddingBottom: 10,
-  width: 500,
+  width: 650,
   textAlign: 'left',
 };
 
@@ -74,15 +64,26 @@ export default class LandingSearch extends React.Component {
     this.onUpdateInput = this.onUpdateInput.bind(this);
     this.getCategories = this.getCategories.bind(this);
     this.state = {categoriesData: [],
+                  vendorsData: [],
                   searchText: ""};
   }
 
   componentDidMount() {
     axios.get(`https://www.marvl.org/data`)
       .then((response) => {
-        this.setState({categoriesData: response.data})
+        this.setState({categoriesData: response.data.categories,
+                       vendorsData: response.data.vendors})
       })
       .catch((error) => console.error('axios error', error))
+  }
+
+  getSearchTerms() {
+    var searchTerms = this.getCategories(this.state.categoriesData)
+    var vendorsData = this.state.vendorsData
+    for ( var i = 0; i < vendorsData.length; i++) {
+      searchTerms.push(vendorsData[i].name)
+    }
+    return searchTerms
   }
 
   getCategories(categoriesData) {
@@ -91,6 +92,14 @@ export default class LandingSearch extends React.Component {
       categoriesArray.push(categoriesData[i].name)
     }
     return categoriesArray
+  }
+
+  getVendors(vendorsData) {
+    var vendorsArray =[]
+    for ( var i = 0; i < vendorsData.length; i++) {
+      vendorsArray.push(vendorsData[i].name)
+    }
+    return vendorsArray
   }
 
   categoryIdFromName(name) {
@@ -104,14 +113,26 @@ export default class LandingSearch extends React.Component {
     return categoryId
   }
 
+  vendorIdFromName(name) {
+    var vendId = 0
+    var fullVendorData = this.state.vendorsData
+    for ( var i = 0; i < fullVendorData.length; i++) {
+      if (name === fullVendorData[i].name) {
+        vendId = fullVendorData[i].id
+      }
+    }
+    return vendId
+  }
+
   buildLink() {
-    debugger
     if (this.state.searchText === "") {
       return "/reviews"
     } else if (this.getCategories(this.state.categoriesData).includes(this.state.searchText)) {
       return "/categories/"+this.categoryIdFromName(this.state.searchText)
+    } else if (this.getVendors(this.state.vendorsData).includes(this.state.searchText)) {
+      return "/vendors/"+this.vendorIdFromName(this.state.searchText)
     } else {
-    return "/reviews"
+      return "/vendors/new"
     }
   }
 
@@ -124,10 +145,12 @@ export default class LandingSearch extends React.Component {
       <Paper style={style} >
         <h3 style={{textAlign: 'center'}}>Get matched to top-rated pros and browse exclusive reviews</h3>
         <AutoComplete
-          style={{marginLeft: 70}}
+          style={{marginLeft: 70, width: 350}}
+          textFieldStyle={{width: 350}}
+          listStyle={{width: 350}}
           floatingLabelText="Type category or vendor"
           filter={AutoComplete.fuzzyFilter}
-          dataSource={this.getCategories(this.state.categoriesData)}
+          dataSource={this.getSearchTerms()}
           maxSearchResults={5}
           onUpdateInput={this.onUpdateInput} />
         <a href={this.buildLink()}>
