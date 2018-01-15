@@ -112,8 +112,7 @@ export default class DrawerUndockedExample extends React.Component {
               <ListItem
                 key={category.id}
                 primaryText={category.name}
-                leftIcon={this.getIcon(category.name)}
-                onClick={this.getLink(category.id)} />
+                leftIcon={this.getIcon(category.name)} />
               ))}
           </List>
         </Drawer>

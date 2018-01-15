@@ -6,7 +6,6 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 import DrawerUndockedExample from './DrawerUndockedExample'
 import LandingSearch from './LandingSearch'
-import CategoriesGridList from './CategoriesGridList'
 
 import axios from 'axios'
 
