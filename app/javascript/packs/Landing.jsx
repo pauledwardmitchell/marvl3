@@ -6,13 +6,26 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 import DrawerUndockedExample from './DrawerUndockedExample'
 import LandingSearch from './LandingSearch'
+import CategoriesGridList from './CategoriesGridList'
+
+import axios from 'axios'
 
 export default class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      postsData: []
+      categoriesData: [],
+      vendorsData: []
     };
+  }
+
+  componentDidMount() {
+    axios.get(`https://www.marvl.org/data`)
+      .then((response) => {
+        this.setState({categoriesData: response.data.categories,
+                       vendorsData: response.data.vendors})
+      })
+      .catch((error) => console.error('axios error', error))
   }
 
   render () {
@@ -20,8 +33,9 @@ export default class Landing extends React.Component {
       <div>
         <AppBar
           title='Marvl'
-          iconElementLeft={<DrawerUndockedExample />} />
-        <LandingSearch />
+          showMenuIconButton={false}
+          iconElementRight={<DrawerUndockedExample categories={this.state.categoriesData}/>} />
+        <LandingSearch categories={this.state.categoriesData} vendors={this.state.vendorsData} />
       </div>
     )
   }

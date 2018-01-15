@@ -7,44 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios'
 
 
-const fruit = [
-"Doors",
-"Electrician",
-"Hardscapes",
-"HVAC",
-"Insurance",
-"Kitchen",
-"Cleaning",
-"Painter",
-"Pest Control",
-"Pipe Organ Repair",
-"Carpet / Flooring",
-"Fire Alarm ",
-"Kitchen Fire Hood and Grease Screen Cleaning",
-"Metal refinishing",
-"Plumber",
-"Promotional Materials",
-"Roofers",
-"Stained Glass Repair",
-"Stone Mason",
-"Security Systems",
-"Computers / IT",
-"Security Personnel",
-"Concrete Contractors",
-"Solar",
-"Waste Hauling",
-"Landscaping/Snow Removal",
-"Copiers",
-"Handyman",
-"Buses",
-"Locksmith"
-];
-
-/**
- * Two examples of filtering. The first uses `caseInsensitiveFilter`, the second uses `fuzzyFilter`,
- * and limits the number of results displayed using the `maxSearchResults` property.
- */
-
 const style = {
   position: 'relative',
   margin: 'auto',
@@ -63,23 +25,12 @@ export default class LandingSearch extends React.Component {
     super(props);
     this.onUpdateInput = this.onUpdateInput.bind(this);
     this.getCategories = this.getCategories.bind(this);
-    this.state = {categoriesData: [],
-                  vendorsData: [],
-                  searchText: ""};
-  }
-
-  componentDidMount() {
-    axios.get(`https://www.marvl.org/data`)
-      .then((response) => {
-        this.setState({categoriesData: response.data.categories,
-                       vendorsData: response.data.vendors})
-      })
-      .catch((error) => console.error('axios error', error))
+    this.state = {searchText: ""};
   }
 
   getSearchTerms() {
-    var searchTerms = this.getCategories(this.state.categoriesData)
-    var vendorsData = this.state.vendorsData
+    var searchTerms = this.getCategories(this.props.categories)
+    var vendorsData = this.props.vendors
     for ( var i = 0; i < vendorsData.length; i++) {
       searchTerms.push(vendorsData[i].name)
     }
@@ -104,7 +55,7 @@ export default class LandingSearch extends React.Component {
 
   categoryIdFromName(name) {
     var categoryId = 0
-    var categoriesArray = this.state.categoriesData
+    var categoriesArray = this.props.categories
     for ( var i = 0; i < categoriesArray.length; i++) {
       if (name === categoriesArray[i].name) {
         categoryId = categoriesArray[i].id
@@ -115,7 +66,7 @@ export default class LandingSearch extends React.Component {
 
   vendorIdFromName(name) {
     var vendId = 0
-    var fullVendorData = this.state.vendorsData
+    var fullVendorData = this.props.vendors
     for ( var i = 0; i < fullVendorData.length; i++) {
       if (name === fullVendorData[i].name) {
         vendId = fullVendorData[i].id
@@ -127,9 +78,9 @@ export default class LandingSearch extends React.Component {
   buildLink() {
     if (this.state.searchText === "") {
       return "/reviews"
-    } else if (this.getCategories(this.state.categoriesData).includes(this.state.searchText)) {
+    } else if (this.getCategories(this.props.categories).includes(this.state.searchText)) {
       return "/categories/"+this.categoryIdFromName(this.state.searchText)
-    } else if (this.getVendors(this.state.vendorsData).includes(this.state.searchText)) {
+    } else if (this.getVendors(this.props.vendors).includes(this.state.searchText)) {
       return "/vendors/"+this.vendorIdFromName(this.state.searchText)
     } else {
       return "/vendors/new"
