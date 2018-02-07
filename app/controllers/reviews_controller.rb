@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
   # GET /posts.json
   def index
     # @reviews = Review.all
+    @user = {name: "Paul",
+             type: "Admin"}
   end
 
   # # GET /posts/1
