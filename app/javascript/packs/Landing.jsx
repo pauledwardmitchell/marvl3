@@ -2,11 +2,14 @@ import React from 'react'
 
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
+import Divider from 'material-ui/Divider';
 
-import DrawerUndockedExample from './DrawerUndockedExample'
-import IntegrationAutosuggest from './IntegrationAutosuggest'
-import CategoryShow from './CategoryShow'
+import DrawerUndockedExample from './DrawerUndockedExample';
+import CategoryShow from './CategoryShow';
 import ButtonAppBar from './ButtonAppBar';
+import LandingSearch from './LandingSearch'
+import LandingCategoryBox from './LandingCategoryBox'
+import LandingCategoryCard from './LandingCategoryCard'
 
 import axios from 'axios'
 
@@ -23,7 +26,7 @@ export default class Landing extends React.Component {
         { label: 'Aland Islands' },
         { label: 'Albania' },
         { label: 'Algeria' },
-        { label: 'American Samoa' }
+        { label: 'Aaamerican Samoa' }
       ],
       searchTerm: "",
       vendorsData: [],
@@ -90,12 +93,14 @@ export default class Landing extends React.Component {
     return (
       <div>
         <ButtonAppBar />
-        <h2 style={{paddingTop: 200, marginLeft: '45%'}}>MARVL</h2>
-        <div style={{position: 'relative'}}>
-          <IntegrationAutosuggest style={{}} categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
-          <Button style={{ position: 'absolute', top: -5, right: '12.5%' }}>SEARCH</Button>
-        </div>
-        {this.categoryShow()}
+        <h2 style={{paddingTop: 200, textAlign: 'center'}}>MARVL</h2>
+        <LandingSearch style={{}} categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
+        <h2 style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>Find the Best Vendors</h2>
+        <section style={{width: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+          <LandingCategoryCard type='bus'/>
+          <LandingCategoryCard type='computers'/>
+          <LandingCategoryCard type='security'/>
+        </section>
       </div>
     )
   }
