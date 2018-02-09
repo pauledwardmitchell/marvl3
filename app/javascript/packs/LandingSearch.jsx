@@ -11,10 +11,9 @@ export default class LandingSearch extends React.Component {
   render () {
     return (
 
-      <div style={{position: 'relative'}}>
+      <div style={{position: 'relative', paddingBottom: 100}}>
         <IntegrationAutosuggest style={{}} categories={this.props.categories} vendors={this.props.vendors} tests={this.props.tests}/>
-        <Button variant="raised" style={{ position: 'absolute', top: -5, right: '12.5%' }}>SEARCH</Button>
-        <Divider />
+        <Button style={{ position: 'absolute', top: -8, right: '12.5%' }}>SEARCH</Button>
       </div>
 
     )

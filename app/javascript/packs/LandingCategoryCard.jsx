@@ -30,7 +30,7 @@ class LandingCategoryCard extends React.Component {
 
   renderText(type) {
     if (type === 'bus') {
-      return 'BUS RENTAL'
+      return 'Bus Rental'
     } if (type === 'computers') {
       return 'Computers / IT'
     } if (type === 'security') {
@@ -73,7 +73,10 @@ class LandingCategoryCard extends React.Component {
           </CardContent>
           <CardActions>
             <Button size="small" color="primary">
-              See these vendors
+              See vendors
+            </Button>
+            <Button size="small" color="primary" style={{marginLeft: 'auto'}}>
+              Review my vendor
             </Button>
           </CardActions>
         </Card>

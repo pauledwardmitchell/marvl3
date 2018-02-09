@@ -3,6 +3,7 @@ import React from 'react'
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
+import Typography from 'material-ui/Typography';
 
 import DrawerUndockedExample from './DrawerUndockedExample';
 import CategoryShow from './CategoryShow';
@@ -10,6 +11,8 @@ import ButtonAppBar from './ButtonAppBar';
 import LandingSearch from './LandingSearch'
 import LandingCategoryBox from './LandingCategoryBox'
 import LandingCategoryCard from './LandingCategoryCard'
+import LandingSchoolsGridList from './LandingSchoolsGridList'
+import RecentActivityBox from './RecentActivityBox'
 
 import axios from 'axios'
 
@@ -22,11 +25,11 @@ export default class Landing extends React.Component {
     this.state = {
       categoriesData: [],
       testData: [
-        { label: 'Afghanistan' },
-        { label: 'Aland Islands' },
-        { label: 'Albania' },
-        { label: 'Algeria' },
-        { label: 'Aaamerican Samoa' }
+        { label: 'Composting' },
+        { label: 'Computers - Staff' },
+        { label: 'Computers - Students' },
+        { label: 'Custom Industrial Kitchens' },
+        { label: 'Capital City Contracting' }
       ],
       searchTerm: "",
       vendorsData: [],
@@ -93,14 +96,29 @@ export default class Landing extends React.Component {
     return (
       <div>
         <ButtonAppBar />
-        <h2 style={{paddingTop: 200, textAlign: 'center'}}>MARVL</h2>
+        <Typography variant="headline" component="h1" style={{paddingTop: 200, paddingBottom: 50, textAlign: 'center'}}>
+          MARVL
+        </Typography>
         <LandingSearch style={{}} categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
-        <h2 style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>Find the Best Vendors</h2>
+        <Divider />
+        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
+          Find the best vendors
+        </Typography>
         <section style={{width: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
           <LandingCategoryCard type='bus'/>
           <LandingCategoryCard type='computers'/>
           <LandingCategoryCard type='security'/>
         </section>
+        <Divider style={{marginTop: 150}}/>
+        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
+          Browse vendors of network schools
+        </Typography>
+        <LandingSchoolsGridList />
+        <Divider style={{marginTop: 150}}/>
+        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
+          Recent Activity
+        </Typography>
+        <RecentActivityBox />
       </div>
     )
   }
