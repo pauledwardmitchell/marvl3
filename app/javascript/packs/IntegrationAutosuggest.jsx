@@ -152,7 +152,7 @@ class IntegrationAutosuggest extends React.Component {
         renderSuggestion={renderSuggestion}
         inputProps={{
           classes,
-          placeholder: 'Search a service area (HVAC) or vendor (ABC Contracting)',
+          placeholder: 'Type the letter \'C\' ',
           value: this.state.value,
           onChange: this.handleChange,
         }} />
