@@ -1,20 +1,40 @@
 import React from 'react'
 
-import AppBar from 'material-ui/AppBar';
+import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import Divider from 'material-ui/Divider';
+import Typography from 'material-ui/Typography';
 
-import DrawerUndockedExample from './DrawerUndockedExample'
+import DrawerUndockedExample from './DrawerUndockedExample';
+import CategoryShow from './CategoryShow';
+import ButtonAppBar from './ButtonAppBar';
 import LandingSearch from './LandingSearch'
+import LandingCategoryBox from './LandingCategoryBox'
+import LandingCategoryCard from './LandingCategoryCard'
+import LandingSchoolsGridList from './LandingSchoolsGridList'
+import RecentActivityBox from './RecentActivityBox'
 
 import axios from 'axios'
+
 
 export default class Landing extends React.Component {
   constructor(props) {
     super(props);
+    this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
+    this.getDrawerStatus = this.getDrawerStatus.bind(this);
     this.state = {
       categoriesData: [],
-      vendorsData: []
+      testData: [
+        { label: 'Composting' },
+        { label: 'Computers - Staff' },
+        { label: 'Computers - Students' },
+        { label: 'Custom Industrial Kitchens' },
+        { label: 'Capital City Contracting' }
+      ],
+      searchTerm: "",
+      vendorsData: [],
+      drawerOpen: false,
+      categoryShowOpen: false
     };
   }
 
@@ -27,14 +47,78 @@ export default class Landing extends React.Component {
       .catch((error) => console.error('axios error', error))
   }
 
+  handleDrawerToggle() {
+    this.setState({drawerOpen: !this.state.drawerOpen})
+  }
+
+  buttonTextCategories() {
+    if (this.state.drawerOpen === false) {
+      return "All Categories"
+    } else {
+      return "Hide Categories"
+    }
+  }
+
+  leftButtons() {
+    return (
+      <a href="/writeareview">
+        Button
+          style={{margin: 4}}
+          label="Write a Review" />
+      </a>
+    )
+  }
+
+  rightButtons() {
+    return (
+      <div>
+        Button
+          style={{margin: 4}}
+          label={this.buttonTextCategories()}
+          onClick={this.handleDrawerToggle} />
+      </div>
+    )
+  }
+
+  getDrawerStatus() {
+    return this.state.drawerOpen
+  }
+
+  categoryShow() {
+    if (this.state.categoryShowOpen === true) {
+      return (<CategoryShow />)
+    } else {
+      return (<div></div>)
+    }
+  }
+
   render () {
     return (
       <div>
-        <AppBar
-          title='Marvl'
-          showMenuIconButton={false}
-          iconElementRight={<DrawerUndockedExample categories={this.state.categoriesData}/>} />
-        <LandingSearch categories={this.state.categoriesData} vendors={this.state.vendorsData} />
+        <ButtonAppBar />
+        <Typography variant="headline" component="h1" style={{paddingTop: 200, paddingBottom: 50, textAlign: 'center'}}>
+          MARVL
+        </Typography>
+        <LandingSearch style={{}} categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
+        <Divider />
+        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
+          Find the best vendors
+        </Typography>
+        <section style={{width: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+          <LandingCategoryCard type='bus'/>
+          <LandingCategoryCard type='computers'/>
+          <LandingCategoryCard type='security'/>
+        </section>
+        <Divider style={{marginTop: 150}}/>
+        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
+          Browse vendors of network schools
+        </Typography>
+        <LandingSchoolsGridList />
+        <Divider style={{marginTop: 150}}/>
+        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
+          Recent Activity
+        </Typography>
+        <RecentActivityBox />
       </div>
     )
   }
