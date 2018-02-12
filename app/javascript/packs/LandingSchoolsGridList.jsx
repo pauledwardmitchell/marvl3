@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import Grid from 'material-ui/Grid'
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorderIcon from 'material-ui-icons/StarBorder';
@@ -69,26 +70,33 @@ class LandingSchoolsGridList extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div style={{marginTop: 20, marginBottom: 200, marginLeft: 'auto', marginRight: 'auto', width: '80%'}} className={classes.root}>
-        <GridList className={classes.gridList} cols={2.5}>
-          {tileData.map(tile => (
-            <GridListTile key={tile.id} style={{ maxHeight: 'auto', width: 250 }}>
-              <img src={tile.img} alt={tile.title}  />
-              <GridListTileBar
-                title={tile.title}
-                classes={{
-                  root: classes.titleBar,
-                  title: classes.title,
-                }}
-                actionIcon={
-                  <IconButton>
-                    <StarBorderIcon className={classes.title} />
-                  </IconButton>
-                } />
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
+      <Grid container
+            className={classes.root}
+            alignItems='flex-start'
+            direction= 'row'
+            justify= 'center'
+            spacing={24} >
+        <Grid item xs={12} >
+          <GridList className={classes.gridList} cols={2.5}>
+            {tileData.map(tile => (
+              <GridListTile key={tile.id} style={{ maxHeight: 'auto', width: 250 }}>
+                <img src={tile.img} alt={tile.title}  />
+                <GridListTileBar
+                  title={tile.title}
+                  classes={{
+                    root: classes.titleBar,
+                    title: classes.title,
+                  }}
+                  actionIcon={
+                    <IconButton>
+                      <StarBorderIcon className={classes.title} />
+                    </IconButton>
+                  } />
+              </GridListTile>
+            ))}
+          </GridList>
+        </Grid>
+      </Grid>
     );
     }
 }
