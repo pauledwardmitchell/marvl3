@@ -4,6 +4,8 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 import Typography from 'material-ui/Typography';
+import Grid from 'material-ui/Grid';
+
 
 import DrawerUndockedExample from './DrawerUndockedExample';
 import CategoryShow from './CategoryShow';
@@ -104,11 +106,14 @@ export default class Landing extends React.Component {
         <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
           Find the best vendors
         </Typography>
-        <section style={{width: 1000, marginLeft: 'auto', marginRight: 'auto'}}>
+        <Grid container
+              alignItems='center'
+              direction= 'row'
+              justify= 'center'>
           <LandingCategoryCard type='bus'/>
           <LandingCategoryCard type='computers'/>
           <LandingCategoryCard type='security'/>
-        </section>
+        </Grid>
         <Divider style={{marginTop: 150}}/>
         <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
           Browse vendors of network schools
