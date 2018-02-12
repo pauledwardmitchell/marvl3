@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Grid from 'material-ui/Grid';
+
 import RecentActivityCard from './RecentActivityCard'
 
 
@@ -35,11 +37,14 @@ export default class RecentActivityBox extends React.Component {
   render () {
     return (
 
-      <div style={{width: 1000, marginLeft: 'auto', marginRight: 'auto', paddingBottom: 100}}>
+      <Grid container
+            alignItems='center'
+            direction= 'row'
+            justify= 'center'>
         {postData.map(post => (
           <RecentActivityCard post={post} key={post.id} />
           ))}
-      </div>
+      </Grid>
 
     )
   }
