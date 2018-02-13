@@ -89,7 +89,7 @@ const styles = theme => ({
     height: 200,
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: '75%'
+    width: '100%'
   },
   suggestionsContainerOpen: {
     position: 'absolute',
