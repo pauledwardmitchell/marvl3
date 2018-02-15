@@ -26,11 +26,11 @@ class ReviewsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @review = Post.new(review_params)
+    @review = Review.new(review_params)
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to '/reviews', notice: 'Post was successfully created.' }
+        format.html { redirect_to '/reviews', notice: 'Review was successfully created.' }
         format.json { redirect_to '/reviews', status: :created, location: @review }
       else
         format.html { redirect_to '/reviews' }
