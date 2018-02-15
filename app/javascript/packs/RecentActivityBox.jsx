@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 
 import RecentActivityCard from './RecentActivityCard'
 
@@ -36,15 +37,21 @@ export default class RecentActivityBox extends React.Component {
 
   render () {
     return (
-
-      <Grid container
-            alignItems='center'
-            direction= 'row'
-            justify= 'center'>
-        {postData.map(post => (
-          <RecentActivityCard post={post} key={post.id} />
-          ))}
-      </Grid>
+      <div>
+        <Grid container alignItems='center' direction= 'row' justify= 'center'>
+          <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
+            Recent Activity
+          </Typography>
+        </Grid>
+        <Grid container
+              alignItems='center'
+              direction= 'row'
+              justify= 'center'>
+          {postData.map(post => (
+            <RecentActivityCard post={post} key={post.id} />
+            ))}
+        </Grid>
+      </div>
 
     )
   }

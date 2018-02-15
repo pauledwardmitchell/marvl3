@@ -102,11 +102,6 @@ export default class Landing extends React.Component {
         <LandingSearch categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
         <LandingBestVendorsBox />
         <LandingSchoolsGridList />
-        <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
-            Recent Activity
-          </Typography>
-        </Grid>
         <RecentActivityBox />
       </div>
     )
