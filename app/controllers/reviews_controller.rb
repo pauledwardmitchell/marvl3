@@ -23,21 +23,21 @@ class ReviewsController < ApplicationController
   # def edit
   # end
 
-  # # POST /posts
-  # # POST /posts.json
-  # def create
-  #   @post = Post.new(post_params)
+  # POST /posts
+  # POST /posts.json
+  def create
+    @review = Post.new(review_params)
 
-  #   respond_to do |format|
-  #     if @post.save
-  #       format.html { redirect_to @post, notice: 'Post was successfully created.' }
-  #       format.json { render :show, status: :created, location: @post }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @post.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    respond_to do |format|
+      if @review.save
+        format.html { redirect_to '/reviews', notice: 'Post was successfully created.' }
+        format.json { redirect_to '/reviews', status: :created, location: @review }
+      else
+        format.html { redirect_to '/reviews' }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # # PATCH/PUT /posts/1
   # # PATCH/PUT /posts/1.json
