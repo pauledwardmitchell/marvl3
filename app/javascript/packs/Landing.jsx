@@ -35,17 +35,15 @@ export default class Landing extends React.Component {
         { label: 'Capital City Contracting' }
       ],
       searchTerm: "",
-      vendorsData: [],
       drawerOpen: false,
       categoryShowOpen: false
     };
   }
 
   componentDidMount() {
-    axios.get(`https://www.marvl.org/data`)
+    axios.get(`https://marvl-next.herokuapp.com/landing_search_data`)
       .then((response) => {
-        this.setState({categoriesData: response.data.categories,
-                       vendorsData: response.data.vendors})
+        this.setState({categoriesData: response.data.categories})
       })
       .catch((error) => console.error('axios error', error))
   }
