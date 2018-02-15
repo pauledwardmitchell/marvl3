@@ -14,7 +14,7 @@ module Marvl3
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'localhost:3000', '127.0.0.1:3000', 'https://marvl-next.herokuapp.com/landing_search_data'
+        origins 'localhost:3000', '127.0.0.1:3000', 'https://marvl-next.herokuapp.com'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
