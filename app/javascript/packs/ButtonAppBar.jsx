@@ -23,10 +23,18 @@ const styles = {
   },
 };
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
 class ButtonAppBar extends React.Component {
 
   handleClick() {
-    axios.post(`https://marvl-next.herokuapp.com/reviews`, {
+    thisAxios.post(`/reviews`, {
         title: 'Test Review',
         content: 'It is working!'
       })
