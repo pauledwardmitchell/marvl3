@@ -8,6 +8,8 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
+import axios from 'axios'
+
 const styles = {
   root: {
     width: '100%',
@@ -21,21 +23,37 @@ const styles = {
   },
 };
 
-function ButtonAppBar(props) {
-  const { classes } = props;
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Button color="inherit">Write a Review</Button>
-          <Typography type="title" color="inherit" className={classes.flex}>
-          </Typography>
-          <Button color="inherit">Sign Up</Button>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+class ButtonAppBar extends React.Component {
+
+  handleClick() {
+    axios.post(`https://marvl-next.herokuapp.com/reviews`, {
+        title: 'Test Review',
+        content: 'It is working!'
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Button color="inherit" onClick={this.handleClick}>Write a Review</Button>
+            <Typography type="title" color="inherit" className={classes.flex}>
+            </Typography>
+            <Button color="inherit">Sign Up</Button>
+            <Button color="inherit">Login</Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+    );
+  }
 }
 
 ButtonAppBar.propTypes = {
