@@ -15,6 +15,7 @@ import LandingCategoryBox from './LandingCategoryBox'
 import LandingCategoryCard from './LandingCategoryCard'
 import LandingSchoolsGridList from './LandingSchoolsGridList'
 import RecentActivityBox from './RecentActivityBox'
+import LandingBestVendorsBox from './LandingBestVendorsBox'
 
 import axios from 'axios'
 
@@ -98,31 +99,9 @@ export default class Landing extends React.Component {
     return (
       <div style={{overflowX: 'hidden'}}>
         <ButtonAppBar />
-        <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h1" style={{paddingTop: 40, paddingBottom: 20}}>
-            MARVL
-          </Typography>
-        </Grid>
-        <LandingSearch style={{}} categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
-        <Divider />
-        <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
-            Find the best vendors
-          </Typography>
-        </Grid>
-        <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <LandingCategoryCard type='bus'/>
-          <LandingCategoryCard type='computers'/>
-          <LandingCategoryCard type='security'/>
-        </Grid>
-        <Divider style={{marginTop: 150}}/>
-        <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
-            Browse vendors of network schools
-          </Typography>
-        </Grid>
+        <LandingSearch categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
+        <LandingBestVendorsBox />
         <LandingSchoolsGridList />
-        <Divider style={{marginTop: 150}}/>
         <Grid container alignItems='center' direction= 'row' justify= 'center'>
           <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
             Recent Activity
