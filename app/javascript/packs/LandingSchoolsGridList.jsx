@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid'
+import Typography from 'material-ui/Typography'
+import Divider from 'material-ui/Divider'
 import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import Subheader from 'material-ui/List/ListSubheader';
 import InfoIcon from 'material-ui-icons/Info';
@@ -84,24 +86,32 @@ class LandingSchoolsGridList extends React.Component {
     const { classes } = this.props;
 
       return (
-        <Grid container
-              alignItems='center'
-              direction= 'row'
-              justify= 'center'>
-          <div className={classes.root}>
-            <GridList cellHeight={180} className={classes.gridList}>
-              {tileData.map(tile => (
-                <GridListTile key={tile.img}>
-                  <img src={tile.img} alt={tile.title} />
-                  <a>
-                    <GridListTileBar
-                      title={tile.title} />
-                  </a>
-                </GridListTile>
-              ))}
-            </GridList>
-          </div>
-        </Grid>
+        <div>
+          <Grid container
+                alignItems='center'
+                direction= 'row'
+                justify= 'center'>
+            <Grid container alignItems='center' direction= 'row' justify= 'center'>
+              <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
+                Browse vendors of network schools
+              </Typography>
+            </Grid>
+            <div className={classes.root}>
+              <GridList cellHeight={180} className={classes.gridList}>
+                {tileData.map(tile => (
+                  <GridListTile key={tile.img}>
+                    <img src={tile.img} alt={tile.title} />
+                    <a>
+                      <GridListTileBar
+                        title={tile.title} />
+                    </a>
+                  </GridListTile>
+                ))}
+              </GridList>
+            </div>
+          </Grid>
+          <Divider style={{marginTop: 150}}/>
+        </div>
   );
     }
 }

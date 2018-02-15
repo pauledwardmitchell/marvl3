@@ -15,6 +15,7 @@ import LandingCategoryBox from './LandingCategoryBox'
 import LandingCategoryCard from './LandingCategoryCard'
 import LandingSchoolsGridList from './LandingSchoolsGridList'
 import RecentActivityBox from './RecentActivityBox'
+import LandingBestVendorsBox from './LandingBestVendorsBox'
 
 import axios from 'axios'
 
@@ -96,33 +97,11 @@ export default class Landing extends React.Component {
 
   render () {
     return (
-      <div>
+      <div style={{overflowX: 'hidden'}}>
         <ButtonAppBar />
-        <Typography variant="headline" component="h1" style={{paddingTop: 200, paddingBottom: 50, textAlign: 'center'}}>
-          MARVL
-        </Typography>
-        <LandingSearch style={{}} categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
-        <Divider />
-        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
-          Find the best vendors
-        </Typography>
-        <Grid container
-              alignItems='center'
-              direction= 'row'
-              justify= 'center'>
-          <LandingCategoryCard type='bus'/>
-          <LandingCategoryCard type='computers'/>
-          <LandingCategoryCard type='security'/>
-        </Grid>
-        <Divider style={{marginTop: 150}}/>
-        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
-          Browse vendors of network schools
-        </Typography>
+        <LandingSearch categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
+        <LandingBestVendorsBox />
         <LandingSchoolsGridList />
-        <Divider style={{marginTop: 150}}/>
-        <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20, textAlign: 'center'}}>
-          Recent Activity
-        </Typography>
         <RecentActivityBox />
       </div>
     )
