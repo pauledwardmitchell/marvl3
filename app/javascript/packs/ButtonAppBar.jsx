@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
 import LoginModal from './LoginModal'
+import SignupModal from './SignupModal'
 
 import axios from 'axios'
 
@@ -37,7 +38,8 @@ class ButtonAppBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginModalOpen: false
+      loginModalOpen: false,
+      signupModalOpen: false
     };
   }
 
@@ -80,7 +82,8 @@ class ButtonAppBar extends React.Component {
             <Button color="inherit" onClick={this.handleWriteReviewClick}>Write a Review</Button>
             <Typography type="title" color="inherit" className={classes.flex}>
             </Typography>
-            <Button color="inherit">Sign Up</Button>
+
+            <SignupModal open={this.state.signupModalOpen} />
             <LoginModal open={this.state.loginModalOpen} />
           </Toolbar>
         </AppBar>

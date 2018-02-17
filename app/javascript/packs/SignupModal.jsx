@@ -39,9 +39,11 @@ const styles = theme => ({
 });
 
 
-class LoginModal extends React.Component {
+class SignupModal extends React.Component {
   state = {
     open: false,
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     showPassword: false
@@ -80,7 +82,7 @@ class LoginModal extends React.Component {
 
     return (
       <div>
-        <Button color="inherit" onClick={this.handleOpen}>Login</Button>
+        <Button color="inherit" onClick={this.handleOpen}>Sign up</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -90,13 +92,18 @@ class LoginModal extends React.Component {
           <div className={classes.paper}>
             <Grid container alignItems='center' direction= 'column' justify= 'center' style={{marginBottom: 20}}>
               <Typography variant="title" id="simple-modal-description">
-                Login to MARVL
-              </Typography>
-              <Typography variant="subheading" id="simple-modal-description">
-                New to MARVL? <a href=''>Sign up</a>
+                Sign up for MARVL
               </Typography>
             </Grid>
             <FormGroup>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="first-name-simple">First Name</InputLabel>
+              <Input id="first-name-simple" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+            </FormControl>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="last-name-simple">Last Name</InputLabel>
+              <Input id="last-name-simple" value={this.state.lastName} onChange={this.handleLastNameChange} />
+            </FormControl>
             <FormControl className={classes.formControl}>
               <InputLabel htmlFor="email-simple">Email</InputLabel>
               <Input id="email-simple" value={this.state.email} onChange={this.handleEmailChange} />
@@ -122,9 +129,6 @@ class LoginModal extends React.Component {
             </FormControl>
             <Button color="inherit" onClick={this.handleLoginSubmit}>Login</Button>
             </FormGroup>
-            <Typography variant="caption" gutterBottom align="right">
-              <a href=''>Forgot Password?</a>
-            </Typography>
           </div>
         </Modal>
       </div>
@@ -132,9 +136,8 @@ class LoginModal extends React.Component {
   }
 }
 
-LoginModal.propTypes = {
+SignupModal.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LoginModal);
-
+export default withStyles(styles)(SignupModal);
