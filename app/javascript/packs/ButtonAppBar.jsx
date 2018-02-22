@@ -8,6 +8,9 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 
+import LoginModal from './LoginModal'
+import SignupModal from './SignupModal'
+
 import axios from 'axios'
 
 const styles = {
@@ -32,8 +35,32 @@ const thisAxios = axios.create({
 });
 
 class ButtonAppBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loginModalOpen: false,
+      signupModalOpen: false
+    };
+  }
 
-  handleClick() {
+  handleWriteReviewClick() {
+    thisAxios.post(`/reviews`, {
+        title: 'Test Review',
+        content: 'It is working!'
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  handleLoginClick() {
+    this.setState({loginModalOpen: true})
+  }
+
+  handleLoginSubmitClick() {
     thisAxios.post(`/reviews`, {
         title: 'Test Review',
         content: 'It is working!'
@@ -52,11 +79,12 @@ class ButtonAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Button color="inherit" onClick={this.handleClick}>Write a Review</Button>
+            <Button color="inherit" onClick={this.handleWriteReviewClick}>Write a Review</Button>
             <Typography type="title" color="inherit" className={classes.flex}>
             </Typography>
-            <Button color="inherit">Sign Up</Button>
-            <Button color="inherit">Login</Button>
+
+            <SignupModal open={this.state.signupModalOpen} />
+            <LoginModal open={this.state.loginModalOpen} />
           </Toolbar>
         </AppBar>
       </div>
