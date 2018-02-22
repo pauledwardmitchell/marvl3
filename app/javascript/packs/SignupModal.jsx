@@ -98,6 +98,7 @@ class SignupModal extends React.Component {
     })
     .then(function (response) {
       console.log(response);
+      this.setState({ open: false });
     })
     .catch(function (error) {
       console.log(error);
