@@ -14,6 +14,7 @@ import VisibilityOff from 'material-ui-icons/VisibilityOff';
 import { FormGroup, FormControl, FormHelperText } from 'material-ui/Form';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 
+import axios from 'axios'
 
 
 const styles = theme => ({
@@ -36,6 +37,14 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
   },
+});
+
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
 });
 
 

@@ -14,7 +14,7 @@ import VisibilityOff from 'material-ui-icons/VisibilityOff';
 import { FormGroup, FormControl, FormHelperText } from 'material-ui/Form';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 
-
+import axios from 'axios'
 
 const styles = theme => ({
   paper: {
@@ -38,16 +38,29 @@ const styles = theme => ({
   },
 });
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
 
 class SignupModal extends React.Component {
-  state = {
-    open: false,
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    showPassword: false
-  };
+  constructor(props) {
+    super(props);
+    this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
+
+    this.state = {
+      open: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      showPassword: false
+    };
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -73,8 +86,22 @@ class SignupModal extends React.Component {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
-  handleLoginSubmit() {
+  handleSignupSubmit() {
+    const userEmail = this.state.email
+    const userPassword = this.state.password
 
+    thisAxios.post(`/users`, {
+      user: {
+        email: userEmail,
+        password: userPassword
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {
@@ -127,7 +154,7 @@ class SignupModal extends React.Component {
                 }
               />
             </FormControl>
-            <Button color="inherit" onClick={this.handleLoginSubmit}>Login</Button>
+            <Button color="inherit" onClick={this.handleSignupSubmit}>Sign up</Button>
             </FormGroup>
           </div>
         </Modal>
