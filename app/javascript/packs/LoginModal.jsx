@@ -14,6 +14,8 @@ import VisibilityOff from 'material-ui-icons/VisibilityOff';
 import { FormGroup, FormControl, FormHelperText } from 'material-ui/Form';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 
+import SimpleSnackbar from './SimpleSnackbar'
+
 import axios from 'axios'
 
 
@@ -49,12 +51,21 @@ const thisAxios = axios.create({
 
 
 class LoginModal extends React.Component {
-  state = {
-    open: false,
-    email: '',
-    password: '',
-    showPassword: false
-  };
+  constructor(props) {
+    super(props);
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    this.handleCloseSuccessSnackbar = this.handleCloseSuccessSnackbar.bind(this);
+    this.handleCloseErrorSnackbar = this.handleCloseErrorSnackbar.bind(this);
+
+    this.state = {
+      open: false,
+      email: '',
+      password: '',
+      showPassword: false,
+      successSnackbarOpen: false,
+      errorSnackbarOpen: false
+    };
+  }
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -81,7 +92,33 @@ class LoginModal extends React.Component {
   };
 
   handleLoginSubmit() {
+    const userEmail = this.state.email
+    const userPassword = this.state.password
+    let that = this
 
+    thisAxios.post(`/users/sign_in`, {
+      user: {
+        email: userEmail,
+        password: userPassword
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+      that.setState({ successSnackbarOpen: true })
+      that.handleClose()
+    })
+    .catch(function (error) {
+      console.log(error);
+      that.setState({ errorSnackbarOpen: true })
+    });
+  }
+
+  handleCloseSuccessSnackbar() {
+    this.setState({ successSnackbarOpen: false });
+  }
+
+  handleCloseErrorSnackbar() {
+    this.setState({ errorSnackbarOpen: false });
   }
 
   render() {
@@ -136,6 +173,8 @@ class LoginModal extends React.Component {
             </Typography>
           </div>
         </Modal>
+        <SimpleSnackbar closeSnackbar={this.handleCloseSuccessSnackbar} open={this.state.successSnackbarOpen} message="You are logged in!"/>
+        <SimpleSnackbar closeSnackbar={this.handleCloseErrorSnackbar} open={this.state.errorSnackbarOpen} message="Oops! Something went wrong. Please contact Paul, MARVL mechanic, at paul@cpa.coop with any questions."/>
       </div>
     );
   }
