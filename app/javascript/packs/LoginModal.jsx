@@ -104,6 +104,7 @@ class LoginModal extends React.Component {
     })
     .then(function (response) {
       console.log(response);
+      console.log(response.data);
       that.setState({ successSnackbarOpen: true })
       that.handleClose()
     })
