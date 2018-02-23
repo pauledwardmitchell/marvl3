@@ -105,7 +105,6 @@ class LoginModal extends React.Component {
     .then(function (response) {
       console.log(response);
       console.log(response.data);
-      console.log(response.data.querySelector('span[class="alert"]').getAttribute('content'));
       console.log(response.data.getElementsByClassName('alert').getAttribute('content'));
       that.setState({ successSnackbarOpen: true })
       that.handleClose()
