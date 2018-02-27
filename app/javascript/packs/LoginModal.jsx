@@ -106,7 +106,6 @@ class LoginModal extends React.Component {
       ontext: function(text){
         console.log("-->", text);
       }
-      }
     }, {decodeEntities: true});
 
     let that = this
