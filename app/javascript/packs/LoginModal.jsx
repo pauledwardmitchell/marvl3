@@ -65,7 +65,7 @@ class LoginModal extends React.Component {
       showPassword: false,
       successSnackbarOpen: false,
       errorSnackbarOpen: false,
-      alertMessage
+      alertMessage: ''
     };
   }
 
