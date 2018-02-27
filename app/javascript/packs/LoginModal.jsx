@@ -64,7 +64,8 @@ class LoginModal extends React.Component {
       password: '',
       showPassword: false,
       successSnackbarOpen: false,
-      errorSnackbarOpen: false
+      errorSnackbarOpen: false,
+      alertMessage
     };
   }
 
@@ -95,20 +96,19 @@ class LoginModal extends React.Component {
   handleLoginSubmit() {
     const userEmail = this.state.email
     const userPassword = this.state.password
+    const alerts = []
+    let that = this
 
     var htmlparser = require("htmlparser2");
     const parser = new htmlparser.Parser({
-      onopentag: function(name, attribs){
-        if(name === "span" && (attribs.class === "alert" || attribs.class === "notice")){
-          console.log("JS! Hooray!");
-        }
-      },
       ontext: function(text){
-        console.log("-->", text);
+        if (text.length > 6) {
+          alerts.push(text)
+          console.log("-->", text);
+        }
       }
-    }, {decodeEntities: true});
+    }, {decodeEntities: true, recognizeSelfClosing: true });
 
-    let that = this
 
     thisAxios.post(`/users/sign_in`, {
       user: {
@@ -119,6 +119,7 @@ class LoginModal extends React.Component {
     .then(function (response) {
       console.log(response);
       parser.write(response.data)
+      that.setState({ alertMessage: alerts[0] })
       that.setState({ successSnackbarOpen: true })
       that.handleClose()
     })
@@ -188,8 +189,8 @@ class LoginModal extends React.Component {
             </Typography>
           </div>
         </Modal>
-        <SimpleSnackbar closeSnackbar={this.handleCloseSuccessSnackbar} open={this.state.successSnackbarOpen} message="You are logged in!"/>
-        <SimpleSnackbar closeSnackbar={this.handleCloseErrorSnackbar} open={this.state.errorSnackbarOpen} message="Oops! Something went wrong. Please contact Paul, MARVL mechanic, at paul@cpa.coop with any questions."/>
+        <SimpleSnackbar closeSnackbar={this.handleCloseSuccessSnackbar} open={this.state.successSnackbarOpen} message={this.state.alertMessage}/>
+        <SimpleSnackbar closeSnackbar={this.handleCloseErrorSnackbar} open={this.state.errorSnackbarOpen} message={this.state.alertMessage}/>
       </div>
     );
   }
