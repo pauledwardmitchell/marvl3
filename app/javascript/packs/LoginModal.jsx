@@ -17,6 +17,7 @@ import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import SimpleSnackbar from './SimpleSnackbar'
 
 import axios from 'axios'
+import htmlparser2 from 'htmlparser2'
 
 
 const styles = theme => ({
@@ -94,6 +95,20 @@ class LoginModal extends React.Component {
   handleLoginSubmit() {
     const userEmail = this.state.email
     const userPassword = this.state.password
+
+    var htmlparser = require("htmlparser2");
+    const parser = new htmlparser.Parser({
+      onopentag: function(name, attribs){
+        if(name === "span" && (attribs.class === "alert" || attribs.class === "notice")){
+          console.log("JS! Hooray!");
+        }
+      },
+      ontext: function(text){
+        console.log("-->", text);
+      }
+      }
+    }, {decodeEntities: true});
+
     let that = this
 
     thisAxios.post(`/users/sign_in`, {
@@ -104,8 +119,7 @@ class LoginModal extends React.Component {
     })
     .then(function (response) {
       console.log(response);
-      console.log(response.data);
-      console.log(response.data.getElementsByClassName('alert').getAttribute('content'));
+      parser.write(response.data)
       that.setState({ successSnackbarOpen: true })
       that.handleClose()
     })
