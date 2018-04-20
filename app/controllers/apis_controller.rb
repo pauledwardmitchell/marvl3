@@ -14,7 +14,7 @@ class ApisController < ApplicationController
     else
       @user = {}
     end
-    @user
+    render json: @user
   end
 
   # def add_allow_credentials_headers
