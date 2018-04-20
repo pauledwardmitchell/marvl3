@@ -8,6 +8,15 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def check_for_user
+    if current_user
+      @user = current_user
+    else
+      @user = {}
+    end
+    @user
+  end
+
   # def add_allow_credentials_headers
   #   response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'
   #   response.headers['Access-Control-Allow-Credentials'] = 'true'

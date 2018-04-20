@@ -39,8 +39,28 @@ class ButtonAppBar extends React.Component {
     super(props);
     this.state = {
       loginModalOpen: false,
-      signupModalOpen: false
+      signupModalOpen: false,
+      currentUser: null
     };
+  }
+
+  componentDidMount(){
+    thisAxios.get('/check_for_user',{
+    })
+    .then(function(response){
+      if(response.data.email){
+        that.setState({
+          currentUser: response.data.email
+        })
+      } else {
+        that.setState({
+          currentUser: null
+        })
+      }
+    })
+    .catch(function(error){
+      console.log(error);
+    })
   }
 
   handleWriteReviewClick() {
