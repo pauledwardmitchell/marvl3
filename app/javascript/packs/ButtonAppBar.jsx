@@ -102,7 +102,7 @@ class ButtonAppBar extends React.Component {
     } else {
       return (
         <Typography type="title" color="inherit" className={classes.flex}>
-          {this.state.currentUser.data.email}
+          {this.state.currentUser.email}
         </Typography>
       )
     }
