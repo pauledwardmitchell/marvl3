@@ -49,6 +49,7 @@ class ButtonAppBar extends React.Component {
           currentUser: response.data.email
         })
         console.log(response.data.email)
+        console.log(response.data)
       } else {
         this.setState({
           currentUser: null
@@ -91,6 +92,29 @@ class ButtonAppBar extends React.Component {
       });
   }
 
+  renderSignUp() {
+    if (this.state.currentUser === null) {
+      return (
+        <SignupModal open={this.state.signupModalOpen} />
+      )
+    } else {
+      return (
+        <div>{this.state.currentUser.email}</div>
+      )
+    }
+  }
+
+  renderLogIn() {
+    if (this.state.currentUser === null) {
+      return (
+        <LoginModal open={this.state.loginModalOpen} />
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  }
 
   render() {
     const { classes } = this.props;
@@ -102,8 +126,8 @@ class ButtonAppBar extends React.Component {
             <Typography type="title" color="inherit" className={classes.flex}>
             </Typography>
 
-            <SignupModal open={this.state.signupModalOpen} />
-            <LoginModal open={this.state.loginModalOpen} />
+            {this.renderSignUp()}
+            {this.renderLogIn()}
           </Toolbar>
         </AppBar>
       </div>
