@@ -93,6 +93,7 @@ class ButtonAppBar extends React.Component {
   }
 
   renderSignUp() {
+    const { classes } = this.props;
     if (this.state.currentUser === null) {
       return (
         <SignupModal open={this.state.signupModalOpen} />
