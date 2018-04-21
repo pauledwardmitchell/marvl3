@@ -101,7 +101,7 @@ class ButtonAppBar extends React.Component {
       )
     } else {
       return (
-        <Typography type="title" color="inherit" className={classes.flex}>
+        <Typography type="title" color="inherit" className={classes.flex} align='right'>
           {this.state.currentUser.email}
         </Typography>
       )
