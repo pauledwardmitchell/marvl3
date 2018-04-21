@@ -99,7 +99,9 @@ class ButtonAppBar extends React.Component {
       )
     } else {
       return (
-        <div>{this.state.currentUser.email}</div>
+        <Typography type="title" color="inherit" className={classes.flex}>
+          {this.state.currentUser.email}
+        </Typography>
       )
     }
   }
@@ -123,11 +125,13 @@ class ButtonAppBar extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <Button color="inherit" onClick={this.handleWriteReviewClick}>Write a Review</Button>
-            <Typography type="title" color="inherit" className={classes.flex}>
+
+            <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
 
             {this.renderSignUp()}
             {this.renderLogIn()}
+
           </Toolbar>
         </AppBar>
       </div>
