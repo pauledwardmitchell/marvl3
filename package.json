@@ -8,7 +8,7 @@
     "babel-preset-react": "^6.24.1",
     "coffeescript": "1.12.7",
     "htmlparser2": "^3.9.2",
-    "material-ui": "^1.0.0-beta.30",
+    "material-ui": "^1.0.0-beta.42",
     "material-ui-icons": "^1.0.0-beta.17",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",

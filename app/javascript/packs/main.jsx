@@ -2,15 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-import Reboot from 'material-ui/Reboot';
+import CssBaseline from 'material-ui/CssBaseline';
 
 import Landing from './Landing'
 
 
 ReactDOM.render(
-  <div className='material'>
-    <Reboot />
+  <React.Fragment>
+    <CssBaseline />
       <Landing />
-  </div>,
+  </React.Fragment>,
   document.getElementById('main')
 );
