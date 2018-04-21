@@ -37,4 +37,12 @@ export default class UserProfile extends React.Component {
       .catch((error) => console.error('axios error', error))
   }
 
+
+  render () {
+    return (
+      <div>
+        User Profile
+      </div>
+    )
+  }
 }
