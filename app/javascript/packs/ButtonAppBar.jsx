@@ -47,13 +47,13 @@ class ButtonAppBar extends React.Component {
       if(response.data.email){
         this.setState({
           currentUser: response.data.email
-          console.log(response.data.email)
         })
+        console.log(response.data.email)
       } else {
         this.setState({
           currentUser: null
-          console.log("no user")
         })
+        console.log("no user")
       }
     })
     .catch((error) => {
