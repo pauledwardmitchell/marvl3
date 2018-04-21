@@ -19,11 +19,7 @@ const styles = {
   },
   flex: {
     flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
+  }
 };
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -47,18 +43,18 @@ class ButtonAppBar extends React.Component {
   componentDidMount(){
     thisAxios.get('/check_for_user',{
     })
-    .then(function(response){
+    .then((response) => {
       if(response.data.email){
-        that.setState({
+        this.setState({
           currentUser: response.data.email
         })
       } else {
-        that.setState({
+        this.setState({
           currentUser: null
         })
       }
     })
-    .catch(function(error){
+    .catch((error) => {
       console.log(error);
     })
   }

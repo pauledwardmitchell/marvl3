@@ -76,6 +76,14 @@ class SignupModal extends React.Component {
     this.setState({ open: false });
   };
 
+  handleFirstNameChange = event => {
+    this.setState({ firstName: event.target.value })
+  }
+
+  handleLastNameChange = event => {
+    this.setState({ lastName: event.target.value })
+  }
+
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
   };

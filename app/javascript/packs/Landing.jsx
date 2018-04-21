@@ -60,27 +60,6 @@ export default class Landing extends React.Component {
     }
   }
 
-  leftButtons() {
-    return (
-      <a href="/writeareview">
-        Button
-          style={{margin: 4}}
-          label="Write a Review" />
-      </a>
-    )
-  }
-
-  rightButtons() {
-    return (
-      <div>
-        Button
-          style={{margin: 4}}
-          label={this.buttonTextCategories()}
-          onClick={this.handleDrawerToggle} />
-      </div>
-    )
-  }
-
   getDrawerStatus() {
     return this.state.drawerOpen
   }
