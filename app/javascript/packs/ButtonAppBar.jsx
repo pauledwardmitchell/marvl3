@@ -46,7 +46,7 @@ class ButtonAppBar extends React.Component {
     .then((response) => {
       if(response.data.email){
         this.setState({
-          currentUser: response.data.email
+          currentUser: response.data
         })
         console.log(response.data.email)
         console.log(response.data)
