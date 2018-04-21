@@ -9,7 +9,7 @@ import Grid from 'material-ui/Grid';
 import axios from 'axios'
 
 
-export default class Landing extends React.Component {
+export default class UserProfiel extends React.Component {
   constructor(props) {
     super(props);
     // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
@@ -37,9 +37,4 @@ export default class Landing extends React.Component {
       .catch((error) => console.error('axios error', error))
   }
 
-
-  render () {
-    return (
-    )
-  }
 }

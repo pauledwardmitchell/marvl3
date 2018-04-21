@@ -12,5 +12,5 @@ ReactDOM.render(
     <CssBaseline />
       <UserProfile />
   </React.Fragment>,
-  document.getElementById('main')
+  document.getElementById('user-profile')
 );
