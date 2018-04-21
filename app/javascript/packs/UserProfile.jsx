@@ -9,7 +9,7 @@ import Grid from 'material-ui/Grid';
 import axios from 'axios'
 
 
-export default class UserProfiel extends React.Component {
+export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
