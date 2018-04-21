@@ -115,7 +115,7 @@ class ButtonAppBar extends React.Component {
       )
     } else {
       return (
-        <div></div>
+        <Button color='inherit'>Log Out</Button>
       )
     }
   }
