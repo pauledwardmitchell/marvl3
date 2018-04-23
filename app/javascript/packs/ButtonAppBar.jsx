@@ -10,6 +10,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 import LoginModal from './LoginModal'
 import SignupModal from './SignupModal'
+import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
 
