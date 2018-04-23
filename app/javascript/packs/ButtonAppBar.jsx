@@ -101,9 +101,7 @@ class ButtonAppBar extends React.Component {
       )
     } else {
       return (
-        <Typography type="title" color="inherit" className={classes.flex} align='right'>
-          {this.state.currentUser.email}
-        </Typography>
+        <LandingProfileMenu email={this.state.currentUser.email} />
       )
     }
   }
@@ -115,7 +113,7 @@ class ButtonAppBar extends React.Component {
       )
     } else {
       return (
-        <Button color='inherit'>Log Out</Button>
+        <div></div>
       )
     }
   }
