@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :users
+  resources :organizations
 
   get '/landing_search_data', to:'apis#landing_search_data'
   get '/check_for_user', to:'apis#check_for_user'
