@@ -5,6 +5,8 @@ import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
 
+import CategoryExpansionPanel from './CategoryExpansionPanel'
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -23,6 +25,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
 });
+
 
 class CenteredTabs extends React.Component {
   state = {
@@ -49,9 +52,12 @@ class CenteredTabs extends React.Component {
             <Tab label="Other" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer>Item One</TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
+        {value === 0 && <TabContainer><CategoryExpansionPanel /></TabContainer>}
+        {value === 1 && <TabContainer><CategoryExpansionPanel /></TabContainer>}
+        {value === 2 && <TabContainer><CategoryExpansionPanel /></TabContainer>}
+        {value === 3 && <TabContainer><CategoryExpansionPanel /></TabContainer>}
+        {value === 4 && <TabContainer><CategoryExpansionPanel /></TabContainer>}
+        {value === 5 && <TabContainer><CategoryExpansionPanel /></TabContainer>}
       </div>
     );
   }
