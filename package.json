@@ -2,6 +2,7 @@
   "name": "marvl3",
   "private": true,
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "@rails/webpacker": "^3.2.0",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.17.1",
@@ -13,7 +14,8 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-autosuggest": "^9.3.2",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-google-maps": "^9.4.5"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.10.1"
