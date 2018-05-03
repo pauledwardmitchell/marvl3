@@ -66,14 +66,14 @@ class OrganizationShow extends React.Component {
       <div>
         <ButtonAppBar />
         <Grid container direction='row' justify='flex-start' spacing={16}>
+          <Grid item xs={4}>
+            <OrgShowMap />
+          </Grid>
           <Grid item xs={6}>
             <OrgShowDetailsBox data={orgData} />
           </Grid>
-          <Grid item xs={6}>
-            <OrgShowMap />
-          </Grid>
         </Grid>
-        <Divider style={{marginTop: 150}}/>
+        <Divider />
         <CenteredTabs />
       </div>
     )
