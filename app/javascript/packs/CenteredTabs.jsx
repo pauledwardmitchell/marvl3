@@ -96,7 +96,6 @@ class CenteredTabs extends React.Component {
   };
 
   getCategories() {
-    console.log("Hey!")
     var categories;
     var i;
     for (i = 0; i < data.length; i++) {
@@ -113,24 +112,24 @@ class CenteredTabs extends React.Component {
 
     return (
       <div className={classes.root}>
-      <Grid container spacing={24} justify='center'>
-      <Grid item xs={11}>
-        <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange} centered>
-            {data.map((superCategory) => {
-                return <Tab
-                         key={superCategory.name}
-                         label={superCategory.name}/>
-                }
-            )}
-          </Tabs>
-        </AppBar>
-        {value === 0 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-        {value === 1 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-        {value === 2 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-        {value === 3 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-      </Grid>
-      </Grid>
+        <Grid container spacing={24} justify='center'>
+          <Grid item xs={11}>
+            <AppBar position="static">
+              <Tabs value={value} onChange={this.handleChange} centered>
+                {data.map((superCategory) => {
+                    return <Tab
+                             key={superCategory.name}
+                             label={superCategory.name}/>
+                    }
+                )}
+              </Tabs>
+            </AppBar>
+            {value === 0 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
+            {value === 1 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
+            {value === 2 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
+            {value === 3 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
+          </Grid>
+        </Grid>
       </div>
     );
   }
