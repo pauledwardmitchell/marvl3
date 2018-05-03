@@ -13,6 +13,7 @@ import ButtonAppBar from './ButtonAppBar'
 import CenteredTabs from './CenteredTabs'
 import OrgShowDetailsBox from './OrgShowDetailsBox'
 import OrgShowMap from './OrgShowMap'
+import ChipsArray from './ChipsArray'
 
 import axios from 'axios'
 
@@ -69,8 +70,11 @@ class OrganizationShow extends React.Component {
           <Grid item xs={4}>
             <OrgShowMap />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
             <OrgShowDetailsBox data={orgData} />
+          </Grid>
+          <Grid item xs={3}>
+            <ChipsArray />
           </Grid>
         </Grid>
         <Divider />
