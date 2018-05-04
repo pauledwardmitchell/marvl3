@@ -16,6 +16,10 @@ const styles = theme => ({
 
 class ChipsArray extends React.Component {
 
+  handleClick() {
+
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -25,18 +29,18 @@ class ChipsArray extends React.Component {
         <Typography variant='subheading'>
           Facilities tags
         </Typography>
-        <Chip label="High Rise" className={classes.chip} />
-        <Chip label="Steam Heat" className={classes.chip} />
-        <Chip label="Rented Space" className={classes.chip} />
+        <Chip label="High Rise" onClick={this.handleClick} className={classes.chip} />
+        <Chip label="Steam Heat" onClick={this.handleClick} className={classes.chip} />
+        <Chip label="Rented Space" onClick={this.handleClick} className={classes.chip} />
       </Paper>
       <Paper className={classes.root}>
         <Typography variant='subheading'>
           Acedemic tags
         </Typography>
-        <Chip label="SpEd Services" className={classes.chip} />
-        <Chip label="Graduate Support" className={classes.chip} />
-        <Chip label="Literacy" className={classes.chip} />
-        <Chip label="High School" className={classes.chip} />
+        <Chip label="SpEd Services" onClick={this.handleClick} className={classes.chip} />
+        <Chip label="Graduate Support" onClick={this.handleClick} className={classes.chip} />
+        <Chip label="Literacy" onClick={this.handleClick} className={classes.chip} />
+        <Chip label="High School" onClick={this.handleClick} className={classes.chip} />
       </Paper>
       </div>
     );

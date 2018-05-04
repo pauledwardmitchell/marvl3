@@ -29,19 +29,43 @@ const styles = theme => ({
 
 const data = [
   {
-    "name": "Building and Grounds",
+    "name": "Building / Grounds",
     "subCategories": [
     {
       "sub": "Contractor",
-      "reviews": [{
+      "reviews": [
+      {
         "vendorName": "Capital Contracting",
+        "dateWritten": "31 December 2017",
+        "stars": "5",
         "review": "Lorem ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
-      }]
+      },
+      {
+        "vendorName": "New City Contracting",
+        "dateWritten": "3 December 2017",
+        "stars": "5",
+        "review": "Our building ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
+      },
+      {
+        "vendorName": "Big Building Contracting",
+        "dateWritten": "1 December 2017",
+        "stars": "4",
+        "review": "Lorem ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
+      },
+      {
+        "vendorName": "Blah Contracting",
+        "dateWritten": "31 September 2017",
+        "stars": "1",
+        "review": "Our building ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
+      }
+      ]
     },
     {
       "sub": "HVAC",
       "reviews": [{
         "vendorName": "Capital HVAC",
+        "dateWritten": "31 December 2017",
+        "stars": "5",
         "review": "Amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
       }]
     },
@@ -49,6 +73,8 @@ const data = [
       "sub": "Plumber",
       "reviews": [{
         "vendorName": "Capital Plumbing",
+        "dateWritten": "31 December 2017",
+        "stars": "5",
         "review": "Ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
       }]
     }]
@@ -60,6 +86,8 @@ const data = [
       "sub": "Accountant",
       "reviews": [{
         "vendorName": "Capital Accounting",
+        "dateWritten": "31 December 2017",
+        "stars": "5",
         "review": "Lorem ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
       }]
     }]
@@ -70,6 +98,8 @@ const data = [
       "sub": "Health Insurance",
       "reviews": [{
         "vendorName": "Capital Health",
+        "dateWritten": "31 December 2017",
+        "stars": "5",
         "review": "Lorem ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
       }]
     }]
@@ -80,6 +110,8 @@ const data = [
       "sub": "Tech Consultant",
       "reviews": [{
         "vendorName": "Capital Consulting",
+        "dateWritten": "31 December 2017",
+        "stars": "5",
         "review": "Lorem ipsum dolor amet 3 wolf moon church-key yr, copper mug art party bushwick woke locavore intelligentsia subway tile kitsch whatever."
       }]
     }]

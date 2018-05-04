@@ -7,6 +7,7 @@ import ExpansionPanel, {
 } from 'material-ui/ExpansionPanel';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
+import Grid from 'material-ui/Grid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import ExpansionPanelReviews from './ExpansionPanelReviews'
@@ -50,9 +51,11 @@ class CategoryExpansionPanels extends React.Component {
                      <Typography className={classes.secondaryHeading}>{category.reviews.length} Reviews</Typography>
                    </ExpansionPanelSummary>
                    <ExpansionPanelDetails>
-                     {category.reviews.map(review => (
-                      <ExpansionPanelReviews key={review.vendorName} review={review}/>
-                     ))}
+                     <Grid container direction='row' spacing={0}>
+                       {category.reviews.map(review => (
+                          <ExpansionPanelReviews key={review.vendorName} review={review}/>
+                       ))}
+                     </Grid>
                    </ExpansionPanelDetails>
                  </ExpansionPanel>
           }
