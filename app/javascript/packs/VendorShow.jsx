@@ -14,6 +14,7 @@ import CenteredTabs from './CenteredTabs'
 import VendorShowDetailsBox from './VendorShowDetailsBox'
 import OrgShowMap from './OrgShowMap'
 import VendorShowCategoriesTags from './VendorShowCategoriesTags'
+import EnhancedTable from './EnhancedTable'
 
 import axios from 'axios'
 
@@ -78,7 +79,13 @@ class VendorShow extends React.Component {
           </Grid>
         </Grid>
         <Divider />
-        <CenteredTabs />
+        <div className={classes.root}>
+          <Grid container spacing={24} justify='center'>
+            <Grid item xs={11}>
+              <EnhancedTable />
+            </Grid>
+          </Grid>
+        </div>
       </div>
     )
   }
