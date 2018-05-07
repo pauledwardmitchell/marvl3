@@ -21,17 +21,17 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from 'material-ui/styles/colorManipulator';
 
 let counter = 0;
-function createData(name, calories, fat, carbs, protein) {
+function createData(name, stars, review, reviewer, daysAgo) {
   counter += 1;
-  return { id: counter, name, calories, fat, carbs, protein };
+  return { id: counter, name, stars, review, reviewer, daysAgo };
 }
 
 const columnData = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-  { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
+  { id: 'name', numeric: false, disablePadding: true, label: 'School Name' },
+  { id: 'stars', numeric: true, disablePadding: false, label: 'Stars' },
+  { id: 'review', numeric: false, disablePadding: false, label: 'Review' },
+  { id: 'reviewer', numeric: false, disablePadding: false, label: 'Reviewer' },
+  { id: 'daysAgo', numeric: true, disablePadding: false, label: 'Days Ago' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -131,25 +131,10 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="title">Nutrition</Typography>
+          <Typography variant="title">All Reviews</Typography>
         )}
       </div>
       <div className={classes.spacer} />
-      <div className={classes.actions}>
-        {numSelected > 0 ? (
-          <Tooltip title="Delete">
-            <IconButton aria-label="Delete">
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
-      </div>
     </Toolbar>
   );
 };
@@ -179,24 +164,20 @@ class EnhancedTable extends React.Component {
     super(props, context);
 
     this.state = {
-      order: 'asc',
-      orderBy: 'calories',
+      order: 'desc',
+      orderBy: 'daysAgo',
       selected: [],
       data: [
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Donut', 452, 25.0, 51, 4.9),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-        createData('Honeycomb', 408, 3.2, 87, 6.5),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Jelly Bean', 375, 0.0, 94, 0.0),
-        createData('KitKat', 518, 26.0, 65, 7.0),
-        createData('Lollipop', 392, 0.2, 98, 0.0),
-        createData('Marshmallow', 318, 0, 81, 2.0),
-        createData('Nougat', 360, 19.0, 9, 37.0),
-        createData('Oreo', 437, 18.0, 63, 4.0),
-      ].sort((a, b) => (a.calories < b.calories ? -1 : 1)),
+        createData('Three Rivers PCS', 5, 'Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here', 'Bert', 12),
+        createData('Noble Street PCS', 4, 'Review placeholder review here', 'Ernie', 43),
+        createData('Jones Prep PCS', 4, 'Lorem ipsum placeholder review here', 'Grover', 34),
+        createData('Peyton PCS', 3, 'Review placeholder review here', 'Elmo', 101),
+        createData('Peyton PCS', 4, 'Lorem ipsum placeholder review here', 'Cookie Monster', 365),
+        createData('Twain PCS', 1, 'Review placeholder review here', 'Big Bird', 82),
+        createData('Crane PCS', 5, 'Review placeholder review here', 'Count (The)', 1),
+        createData('Irving PCS', 5, 'Lorem ipsum placeholder review here', 'Twiddle Bugs', 96),
+        createData('Washington PCS', 5, 'Review placeholder review here', 'Kermit', 90),
+      ].sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1)),
       page: 0,
       rowsPerPage: 5,
     };
@@ -292,10 +273,10 @@ class EnhancedTable extends React.Component {
                       <Checkbox checked={isSelected} />
                     </TableCell>
                     <TableCell padding="none">{n.name}</TableCell>
-                    <TableCell numeric>{n.calories}</TableCell>
-                    <TableCell numeric>{n.fat}</TableCell>
-                    <TableCell numeric>{n.carbs}</TableCell>
-                    <TableCell numeric>{n.protein}</TableCell>
+                    <TableCell numeric>{n.stars}</TableCell>
+                    <TableCell>{n.review}</TableCell>
+                    <TableCell>{n.reviewer}</TableCell>
+                    <TableCell numeric>{n.daysAgo}</TableCell>
                   </TableRow>
                 );
               })}
