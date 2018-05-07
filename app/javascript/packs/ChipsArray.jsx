@@ -35,7 +35,7 @@ class ChipsArray extends React.Component {
       </Paper>
       <Paper className={classes.root}>
         <Typography variant='subheading'>
-          Acedemic tags
+          Academic tags
         </Typography>
         <Chip label="SpEd Services" onClick={this.handleClick} className={classes.chip} />
         <Chip label="Graduate Support" onClick={this.handleClick} className={classes.chip} />
