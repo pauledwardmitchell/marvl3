@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
   end
 
   private
-  def set_user
+  def set_organization
     @organization = Organization.find(params[:id])
   end
 
