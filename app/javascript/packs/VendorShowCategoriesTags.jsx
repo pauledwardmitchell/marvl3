@@ -6,6 +6,9 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import Tooltip from 'material-ui/Tooltip';
 
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+
+
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -13,6 +16,16 @@ const styles = theme => ({
     paddingBottom: 16,
     margin: theme.spacing.unit * 3,
   })
+});
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiTooltip: {
+      popper: {
+        width: 200
+      },
+    },
+  },
 });
 
 class VendorShowCategoriesTags extends React.Component {
@@ -34,9 +47,11 @@ class VendorShowCategoriesTags extends React.Component {
         <Chip label="Boiler" onClick={this.handleClick} className={classes.chip} />
         <Chip label="Furnace" onClick={this.handleClick} className={classes.chip} />
       </Paper>
+      <MuiThemeProvider theme={theme}>
       <Tooltip
         title="Three Rivers PCS, Noble Street PCS, Jones Prep PCS, Peyton PCS, Twain PCS, Crane PCS, Irving PCS, Washington PCS"
-        style={{width:100}}>
+        placement='bottom'
+        >
       <Paper className={classes.root}>
         <Typography variant='subheading' align='center'>
           Contracted with
@@ -49,6 +64,7 @@ class VendorShowCategoriesTags extends React.Component {
         </Typography>
       </Paper>
       </Tooltip>
+      </MuiThemeProvider>
       </div>
     );
   }
