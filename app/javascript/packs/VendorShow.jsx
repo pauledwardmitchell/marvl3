@@ -23,7 +23,7 @@ const vendorData =
    street: '800 N. Halsted Street',
    city: 'Chicago, IL 60612',
    phone: '(312) 222-1234',
-   website: 'www.noblestreetpcs.com/uic'
+   website: 'www.amazing-hvac.com'
   }
 
 const styles = theme => ({
