@@ -13,8 +13,9 @@ import ButtonAppBar from './ButtonAppBar'
 import CenteredTabs from './CenteredTabs'
 import VendorShowDetailsBox from './VendorShowDetailsBox'
 import CategoriesChart from './CategoriesChart'
-import VendorShowCategoriesTags from './VendorShowCategoriesTags'
-import EnhancedTable from './EnhancedTable'
+import CategoryShowBatchRfp from './CategoryShowBatchRfp'
+import CategoryShowEnhancedTable from './CategoryShowEnhancedTable'
+import CategoryShowTitle from './CategoryShowTitle'
 
 import axios from 'axios'
 
@@ -72,19 +73,17 @@ class CategoryShow extends React.Component {
             <CategoriesChart />
           </Grid>
           <Grid item xs={4}>
-            <Paper className={classes.root} elevation={4}>
-              <Typography variant="headline" component="h3">HVAC Vendors</Typography>
-            </Paper>
+            <CategoryShowTitle />
           </Grid>
           <Grid item xs={3}>
-            <VendorShowCategoriesTags />
+            <CategoryShowBatchRfp />
           </Grid>
         </Grid>
         <Divider />
         <div className={classes.root}>
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
-              <EnhancedTable />
+              <CategoryShowEnhancedTable />
             </Grid>
           </Grid>
         </div>
