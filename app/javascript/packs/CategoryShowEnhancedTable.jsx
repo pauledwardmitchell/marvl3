@@ -18,22 +18,21 @@ import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import StarIcon from '@material-ui/icons/Star';
 import { lighten } from 'material-ui/styles/colorManipulator';
 
 let counter = 0;
-function createData(vendorName, schoolName, stars, review, reviewer, daysAgo) {
+function createData(vendorName, avgRating, schoolsContracted, numReviews, numComplaints) {
   counter += 1;
-  return { id: counter, vendorName, schoolName, stars, review, reviewer, daysAgo };
+  return { id: counter, vendorName, avgRating, schoolsContracted, numReviews, numComplaints };
 }
 
 const columnData = [
-  { id: 'vendorName', numeric: false, disablePadding: true, label: 'Vendor Name' },
-  { id: 'schoolName', numeric: false, disablePadding: true, label: 'School Name' },
-  { id: 'stars', numeric: true, disablePadding: false, label: 'Stars' },
-  { id: 'review', numeric: false, disablePadding: false, label: 'Review' },
-  { id: 'reviewer', numeric: false, disablePadding: false, label: 'Reviewer' },
-  { id: 'daysAgo', numeric: true, disablePadding: false, label: 'Days Ago' },
+  { id: 'vendorName', numeric: false, disablePadding: false, label: 'Vendor Name' },
+  { id: 'avgRating', numeric: false, disablePadding: true, label: 'Average Rating' },
+  { id: 'schoolsContracted', numeric: false, disablePadding: false, label: 'Schools Contracted' },
+  { id: 'numReviews', numeric: false, disablePadding: true, label: 'Number of Reviews' },
+  { id: 'numComplaints', numeric: false, disablePadding: true, label: 'Number of Complaints' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -47,13 +46,6 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </TableCell>
           {columnData.map(column => {
             return (
               <TableCell
@@ -133,7 +125,7 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="title">All Reviews</Typography>
+          <Typography variant="title">All HVAC Vendors</Typography>
         )}
       </div>
       <div className={classes.spacer} />
@@ -166,20 +158,15 @@ class CategoryShowEnhancedTable extends React.Component {
     super(props, context);
 
     this.state = {
-      order: 'desc',
-      orderBy: 'daysAgo',
+      order: 'asc',
+      orderBy: 'vendorName',
       selected: [],
       data: [
-        createData('Amazing HVAC', 'Three Rivers PCS', 5, 'Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here', 'Bert', 12),
-        createData('Amazing HVAC', 'Noble Street PCS', 4, 'Review placeholder review here', 'Ernie', 43),
-        createData('Amazing HVAC', 'Jones Prep PCS', 4, 'Lorem ipsum placeholder review here', 'Grover', 34),
-        createData('Brilliant HVAC', 'Peyton PCS', 3, 'Review placeholder review here', 'Elmo', 101),
-        createData('Brilliant HVAC', 'Peyton PCS', 4, 'Lorem ipsum placeholder review here', 'Cookie Monster', 365),
-        createData('Amazing HVAC', 'Twain PCS', 1, 'Review placeholder review here', 'Big Bird', 82),
-        createData('Amazing HVAC', 'Crane PCS', 5, 'Review placeholder review here', 'Count (The)', 1),
-        createData('Meh HVAC', 'Irving PCS', 5, 'Lorem ipsum placeholder review here', 'Twiddle Bugs', 96),
-        createData('Meh HVAC', 'Washington PCS', 5, 'Review placeholder review here', 'Kermit', 90),
-      ].sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1)),
+        createData('Amazing HVAC', 4.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 6, 1),
+        createData('Brilliant HVAC', 3, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 3, 4),
+        createData('Meh HVAC', 3.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 5, 2),
+        createData('Never Again HVAC', 1.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 2, 90),
+      ].sort((a, b) => (a.vendorName < b.vendorName ? -1 : 1)),
       page: 0,
       rowsPerPage: 5,
     };
@@ -271,15 +258,11 @@ class CategoryShowEnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
-                    <TableCell padding="none"><Button size="small">{n.vendorName}</Button></TableCell>
-                    <TableCell padding="none"><Button size="small">{n.schoolName}</Button></TableCell>
-                    <TableCell numeric>{n.stars}</TableCell>
-                    <TableCell>{n.review}</TableCell>
-                    <TableCell>{n.reviewer}</TableCell>
-                    <TableCell numeric>{n.daysAgo}</TableCell>
+                    <TableCell><Button size="small">{n.vendorName}</Button></TableCell>
+                    <TableCell padding='none'>{n.avgRating} stars</TableCell>
+                    <TableCell>{n.schoolsContracted}</TableCell>
+                    <TableCell padding='none'>{n.numReviews} Reviews</TableCell>
+                    <TableCell padding='none'>{n.numComplaints} Complaints</TableCell>
                   </TableRow>
                 );
               })}

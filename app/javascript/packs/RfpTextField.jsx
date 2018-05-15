@@ -25,7 +25,6 @@ const styles = theme => ({
 
 class RfpTextField extends React.Component {
   state = {
-    name: 'Cat in the Hat',
     rfpDetails: '',
   };
 
