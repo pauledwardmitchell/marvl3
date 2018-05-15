@@ -18,7 +18,7 @@ import Checkbox from 'material-ui/Checkbox';
 import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import StarIcon from '@material-ui/icons/Star';
 import { lighten } from 'material-ui/styles/colorManipulator';
 
 let counter = 0;
@@ -28,11 +28,11 @@ function createData(vendorName, avgRating, schoolsContracted, numReviews, numCom
 }
 
 const columnData = [
-  { id: 'vendorName', numeric: false, disablePadding: true, label: 'Vendor Name' },
-  { id: 'avgRating', numeric: true, disablePadding: true, label: 'Average Rating' },
-  { id: 'schoolsContracted', numeric: true, disablePadding: false, label: 'Schools Contracted' },
-  { id: 'numReviews', numeric: false, disablePadding: false, label: 'Number of Reviews' },
-  { id: 'numComplaints', numeric: false, disablePadding: false, label: 'Number of Complaints' },
+  { id: 'vendorName', numeric: false, disablePadding: false, label: 'Vendor Name' },
+  { id: 'avgRating', numeric: false, disablePadding: true, label: 'Average Rating' },
+  { id: 'schoolsContracted', numeric: false, disablePadding: false, label: 'Schools Contracted' },
+  { id: 'numReviews', numeric: false, disablePadding: true, label: 'Number of Reviews' },
+  { id: 'numComplaints', numeric: false, disablePadding: true, label: 'Number of Complaints' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -46,13 +46,6 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </TableCell>
           {columnData.map(column => {
             return (
               <TableCell
@@ -166,14 +159,14 @@ class CategoryShowEnhancedTable extends React.Component {
 
     this.state = {
       order: 'asc',
-      orderBy: 'avgRating',
+      orderBy: 'vendorName',
       selected: [],
       data: [
         createData('Amazing HVAC', 4.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 6, 1),
         createData('Brilliant HVAC', 3, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 3, 4),
         createData('Meh HVAC', 3.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 5, 2),
         createData('Never Again HVAC', 1.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 2, 90),
-      ].sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1)),
+      ].sort((a, b) => (a.vendorName < b.vendorName ? -1 : 1)),
       page: 0,
       rowsPerPage: 5,
     };
@@ -265,14 +258,11 @@ class CategoryShowEnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
-                    <TableCell padding="none"><Button size="small">{n.vendorName}</Button></TableCell>
-                    <TableCell numeric>{n.avgRating}</TableCell>
+                    <TableCell><Button size="small">{n.vendorName}</Button></TableCell>
+                    <TableCell padding='none'>{n.avgRating} stars</TableCell>
                     <TableCell>{n.schoolsContracted}</TableCell>
-                    <TableCell>{n.numReviews} Reviews</TableCell>
-                    <TableCell>{n.numComplaints} Complaints</TableCell>
+                    <TableCell padding='none'>{n.numReviews} Reviews</TableCell>
+                    <TableCell padding='none'>{n.numComplaints} Complaints</TableCell>
                   </TableRow>
                 );
               })}
