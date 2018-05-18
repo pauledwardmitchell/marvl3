@@ -10,6 +10,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 import LoginModal from './LoginModal'
 import SignupModal from './SignupModal'
+import WriteReviewModal from './WriteReviewModal'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -64,19 +65,6 @@ class ButtonAppBar extends React.Component {
     })
   }
 
-  handleWriteReviewClick() {
-    thisAxios.post(`/reviews`, {
-        title: 'Test Review',
-        content: 'It is working!'
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
   handleLoginClick() {
     this.setState({loginModalOpen: true})
   }
@@ -125,7 +113,7 @@ class ButtonAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Button color="inherit" onClick={this.handleWriteReviewClick}>Write a Review</Button>
+            <WriteReviewModal />
 
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
