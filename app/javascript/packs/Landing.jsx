@@ -1,17 +1,14 @@
 import React from 'react'
 
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import Divider from 'material-ui/Divider';
-import Typography from 'material-ui/Typography';
-import Grid from 'material-ui/Grid';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
-
-import DrawerUndockedExample from './DrawerUndockedExample';
 import CategoryShow from './CategoryShow';
 import ButtonAppBar from './ButtonAppBar';
 import LandingSearch from './LandingSearch'
-import LandingCategoryBox from './LandingCategoryBox'
 import LandingCategoryCard from './LandingCategoryCard'
 import LandingSchoolsGridList from './LandingSchoolsGridList'
 import RecentActivityBox from './RecentActivityBox'
