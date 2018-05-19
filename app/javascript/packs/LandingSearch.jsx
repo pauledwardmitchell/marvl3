@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Button from 'material-ui/Button';
-import Divider from 'material-ui/Divider';
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 import IntegrationAutosuggest from './IntegrationAutosuggest'
 
