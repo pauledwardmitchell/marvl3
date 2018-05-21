@@ -85,7 +85,7 @@ class ButtonAppBar extends React.Component {
     const { classes } = this.props;
     if (this.state.currentUser === null) {
       return (
-        <SignupModal open={this.state.signupModalOpen} />
+        <SignupModal />
       )
     } else {
       return (
@@ -97,7 +97,7 @@ class ButtonAppBar extends React.Component {
   renderLogIn() {
     if (this.state.currentUser === null) {
       return (
-        <LoginModal open={this.state.loginModalOpen} />
+        <LoginModal />
       )
     } else {
       return (
