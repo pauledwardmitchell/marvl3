@@ -80,30 +80,30 @@ class ButtonAppBar extends React.Component {
       });
   }
 
-  renderSignUp() {
-    const { classes } = this.props;
-    if (this.state.currentUser === null) {
-      return (
-        <SignupModal />
-      )
-    } else {
-      return (
-        <LandingProfileMenu email={this.state.currentUser.email} />
-      )
-    }
-  }
+  // renderSignUp() {
+  //   const { classes } = this.props;
+  //   if (this.state.currentUser === null) {
+  //     return (
+  //       <SignupModal />
+  //     )
+  //   } else {
+  //     return (
+  //       <LandingProfileMenu email={this.state.currentUser.email} />
+  //     )
+  //   }
+  // }
 
-  renderLogIn() {
-    if (this.state.currentUser === null) {
-      return (
-        <LoginModal />
-      )
-    } else {
-      return (
-        <div></div>
-      )
-    }
-  }
+  // renderLogIn() {
+  //   if (this.state.currentUser === null) {
+  //     return (
+  //       <LoginModal />
+  //     )
+  //   } else {
+  //     return (
+  //       <div></div>
+  //     )
+  //   }
+  // }
 
   render() {
     const { classes } = this.props;
@@ -115,8 +115,7 @@ class ButtonAppBar extends React.Component {
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
 
-            {this.renderSignUp()}
-            {this.renderLogIn()}
+            <LandingProfileMenu email={this.state.currentUser.email} />
 
           </Toolbar>
         </AppBar>
