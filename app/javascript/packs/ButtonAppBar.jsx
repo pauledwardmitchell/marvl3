@@ -9,7 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 
 import LoginModal from './LoginModal'
 import SignupModal from './SignupModal'
-import WriteReviewModal from './WriteReviewModal'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -112,7 +111,6 @@ class ButtonAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <WriteReviewModal />
 
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>

@@ -1,18 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Modal from 'material-ui/Modal';
-import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
-import Checkbox from 'material-ui/Checkbox';
-import TextField from 'material-ui/TextField';
-import IconButton from 'material-ui/IconButton';
-import Visibility from 'material-ui-icons/Visibility';
-import VisibilityOff from 'material-ui-icons/VisibilityOff';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { FormGroup, FormControl, FormHelperText } from 'material-ui/Form';
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 import SimpleSnackbar from './SimpleSnackbar'
 
@@ -57,7 +61,7 @@ class SignupModal extends React.Component {
     this.handleCloseErrorSnackbar = this.handleCloseErrorSnackbar.bind(this);
 
     this.state = {
-      open: false,
+      open: true,
       firstName: '',
       lastName: '',
       email: '',
@@ -72,9 +76,9 @@ class SignupModal extends React.Component {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+  // handleClose = () => {
+  //   this.setState({ open: false });
+  // };
 
   handleFirstNameChange = event => {
     this.setState({ firstName: event.target.value })
@@ -135,7 +139,6 @@ class SignupModal extends React.Component {
 
     return (
       <div>
-        <Button color="inherit" onClick={this.handleOpen}>Sign up</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -146,6 +149,9 @@ class SignupModal extends React.Component {
             <Grid container alignItems='center' direction= 'column' justify= 'center' style={{marginBottom: 20}}>
               <Typography variant="title" id="simple-modal-description">
                 Sign up for MARVL
+              </Typography>
+              <Typography variant="subheading" id="simple-modal-description">
+                Already signed up? <a href='/users/sign_in'>Log in</a>
               </Typography>
             </Grid>
             <FormGroup>

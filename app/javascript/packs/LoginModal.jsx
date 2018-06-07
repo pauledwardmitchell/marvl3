@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Modal from 'material-ui/Modal';
-import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
-import Checkbox from 'material-ui/Checkbox';
-import TextField from 'material-ui/TextField';
-import IconButton from 'material-ui/IconButton';
-import Visibility from 'material-ui-icons/Visibility';
-import VisibilityOff from 'material-ui-icons/VisibilityOff';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Modal from '@material-ui/core/Modal';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { FormGroup, FormControl, FormHelperText } from 'material-ui/Form';
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 import SimpleSnackbar from './SimpleSnackbar'
 
 import axios from 'axios'
@@ -58,7 +63,7 @@ class LoginModal extends React.Component {
     this.handleCloseErrorSnackbar = this.handleCloseErrorSnackbar.bind(this);
 
     this.state = {
-      open: false,
+      open: true,
       email: '',
       password: '',
       showPassword: false,
@@ -72,9 +77,9 @@ class LoginModal extends React.Component {
     this.setState({ open: true });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+  // handleClose = () => {
+  //   this.setState({ open: false });
+  // };
 
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
@@ -141,7 +146,6 @@ class LoginModal extends React.Component {
 
     return (
       <div>
-        <Button color="inherit" onClick={this.handleOpen}>Login</Button>
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
@@ -154,7 +158,7 @@ class LoginModal extends React.Component {
                 Login to MARVL
               </Typography>
               <Typography variant="subheading" id="simple-modal-description">
-                New to MARVL? <a href=''>Sign up</a>
+                New to MARVL? <a href='/users/sign_up'>Sign up</a>
               </Typography>
             </Grid>
             <FormGroup>
@@ -184,7 +188,7 @@ class LoginModal extends React.Component {
             <Button color="inherit" onClick={this.handleLoginSubmit}>Login</Button>
             </FormGroup>
             <Typography variant="caption" gutterBottom align="right">
-              <a href=''>Forgot Password?</a>
+              <a href='/users/password/new'>Forgot Password?</a>
             </Typography>
           </div>
         </Modal>
