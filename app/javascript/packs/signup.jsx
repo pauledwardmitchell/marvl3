@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import CategoryShow from './CategoryShow'
+import SignupPage from './SignupPage'
 
 
 ReactDOM.render(
   <React.Fragment>
     <CssBaseline />
-      <CategoryShow />
+      <SignupPage />
   </React.Fragment>,
-  document.getElementById('categories')
+  document.getElementById('signup')
 );

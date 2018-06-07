@@ -9,22 +9,10 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
 
-import ButtonAppBar from './ButtonAppBar'
-import CenteredTabs from './CenteredTabs'
-import VendorShowDetailsBox from './VendorShowDetailsBox'
-import OrgShowMap from './OrgShowMap'
-import VendorShowCategoriesTags from './VendorShowCategoriesTags'
-import EnhancedTable from './EnhancedTable'
+import LoginModal from './LoginModal'
 
 import axios from 'axios'
 
-const vendorData =
-  {name: 'Amazing HVAC',
-   street: '800 N. Halsted Street',
-   city: 'Chicago, IL 60612',
-   phone: '(312) 222-1234',
-   website: 'www.amazing-hvac.com'
-  }
 
 const styles = theme => ({
   root: {
@@ -32,7 +20,7 @@ const styles = theme => ({
   }
 });
 
-class VendorShow extends React.Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
@@ -66,29 +54,10 @@ class VendorShow extends React.Component {
 
     return (
       <div>
-        <ButtonAppBar />
-        <Grid container direction='row' justify='flex-start' spacing={16}>
-          <Grid item xs={4}>
-            <OrgShowMap />
-          </Grid>
-          <Grid item xs={4}>
-            <VendorShowDetailsBox data={vendorData} />
-          </Grid>
-          <Grid item xs={3}>
-            <VendorShowCategoriesTags />
-          </Grid>
-        </Grid>
-        <Divider />
-        <div className={classes.root}>
-          <Grid container spacing={24} justify='center'>
-            <Grid item xs={11}>
-              <EnhancedTable />
-            </Grid>
-          </Grid>
-        </div>
+        <LoginModal />
       </div>
     )
   }
 }
 
-export default withStyles(styles)(VendorShow);
+export default withStyles(styles)(LoginPage);

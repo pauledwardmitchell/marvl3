@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid'
-import Typography from 'material-ui/Typography'
-import Divider from 'material-ui/Divider'
-import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
-import Subheader from 'material-ui/List/ListSubheader';
-import InfoIcon from 'material-ui-icons/Info';
-
-import IconButton from 'material-ui/IconButton';
-import StarBorderIcon from 'material-ui-icons/StarBorder';
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
 
 const styles = theme => ({
   root: {
@@ -101,7 +99,7 @@ class LandingSchoolsGridList extends React.Component {
                 {tileData.map(tile => (
                   <GridListTile key={tile.img}>
                     <img src={tile.img} alt={tile.title} />
-                    <a>
+                    <a href='/organizations'>
                       <GridListTileBar
                         title={tile.title} />
                     </a>

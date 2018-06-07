@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 
 import LoginModal from './LoginModal'
 import SignupModal from './SignupModal'
-import WriteReviewModal from './WriteReviewModal'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -82,11 +80,24 @@ class ButtonAppBar extends React.Component {
       });
   }
 
-  renderSignUp() {
+  // renderSignUp() {
+  //   const { classes } = this.props;
+  //   if (this.state.currentUser === null) {
+  //     return (
+  //       <SignupModal />
+  //     )
+  //   } else {
+  //     return (
+  //       <LandingProfileMenu email={this.state.currentUser.email} />
+  //     )
+  //   }
+  // }
+
+  renderProfileMenu() {
     const { classes } = this.props;
     if (this.state.currentUser === null) {
       return (
-        <SignupModal open={this.state.signupModalOpen} />
+        <div></div>
       )
     } else {
       return (
@@ -95,17 +106,17 @@ class ButtonAppBar extends React.Component {
     }
   }
 
-  renderLogIn() {
-    if (this.state.currentUser === null) {
-      return (
-        <LoginModal open={this.state.loginModalOpen} />
-      )
-    } else {
-      return (
-        <div></div>
-      )
-    }
-  }
+  // renderLogIn() {
+  //   if (this.state.currentUser === null) {
+  //     return (
+  //       <LoginModal />
+  //     )
+  //   } else {
+  //     return (
+  //       <div></div>
+  //     )
+  //   }
+  // }
 
   render() {
     const { classes } = this.props;
@@ -113,13 +124,11 @@ class ButtonAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <WriteReviewModal />
 
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
 
-            {this.renderSignUp()}
-            {this.renderLogIn()}
+            {this.renderSignUp}
 
           </Toolbar>
         </AppBar>
