@@ -93,6 +93,19 @@ class ButtonAppBar extends React.Component {
   //   }
   // }
 
+  renderProfileMenu() {
+    const { classes } = this.props;
+    if (this.state.currentUser === null) {
+      return (
+        <div></div>
+      )
+    } else {
+      return (
+        <LandingProfileMenu email={this.state.currentUser.email} />
+      )
+    }
+  }
+
   // renderLogIn() {
   //   if (this.state.currentUser === null) {
   //     return (
@@ -115,7 +128,7 @@ class ButtonAppBar extends React.Component {
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
 
-            <LandingProfileMenu email={this.state.currentUser.email} />
+            {this.renderSignUp}
 
           </Toolbar>
         </AppBar>
