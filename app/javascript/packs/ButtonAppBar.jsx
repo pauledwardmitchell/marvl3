@@ -7,8 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
-import LoginModal from './LoginModal'
-import SignupModal from './SignupModal'
+import WriteReviewDialog from './WriteReviewDialog'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -34,8 +33,6 @@ class ButtonAppBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginModalOpen: false,
-      signupModalOpen: false,
       currentUser: null
     };
   }
@@ -124,6 +121,8 @@ class ButtonAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
+
+            <WriteReviewDialog />
 
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
