@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -18,18 +19,22 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import IntegrationAutosuggest from './IntegrationAutosuggest'
+import IntegrationReactSelect from './IntegrationReactSelect'
 
 
 const styles = theme => ({
   root: {
     visibility: 'visible'
+  },
+  title: {
+    width: 600
   }
 });
 
 class WriteReviewDialog extends React.Component {
   state = {
     open: false,
+    reviewContent: '',
     anonymous: false
   };
 
@@ -39,6 +44,10 @@ class WriteReviewDialog extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false });
+  };
+
+  handleContentChange = event => {
+    this.setState({ reviewContent: event.target.value });
   };
 
   handleAnonChange = event => {
@@ -65,39 +74,44 @@ class WriteReviewDialog extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Write a review</DialogTitle>
+          <DialogTitle id="form-dialog-title" className={classes.title}>Write a review</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To subscribe to this website, please enter your email address here. We will send
-              updates occasionally.
             </DialogContentText>
 
             <FormGroup>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="first-name-simple">First Name</InputLabel>
-                <Input id="first-name-simple" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+                <IntegrationReactSelect data={[ { value: 'Composting', label: 'Composting' }, { value: 'Computers - Staff', label: 'Computers - Staff' } ]}/>
               </FormControl>
+
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="last-name-simple">Last Name</InputLabel>
-                <Input id="last-name-simple" value={this.state.lastName} onChange={this.handleLastNameChange} />
-              </FormControl>
-              <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="email-simple">Email</InputLabel>
-                <Input id="email-simple" value={this.state.email} onChange={this.handleEmailChange} />
-              </FormControl>
-              <FormControl className={classes.formControl}>
-                <Typography>{this.anonLabel()}</Typography>
-                <Switch
-                  checked={this.state.anonymous}
-                  onChange={this.handleAnonChange}
-                  value="anonymous"
-                  color="primary"
+                <TextField
+                  id="multiline-flexible"
+                  label="Review"
+                  multiline
+                  rowsMax="10"
+                  value={this.state.reviewContent}
+                  onChange={this.handleContentChange}
                 />
               </FormControl>
 
               <FormControl className={classes.formControl}>
-                <IntegrationAutosuggest tests={[ { label: 'Composting' }, { label: 'Computers - Staff' } ]}/>
+                <InputLabel htmlFor="email-simple">Email</InputLabel>
+                <Input id="email-simple" value={this.state.email} onChange={this.handleEmailChange} />
               </FormControl>
+
+              <FormControlLabel className={classes.formControl}
+                control={
+                  <Switch
+                    checked={this.state.anonymous}
+                    onChange={this.handleAnonChange}
+                    value="anonymous"
+                    color="primary"
+                  />
+                }
+                label={this.anonLabel()}
+              />
+
 
             </FormGroup>
 

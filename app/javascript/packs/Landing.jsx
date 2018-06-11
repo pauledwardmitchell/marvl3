@@ -24,7 +24,7 @@ export default class Landing extends React.Component {
     this.getDrawerStatus = this.getDrawerStatus.bind(this);
     this.state = {
       categoriesData: [],
-      testData: [
+      searchData: [
         { label: 'Composting' },
         { label: 'Computers - Staff' },
         { label: 'Computers - Students' },
@@ -73,7 +73,7 @@ export default class Landing extends React.Component {
     return (
       <div style={{overflowX: 'hidden'}}>
         <ButtonAppBar />
-        <LandingSearch categories={this.state.categoriesData} vendors={this.state.vendorsData} tests={this.state.testData}/>
+        <LandingSearch data={this.state.searchData}/>
         <LandingBestVendorsBox />
         <LandingSchoolsGridList />
         <RecentActivityBox />

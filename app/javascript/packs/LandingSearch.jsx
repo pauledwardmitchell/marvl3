@@ -23,7 +23,7 @@ export default class LandingSearch extends React.Component {
               direction= 'row'
               justify= 'center'>
           <Grid item xs={7}>
-            <IntegrationAutosuggest style={{}} categories={this.props.categories} vendors={this.props.vendors} tests={this.props.tests}/>
+            <IntegrationAutosuggest data={this.props.data}/>
           </Grid>
           <Grid item xs={1} >
             <Button>SEARCH</Button>
