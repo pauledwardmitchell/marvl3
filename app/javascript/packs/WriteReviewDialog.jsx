@@ -55,13 +55,18 @@ const thisAxios = axios.create({
 });
 
 class WriteReviewDialog extends React.Component {
-  state = {
-    open: false,
-    reviewContent: '',
-    ratingService: 0,
-    ratingQuality: 0,
-    anonymous: false
-  };
+  constructor(props) {
+    super(props);
+    this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
+
+    this.state = {
+      open: false,
+      reviewContent: '',
+      ratingService: 0,
+      ratingQuality: 0,
+      anonymous: false
+    };
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -120,14 +125,9 @@ class WriteReviewDialog extends React.Component {
     })
     .then(function (response) {
       console.log(response);
-    //   parser.write(response.data)
-    //   that.setState({ alertMessage: alerts[0] })
-    //   that.setState({ successSnackbarOpen: true })
-    //   that.handleClose()
     })
     .catch(function (error) {
       console.log(error);
-    //   that.setState({ errorSnackbarOpen: true })
     });
   }
 
@@ -213,7 +213,7 @@ class WriteReviewDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleReviewSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
