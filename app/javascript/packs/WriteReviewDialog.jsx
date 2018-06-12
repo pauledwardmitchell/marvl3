@@ -8,6 +8,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
@@ -21,6 +23,9 @@ import { withStyles } from '@material-ui/core/styles';
 
 import IntegrationReactSelect from './IntegrationReactSelect'
 
+import ReactStars from 'react-stars'
+
+
 
 const styles = theme => ({
   root: {
@@ -28,6 +33,16 @@ const styles = theme => ({
   },
   title: {
     width: 600
+  },
+  review: {
+    marginBottom: 10
+  },
+  stars: {
+    marginLeft: 130,
+    marginTop: 12
+  },
+  switchAnon: {
+    marginTop: 10
   }
 });
 
@@ -35,6 +50,7 @@ class WriteReviewDialog extends React.Component {
   state = {
     open: false,
     reviewContent: '',
+    rating: 0,
     anonymous: false
   };
 
@@ -48,6 +64,14 @@ class WriteReviewDialog extends React.Component {
 
   handleContentChange = event => {
     this.setState({ reviewContent: event.target.value });
+  };
+
+  handleRatingServiceChange = (newRating) => {
+    this.setState({ ratingService: newRating });
+  };
+
+  handleRatingQualityChange = (newRating) => {
+    this.setState({ ratingQuality: newRating });
   };
 
   handleAnonChange = event => {
@@ -84,7 +108,7 @@ class WriteReviewDialog extends React.Component {
                 <IntegrationReactSelect data={[ { value: 'Composting', label: 'Composting' }, { value: 'Computers - Staff', label: 'Computers - Staff' } ]}/>
               </FormControl>
 
-              <FormControl className={classes.formControl}>
+              <FormControl className={classes.review}>
                 <TextField
                   id="multiline-flexible"
                   label="Review"
@@ -95,12 +119,29 @@ class WriteReviewDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="email-simple">Email</InputLabel>
-                <Input id="email-simple" value={this.state.email} onChange={this.handleEmailChange} />
+              <FormControl>
+                <InputLabel>Customer Service</InputLabel>
+                <ReactStars
+                  className={classes.stars}
+                  count={5}
+                  value={this.state.ratingService}
+                  onChange={this.handleRatingServiceChange}
+                  size={24}
+                  color2={'#ffd700'} />
               </FormControl>
 
-              <FormControlLabel className={classes.formControl}
+              <FormControl>
+                <InputLabel>Quality of Work</InputLabel>
+                <ReactStars
+                  className={classes.stars}
+                  count={5}
+                  value={this.state.ratingQuality}
+                  onChange={this.handleRatingQualityChange}
+                  size={24}
+                  color2={'#ffd700'} />
+              </FormControl>
+
+              <FormControlLabel className={classes.switchAnon}
                 control={
                   <Switch
                     checked={this.state.anonymous}
@@ -111,7 +152,6 @@ class WriteReviewDialog extends React.Component {
                 }
                 label={this.anonLabel()}
               />
-
 
             </FormGroup>
 

@@ -249,7 +249,7 @@ class IntegrationReactSelect extends React.Component {
           inputComponent={SelectWrapped}
           value={this.state.single}
           onChange={this.handleChange('single')}
-          placeholder="Select a vendor"
+          placeholder="Select a vendor or type vendor name"
           id="react-select-single"
           inputProps={{
             classes,
