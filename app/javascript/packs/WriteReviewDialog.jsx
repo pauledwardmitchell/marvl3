@@ -24,7 +24,7 @@ import { withStyles } from '@material-ui/core/styles';
 import IntegrationReactSelect from './IntegrationReactSelect'
 
 import ReactStars from 'react-stars'
-
+import axios from 'axios'
 
 
 const styles = theme => ({
@@ -46,11 +46,20 @@ const styles = theme => ({
   }
 });
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
 class WriteReviewDialog extends React.Component {
   state = {
     open: false,
     reviewContent: '',
-    rating: 0,
+    ratingService: 0,
+    ratingQuality: 0,
     anonymous: false
   };
 
@@ -77,6 +86,46 @@ class WriteReviewDialog extends React.Component {
   handleAnonChange = event => {
     this.setState({ anonymous: !this.state.anonymous });
   };
+
+  handleReviewSubmit() {
+    const userId = 1
+    const vendorId = 1
+    const reviewContent = this.state.reviewContent
+    const ratingService = this.state.ratingService
+    const ratingQuality = this.state.ratingQuality
+    const anonymous = this.state.anonymous
+    const alerts = []
+    let that = this
+
+    var htmlparser = require("htmlparser2");
+    const parser = new htmlparser.Parser({
+      ontext: function(text){
+        if (text.length > 6) {
+          alerts.push(text)
+          console.log("-->", text);
+        }
+      }
+    }, {decodeEntities: true, recognizeSelfClosing: true });
+
+
+    // thisAxios.post(`/users/sign_in`, {
+    //   user: {
+    //     email: userEmail,
+    //     password: userPassword
+    //   }
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    //   parser.write(response.data)
+    //   that.setState({ alertMessage: alerts[0] })
+    //   that.setState({ successSnackbarOpen: true })
+    //   that.handleClose()
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    //   that.setState({ errorSnackbarOpen: true })
+    // });
+  }
 
   anonLabel = () => {
     if (this.state.anonymous === false) {
