@@ -30,10 +30,8 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { notice: 'Review was successfully created.' }
-        format.json { status: :created, location: @review }
+        format.json { render json: @review }
       else
-        format.html { redirect_to '/reviews' }
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
