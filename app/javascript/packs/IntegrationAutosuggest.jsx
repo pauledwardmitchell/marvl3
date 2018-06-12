@@ -116,7 +116,7 @@ class IntegrationAutosuggest extends React.Component {
 
   handleSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value, this.props.tests),
+      suggestions: getSuggestions(value, this.props.data),
     });
   };
 
@@ -152,7 +152,7 @@ class IntegrationAutosuggest extends React.Component {
         renderSuggestion={renderSuggestion}
         inputProps={{
           classes,
-          placeholder: 'Type the letter \'C\' ',
+          placeholder: 'Start typing what you are looking for...',
           value: this.state.value,
           onChange: this.handleChange,
         }} />

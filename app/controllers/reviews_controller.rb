@@ -30,8 +30,8 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to '/reviews', notice: 'Review was successfully created.' }
-        format.json { redirect_to '/reviews', status: :created, location: @review }
+        format.html { notice: 'Review was successfully created.' }
+        format.json { status: :created, location: @review }
       else
         format.html { redirect_to '/reviews' }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -76,6 +76,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:title, :content)
+      params.require(:review).permit(:user_id, :vendor_id, :review_content, :rating_service, :rating_quality, :anonymous)
     end
 end
