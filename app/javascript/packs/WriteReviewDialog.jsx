@@ -108,23 +108,27 @@ class WriteReviewDialog extends React.Component {
     }, {decodeEntities: true, recognizeSelfClosing: true });
 
 
-    // thisAxios.post(`/users/sign_in`, {
-    //   user: {
-    //     email: userEmail,
-    //     password: userPassword
-    //   }
-    // })
-    // .then(function (response) {
-    //   console.log(response);
+    thisAxios.post(`/reviews`, {
+      review: {
+        user_id: userId,
+        vendor_id: vendorId,
+        review_content: reviewContent,
+        rating_service: ratingService,
+        rating_quality: ratingQuality,
+        anonymous: anonymous
+      }
+    })
+    .then(function (response) {
+      console.log(response);
     //   parser.write(response.data)
     //   that.setState({ alertMessage: alerts[0] })
     //   that.setState({ successSnackbarOpen: true })
     //   that.handleClose()
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
+    })
+    .catch(function (error) {
+      console.log(error);
     //   that.setState({ errorSnackbarOpen: true })
-    // });
+    });
   }
 
   anonLabel = () => {
