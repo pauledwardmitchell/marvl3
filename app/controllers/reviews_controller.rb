@@ -27,13 +27,10 @@ class ReviewsController < ApplicationController
   # POST /posts.json
   def create
     @review = Review.new(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.json { render json: @review.to_json }
-      else
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.save
+      puts "Saved!"
+    else
+      format.json { render json: @review.errors, status: :unprocessable_entity }
     end
   end
 
