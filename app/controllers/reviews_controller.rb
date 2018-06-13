@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.json { render json: @review }
+        format.json { render json: @review.to_json }
       else
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
