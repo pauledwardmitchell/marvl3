@@ -34,6 +34,9 @@ const styles = theme => ({
   title: {
     width: 600
   },
+  button: {
+    color: 'white'
+  },
   review: {
     marginBottom: 10
   },
@@ -50,7 +53,8 @@ const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute
 const thisAxios = axios.create({
   baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
-    'X-CSRF-Token': csrfToken
+    'X-CSRF-Token': csrfToken,
+    'Content-Type': 'application/json'
   }
 });
 
@@ -125,6 +129,7 @@ class WriteReviewDialog extends React.Component {
     })
     .then(function (response) {
       console.log(response);
+      that.handleClose()
     })
     .catch(function (error) {
       console.log(error);
@@ -144,7 +149,7 @@ class WriteReviewDialog extends React.Component {
 
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Write Review</Button>
+        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
         <Dialog
           className={classes.root}
           open={this.state.open}
@@ -164,7 +169,7 @@ class WriteReviewDialog extends React.Component {
               <FormControl className={classes.review}>
                 <TextField
                   id="multiline-flexible"
-                  label="Review"
+                  label="Write your review"
                   multiline
                   rowsMax="10"
                   value={this.state.reviewContent}
