@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     if @review.save
       puts "Saved!"
     else
-      format.json { render json: @review.errors, status: :unprocessable_entity }
+      render json: @review.errors, status: :unprocessable_entity
     end
   end
 
