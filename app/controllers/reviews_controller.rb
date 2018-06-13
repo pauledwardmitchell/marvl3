@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      puts "Saved!"
+      render json: @review
     else
       render json: @review.errors, status: :unprocessable_entity
     end

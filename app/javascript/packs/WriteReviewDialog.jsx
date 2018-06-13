@@ -54,7 +54,8 @@ const thisAxios = axios.create({
   baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
     'X-CSRF-Token': csrfToken,
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
   }
 });
 
