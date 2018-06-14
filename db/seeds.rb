@@ -41,7 +41,6 @@ fin_array.each do |c|
   Category.create( { name: c, super_category_ids: [ fin.id ]})
 end
 
-
 tprodev = SuperCategory.create( { name: 'Teacher Professional Development', super_super_category_id: hr.id } )
 tprodev_array = [ 'E/LA - Elementary', 'Math - Elementary', 'Science - Elementary', 'E/LA - Middle School', 'Math - Middle School', 'Science - Middle School', 'E/LA - High School', 'Math - High School', 'Science - High School', 'Art', 'Music' ]
 tprodev_array.each do |c|
@@ -75,13 +74,13 @@ end
 supp = SuperSuperCategory.create( { name: 'Supplies'} )
 
 printm = SuperCategory.create( { name: 'Print Management', super_super_category_id: supp.id } )
-printm_array = [ 'Copiers', 'Copies printed off-site', 'Banners', 'Promotional Materials' ]
+printm_array = [ 'Copiers', 'Copies printed off-site', 'Banners', 'Promotional materials' ]
 printm_array.each do |c|
   Category.create( { name: c, super_category_ids: [ printm.id ]})
 end
 
 sports = SuperCategory.create( { name: 'Sports Supplies', super_super_category_id: supp.id } )
-sports_array = [ 'Uniforms', 'Sports Equipment', 'Used / donated sports equipment' ]
+sports_array = [ 'Uniforms', 'Sports equipment', 'Used / donated sports equipment' ]
 sports_array.each do |c|
   Category.create( { name: c, super_category_ids: [ sports.id ]})
 end
@@ -93,7 +92,7 @@ nslp_array.each do |c|
 end
 
 off = SuperCategory.create( { name: 'Office needs', super_super_category_id: supp.id } )
-off_array = [ 'Office supplies', 'Scanning and Shredding', 'Postage meters' ]
+off_array = [ 'Office supplies', 'Scanning and shredding', 'Postage meters' ]
 off_array.each do |c|
   Category.create( { name: c, super_category_ids: [ off.id ]})
 end
@@ -102,3 +101,44 @@ end
 #STUDENT INSTRUCTION / STUDENT SERVICES
 ss = SuperSuperCategory.create( { name: 'Student Instruction / Student Services'} )
 
+curric = SuperCategory.create( { name: 'Curriculum Resources', super_super_category_id: ss.id } )
+curric_array = [ 'E/LA - Elementary', 'Math - Elementary', 'Science - Elementary', 'E/LA - Middle School', 'Math - Middle School', 'Science - Middle School', 'E/LA - High School', 'Math - High School', 'Science - High School' ]
+curric_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ curric.id ]})
+end
+
+iit = SuperCategory.create( { name: 'Instructional Technology', super_super_category_id: ss.id } )
+iit_array = [ 'Laptops', 'Chromebooks', 'iPads', 'Document cameras', 'STEM hardware' ]
+iit_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ iit.id ]})
+end
+
+apps = SuperCategory.create( { name: 'Instructional Apps', super_super_category_id: ss.id } )
+apps_array = [ 'E/LA apps', 'Math apps', 'Science apps', 'Social Studies apps' ]
+apps_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ apps.id ]})
+end
+
+sss = SuperCategory.create( { name: 'Student Support Services', super_super_category_id: ss.id } )
+sss_array = ['Special Education services', 'Counselling services', 'Speech pathologists', 'Other health services', 'Services for families']
+sss_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ sss.id ]})
+end
+
+uni = SuperCategory.create( { name: 'Uniforms', super_super_category_id: ss.id } )
+uni_array = [ 'Elementary school', 'Middle school', 'High school', 'Sports' ]
+uni_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ uni.id ]})
+end
+
+fam = SuperCategory.create( { name: 'Family Services', super_super_category_id: ss.id } )
+fam_array = [ 'Digital platforms to engage parents and families', 'Resources for families' ]
+fam_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ fam.id ]})
+end
+
+trans = SuperCategory.create( { name: 'Transportation', super_super_category_id: ss.id } )
+trans_array = [ 'School buses', 'Charter buses']
+trans_array.each do |c|
+  Category.create( { name: c, super_category_ids: [ trans.id ]})
+end
