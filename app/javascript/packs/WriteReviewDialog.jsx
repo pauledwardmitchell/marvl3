@@ -131,6 +131,7 @@ class WriteReviewDialog extends React.Component {
     .then(function (response) {
       console.log(response);
       that.handleClose()
+      that.forceUpdate()
     })
     .catch(function (error) {
       console.log(error);
