@@ -81,13 +81,6 @@ class WriteReviewDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  resetForm = () => {
-    this.setState({ reviewContent: '' });
-    this.setState({ ratingService: 0 });
-    this.setState({ ratingQuality: 0 });
-    this.setState({ anonymous: false });
-  }
-
   handleContentChange = event => {
     this.setState({ reviewContent: event.target.value });
   };
@@ -138,7 +131,7 @@ class WriteReviewDialog extends React.Component {
     .then(function (response) {
       console.log(response);
       that.handleClose()
-      that.resetForm
+      that.forceUpdate()
     })
     .catch(function (error) {
       console.log(error);
