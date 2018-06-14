@@ -1,0 +1,2 @@
+class SuperSuperCategory < ApplicationRecord
+end

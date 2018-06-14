@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 
 import ButtonAppBar from './ButtonAppBar'
-import CenteredTabs from './CenteredTabs'
+import OrgShowAllCategories from './OrgShowAllCategories'
 import OrgShowDetailsBox from './OrgShowDetailsBox'
 import OrgShowMap from './OrgShowMap'
 import ChipsArray from './ChipsArray'
@@ -78,7 +78,7 @@ class OrganizationShow extends React.Component {
           </Grid>
         </Grid>
         <Divider />
-        <CenteredTabs />
+        <OrgShowAllCategories />
       </div>
     )
   }
