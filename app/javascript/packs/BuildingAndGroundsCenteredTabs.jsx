@@ -259,7 +259,7 @@ const thisAxios = axios.create({
 });
 
 
-class CenteredTabs extends React.Component {
+class BuildingAndGroundsCenteredTabs extends React.Component {
   state = {
     value: 0,
   };
@@ -336,4 +336,5 @@ CenteredTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CenteredTabs);
+export default withStyles(styles)(BuildingAndGroundsCenteredTabs);
+

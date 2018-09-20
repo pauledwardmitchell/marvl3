@@ -13,7 +13,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import axios from 'axios'
 
-import CategoryExpansionPanel from './CategoryExpansionPanel'
+import TestCategoryExpansionPanel from './TestCategoryExpansionPanel'
 
 function TabContainer(props) {
   return (
@@ -259,7 +259,7 @@ const thisAxios = axios.create({
 });
 
 
-class CenteredTabs extends React.Component {
+class TestCenteredTabs extends React.Component {
   state = {
     value: 0,
   };
@@ -295,9 +295,15 @@ class CenteredTabs extends React.Component {
   getCategories() {
     var categories;
     var i;
-    for (i = 0; i < data.length; i++) {
+    var superCategory;
+    for (i = 0; i < this.props.data.super_categories.length; i++) {
       if (this.state.value === i) {
-        categories = data[i].subCategories;
+        superCategory = this.props.data.super_categories[i]
+        for (i = 0; i < this.props.data.categories.length; i++) {
+          if (superCategory.id === this.props.data.categories[i].super_category_id) {
+            categories.push(this.props.data.categories[i])
+          }
+        }
       }
     }
     return categories
@@ -313,18 +319,18 @@ class CenteredTabs extends React.Component {
           <Grid item xs={11}>
             <AppBar position="static">
               <Tabs value={value} onChange={this.handleChange} centered>
-                {data.map((superCategory) => {
+                {this.props.data.super_categories.map((superCategory) => {
                     return <Tab
-                             key={superCategory.name}
+                             key={superCategory.id}
                              label={superCategory.name}/>
                     }
                 )}
               </Tabs>
             </AppBar>
-            {value === 0 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-            {value === 1 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-            {value === 2 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-            {value === 3 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
+            {value === 0 && <TabContainer><TestCategoryExpansionPanel categories={this.getCategories()} reviews={this.props.data.reviews}/></TabContainer>}
+            {value === 1 && <TabContainer><TestCategoryExpansionPanel categories={this.getCategories()} reviews={this.props.data.reviews}/></TabContainer>}
+            {value === 2 && <TabContainer><TestCategoryExpansionPanel categories={this.getCategories()} reviews={this.props.data.reviews}/></TabContainer>}
+            {value === 3 && <TabContainer><TestCategoryExpansionPanel categories={this.getCategories()} reviews={this.props.data.reviews}/></TabContainer>}
           </Grid>
         </Grid>
       </div>
@@ -332,8 +338,8 @@ class CenteredTabs extends React.Component {
   }
 }
 
-CenteredTabs.propTypes = {
+TestCenteredTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CenteredTabs);
+export default withStyles(styles)(TestCenteredTabs);

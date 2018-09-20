@@ -9,7 +9,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import CenteredTabs from './CenteredTabs'
+import BuildingAndGroundsCenteredTabs from './BuildingAndGroundsCenteredTabs'
 
 const styles = theme => ({
   root: {
@@ -17,7 +17,6 @@ const styles = theme => ({
   }
 });
 
-const data = [ "Super 1", "Super 2", "Super 3", "Super 4"]
 
 class OrgShowAllCategories extends React.Component {
   state = {
@@ -28,18 +27,15 @@ class OrgShowAllCategories extends React.Component {
 
     return (
       <div className={classes.root}>
-        {data.map((category) => {
-          return  <ExpansionPanel>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                      <Typography variant="headline">{category}</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
-                      <CenteredTabs />
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
-          }
-        )}
 
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="headline">Building and Grounds</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <BuildingAndGroundsCenteredTabs />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
 
       </div>
     );
