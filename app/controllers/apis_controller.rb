@@ -17,32 +17,69 @@ class ApisController < ApplicationController
     render json: @user
   end
 
-  # def building_and_grounds
-  #   data = []
-  #   bag = SuperSuperCategory.find_by(name: "Building and Grounds")
-  #   super_categories = bag.super_categories
-  #   super_categories.each do |super_cat|
-  #    { name: super_cat.name,
-  #       subCategories: [
-  #         super_cat.categories.each do |category|
-  #           { sub: category.name,
-  #             reviews: [
-  #               category.reviews.each do |review|
-  #                 { vendorName: Vendor.find(review.vendor_id),
-  #                   dateWritten: review.created_at,
-  #                   stars: review.rating_service,
-  #                   review: review.review_content
-  #                 }
-  #               end
-  #             ]
-  #           }
-  #         end
-  #       ]
-  #     }
-  #   end
-  #   data
-  # end
+  def building_and_grounds
+    @data = []
+    bag = SuperSuperCategory.find_by(name: "Building and Grounds")
+    super_categories = bag.super_categories
 
+    super_categories.each do |super_cat|
+
+      all_categories_array = []
+
+      super_cat.categories.each do |category|
+
+        org_reviews = category.reviews.find_all { |r| r.user.organization.id == 1}
+
+        org_reviews_hashes = []
+
+        org_reviews.each do |review|
+
+          review_data = { vendorName: Vendor.find(review.vendor_id),
+                          dateWritten: review.created_at,
+                          stars: review.rating_service,
+                          review: review.review_content
+                        }
+
+          org_reviews_hashes << review_data
+        end
+
+        category_reviews_hash = {
+          sub: category.name,
+          reviews: org_reviews_hashes
+        }
+
+        all_categories_array << category_reviews_hash
+
+      end
+
+      super_hash = {
+        name: super_cat.name,
+        subCategories: all_categories_array
+      }
+
+      @data << super_hash
+
+    end
+    render json: @data
+  end
+
+      # super_hash = { name: super_cat.name,
+      #                  subCategories: [
+      #                    super_cat.categories.each do |category|
+      #                      { sub: category.name,
+      #                        reviews: [
+      #                          category.reviews.each do |review|
+      #                            { vendorName: Vendor.find(review.vendor_id),
+      #                              dateWritten: review.created_at,
+      #                              stars: review.rating_service,
+      #                              review: review.review_content
+      #                            }
+      #           end
+      #         ]
+      #       }
+      #     end
+      #   ]
+      # }
 
   # def index
   #   @user = current_user
