@@ -262,37 +262,24 @@ const thisAxios = axios.create({
 class BuildingAndGroundsCenteredTabs extends React.Component {
   state = {
     value: 0,
+    bagData: {}
   };
 
   componentDidMount(){
-    // thisAxios.get('/check_for_user',{
-    // })
-    // .then((response) => {
-    //   if(response.data.email){
-    //     this.setState({
-    //       currentUser: response.data
-    //     })
-    //     console.log(response.data.email)
-    //     console.log(response.data)
-    //     console.log(this.state.currentUser)
-    //   } else {
-    //     this.setState({
-    //       currentUser: null
-    //     })
-    //     console.log("no user")
-    //   }
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
+    thisAxios.get('/building_and_grounds',{
+    })
+    .then((response) => {
+      this.setState({bagData: response.data})
+    })
+    .catch((error) => console.error('axios error', error))
   }
-
 
   handleChange = (event, value) => {
     this.setState({ value });
   };
 
   getCategories() {
+    var data = this.state.data
     var categories;
     var i;
     for (i = 0; i < data.length; i++) {
@@ -313,7 +300,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
           <Grid item xs={11}>
             <AppBar position="static">
               <Tabs value={value} onChange={this.handleChange} centered>
-                {data.map((superCategory) => {
+                {this.state.data.map((superCategory) => {
                     return <Tab
                              key={superCategory.name}
                              label={superCategory.name}/>
