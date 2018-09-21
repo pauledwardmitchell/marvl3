@@ -78,7 +78,7 @@ class OrganizationShow extends React.Component {
           </Grid>
         </Grid>
         <Divider />
-        <OrgShowAllCategories bagData={this.props.bagData} />
+        <OrgShowAllCategories />
       </div>
     )
   }
