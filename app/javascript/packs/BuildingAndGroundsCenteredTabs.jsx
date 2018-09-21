@@ -332,7 +332,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   }
 }
 
-CenteredTabs.propTypes = {
+BuildingAndGroundsCenteredTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
