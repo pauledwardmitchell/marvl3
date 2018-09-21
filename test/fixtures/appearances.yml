@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  super_category_id: 1
+  category: 
+  integer: MyString
+
+two:
+  super_category_id: 1
+  category: 
+  integer: MyString
