@@ -279,7 +279,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   };
 
   getCategories() {
-    var data = this.state.data
+    // var data = this.state.data
     var categories;
     var i;
     for (i = 0; i < data.length; i++) {
@@ -300,7 +300,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
           <Grid item xs={11}>
             <AppBar position="static">
               <Tabs value={value} onChange={this.handleChange} centered>
-                {bagData.map((superCategory) => {
+                {data.map((superCategory) => {
                     return <Tab
                              key={superCategory.name}
                              label={superCategory.name}/>
