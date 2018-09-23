@@ -260,14 +260,16 @@ const thisAxios = axios.create({
 
 
 class BuildingAndGroundsCenteredTabs extends React.Component {
-  state = {
-    value: 0,
-    bagData: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+      bagData: data
+    };
+  }
 
-  componentDidMount(){
-    thisAxios.get('/building_and_grounds',{
-    })
+  componentWillMount(){
+    thisAxios.get('/building_and_grounds')
     .then((response) => {
       this.setState({bagData: response.data})
     })
@@ -279,12 +281,12 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   };
 
   getCategories() {
-    // var data = this.state.data
+    var catData = this.state.bagData
     var categories;
     var i;
     for (i = 0; i < data.length; i++) {
       if (this.state.value === i) {
-        categories = data[i].subCategories;
+        categories = catData[i].subCategories;
       }
     }
     return categories
@@ -300,7 +302,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
           <Grid item xs={11}>
             <AppBar position="static">
               <Tabs value={value} onChange={this.handleChange} centered>
-                {data.map((superCategory) => {
+                {bagData.map((superCategory) => {
                     return <Tab
                              key={superCategory.name}
                              label={superCategory.name}/>
