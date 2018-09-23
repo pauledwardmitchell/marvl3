@@ -271,6 +271,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   componentWillMount(){
     thisAxios.get('/building_and_grounds')
     .then((response) => {
+      console.log(response)
       this.setState({bagData: response.data})
     })
     .catch((error) => console.error('axios error', error))

@@ -30,17 +30,25 @@ class ApisController < ApplicationController
 
         org_reviews = category.reviews.find_all { |r| r.user.organization.id == 1}
 
+p "Reviews: ----------"
+p org_reviews
+
         org_reviews_hashes = []
 
         org_reviews.each do |review|
 
-          review_data = { vendorName: Vendor.find(review.vendor_id),
+          review_data = { vendorName: Vendor.find(review.vendor_id).name,
                           dateWritten: review.created_at,
                           stars: review.rating_service,
-                          review: review.review_content
+                          review: review.review_content,
+                          id: review.id
                         }
 
           org_reviews_hashes << review_data
+
+p "Org review hashes:------"
+p org_reviews_hashes
+
         end
 
         category_reviews_hash = {

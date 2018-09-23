@@ -52,7 +52,7 @@ class CategoryExpansionPanels extends React.Component {
                    <ExpansionPanelDetails>
                      <Grid container direction='row' spacing={0}>
                        {category.reviews.map(review => (
-                          <ExpansionPanelReviews key={review.vendorName} review={review}/>
+                          <ExpansionPanelReviews key={review.id} review={review}/>
                        ))}
                      </Grid>
                    </ExpansionPanelDetails>
