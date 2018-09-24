@@ -44,6 +44,12 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def supplies
+  end
+
+  def student_instruction_and_services
+  end
+
   private
   def build_from_super_super_categories(super_categories)
     @data =[]

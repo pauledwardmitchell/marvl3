@@ -11,7 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import BuildingAndGroundsCenteredTabs from './BuildingAndGroundsCenteredTabs'
 import HumanResourcesCenteredTabs from './HumanResourcesCenteredTabs'
-import TechnologyCenteredTabs from './HumanResourcesCenteredTabs'
+import TechnologyCenteredTabs from './TechnologyCenteredTabs'
 
 const styles = theme => ({
   root: {

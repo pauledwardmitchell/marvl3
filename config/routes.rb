@@ -8,11 +8,19 @@ Rails.application.routes.draw do
   resources :users
   resources :organizations
 
-  get '/landing_search_data', to:'apis#landing_search_data'
+#App Bar
   get '/check_for_user', to:'apis#check_for_user'
+
+#Landing Page
+  get '/landing_search_data', to:'apis#landing_search_data'
+
+#Org Show
   get '/building_and_grounds', to: 'apis#building_and_grounds'
   get '/human_resources', to: 'apis#human_resources'
   get '/technology', to: 'apis#technology'
+  get '/supplies', to: 'apis#supplies'
+  get '/student_instruction_and_services', to: 'apis#student_instruction_and_services'
+
 
   root to: 'reviews#index'
 
