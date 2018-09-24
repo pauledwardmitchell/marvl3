@@ -18,10 +18,26 @@ class ApisController < ApplicationController
   end
 
   def building_and_grounds
-    @data = []
     bag = SuperSuperCategory.find_by(name: "Building and Grounds")
     super_categories = bag.super_categories
 
+    @data = build_from_super_super_categories(super_categories)
+
+    render json: @data
+  end
+
+  def human_resources
+    hr = SuperSuperCategory.find_by(name: "Building and Grounds")
+    super_categories = hr.super_categories
+
+    @data = build_from_super_super_categories(super_categories)
+
+    render json: @data
+  end
+
+  private
+  def build_from_super_super_categories(super_categories)
+    @data =[]
     super_categories.each do |super_cat|
       all_categories_array = []
 
@@ -58,7 +74,7 @@ class ApisController < ApplicationController
       @data << super_hash
 
     end
-    render json: @data
+    @data
   end
 
 end

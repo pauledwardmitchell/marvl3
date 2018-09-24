@@ -43,19 +43,19 @@ const thisAxios = axios.create({
 });
 
 
-class BuildingAndGroundsCenteredTabs extends React.Component {
+class HumanResourcesCenteredTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: 0,
-      bagData: data
+      superSuperData: data
     };
   }
 
   componentWillMount(){
-    thisAxios.get('/building_and_grounds')
+    thisAxios.get('/human_resources')
     .then((response) => {
-      this.setState({bagData: response.data})
+      this.setState({superSuperData: response.data})
     })
     .catch((error) => console.error('axios error', error))
   }
@@ -65,7 +65,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   };
 
   getCategories() {
-    var catData = this.state.bagData
+    var catData = this.state.superSuperData
     var categories;
     var i;
     for (i = 0; i < catData.length; i++) {
@@ -78,7 +78,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { value, bagData } = this.state;
+    const { value, superSuperData } = this.state;
 
     return (
       <div className={classes.root}>
@@ -86,7 +86,7 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
           <Grid item xs={11}>
             <AppBar position="static">
               <Tabs value={value} onChange={this.handleChange} centered>
-                {bagData.map((superCategory) => {
+                {superSuperData.map((superCategory) => {
                     return <Tab
                              key={superCategory.name}
                              label={superCategory.name}/>
@@ -105,9 +105,9 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   }
 }
 
-BuildingAndGroundsCenteredTabs.propTypes = {
+HumanResourcesCenteredTabs.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(BuildingAndGroundsCenteredTabs);
+export default withStyles(styles)(HumanResourcesCenteredTabs);
 
