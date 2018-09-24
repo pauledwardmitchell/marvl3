@@ -44,6 +44,24 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def supplies
+    supplies = SuperSuperCategory.find_by(name: "Supplies")
+    super_categories = supplies.super_categories
+
+    @data = build_from_super_super_categories(super_categories)
+
+    render json: @data
+  end
+
+  def student_instruction_and_services
+    siss = SuperSuperCategory.find_by(name: "Student Instruction / Student Services")
+    super_categories = siss.super_categories
+
+    @data = build_from_super_super_categories(super_categories)
+
+    render json: @data
+  end
+
   private
   def build_from_super_super_categories(super_categories)
     @data =[]

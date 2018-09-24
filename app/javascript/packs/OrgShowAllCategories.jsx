@@ -11,7 +11,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import BuildingAndGroundsCenteredTabs from './BuildingAndGroundsCenteredTabs'
 import HumanResourcesCenteredTabs from './HumanResourcesCenteredTabs'
-import TechnologyCenteredTabs from './HumanResourcesCenteredTabs'
+import TechnologyCenteredTabs from './TechnologyCenteredTabs'
+import SuppliesCenteredTabs from './SuppliesCenteredTabs'
+import StudentInstructionAndServicesCenteredTabs from './StudentInstructionAndServicesCenteredTabs'
 
 const styles = theme => ({
   root: {
@@ -57,6 +59,24 @@ class OrgShowAllCategories extends React.Component {
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <TechnologyCenteredTabs />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="headline">Supplies</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <SuppliesCenteredTabs />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="headline">Student Instruction and Student Services</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <StudentInstructionAndServicesCenteredTabs />
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
