@@ -36,8 +36,8 @@ class ApisController < ApplicationController
   end
 
   def technology
-    hr = SuperSuperCategory.find_by(name: "Technology")
-    super_categories = hr.super_categories
+    tech = SuperSuperCategory.find_by(name: "Technology")
+    super_categories = tech.super_categories
 
     @data = build_from_super_super_categories(super_categories)
 
