@@ -77,7 +77,6 @@ class OrganizationShow extends React.Component {
             <ChipsArray />
           </Grid>
         </Grid>
-        <Divider />
         <OrgShowAllCategories />
       </div>
     )

@@ -29,23 +29,29 @@ class OrgShowAllCategories extends React.Component {
     return (
       <div className={classes.root}>
 
-        <ExpansionPanel>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="headline">Building and Grounds</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <BuildingAndGroundsCenteredTabs />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+        <Grid container spacing={24} justify='center'>
+          <Grid item xs={11}>
 
-        <ExpansionPanel>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="headline">Human Resources</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <HumanResourcesCenteredTabs />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="headline">Building and Grounds</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <BuildingAndGroundsCenteredTabs />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+            <ExpansionPanel>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="headline">Human Resources</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <HumanResourcesCenteredTabs />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+
+          </Grid>
+        </Grid>
 
       </div>
     );
