@@ -268,7 +268,7 @@ class StudentInstructionAndServicesCenteredTabs extends React.Component {
   }
 
   componentWillMount(){
-    thisAxios.get('/supplies')
+    thisAxios.get('/student_instruction_and_services')
     .then((response) => {
       this.setState({superSuperData: response.data})
     })
