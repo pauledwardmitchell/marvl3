@@ -35,6 +35,14 @@ class OrgShowAllCategories extends React.Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <BuildingAndGroundsCenteredTabs />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="headline">Human Resources</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
             <HumanResourcesCenteredTabs />
           </ExpansionPanelDetails>
         </ExpansionPanel>

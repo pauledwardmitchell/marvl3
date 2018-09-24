@@ -27,7 +27,7 @@ class ApisController < ApplicationController
   end
 
   def human_resources
-    hr = SuperSuperCategory.find_by(name: "Building and Grounds")
+    hr = SuperSuperCategory.find_by(name: "Human Resources")
     super_categories = hr.super_categories
 
     @data = build_from_super_super_categories(super_categories)
