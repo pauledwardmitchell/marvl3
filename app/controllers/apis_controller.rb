@@ -35,6 +35,15 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def technology
+    hr = SuperSuperCategory.find_by(name: "Technology")
+    super_categories = hr.super_categories
+
+    @data = build_from_super_super_categories(super_categories)
+
+    render json: @data
+  end
+
   private
   def build_from_super_super_categories(super_categories)
     @data =[]

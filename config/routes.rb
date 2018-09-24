@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/check_for_user', to:'apis#check_for_user'
   get '/building_and_grounds', to: 'apis#building_and_grounds'
   get '/human_resources', to: 'apis#human_resources'
+  get '/technology', to: 'apis#technology'
 
   root to: 'reviews#index'
 
