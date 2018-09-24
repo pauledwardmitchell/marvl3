@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import BuildingAndGroundsCenteredTabs from './BuildingAndGroundsCenteredTabs'
+import HumanResourcesCenteredTabs from './HumanResourcesCenteredTabs'
 
 const styles = theme => ({
   root: {
