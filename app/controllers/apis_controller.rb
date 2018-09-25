@@ -62,7 +62,30 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def org_show_data
+    org = Organization.find(1)
+
+    @data = {
+      name: org.name,
+      website: org.website,
+      logo_link: org.logo_link,
+      users: user_names_and_emails_from_org(org)
+    }
+  end
+
   private
+
+  def user_names_and_emails_from_org(org)
+    @data = []
+
+    org.users.each do
+      user_hash = { name: u.first_name + " " + u.last_name + " - " + u.email }
+      @data << user_hash
+    end
+
+    @data
+  end
+
   def build_from_super_super_categories(super_categories)
     @data =[]
     super_categories_sorted = super_categories.sort{|a,b| a['name']<=>b['name']}

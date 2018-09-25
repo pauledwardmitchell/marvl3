@@ -17,12 +17,18 @@ import ChipsArray from './ChipsArray'
 
 import axios from 'axios'
 
-const orgData =
-  {name: 'Noble Street PCS - UIC Campus',
-   street: '800 N. Halsted Street',
-   city: 'Chicago, IL 60612',
-   phone: '(312) 222-1234',
-   website: 'www.noblestreetpcs.com/uic'
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
+const loadingOrgData =
+  {name: 'Loading...',
+   website: 'Loading...',
+   users: [ { name: 'Loading...' } ]
   }
 
 const styles = theme => ({
@@ -36,32 +42,23 @@ class OrganizationShow extends React.Component {
     super(props);
     // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
     // this.getDrawerStatus = this.getDrawerStatus.bind(this);
-    // this.state = {
-    //   categoriesData: [],
-    //   testData: [
-    //     { label: 'Composting' },
-    //     { label: 'Computers - Staff' },
-    //     { label: 'Computers - Students' },
-    //     { label: 'Custom Industrial Kitchens' },
-    //     { label: 'Capital City Contracting' }
-    //   ],
-    //   searchTerm: "",
-    //   drawerOpen: false,
-    //   categoryShowOpen: false
-    // };
+    this.state = {
+      orgData: loadingOrgData
+    };
   }
 
-  componentDidMount() {
-    axios.get(`https://marvl-next.herokuapp.com/landing_search_data`)
+  componentWillMount(){
+    thisAxios.get('/org_show_data')
       .then((response) => {
-        this.setState({categoriesData: response.data.categories})
+        this.setState({orgData: response.data})
       })
-      .catch((error) => console.error('axios error', error))
+    .catch((error) => console.error('axios error', error))
   }
 
 
   render () {
     const { classes } = this.props;
+    const { orgData } = this.state;
 
     return (
       <div>

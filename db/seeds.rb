@@ -1,5 +1,5 @@
-org = Organization.create(name: "Organization, the first")
-User.create(email: "test@email.com", password: "password", organization_id: org.id)
+org = Organization.create(name: "E.L. Haynes PCS", logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB_.jpg", website: "https://www.elhaynes.org/")
+User.create(first_name: "Test", last_name: "User", email: "test@email.com", password: "password", organization_id: org.id)
 
 #BUILDING AND GROUNDS
 bg = SuperSuperCategory.create( { name: 'Building and Grounds'} )
