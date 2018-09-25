@@ -19,15 +19,16 @@ function OrgShowDetailsBox(props) {
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">{props.data.name}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.street}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.city}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.phone}</Typography>
         <Typography variant="subheading" component="h3">{props.data.website}</Typography>
       </Paper>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">Current MARVL Users</Typography>
-        <Typography variant="subheading" component="h3">Mike Ditka</Typography>
-        <Typography variant="subheading" component="h3">Roquan Smith</Typography>
+
+          {props.data.users.map((user) => {
+                    return
+                      <Typography variant="subheading" component="h3">{user}</Typography>
+                    }
+                )}
       </Paper>
     </div>
   );

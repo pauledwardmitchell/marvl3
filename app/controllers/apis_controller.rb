@@ -62,7 +62,7 @@ class ApisController < ApplicationController
     render json: @data
   end
 
-  def org_show
+  def org_show_data
     org = Organization.find(1)
 
     @data = {
