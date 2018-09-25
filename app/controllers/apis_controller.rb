@@ -76,7 +76,14 @@ class ApisController < ApplicationController
   private
 
   def user_names_and_emails_from_org(org)
-    org.users.map { |u| u.first_name + " " + u.last_name + " - " + u.email }
+    @data = []
+
+    org.users.each do
+      user_hash = { name: u.first_name + " " + u.last_name + " - " + u.email }
+      @data << user_hash
+    end
+
+    @data
   end
 
   def build_from_super_super_categories(super_categories)

@@ -17,10 +17,18 @@ import ChipsArray from './ChipsArray'
 
 import axios from 'axios'
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
 const loadingOrgData =
   {name: 'Loading...',
    website: 'Loading...',
-   users: ['Loading...']
+   users: [ {name: 'Loading...'} ]
   }
 
 const styles = theme => ({
@@ -50,6 +58,7 @@ class OrganizationShow extends React.Component {
 
   render () {
     const { classes } = this.props;
+    const { orgData } = this.state;
 
     return (
       <div>

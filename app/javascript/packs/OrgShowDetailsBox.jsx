@@ -26,7 +26,7 @@ function OrgShowDetailsBox(props) {
 
           {props.data.users.map((user) => {
                     return
-                      <Typography variant="subheading" component="h3">{user}</Typography>
+                      <Typography key={user.name} variant="subheading" component="h3">{user.name}</Typography>
                     }
                 )}
       </Paper>
