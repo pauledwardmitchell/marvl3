@@ -28,7 +28,7 @@ const thisAxios = axios.create({
 const loadingOrgData =
   {name: 'Loading...',
    website: 'Loading...',
-   users: [ {name: 'Loading...'} ]
+   users: [ { name: 'Loading...' } ]
   }
 
 const styles = theme => ({
