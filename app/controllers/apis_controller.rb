@@ -65,10 +65,14 @@ class ApisController < ApplicationController
   private
   def build_from_super_super_categories(super_categories)
     @data =[]
-    super_categories.each do |super_cat|
+    super_categories_sorted = super_categories.sort{|a,b| a['name']<=>b['name']}
+
+    super_categories_sorted.each do |super_cat|
       all_categories_array = []
 
-      super_cat.categories.each do |category|
+      sorted_categories = super_cat.categories.sort{|a,b| a['name']<=>b['name']}
+
+      sorted_categories.each do |category|
         org_reviews = category.reviews.find_all { |r| r.user.organization.id == 1}
         org_reviews_hashes = []
         org_reviews.each do |review|
