@@ -1,4 +1,4 @@
-org = Organization.create(name: "E.L. Haynes PCS", logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB_.jpg", website: "https://www.elhaynes.org/")
+org = Organization.create(name: "E.L. Haynes PCS", logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg", website: "https://www.elhaynes.org/")
 User.create(first_name: "Test", last_name: "User", email: "test@email.com", password: "password", organization_id: org.id)
 
 #BUILDING AND GROUNDS
