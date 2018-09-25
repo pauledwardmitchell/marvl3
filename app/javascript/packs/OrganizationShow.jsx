@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonAppBar from './ButtonAppBar'
 import OrgShowAllCategories from './OrgShowAllCategories'
 import OrgShowDetailsBox from './OrgShowDetailsBox'
-import OrgShowMap from './OrgShowMap'
+import OrgShowLogo from './OrgShowLogo'
 import ChipsArray from './ChipsArray'
 
 import axios from 'axios'
@@ -28,6 +28,7 @@ const thisAxios = axios.create({
 const loadingOrgData =
   {name: 'Loading...',
    website: 'Loading...',
+   logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/58f3a38bebbd1a9ee47f1778/1536187527091/?format=300w",
    users: [ { name: 'Loading...' } ]
   }
 
@@ -65,7 +66,7 @@ class OrganizationShow extends React.Component {
         <ButtonAppBar />
         <Grid container direction='row' justify='flex-start' spacing={16}>
           <Grid item xs={4}>
-            <OrgShowMap />
+            <OrgShowLogo logo_link={orgData.logo_link}/>
           </Grid>
           <Grid item xs={5}>
             <OrgShowDetailsBox data={orgData} />
