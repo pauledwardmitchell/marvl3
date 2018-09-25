@@ -78,7 +78,7 @@ class ApisController < ApplicationController
   def user_names_and_emails_from_org(org)
     @data = []
 
-    org.users.each do
+    org.users.each do |u|
       user_hash = { name: u.first_name + " " + u.last_name + " - " + u.email }
       @data << user_hash
     end
