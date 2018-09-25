@@ -71,6 +71,8 @@ class ApisController < ApplicationController
       logo_link: org.logo_link,
       users: user_names_and_emails_from_org(org)
     }
+
+    render json: @data
   end
 
   private
