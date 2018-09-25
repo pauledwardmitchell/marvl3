@@ -300,7 +300,13 @@ class StudentInstructionAndServicesCenteredTabs extends React.Component {
         <Grid container spacing={24} justify='center'>
           <Grid item xs={11}>
             <AppBar position="static">
-              <Tabs value={value} onChange={this.handleChange} centered>
+              <Tabs
+                value={value}
+                onChange={this.handleChange}
+                scrollable
+                scrollButtons="on"
+                centered
+              >
                 {superSuperData.map((superCategory) => {
                     return <Tab
                              key={superCategory.name}
