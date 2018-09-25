@@ -38,7 +38,7 @@ util_array.each do |c|
 end
 
 constr = SuperCategory.create( { name: 'Construction', super_super_category_id: bg.id } )
-constr_array = [ 'General Contracting', 'Architect', 'Roofing', 'Flooring', 'Doors', 'Windows', 'Concrete', 'Drywall', 'Hardscapes', 'Fencing', 'General Contracting' ]
+constr_array = [ 'General Contracting', 'Architect', 'Roofing', 'Flooring', 'Doors', 'Windows', 'Concrete', 'Drywall', 'Hardscapes', 'Fencing' ]
 constr_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: constr.id, category_id: cat.id)
