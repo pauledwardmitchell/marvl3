@@ -1,5 +1,56 @@
-org = Organization.create(name: "E.L. Haynes PCS", logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg", website: "https://www.elhaynes.org/")
-User.create(first_name: "Test", last_name: "User", email: "test@email.com", password: "password", organization_id: org.id)
+org = Organization.create(
+  name: "Capital City PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "DC Prep",
+  logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "E.L. Haynes PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg",
+  website: "https://www.elhaynes.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Friendship PCS",
+  logo_link: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCVBYmU7Qq0GyDzY4p22IgFuvuwg-AnDi5ZP6SX6DAg7T9y5cI",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Idea PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/2499611872/ov32xj1wrupsyzrdmbzt.png",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "KIPP DC",
+  logo_link: "https://pbs.twimg.com/profile_images/762746251653816320/VjRsHYrC_400x400.jpg",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Paul PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/532975075054477312/uyY9cZTC_400x400.png",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Perry Street Prep PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/895656725180813312/xmuU2NJv_400x400.jpg",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Two Rivers PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/378800000152200172/ce6a7a78db2c4a2ae6e74b6014da6bb9_400x400.jpeg",
+  website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 #BUILDING AND GROUNDS
 bg = SuperSuperCategory.create( { name: 'Building and Grounds'} )
@@ -12,7 +63,7 @@ fac_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 furn = SuperCategory.create( { name: 'Furniture', super_super_category_id: bg.id } )
@@ -23,7 +74,7 @@ furn_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 util = SuperCategory.create( { name: 'Utilities', super_super_category_id: bg.id } )
@@ -34,7 +85,7 @@ util_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 constr = SuperCategory.create( { name: 'Construction', super_super_category_id: bg.id } )
@@ -45,7 +96,7 @@ constr_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 #HUMAN RESOURCES
@@ -59,7 +110,7 @@ bene_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 fin = SuperCategory.create( { name: 'Finance', super_super_category_id: hr.id } )
@@ -70,7 +121,7 @@ fin_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 tprodev = SuperCategory.create( { name: 'Teacher Professional Development', super_super_category_id: hr.id } )
@@ -81,7 +132,7 @@ tprodev_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 
@@ -96,7 +147,7 @@ itcon_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 itsoft = SuperCategory.create( { name: 'IT Software', super_super_category_id: tech.id } )
@@ -107,7 +158,7 @@ itsoft_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 ithard = SuperCategory.create( { name: 'IT Hardware', super_super_category_id: tech.id } )
@@ -118,7 +169,7 @@ ithard_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 
@@ -133,7 +184,7 @@ printm_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 sports = SuperCategory.create( { name: 'Sports Supplies', super_super_category_id: supp.id } )
@@ -144,7 +195,7 @@ sports_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 nslp = SuperCategory.create( { name: 'National School Lunch Program', super_super_category_id: supp.id } )
@@ -155,7 +206,7 @@ nslp_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 off = SuperCategory.create( { name: 'Office needs', super_super_category_id: supp.id } )
@@ -166,7 +217,7 @@ off_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 
@@ -181,7 +232,7 @@ curric_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 iit = SuperCategory.create( { name: 'Instructional Technology', super_super_category_id: ss.id } )
@@ -192,7 +243,7 @@ iit_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 apps = SuperCategory.create( { name: 'Instructional Apps', super_super_category_id: ss.id } )
@@ -203,7 +254,7 @@ apps_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 sss = SuperCategory.create( { name: 'Student Support Services', super_super_category_id: ss.id } )
@@ -214,7 +265,7 @@ sss_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 uni = SuperCategory.create( { name: 'Uniforms', super_super_category_id: ss.id } )
@@ -225,7 +276,7 @@ uni_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 fam = SuperCategory.create( { name: 'Family Services', super_super_category_id: ss.id } )
@@ -236,7 +287,7 @@ fam_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 trans = SuperCategory.create( { name: 'Transportation', super_super_category_id: ss.id } )
@@ -247,7 +298,7 @@ trans_array.each do |c|
 
   vendor = Vendor.create( name: "Best" + c + "Vendor")
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
-  Review.create( user_id: 1, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
+  Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 
