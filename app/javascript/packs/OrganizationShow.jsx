@@ -32,6 +32,9 @@ const loadingOrgData =
    users: [ { name: 'Loading...' } ]
   }
 
+
+
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -49,7 +52,11 @@ class OrganizationShow extends React.Component {
   }
 
   componentWillMount(){
-    thisAxios.get('/org_show_data')
+
+    const orgId = document.getElementById("org").getAttribute('value')
+    console.log(orgId)
+
+    thisAxios.get('/org_show_data?org=' + orgId)
       .then((response) => {
         this.setState({orgData: response.data})
       })
