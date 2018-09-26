@@ -5,6 +5,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    set_organization
   end
 
   private

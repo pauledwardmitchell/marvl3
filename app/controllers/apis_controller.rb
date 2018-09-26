@@ -63,7 +63,8 @@ class ApisController < ApplicationController
   end
 
   def org_show_data
-    org = Organization.find(1)
+    p params
+    org = Organization.find(params[:org])
 
     @data = {
       name: org.name,
