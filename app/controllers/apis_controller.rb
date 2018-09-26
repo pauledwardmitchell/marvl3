@@ -116,6 +116,7 @@ class ApisController < ApplicationController
 
         category_reviews_hash = {
           sub: category.name,
+          sub_id: category.id,
           reviews: org_reviews_hashes
         }
 
