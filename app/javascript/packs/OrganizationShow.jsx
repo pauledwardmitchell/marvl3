@@ -72,7 +72,7 @@ class OrganizationShow extends React.Component {
       <div>
         <ButtonAppBar />
         <Grid container direction='row' justify='flex-start' spacing={16}>
-          <Grid item xs={4}>
+          <Grid item xs={3}>
             <OrgShowLogo logo_link={orgData.logo_link}/>
           </Grid>
           <Grid item xs={5}>
