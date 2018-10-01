@@ -13,10 +13,10 @@ const styles = theme => ({
     margin: theme.spacing.unit * 3,
   }),
   card: {
-    maxWidth: 400,
+    maxWidth: 300,
   },
   media: {
-    height: 0,
+    height: 200,
     paddingTop: '56.25%', // 16:9
   },
 });

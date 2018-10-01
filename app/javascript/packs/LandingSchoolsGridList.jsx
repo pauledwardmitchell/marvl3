@@ -9,6 +9,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
+import axios from 'axios';
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -27,61 +29,52 @@ const styles = theme => ({
 });
 
 
-const tileData = [
+const loadingSchoolsData = [
   {
-    img: "https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif",
-    title: 'Capital City PCS',
+    logo_link: "https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif",
+    name: 'Capital City PCS',
     id: 8
   },
   {
-    img: "https://pbs.twimg.com/profile_images/1786302154/Twitter_Logo03_400x400.png",
-    title: 'DC PREP',
+    logo_link: "https://pbs.twimg.com/profile_images/1786302154/Twitter_Logo03_400x400.png",
+    name: 'DC PREP',
     id: 4
-  },
-  {
-    img: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB_.jpg",
-    title: 'E.L. Haynes PCS',
-    id: 1
-  },
-  {
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCVBYmU7Qq0GyDzY4p22IgFuvuwg-AnDi5ZP6SX6DAg7T9y5cI",
-    title: 'Friendship PCS',
-    id: 7
-  },
-  {
-    img: "https://pbs.twimg.com/profile_images/2499611872/ov32xj1wrupsyzrdmbzt.png",
-    title: 'IDEA PCS',
-    id: 5
-  },
-  {
-    img: "https://pbs.twimg.com/profile_images/762746251653816320/VjRsHYrC_400x400.jpg",
-    title: 'KIPP DC',
-    id: 2
-  },
-  {
-    img: "https://pbs.twimg.com/profile_images/532975075054477312/uyY9cZTC_400x400.png",
-    title: 'Paul PCS',
-    id: 3
-  },
-  {
-    img: "https://pbs.twimg.com/profile_images/895656725180813312/xmuU2NJv_400x400.jpg",
-    title: 'Perry Street Prep PCS',
-    id: 9
-  },
-  {
-    img: "https://pbs.twimg.com/profile_images/378800000152200172/ce6a7a78db2c4a2ae6e74b6014da6bb9_400x400.jpeg",
-    title: 'Two Rivers PCS',
-    id: 6
-  },
-
-
+  }
 ];
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
+
 class LandingSchoolsGridList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      schoolsData: loadingSchoolsData
+    };
+  }
+
+  componentWillMount(){
+    thisAxios.get('/landing_schools_data')
+      .then((response) => {
+        this.setState({schoolsData: response.data})
+      })
+    .catch((error) => console.error('axios error', error))
+  }
+
+  buildLink(id) {
+    return '/organizations/' + id
+  }
 
   render() {
 
     const { classes } = this.props;
+    const { schoolsData } = this.state;
 
       return (
         <div>
@@ -96,12 +89,12 @@ class LandingSchoolsGridList extends React.Component {
             </Grid>
             <div className={classes.root}>
               <GridList cellHeight={180} className={classes.gridList}>
-                {tileData.map(tile => (
-                  <GridListTile key={tile.img}>
-                    <img src={tile.img} alt={tile.title} />
-                    <a href='/organizations'>
+                {schoolsData.map(school => (
+                  <GridListTile key={school.id}>
+                    <img src={school.logo_link} alt={school.name} />
+                    <a href={this.buildLink(school.id)}>
                       <GridListTileBar
-                        title={tile.title} />
+                        title={school.name} />
                     </a>
                   </GridListTile>
                 ))}

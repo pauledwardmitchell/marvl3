@@ -8,6 +8,22 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def landing_schools_data
+    schools = Organization.all
+    @data = []
+
+    schools.each do |s|
+      schools_hash = {
+        id: s.id,
+        name: s.name,
+        logo_link: s.logo_link
+      }
+      @data << schools_hash
+    end
+
+    render json: @data
+  end
+
   def check_for_user
     if current_user
       @user = current_user
