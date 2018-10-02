@@ -63,6 +63,7 @@ class ApisController < ApplicationController
     reviews.each do |r|
       review_hash = {
         initials: r.user.initials,
+        school: r.user.organization.name,
         date: r.created_at.strftime("%m/%d/%Y"),
         img: r.user.organization.logo_link,
         area: r.categories[0].name,
