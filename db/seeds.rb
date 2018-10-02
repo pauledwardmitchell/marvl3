@@ -274,7 +274,7 @@ uni_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: uni.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: Faker::Company.nameFaker::Company.name)
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -285,7 +285,7 @@ fam_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fam.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: Faker::Company.nameFaker::Company.name)
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
