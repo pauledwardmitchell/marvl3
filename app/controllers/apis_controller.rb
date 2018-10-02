@@ -56,6 +56,10 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def landing_recent_activity_data
+
+  end
+
   def check_for_user
     if current_user
       @user = current_user

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 #Landing Page
   get '/landing_search_data', to:'apis#landing_search_data'
   get '/landing_schools_data', to:'apis#landing_schools_data'
+  get '/landing_recent_activity_data', to: 'apis#landing_recent_activity_data'
 
 #Org Show
   get '/org_show_data', to: 'apis#org_show_data'

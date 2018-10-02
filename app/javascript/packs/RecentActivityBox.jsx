@@ -1,12 +1,22 @@
 import React from 'react'
 
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import RecentActivityCard from './RecentActivityCard'
 
+import axios from 'axios'
 
-const postData = [
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
+const loadingRecentActivityData = [
   { initials: "P",
     school: "Noble Street PCS",
     date: "January 21, 2018",
@@ -33,13 +43,38 @@ const postData = [
   }
 ]
 
-export default class RecentActivityBox extends React.Component {
+const styles = theme => ({
+  title: {
+    paddingTop: 40,
+    paddingBottom: 20
+  }
+});
+
+class RecentActivityBox extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      recentActivityData: loadingRecentActivityData
+    };
+  }
+
+  componentWillMount(){
+    thisAxios.get('/landing_recent_activity_data')
+      .then((response) => {
+        this.setState({recentActivityData: response.data})
+      })
+    .catch((error) => console.error('axios error', error))
+  }
 
   render () {
+    const { classes } = this.props;
+    const { recentActivityData } = this.state;
+
     return (
       <div>
         <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
+          <Typography variant="headline" component="h2" className= {classes.title} >
             Recent Activity
           </Typography>
         </Grid>
@@ -47,7 +82,7 @@ export default class RecentActivityBox extends React.Component {
               alignItems='center'
               direction= 'row'
               justify= 'center'>
-          {postData.map(post => (
+          {recentActivityData.map(post => (
             <RecentActivityCard post={post} key={post.id} />
             ))}
         </Grid>
@@ -56,3 +91,5 @@ export default class RecentActivityBox extends React.Component {
     )
   }
 }
+
+export default withStyles(styles)(RecentActivityBox);
