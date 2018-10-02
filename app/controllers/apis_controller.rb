@@ -57,7 +57,21 @@ class ApisController < ApplicationController
   end
 
   def landing_recent_activity_data
+    @data =[]
+    reviews = Review.order(created_at: :asc).reverse_order.limit(10).reverse
 
+    reviews.each do |r|
+      review_hash = {
+        initials: r.user.initials,
+        date: r.created_at.strftime("%m/%d/%Y"),
+        img: r.user.organization.logo_link,
+        area: r.category,
+        text: r.review_content[0..49],
+        id: r.id
+      }
+      @data << review_hash
+    end
+    render json: @data
   end
 
   def check_for_user

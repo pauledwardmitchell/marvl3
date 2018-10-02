@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   belongs_to :organization
   has_many :reviews
+
+  def initials
+    intitals = self.first_name[0] + self.last_name[0]
+    up_initials = intitals.upcase
+    up_initials
+  end
 end
