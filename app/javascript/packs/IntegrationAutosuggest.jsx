@@ -8,6 +8,8 @@ import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
 
 
 function renderInput(inputProps) {
@@ -114,6 +116,7 @@ class IntegrationAutosuggest extends React.Component {
     suggestions: [],
   };
 
+
   handleSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value, this.props.data),
@@ -128,34 +131,67 @@ class IntegrationAutosuggest extends React.Component {
 
   handleChange = (event, { newValue }) => {
     this.setState({
-      value: newValue,
+      value: newValue
     });
   };
+
+  buildButtonLink = () => {
+    var searchTerm = this.state.value;
+    var searchTermData = this.props.data;
+    var link = "";
+    var newLink;
+    var i;
+    for (i = 0; i < searchTermData.length; i++) {
+      if (searchTerm === searchTermData[i].label) {
+        newLink = '/' + searchTermData[i].type + '/' + searchTermData[i].id
+        console.log("built")
+        link = newLink
+      }
+    }
+    return link
+  }
+
+  checkButtonStatus = () => {
+    return false
+  }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <Autosuggest
-        theme={{
-          container: classes.container,
-          suggestionsContainerOpen: classes.suggestionsContainerOpen,
-          suggestionsList: classes.suggestionsList,
-          suggestion: classes.suggestion,
-        }}
-        renderInputComponent={renderInput}
-        suggestions={this.state.suggestions}
-        onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
-        renderSuggestionsContainer={renderSuggestionsContainer}
-        getSuggestionValue={getSuggestionValue}
-        renderSuggestion={renderSuggestion}
-        inputProps={{
-          classes,
-          placeholder: 'Start typing what you are looking for...',
-          value: this.state.value,
-          onChange: this.handleChange,
-        }} />
+      <div>
+        <Grid container
+              alignItems='flex-start'
+              direction= 'row'
+              justify= 'center'>
+          <Grid item xs={7}>
+            <Autosuggest
+              theme={{
+                container: classes.container,
+                suggestionsContainerOpen: classes.suggestionsContainerOpen,
+                suggestionsList: classes.suggestionsList,
+                suggestion: classes.suggestion,
+              }}
+              renderInputComponent={renderInput}
+              suggestions={this.state.suggestions}
+              onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+              renderSuggestionsContainer={renderSuggestionsContainer}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={{
+                classes,
+                placeholder: 'Start typing what you are looking for...',
+                value: this.state.value,
+                onChange: this.handleChange,
+              }} />
+          </Grid>
+          <Grid item xs={1} >
+            <Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>SEARCH</Button>
+          </Grid>
+        </Grid>
+      </div>
+
     );
   }
 }

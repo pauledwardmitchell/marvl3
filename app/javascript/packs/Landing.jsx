@@ -24,14 +24,6 @@ export default class Landing extends React.Component {
     this.getDrawerStatus = this.getDrawerStatus.bind(this);
     this.state = {
       categoriesData: [],
-      searchData: [
-        { label: 'Composting' },
-        { label: 'Computers - Staff' },
-        { label: 'Computers - Students' },
-        { label: 'Custom Industrial Kitchens' },
-        { label: 'Capital City Contracting' }
-      ],
-      searchTerm: "",
       drawerOpen: false,
       categoryShowOpen: false
     };
@@ -73,7 +65,7 @@ export default class Landing extends React.Component {
     return (
       <div style={{overflowX: 'hidden'}}>
         <ButtonAppBar />
-        <LandingSearch data={this.state.searchData}/>
+        <LandingSearch/>
         <LandingBestVendorsBox />
         <LandingSchoolsGridList />
         <RecentActivityBox />
