@@ -42,17 +42,13 @@ const styles = theme => ({
 class OrganizationShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
-    // this.getDrawerStatus = this.getDrawerStatus.bind(this);
     this.state = {
       orgData: loadingOrgData
     };
   }
 
   componentWillMount(){
-
     const orgId = document.getElementById("org").getAttribute('value')
-    console.log(orgId)
 
     thisAxios.get('/org_show_data?org=' + orgId)
       .then((response) => {

@@ -3,13 +3,47 @@ class ApisController < ApplicationController
   # before_filter :add_allow_credentials_headers
 
   def landing_search_data
-    @categories = Category.all
+    @data =[]
+    categories = Category.all.sort{|a,b| a['name']<=>b['name']}
+    vendors = Vendor.all.sort{|a,b| a['name']<=>b['name']}
+    organizations = Organization.all.sort{|a,b| a['name']<=>b['name']}
+
+    categories.each do |c|
+      category_hash = {
+        label: c.name + " - Category Page",
+        id: c.id,
+        type: "categories"
+      }
+      @data << category_hash
+    end
+
+    vendors.each do |v|
+      vendor_hash = {
+        label: v.name + " - Vendor Page",
+        id: v.id,
+        type: "vendors"
+      }
+      @data << vendor_hash
+    end
+
+    organizations.each do |s|
+      organization_hash = {
+        label: s.name + " - School Page",
+        id: s.id,
+        type: "organizations"
+      }
+      @data << organization_hash
+    end
+
+
+
     @data = { categories: @categories }
     render json: @data
   end
 
   def landing_schools_data
-    schools = Organization.all
+    all_schools = Organization.all
+    schools = all_schools.sort{|a,b| a['name']<=>b['name']}
     @data = []
 
     schools.each do |s|
