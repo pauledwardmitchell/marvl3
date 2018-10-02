@@ -61,7 +61,7 @@ fac_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fac.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -72,7 +72,7 @@ furn_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: furn.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -83,7 +83,7 @@ util_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: util.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -94,7 +94,7 @@ constr_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: constr.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -108,7 +108,7 @@ bene_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: bene.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -119,18 +119,18 @@ fin_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fin.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
 
 tprodev = SuperCategory.create( { name: 'Teacher Professional Development', super_super_category_id: hr.id } )
-tprodev_array = [ 'E/LA - Elementary', 'Math - Elementary', 'Science - Elementary', 'E/LA - Middle School', 'Math - Middle School', 'Science - Middle School', 'E/LA - High School', 'Math - High School', 'Science - High School', 'Art', 'Music' ]
+tprodev_array = [ 'Anti-Racism Training', 'E/LA - Elementary', 'Math - Elementary', 'Science - Elementary', 'E/LA - Middle School', 'Math - Middle School', 'Science - Middle School', 'E/LA - High School', 'Math - High School', 'Science - High School', 'Art', 'Music' ]
 tprodev_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: tprodev.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -145,7 +145,7 @@ itcon_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: itcon.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -156,7 +156,7 @@ itsoft_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: itsoft.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -167,7 +167,7 @@ ithard_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: ithard.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -182,7 +182,7 @@ printm_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: printm.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -193,7 +193,7 @@ sports_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: sports.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -204,7 +204,7 @@ nslp_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: nslp.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -215,7 +215,7 @@ off_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: off.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -230,7 +230,7 @@ curric_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: curric.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -241,7 +241,7 @@ iit_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: iit.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -252,7 +252,7 @@ apps_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: apps.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -263,7 +263,7 @@ sss_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: sss.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -274,7 +274,7 @@ uni_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: uni.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.nameFaker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -285,7 +285,7 @@ fam_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fam.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.nameFaker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
@@ -296,7 +296,7 @@ trans_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: trans.id, category_id: cat.id)
 
-  vendor = Vendor.create( name: "Best" + c + "Vendor")
+  vendor = Vendor.create( name: Faker::Company.name)
   Offering.create( category_id: cat.id, vendor_id: vendor.id )
   Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: 5, rating_quality: 5)
 end
