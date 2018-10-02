@@ -65,7 +65,7 @@ class ApisController < ApplicationController
         initials: r.user.initials,
         date: r.created_at.strftime("%m/%d/%Y"),
         img: r.user.organization.logo_link,
-        area: r.category,
+        area: r.categories[0].name,
         text: r.review_content[0..49],
         id: r.id
       }
