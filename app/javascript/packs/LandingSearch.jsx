@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
@@ -16,13 +17,16 @@ const thisAxios = axios.create({
   }
 });
 
+const styles = theme => ({
+});
+
 const loadingSearchData = [
         { label: 'Composting', type: 'categories', id: 1 },
         { label: 'Computers - Staff', type: 'categories', id: 2 },
         { label: 'Computers - Students', type: 'categories', id: 3 },
         { label: 'Custom Industrial Kitchens', type: 'vendors', id: 4 },
         { label: 'Capital City Contracting', type: 'vendors', id: 5 }
-      ],
+      ]
 
 class LandingSearch extends React.Component {
 
