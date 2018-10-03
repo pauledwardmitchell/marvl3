@@ -54,26 +54,23 @@ class RecentActivityCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div style={{width: 310, margin: 10, display: 'inline-flex'}}>
         <Card className={classes.card}>
           <CardHeader
             avatar={
-              <Avatar aria-label="Recipe" className={classes.avatar}>
+              <Avatar aria-label="Initials" className={classes.avatar}>
                 {this.props.post.initials}
               </Avatar>
             }
-            action={
-              <IconButton>
-                <MoreVertIcon />
-              </IconButton>
-            }
-            title={this.props.post.school}
-            subheader={this.props.post.date} />
+            title={this.props.post.school + " > " + this.props.post.vendor}
+            subheader={this.props.post.category} />
           <CardMedia
             className={classes.media}
             image={this.props.post.img}
-            title={this.props.post.area} />
+            title={this.props.post.category} />
           <CardContent>
+            <Typography component="p">
+              {this.props.post.date}
+            </Typography>
             <Typography component="p">
               {this.props.post.text}
             </Typography>
@@ -88,7 +85,6 @@ class RecentActivityCard extends React.Component {
             <Button style={{marginLeft: 'auto'}}>Read review</Button>
           </CardActions>
         </Card>
-      </div>
     );
   }
 }
