@@ -64,9 +64,12 @@ class ApisController < ApplicationController
       review_hash = {
         initials: r.user.initials,
         school: r.user.organization.name,
+        vendor: r.vendor.name,
         date: r.created_at.strftime("%m/%d/%Y"),
         img: r.user.organization.logo_link,
-        area: r.categories[0].name,
+        category: r.categories[0].name,
+        super_category: r.categories[0].super_categories[0].name,
+        super_super_category: r.categories[0].super_categories[0].super_super_category.name,
         text: r.review_content[0..49],
         id: r.id
       }

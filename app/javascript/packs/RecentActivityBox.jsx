@@ -21,7 +21,10 @@ const loadingRecentActivityData = [
     school: "Noble Street PCS",
     date: "January 21, 2018",
     img: "http://simpsoncoulter.com/wp-content/uploads/2015/06/2015-06-Interior-Gym.jpg",
-    area: "Gym Floor",
+    vendor: "Loading...",
+    category: "Gym Floor",
+    super_category: "Loading...",
+    super_super_category: "Loading...",
     text: "We recently refinished our gym floor.  We considered three vendors for the job...",
     id: 1
   },
@@ -29,7 +32,10 @@ const loadingRecentActivityData = [
     school: "Jones College Prep",
     date: "February 1, 2018",
     img: "https://www.partitionsandstalls.com/images/dynamicslideshow/slides/partitions-and-stalls.jpg",
-    area: "Bathroom Stalls",
+    vendor: "Loading...",
+    category: "Bathroom Stalls",
+    super_category: "Loading...",
+    super_super_category: "Loading...",
     text: "Up until last year, our building had the original stalls in the bathrooms.  We came...",
     id: 2
   },
@@ -37,17 +43,28 @@ const loadingRecentActivityData = [
     school: "Walter Peyton PCS",
     date: "March 2, 2018",
     img: "https://ssl.c.photoshelter.com/img-get/I0000RcN9uz0ykkk/s/700/700/Boiler-Room-Furnace-Ice.jpg",
-    area: "Boiler",
+    vendor: "Loading...",
+    category: "Boiler",
+    super_category: "Loading...",
+    super_super_category: "Loading...",
     text: "Our bioler was ancient, and was costing us a fortune to fix ad hoc.  We replaced it...",
     id: 3
   }
 ]
 
 const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
   title: {
     paddingTop: 40,
     paddingBottom: 20
-  }
+  },
+  card: {
+    padding: theme.spacing.unit * 2,
+    height: '100%',
+    color: theme.palette.text.secondary,
+  },
 });
 
 class RecentActivityBox extends React.Component {
@@ -80,11 +97,21 @@ class RecentActivityBox extends React.Component {
         </Grid>
         <Grid container
               alignItems='center'
-              direction= 'row'
-              justify= 'center'>
-          {recentActivityData.map(post => (
-            <RecentActivityCard post={post} key={post.id} />
-            ))}
+              justify='center'
+              className={classes.root}>
+          <Grid item xs={10}>
+            <Grid container
+                  spacing={8}
+                  alignItems='center'
+                  direction='row'
+                  justify='center' >
+                {recentActivityData.map(post => (
+                  <Grid item xs={4} key={post.id}>
+                    <RecentActivityCard post={post} className={classes.card} />
+                  </Grid>
+                  ))}
+            </Grid>
+          </Grid>
         </Grid>
       </div>
 
