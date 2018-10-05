@@ -6,6 +6,7 @@ import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import IntegrationAutosuggest from './IntegrationAutosuggest'
+import IntegrationReactSelect from './IntegrationReactSelect'
 
 import axios from 'axios'
 
@@ -54,6 +55,7 @@ class LandingSearch extends React.Component {
           </Typography>
         </Grid>
         <IntegrationAutosuggest data={this.state.searchData}/>
+        <IntegrationReactSelect />
         <Divider style={{marginTop: 150}}/>
       </div>
     )
