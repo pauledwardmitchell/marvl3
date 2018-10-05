@@ -21,29 +21,13 @@ const thisAxios = axios.create({
 const styles = theme => ({
 });
 
-const loadingSearchData = [
-        { label: 'Composting', type: 'categories', id: 1 },
-        { label: 'Computers - Staff', type: 'categories', id: 2 },
-        { label: 'Computers - Students', type: 'categories', id: 3 },
-        { label: 'Custom Industrial Kitchens', type: 'vendors', id: 4 },
-        { label: 'Capital City Contracting', type: 'vendors', id: 5 }
-      ]
 
 class LandingSearch extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      searchData: loadingSearchData
     };
-  }
-
-  componentWillMount(){
-    thisAxios.get('/landing_search_data')
-      .then((response) => {
-        this.setState({searchData: response.data})
-      })
-    .catch((error) => console.error('axios error', error))
   }
 
   render () {
@@ -54,7 +38,6 @@ class LandingSearch extends React.Component {
             MARVL
           </Typography>
         </Grid>
-        <IntegrationAutosuggest data={this.state.searchData}/>
         <IntegrationReactSelect />
         <Divider style={{marginTop: 150}}/>
       </div>
