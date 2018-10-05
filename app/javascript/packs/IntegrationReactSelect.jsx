@@ -11,8 +11,12 @@ import Chip from '@material-ui/core/Chip';
 import MenuItem from '@material-ui/core/MenuItem';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { emphasize } from '@material-ui/core/styles/colorManipulator';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
-const suggestions = [
+import axios from 'axios'
+
+const loadingSuggestions = [
   { label: 'Afghanistan' },
   { label: 'Aland Islands' },
   { label: 'Albania' },
@@ -206,17 +210,55 @@ const components = {
   ValueContainer,
 };
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
+
 class IntegrationReactSelect extends React.Component {
   state = {
     single: null,
-    multi: null,
+    suggestions: loadingSuggestions,
   };
+
+  componentWillMount(){
+    thisAxios.get('/landing_search_data')
+    .then((response) => {
+      this.setState({suggestions: response.data})
+    })
+    .catch((error) => console.error('axios error', error))
+  }
 
   handleChange = name => value => {
     this.setState({
       [name]: value,
     });
   };
+
+  buildButtonLink = () => {
+    console.log(this.state.single)
+    // var searchTerm = this.state.searchTerm;
+    // var searchTermData = this.state.suggestions;
+    // var link = "";
+    // var newLink;
+    // var i;
+    // for (i = 0; i < searchTermData.length; i++) {
+    //   if (searchTerm === searchTermData[i].label) {
+    //     newLink = '/' + searchTermData[i].type + '/' + searchTermData[i].id
+    //     console.log("built")
+    //     link = newLink
+    //   }
+    // }
+    // return link
+  }
+
+  checkButtonStatus = () => {
+    return false
+  }
 
   render() {
     const { classes, theme } = this.props;
@@ -233,17 +275,27 @@ class IntegrationReactSelect extends React.Component {
 
     return (
       <div className={classes.root}>
-        <NoSsr>
-          <Select
-            classes={classes}
-            styles={selectStyles}
-            options={suggestions}
-            components={components}
-            value={this.state.single}
-            onChange={this.handleChange('single')}
-            placeholder="Search a country (start with a)"
-          />
-        </NoSsr>
+        <Grid container
+              alignItems='flex-start'
+              direction= 'row'
+              justify= 'center'>
+          <Grid item xs={7}>
+            <NoSsr>
+              <Select
+                classes={classes}
+                styles={selectStyles}
+                options={this.state.suggestions}
+                components={components}
+                value={this.state.single}
+                onChange={this.handleChange}
+                placeholder="Start typing what you are looking for..."
+              />
+            </NoSsr>
+          </Grid>
+          <Grid item xs={1} >
+            <Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>SEARCH</Button>
+          </Grid>
+        </Grid>
       </div>
     );
   }

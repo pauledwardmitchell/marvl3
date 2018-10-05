@@ -11,6 +11,7 @@ class ApisController < ApplicationController
     categories.each do |c|
       category_hash = {
         label: c.name + " (Category Page)",
+        value: c.name + " (Category Page)",
         id: c.id,
         type: "categories"
       }
@@ -20,6 +21,7 @@ class ApisController < ApplicationController
     vendors.each do |v|
       vendor_hash = {
         label: v.name + " (Vendor Page)",
+        value: v.name + " (Vendor Page)",
         id: v.id,
         type: "vendors"
       }
@@ -29,6 +31,7 @@ class ApisController < ApplicationController
     organizations.each do |s|
       organization_hash = {
         label: s.name + " (School Page)",
+        value: s.name + " (School Page)",
         id: s.id,
         type: "organizations"
       }

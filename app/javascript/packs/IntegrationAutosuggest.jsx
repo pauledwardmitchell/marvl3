@@ -116,7 +116,6 @@ class IntegrationAutosuggest extends React.Component {
     suggestions: [],
   };
 
-
   handleSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value, this.props.data),
