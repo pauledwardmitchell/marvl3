@@ -240,20 +240,21 @@ class IntegrationReactSelect extends React.Component {
   };
 
   buildButtonLink = () => {
-    console.log(this.state.single)
-    // var searchTerm = this.state.searchTerm;
-    // var searchTermData = this.state.suggestions;
-    // var link = "";
-    // var newLink;
-    // var i;
-    // for (i = 0; i < searchTermData.length; i++) {
-    //   if (searchTerm === searchTermData[i].label) {
-    //     newLink = '/' + searchTermData[i].type + '/' + searchTermData[i].id
-    //     console.log("built")
-    //     link = newLink
-    //   }
-    // }
-    // return link
+    if (this.state.single != null) {
+      var searchTerm = this.state.single.label;
+      var searchTermData = this.state.suggestions;
+      var link = "";
+      var newLink;
+      var i;
+      for (i = 0; i < searchTermData.length; i++) {
+        if (searchTerm === searchTermData[i].label) {
+          newLink = '/' + searchTermData[i].type + '/' + searchTermData[i].id
+          console.log("built")
+          link = newLink
+        }
+      }
+      return link
+    }
   }
 
   checkButtonStatus = () => {
@@ -287,7 +288,7 @@ class IntegrationReactSelect extends React.Component {
                 options={this.state.suggestions}
                 components={components}
                 value={this.state.single}
-                onChange={this.handleChange}
+                onChange={this.handleChange('single')}
                 placeholder="Start typing what you are looking for..."
               />
             </NoSsr>
