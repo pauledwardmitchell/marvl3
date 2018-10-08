@@ -10,8 +10,8 @@ class ApisController < ApplicationController
 
     categories.each do |c|
       category_hash = {
-        label: c.name + " (Category Page)",
-        value: c.name + " (Category Page)",
+        label: c.suggestion_label,
+        value: c.suggestion_label,
         id: c.id,
         type: "categories"
       }
