@@ -7,6 +7,17 @@ class ApisController < ApplicationController
     categories = Category.all
     vendors = Vendor.all
     organizations = Organization.all
+    s_s_categories = SuperSuperCategory.all
+
+    s_s_categories.each do |ssc|
+      s_s_category_hash = {
+        label: ssc.name + " (Umbrella Category)",
+        value: ssc.name + " (Umbrella Category)",
+        id: ssc.id,
+        type: "super_super_categories"
+      }
+      @unsorted_data << s_s_category_hash
+    end
 
     categories.each do |c|
       category_hash = {
