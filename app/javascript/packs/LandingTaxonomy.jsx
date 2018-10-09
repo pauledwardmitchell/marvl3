@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import BuildingAndGroundsCenteredTabs from './BuildingAndGroundsCenteredTabs';
@@ -15,24 +17,30 @@ import TechnologyCenteredTabs from './TechnologyCenteredTabs';
 import SuppliesCenteredTabs from './SuppliesCenteredTabs';
 import StudentInstructionAndServicesCenteredTabs from './StudentInstructionAndServicesCenteredTabs';
 
+import axios from 'axios';
+
 const styles = theme => ({
   root: {
     width: '100%'
   }
 });
 
+class LandingTaxonomy extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
 
-class OrgShowAllCategories extends React.Component {
-  state = {
-  };
-
-  render() {
-    const { classes } = this.props;
-
+  render () {
     return (
-      <div className={classes.root}>
-
+      <div >
         <Grid container spacing={24} justify='center'>
+            <Grid container alignItems='center' direction= 'row' justify= 'center'>
+              <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
+                Browse all categories
+              </Typography>
+            </Grid>
           <Grid item xs={11}>
 
             <ExpansionPanel>
@@ -40,7 +48,7 @@ class OrgShowAllCategories extends React.Component {
                 <Typography variant="headline">Building and Grounds</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <BuildingAndGroundsCenteredTabs />
+                <BuildingAndGroundsCenteredTabs landing={true} />
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
@@ -49,7 +57,7 @@ class OrgShowAllCategories extends React.Component {
                 <Typography variant="headline">Human Resources</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <HumanResourcesCenteredTabs />
+                <HumanResourcesCenteredTabs landing={true}/>
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
@@ -58,7 +66,7 @@ class OrgShowAllCategories extends React.Component {
                 <Typography variant="headline">Technology</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <TechnologyCenteredTabs />
+                <TechnologyCenteredTabs landing={true}/>
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
@@ -67,7 +75,7 @@ class OrgShowAllCategories extends React.Component {
                 <Typography variant="headline">Supplies</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <SuppliesCenteredTabs />
+                <SuppliesCenteredTabs landing={true}/>
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
@@ -76,20 +84,20 @@ class OrgShowAllCategories extends React.Component {
                 <Typography variant="headline">Student Instruction and Student Services</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                <StudentInstructionAndServicesCenteredTabs />
+                <StudentInstructionAndServicesCenteredTabs landing={true}/>
               </ExpansionPanelDetails>
             </ExpansionPanel>
 
           </Grid>
         </Grid>
-
+        <Divider style={{marginTop: 150}}/>
       </div>
-    );
+    )
   }
 }
 
-OrgShowAllCategories.propTypes = {
+LandingTaxonomy.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(OrgShowAllCategories);
+export default withStyles(styles)(LandingTaxonomy);
