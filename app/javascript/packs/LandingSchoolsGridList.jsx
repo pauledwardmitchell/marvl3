@@ -26,6 +26,10 @@ const styles = theme => ({
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
+  title: {
+    paddingTop: 40,
+    paddingBottom: 20
+  }
 });
 
 
@@ -83,7 +87,7 @@ class LandingSchoolsGridList extends React.Component {
                 direction= 'row'
                 justify= 'center'>
             <Grid container alignItems='center' direction= 'row' justify= 'center'>
-              <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
+              <Typography variant="headline" component="h2" className={classes.title}>
                 Browse vendors of network schools
               </Typography>
             </Grid>

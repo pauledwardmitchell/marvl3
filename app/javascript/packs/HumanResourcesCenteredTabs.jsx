@@ -14,6 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import axios from 'axios'
 
 import CategoryExpansionPanel from './CategoryExpansionPanel'
+import LandingTaxonomyCategoryList from './LandingTaxonomyCategoryList'
 
 function TabContainer(props) {
   return (
@@ -292,6 +293,14 @@ class HumanResourcesCenteredTabs extends React.Component {
     return categories
   }
 
+  renderPanel() {
+    if (this.props.landing === true) {
+      return ( <LandingTaxonomyCategoryList data={this.getCategories()}/> )
+    } else {
+      return ( <CategoryExpansionPanel data={this.getCategories()}/> )
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const { value, superSuperData } = this.state;
@@ -310,9 +319,9 @@ class HumanResourcesCenteredTabs extends React.Component {
                 )}
               </Tabs>
             </AppBar>
-            {value === 0 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-            {value === 1 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
-            {value === 2 && <TabContainer><CategoryExpansionPanel data={this.getCategories()}/></TabContainer>}
+            {value === 0 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 1 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 2 && <TabContainer>{this.renderPanel()}</TabContainer>}
           </Grid>
         </Grid>
       </div>

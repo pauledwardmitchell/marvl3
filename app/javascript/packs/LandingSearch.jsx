@@ -19,6 +19,13 @@ const thisAxios = axios.create({
 });
 
 const styles = theme => ({
+  title: {
+    paddingTop: 140,
+    paddingBottom: 20
+  },
+  divider: {
+    marginTop: 150
+  }
 });
 
 
@@ -31,15 +38,18 @@ class LandingSearch extends React.Component {
   }
 
   render () {
+
+    const { classes } = this.props;
+
     return (
-      <div style={{paddingTop: 140, paddingBottom: 20}}>
+      <div>
         <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h1" style={{paddingTop: 40, paddingBottom: 20}}>
+          <Typography variant="headline" component="h1" className={classes.title}>
             MARVL
           </Typography>
         </Grid>
         <IntegrationReactSelect />
-        <Divider style={{marginTop: 150}}/>
+        <Divider className={classes.divider}/>
       </div>
     )
   }

@@ -59,8 +59,6 @@ class CategoryExpansionPanels extends React.Component {
                  </ExpansionPanel>
           }
         )}
-
-
       </div>
     );
   }
