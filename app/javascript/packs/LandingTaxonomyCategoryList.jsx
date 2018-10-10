@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
-import InboxIcon from '@material-ui/icons/Inbox';
+import LabelIcon from '@material-ui/icons/Label';
 import DraftsIcon from '@material-ui/icons/Drafts';
 
 import axios from 'axios';
@@ -46,7 +46,7 @@ class LandingTaxonomyCategoryList extends React.Component {
                 return  <a href={this.buildLink(category.sub_id)} className={classes.label}>
                           <ListItem button key={category.id}>
                             <ListItemIcon>
-                              <InboxIcon />
+                              <LabelIcon />
                             </ListItemIcon>
                             <ListItemText primary={category.sub} />
                           </ListItem>
