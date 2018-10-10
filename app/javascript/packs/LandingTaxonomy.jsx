@@ -17,6 +17,7 @@ import TechnologyCenteredTabs from './TechnologyCenteredTabs';
 import SuppliesCenteredTabs from './SuppliesCenteredTabs';
 import StudentInstructionAndServicesCenteredTabs from './StudentInstructionAndServicesCenteredTabs';
 
+import ScrollableAnchor from 'react-scrollable-anchor';
 import axios from 'axios';
 
 const styles = theme => ({
@@ -37,11 +38,11 @@ class LandingTaxonomy extends React.Component {
       <div>
         <Grid container spacing={24} justify='center'>
             <Grid container alignItems='center' direction= 'row' justify= 'center'>
-              <div id="taxonomy">
+              <ScrollableAnchor id={'taxonomy'}>
                 <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
                   Browse all categories
                 </Typography>
-              </div>
+              </ScrollableAnchor>
             </Grid>
           <Grid item xs={11}>
 
