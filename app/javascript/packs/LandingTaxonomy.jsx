@@ -34,12 +34,14 @@ class LandingTaxonomy extends React.Component {
 
   render () {
     return (
-      <div >
+      <div>
         <Grid container spacing={24} justify='center'>
             <Grid container alignItems='center' direction= 'row' justify= 'center'>
-              <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
-                Browse all categories
-              </Typography>
+              <div id="taxonomy">
+                <Typography variant="headline" component="h2" style={{paddingTop: 40, paddingBottom: 20}}>
+                  Browse all categories
+                </Typography>
+              </div>
             </Grid>
           <Grid item xs={11}>
 

@@ -240,7 +240,9 @@ class IntegrationReactSelect extends React.Component {
   };
 
   buildButtonLink = () => {
-    if (this.state.single != null) {
+    if (this.state.single != null && this.state.single.type === "super_super_categories") {
+      return "#taxonomy"
+    } else if (this.state.single != null) {
       var searchTerm = this.state.single.label;
       var searchTermData = this.state.suggestions;
       var link = "";
