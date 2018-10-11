@@ -2,6 +2,17 @@ class ApisController < ApplicationController
 
   # before_filter :add_allow_credentials_headers
 
+#ENDPOINTS FOR APP BAR
+  def check_for_user
+    if current_user
+      @user = current_user
+    else
+      @user = {}
+    end
+    render json: @user
+  end
+
+#ENDPOINTS FOR LANDING PAGE
   def landing_search_data
     @unsorted_data =[]
     categories = Category.all
@@ -84,7 +95,7 @@ class ApisController < ApplicationController
         category: r.categories[0].suggestion_label,
         super_category: r.categories[0].super_categories[0].name,
         super_super_category: r.categories[0].super_categories[0].super_super_category.name,
-        text: r.content_teaser,
+        text: r.review_content,
         id: r.id
       }
       @data << review_hash
@@ -92,15 +103,7 @@ class ApisController < ApplicationController
     render json: @data
   end
 
-  def check_for_user
-    if current_user
-      @user = current_user
-    else
-      @user = {}
-    end
-    render json: @user
-  end
-
+#END POINTS FOR TAXONOMY DATA
   def building_and_grounds
     bag = SuperSuperCategory.find_by(name: "Building and Grounds")
     super_categories = bag.super_categories
@@ -146,8 +149,8 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+#ENDPOINTS FOR ORGANIZATION SHOW
   def org_show_data
-    p params
     org = Organization.find(params[:org])
 
     @data = {
@@ -160,7 +163,36 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+#ENDPOINTS FOR CATEGORY SHOW
+  def category_show_data
+    category = Category.find(1)
+
+    @data = {
+      name: category.full_name,
+      vendors: vendors_data_from_category(category)
+    }
+
+    render json: @data
+  end
+
+
   private
+
+  def vendors_data_from_category(category)
+    @data = []
+
+    category.vendors.each do |v|
+      vendor_hash = {
+        id: v.id,
+        avg_rating: v.avg_rating,
+        schools_array: v.schools_array,
+        reviews_count: v.reviews.count
+      }
+      @data << vendor_hash
+    end
+
+    @data
+  end
 
   def user_names_and_emails_from_org(org)
     @data = []

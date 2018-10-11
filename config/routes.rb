@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 #Org Show
   get '/org_show_data', to: 'apis#org_show_data'
 
+#Category Show
+  get '/category_show_data', to: 'apis#category_show_data'
+
+#Taxonomy
   get '/building_and_grounds', to: 'apis#building_and_grounds'
   get '/human_resources', to: 'apis#human_resources'
   get '/technology', to: 'apis#technology'
