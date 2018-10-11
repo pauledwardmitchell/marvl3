@@ -61,7 +61,7 @@ class RecentActivityCard extends React.Component {
                 {this.props.post.initials}
               </Avatar>
             }
-            title={this.props.post.school + " > " + this.props.post.vendor}
+            title={this.props.post.school + " hired " + this.props.post.vendor}
             subheader={this.props.post.category} />
           <CardMedia
             className={classes.media}
@@ -76,13 +76,8 @@ class RecentActivityCard extends React.Component {
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton aria-label="Add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="Share">
-              <ShareIcon />
-            </IconButton>
-            <Button style={{marginLeft: 'auto'}}>Read review</Button>
+            <Button style={{marginRight: 'auto'}}>Go to {this.props.post.vendor}</Button>
+            <Button style={{marginLeft: 'auto'}}>Go to review</Button>
           </CardActions>
         </Card>
     );

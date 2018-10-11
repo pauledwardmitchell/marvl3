@@ -81,10 +81,10 @@ class ApisController < ApplicationController
         vendor: r.vendor.name,
         date: r.created_at.strftime("%m/%d/%Y"),
         img: r.user.organization.logo_link,
-        category: r.categories[0].name,
+        category: r.categories[0].suggestion_label,
         super_category: r.categories[0].super_categories[0].name,
         super_super_category: r.categories[0].super_categories[0].super_super_category.name,
-        text: r.review_content[0..49],
+        text: r.content_teaser,
         id: r.id
       }
       @data << review_hash
