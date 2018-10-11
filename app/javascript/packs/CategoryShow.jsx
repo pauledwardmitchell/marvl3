@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
-
 import ButtonAppBar from './ButtonAppBar'
 import CenteredTabs from './CenteredTabs'
 import VendorShowDetailsBox from './VendorShowDetailsBox'
@@ -19,12 +18,24 @@ import CategoryShowTitle from './CategoryShowTitle'
 
 import axios from 'axios'
 
-const vendorData =
-  {name: 'Amazing HVAC',
-   street: '800 N. Halsted Street',
-   city: 'Chicago, IL 60612',
-   phone: '(312) 222-1234',
-   website: 'www.amazing-hvac.com'
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
+const loadingData =
+  { name: 'HVAC',
+    vendors: [
+      { id: 1,
+        name: 'Amazing HVAC',
+        avg_rating: 4.5,
+        schools_array: ['Friendship', 'E.L. Haynes'],
+        reviews_count: 6
+      }
+   ]
   }
 
 const styles = theme => ({
@@ -36,33 +47,23 @@ const styles = theme => ({
 class CategoryShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
-    // this.getDrawerStatus = this.getDrawerStatus.bind(this);
-    // this.state = {
-    //   categoriesData: [],
-    //   testData: [
-    //     { label: 'Composting' },
-    //     { label: 'Computers - Staff' },
-    //     { label: 'Computers - Students' },
-    //     { label: 'Custom Industrial Kitchens' },
-    //     { label: 'Capital City Contracting' }
-    //   ],
-    //   searchTerm: "",
-    //   drawerOpen: false,
-    //   categoryShowOpen: false
-    // };
+    this.state = {
+      data: loadingData
+    };
   }
 
-  componentDidMount() {
-    axios.get(`https://marvl-next.herokuapp.com/landing_search_data`)
-      .then((response) => {
-        this.setState({categoriesData: response.data.categories})
-      })
-      .catch((error) => console.error('axios error', error))
+  componentWillMount(){
+    thisAxios.get('/category_show_data')
+    .then((response) => {
+      console.log(response.data)
+      this.setState({data: loadingData})
+    })
+    .catch((error) => console.error('axios error', error))
   }
 
 
   render () {
+    const { data } = this.state
     const { classes } = this.props;
 
     return (
@@ -70,7 +71,7 @@ class CategoryShow extends React.Component {
         <ButtonAppBar />
         <Grid container direction='row' justify='flex-start' spacing={16}>
           <Grid item xs={4}>
-            <CategoriesChart />
+            <CategoriesChart data={data} />
           </Grid>
           <Grid item xs={4}>
             <CategoryShowTitle />

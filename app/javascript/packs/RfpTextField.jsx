@@ -25,9 +25,12 @@ const styles = theme => ({
 
 
 class RfpTextField extends React.Component {
-  state = {
-    rfpDetails: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      rfpDetails: '',
+    };
+  }
 
   handleRfpDetailsChange = event => {
     this.setState({ rfpDetails: event.target.value })

@@ -25,6 +25,7 @@ const data = {
   ]
 };
 
+
 const options = {
   legend: {
     display: false
@@ -45,18 +46,53 @@ const options = {
   }
 }
 
-function CategoriesChart(props) {
-  const { classes } = props;
-  return (
-    <div>
-      <Paper className={classes.root} elevation={4}>
-        <Typography variant='subheading' align='center'>
-          Who we work with
-        </Typography>
-        <HorizontalBar data={data} options={options}/>
-      </Paper>
-    </div>
-  );
+class CategoriesChart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  buildChartData() {
+    var vendorsData = this.props.data.vendors;
+    var namesArray = [];
+    var numReviewsArray = [];
+    var i;
+    for (i = 0; i < vendorsData.length; i++) {
+      namesArray.push(vendorsData[i].name)
+      numReviewsArray.push(vendorsData[i].reviews_count)
+    }
+
+    var chartData = {
+      labels: namesArray,
+      datasets: [
+        {
+          backgroundColor: 'rgba(255,99,132,0.2)',
+          borderColor: 'rgba(255,99,132,1)',
+          borderWidth: 1,
+          data: numReviewsArray
+        }
+      ]
+    }
+
+    return chartData
+  }
+
+  render() {
+    const { classes } = this.props;
+
+    return (
+      <div>
+        <Paper className={classes.root} elevation={4}>
+          <Typography variant='subheading' align='center'>
+            Who we work with
+          </Typography>
+          <HorizontalBar data={this.buildChartData()} options={options}/>
+        </Paper>
+      </div>
+    );
+  }
+
 }
 
 CategoriesChart.propTypes = {

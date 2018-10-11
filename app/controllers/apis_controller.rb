@@ -184,6 +184,7 @@ class ApisController < ApplicationController
     category.vendors.each do |v|
       vendor_hash = {
         id: v.id,
+        name: v.name,
         avg_rating: v.avg_rating,
         schools_array: v.schools_array,
         reviews_count: v.reviews.count
