@@ -56,7 +56,7 @@ class CategoryShow extends React.Component {
     thisAxios.get('/category_show_data')
     .then((response) => {
       console.log(response.data)
-      this.setState({data: loadingData})
+      this.setState({data: response.data})
     })
     .catch((error) => console.error('axios error', error))
   }
