@@ -14,11 +14,11 @@ const styles = theme => ({
 });
 
 function CategoryShowTitle(props) {
-  const { classes } = props;
+  const { classes, data } = props;
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
-        <Typography variant="display2" align='center'>HVAC</Typography>
+        <Typography variant="display2" align='center'>{data.name}</Typography>
       </Paper>
     </div>
   );

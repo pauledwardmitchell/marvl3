@@ -74,10 +74,10 @@ class CategoryShow extends React.Component {
             <CategoriesChart data={data} />
           </Grid>
           <Grid item xs={4}>
-            <CategoryShowTitle />
+            <CategoryShowTitle data={data} />
           </Grid>
           <Grid item xs={3}>
-            <CategoryShowBatchRfp />
+            <CategoryShowBatchRfp data={data} />
           </Grid>
         </Grid>
         <Divider />

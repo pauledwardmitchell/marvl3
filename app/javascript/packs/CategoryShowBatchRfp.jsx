@@ -33,25 +33,10 @@ const theme = createMuiTheme({
 });
 
 class CategoryShowBatchRfp extends React.Component {
-
-  state = {
-    vendors: ['Amazing HVAC', 'Brilliant HVAC', 'Meh HVAC', 'Never Again HVAC']
-  };
-
-  handleClick() {
-
-  }
-
-  handleeDelete(vendor) {
-    console.log("Delete chip!")
-    var index = this.state.vendors.indexOf(vendor);
-    var newVendorsArray = this.state.vendors
-    if (index > -1) {
-      newVendorsArray.splice(index, 1);
-    }
-    this.setState({
-      vendors: newVendorsArray
-    })
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
   }
 
   handleDelete = vendor => () => {
@@ -62,7 +47,7 @@ class CategoryShowBatchRfp extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
 
     return (
       <div>
@@ -71,9 +56,9 @@ class CategoryShowBatchRfp extends React.Component {
             Send RFP to:
           </Typography>
 
-          {this.state.vendors.map(vendor => {
+          {data.vendors.map(vendor => {
             return (
-              <Chip key={vendor} label={vendor} onDelete={this.handleDelete(vendor)} className={classes.chip} />
+              <Chip key={vendor.id} label={vendor.name} onDelete={this.handleDelete(vendor)} className={classes.chip} />
             );
           })}
           <RfpTextField />
