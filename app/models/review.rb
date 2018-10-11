@@ -18,4 +18,8 @@ class Review < ApplicationRecord
     (self.rating_quality + self.rating_service) / 2
   end
 
+  def content_teaser
+    self.review_content[0..45] + "..."
+  end
+
 end
