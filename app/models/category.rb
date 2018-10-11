@@ -17,6 +17,10 @@ class Category < ApplicationRecord
     end
   end
 
+  def full_name
+    suggestion_label.chomp(" (Category)")
+  end
+
   private
 
   def insurance_and_benefits_categories
