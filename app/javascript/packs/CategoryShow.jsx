@@ -53,7 +53,9 @@ class CategoryShow extends React.Component {
   }
 
   componentWillMount(){
-    thisAxios.get('/category_show_data')
+    var catId = document.getElementById("category").getAttribute('value')
+
+    thisAxios.get('/category_show_data?category=' + catId)
     .then((response) => {
       console.log(response.data)
       this.setState({data: response.data})
