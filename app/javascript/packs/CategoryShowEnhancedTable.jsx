@@ -20,6 +20,16 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
+import axios from 'axios'
+
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
 let counter = 0;
 function createData(vendorName, avgRating, schoolsContracted, numReviews, numComplaints) {
   counter += 1;
@@ -154,8 +164,8 @@ const styles = theme => ({
 class CategoryShowEnhancedTable extends React.Component {
   constructor(props, context) {
     super(props, context);
-
     this.state = {
+      data: this.props.data,
       order: 'asc',
       orderBy: 'vendorName',
       selected: [],
@@ -164,15 +174,27 @@ class CategoryShowEnhancedTable extends React.Component {
     };
   }
 
-  buildData() {
-    var vendorsData = this.props.data.vendors
+  componentWillMount(){
+    var catId = document.getElementById("category").getAttribute('value')
+    var theData;
+
+    thisAxios.get('/category_show_data?category=' + catId)
+    .then((response) => {
+      console.log(response.data)
+      theData = this.buildData(response.data.vendors)
+      this.setState({data: theData})
+    })
+    .catch((error) => console.error('axios error', error))
+  }
+
+  buildData(vendorsData) {
     var data =[];
     var i;
     for (i = 0; i < vendorsData.length; i++) {
       var counter = i + 1;
       var vendorName = vendorsData[i].name;
       var avgRating = vendorsData[i].avg_rating;
-      var schoolsContracted = vendorsData[i].schools_array.join(" ");
+      var schoolsContracted = vendorsData[i].schools_array.join(", ");
       var numReviews = vendorsData[i].reviews_count
       var row = {id: counter, vendorName, avgRating, schoolsContracted, numReviews}
       data.push(row)
@@ -239,8 +261,7 @@ class CategoryShowEnhancedTable extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { order, orderBy, selected, rowsPerPage, page } = this.state;
-    const data = this.buildData()
+    const { order, orderBy, selected, rowsPerPage, page, data } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
     return (
