@@ -195,7 +195,7 @@ class CategoryShowEnhancedTable extends React.Component {
       var counter = i + 1;
       var vendorName = vendorsData[i].name;
       var avgRating = vendorsData[i].avg_rating;
-      var schoolsContracted = vendorsData[i].schools_array.join(" ");
+      var schoolsContracted = vendorsData[i].schools_array.join(", ");
       var numReviews = vendorsData[i].reviews_count
       var row = {id: counter, vendorName, avgRating, schoolsContracted, numReviews}
       data.push(row)
