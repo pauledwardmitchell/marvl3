@@ -182,7 +182,6 @@ class CategoryShowEnhancedTable extends React.Component {
     .then((response) => {
       console.log(response.data)
       theData = this.buildData(response.data.vendors)
-    debugger
       this.setState({data: theData})
     })
     .catch((error) => console.error('axios error', error))
