@@ -34,6 +34,12 @@ const loadingData =
         avg_rating: 4.5,
         schools_array: ['Friendship', 'E.L. Haynes'],
         reviews_count: 6
+      },
+      { id: 2,
+        name: 'Blah HVAC',
+        avg_rating: 4.0,
+        schools_array: ['Friendship', 'E.L. Haynes'],
+        reviews_count: 3
       }
    ]
   }
@@ -63,6 +69,23 @@ class CategoryShow extends React.Component {
     .catch((error) => console.error('axios error', error))
   }
 
+  buildTableData(vendorsData) {
+    var data =[];
+    var i;
+    for (i = 0; i < vendorsData.length; i++) {
+      var counter = i + 1;
+      var vendorName = vendorsData[i].name;
+      var avgRating = vendorsData[i].avg_rating;
+      var schoolsContracted = vendorsData[i].schools_array.join(" ");
+      var numReviews = vendorsData[i].reviews_count
+      var row = {id: counter, vendorName, avgRating, schoolsContracted, numReviews}
+      data.push(row)
+    }
+
+    var sortedData = data.sort((a, b) => (a.vendorName < b.vendorName ? -1 : 1))
+    return sortedData
+  }
+
 
   render () {
     const { data } = this.state
@@ -86,7 +109,7 @@ class CategoryShow extends React.Component {
         <div className={classes.root}>
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
-              <CategoryShowEnhancedTable data={data} />
+              <CategoryShowEnhancedTable data={this.buildTableData(data)} />
             </Grid>
           </Grid>
         </div>
