@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   resources :users
   resources :organizations
 
-  get '/categories', to: redirect('/#taxonomy')
-
 #App Bar
   get '/check_for_user', to:'apis#check_for_user'
 
