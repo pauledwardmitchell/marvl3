@@ -165,7 +165,7 @@ class ApisController < ApplicationController
 
 #ENDPOINTS FOR CATEGORY SHOW
   def category_show_data
-    category = Category.find(1)
+    category = Category.find(params[:category])
 
     @data = {
       name: category.full_name,
