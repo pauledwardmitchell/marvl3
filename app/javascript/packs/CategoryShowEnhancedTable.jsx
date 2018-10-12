@@ -31,7 +31,6 @@ const columnData = [
   { id: 'avgRating', numeric: false, disablePadding: true, label: 'Average Rating' },
   { id: 'schoolsContracted', numeric: false, disablePadding: false, label: 'Schools Contracted' },
   { id: 'numReviews', numeric: false, disablePadding: true, label: 'Number of Reviews' },
-  { id: 'numComplaints', numeric: false, disablePadding: true, label: 'Number of Complaints' },
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -124,7 +123,7 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
           </Typography>
         ) : (
-          <Typography variant="title">All HVAC Vendors</Typography>
+          <Typography variant="title">Search Vendors</Typography>
         )}
       </div>
       <div className={classes.spacer} />
@@ -160,15 +159,27 @@ class CategoryShowEnhancedTable extends React.Component {
       order: 'asc',
       orderBy: 'vendorName',
       selected: [],
-      data: [
-        createData('Amazing HVAC', 4.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 6, 1),
-        createData('Brilliant HVAC', 3, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 3, 4),
-        createData('Meh HVAC', 3.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 5, 2),
-        createData('Never Again HVAC', 1.5, 'Peyton PCS, Three Rivers, Lane PCS, Young PCS, Jones PCS, Washington PCS', 2, 90),
-      ].sort((a, b) => (a.vendorName < b.vendorName ? -1 : 1)),
       page: 0,
       rowsPerPage: 5,
     };
+  }
+
+  buildData() {
+    var vendorsData = this.props.data.vendors
+    var data =[];
+    var i;
+    for (i = 0; i < vendorsData.length; i++) {
+      var counter = i + 1;
+      var vendorName = vendorsData[i].name;
+      var avgRating = vendorsData[i].avg_rating;
+      var schoolsContracted = vendorsData[i].schools_array.join(" ");
+      var numReviews = vendorsData[i].reviews_count
+      var row = {id: counter, vendorName, avgRating, schoolsContracted, numReviews}
+      data.push(row)
+    }
+
+    var sortedData = data.sort((a, b) => (a.vendorName < b.vendorName ? -1 : 1))
+    return sortedData
   }
 
   handleRequestSort = (event, property) => {
@@ -228,7 +239,8 @@ class CategoryShowEnhancedTable extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+    const { order, orderBy, selected, rowsPerPage, page } = this.state;
+    const data = this.buildData()
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
     return (
@@ -261,7 +273,6 @@ class CategoryShowEnhancedTable extends React.Component {
                     <TableCell padding='none'>{n.avgRating} stars</TableCell>
                     <TableCell>{n.schoolsContracted}</TableCell>
                     <TableCell padding='none'>{n.numReviews} Reviews</TableCell>
-                    <TableCell padding='none'>{n.numComplaints} Complaints</TableCell>
                   </TableRow>
                 );
               })}

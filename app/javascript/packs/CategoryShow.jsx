@@ -84,7 +84,7 @@ class CategoryShow extends React.Component {
         <div className={classes.root}>
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
-              <CategoryShowEnhancedTable />
+              <CategoryShowEnhancedTable data={data} />
             </Grid>
           </Grid>
         </div>
