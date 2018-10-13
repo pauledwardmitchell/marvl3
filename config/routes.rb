@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 #Org Show
   get '/org_show_data', to: 'apis#org_show_data'
 
+#Vendor Show
+  get '/vendor_show_data', to: 'apis#vendor_show_data'
+
 #Category Show
   get '/category_show_data', to: 'apis#category_show_data'
 

@@ -18,7 +18,15 @@ import EnhancedTable from './EnhancedTable'
 
 import axios from 'axios'
 
-const vendorData =
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
+
+const loadingData =
   {name: 'Amazing HVAC',
    street: '800 N. Halsted Street',
    city: 'Chicago, IL 60612',
@@ -35,34 +43,26 @@ const styles = theme => ({
 class VendorShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
-    // this.getDrawerStatus = this.getDrawerStatus.bind(this);
-    // this.state = {
-    //   categoriesData: [],
-    //   testData: [
-    //     { label: 'Composting' },
-    //     { label: 'Computers - Staff' },
-    //     { label: 'Computers - Students' },
-    //     { label: 'Custom Industrial Kitchens' },
-    //     { label: 'Capital City Contracting' }
-    //   ],
-    //   searchTerm: "",
-    //   drawerOpen: false,
-    //   categoryShowOpen: false
-    // };
+    this.state = {
+      data: loadingData
+    };
   }
 
   componentDidMount() {
-    axios.get(`https://marvl-next.herokuapp.com/landing_search_data`)
-      .then((response) => {
-        this.setState({categoriesData: response.data.categories})
-      })
-      .catch((error) => console.error('axios error', error))
+    var vendorId = document.getElementById("vendor").getAttribute('value')
+
+    thisAxios.get('/vendor_show_data?vendor=' + vendorId)
+    .then((response) => {
+      console.log(response.data)
+      this.setState({data: response.data})
+    })
+    .catch((error) => console.error('axios error', error))
   }
 
 
   render () {
     const { classes } = this.props;
+    const { data } = this.state;
 
     return (
       <div>
@@ -72,7 +72,7 @@ class VendorShow extends React.Component {
             <OrgShowMap />
           </Grid>
           <Grid item xs={4}>
-            <VendorShowDetailsBox data={vendorData} />
+            <VendorShowDetailsBox data={data} />
           </Grid>
           <Grid item xs={3}>
             <VendorShowCategoriesTags />

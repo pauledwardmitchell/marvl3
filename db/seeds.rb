@@ -61,7 +61,8 @@ fac_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fac.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -75,7 +76,8 @@ furn_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: furn.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -89,7 +91,8 @@ util_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: util.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -103,7 +106,8 @@ constr_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: constr.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -120,7 +124,8 @@ bene_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: bene.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -134,7 +139,8 @@ fin_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fin.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -148,7 +154,8 @@ tprodev_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: tprodev.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -166,7 +173,8 @@ itcon_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: itcon.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -180,7 +188,8 @@ itsoft_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: itsoft.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -194,7 +203,8 @@ ithard_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: ithard.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -212,7 +222,8 @@ printm_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: printm.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -226,7 +237,8 @@ sports_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: sports.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -240,7 +252,8 @@ nslp_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: nslp.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -254,7 +267,8 @@ off_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: off.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -272,7 +286,8 @@ curric_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: curric.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -286,7 +301,8 @@ iit_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: iit.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -300,7 +316,8 @@ apps_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: apps.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -314,7 +331,8 @@ sss_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: sss.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -328,7 +346,8 @@ uni_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: uni.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -342,7 +361,8 @@ fam_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fam.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)
@@ -356,7 +376,8 @@ trans_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: trans.id, category_id: cat.id)
   5.times do
-    vendor = Vendor.create( name: Faker::Company.name)
+    vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
+    PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
       Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", rating_service: (1..5).to_a.sample, rating_quality: (1..5).to_a.sample)

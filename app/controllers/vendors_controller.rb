@@ -4,6 +4,10 @@ class VendorsController < ApplicationController
   def index
   end
 
+  def show
+    set_vendor
+  end
+
   private
   def set_vendor
     @vendor = Vendor.find(params[:id])
