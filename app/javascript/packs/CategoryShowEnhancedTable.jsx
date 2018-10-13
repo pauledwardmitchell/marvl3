@@ -30,18 +30,13 @@ const thisAxios = axios.create({
   }
 });
 
-let counter = 0;
-function createData(vendorName, avgRating, schoolsContracted, numReviews, numComplaints) {
-  counter += 1;
-  return { id: counter, vendorName, avgRating, schoolsContracted, numReviews, numComplaints };
-}
-
 const columnData = [
   { id: 'vendorName', numeric: false, disablePadding: false, label: 'Vendor Name' },
   { id: 'avgRating', numeric: false, disablePadding: true, label: 'Average Rating' },
   { id: 'schoolsContracted', numeric: false, disablePadding: false, label: 'Schools Contracted' },
   { id: 'numReviews', numeric: false, disablePadding: true, label: 'Number of Reviews' },
 ];
+
 
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
@@ -246,7 +241,7 @@ class CategoryShowEnhancedTable extends React.Component {
       );
     }
 
-    this.setState({ selected: newSelected });
+    // this.setState({ selected: newSelected });
   };
 
   handleChangePage = (event, page) => {

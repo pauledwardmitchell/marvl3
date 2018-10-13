@@ -180,6 +180,16 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def vendor_show_reviews_data
+    vendor = Vendor.find(params[:vendor])
+
+    @data = {
+      reviews: reviews_from_vendor(vendor)
+    }
+
+    render json: @data
+  end
+
 
 #ENDPOINTS FOR CATEGORY SHOW
   def category_show_data
@@ -195,6 +205,23 @@ class ApisController < ApplicationController
 
 
   private
+
+  def reviews_from_vendor(vendor)
+    vendor_reviews_array = []
+    vendor.reviews.each do |r|
+      review_hash = {
+        id: r.id,
+        school_name: r.user.organization.name,
+        work_quality: r.rating_quality,
+        customer_service: r.rating_service,
+        review: r.review_content,
+        reviewer: r.user.full_name,
+        days_ago: r.days_old
+      }
+      vendor_reviews_array << review_hash
+    end
+    vendor_reviews_array
+  end
 
   def school_relationships_from_vendor(vendor)
     all_schools_array = []

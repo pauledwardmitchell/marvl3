@@ -19,20 +19,25 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
-let counter = 0;
-function createData(name, workQuality, customerService, review, reviewer, daysAgo) {
-  counter += 1;
-  return { id: counter, name, workQuality, customerService, review, reviewer, daysAgo };
-}
+import axios from 'axios';
+
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+const thisAxios = axios.create({
+  baseURL: 'https://marvl-next.herokuapp.com',
+  headers: {
+    'X-CSRF-Token': csrfToken
+  }
+});
 
 const columnData = [
-  { id: 'name', numeric: false, disablePadding: false, label: 'School Name' },
+  { id: 'schoolName', numeric: false, disablePadding: false, label: 'School Name' },
   { id: 'workQuality', numeric: false, disablePadding: false, label: 'Work Quality' },
   { id: 'customerService', numeric: false, disablePadding: true, label: 'Customer Service' },
   { id: 'review', numeric: false, disablePadding: false, label: 'Review' },
   { id: 'reviewer', numeric: false, disablePadding: false, label: 'Reviewer' },
   { id: 'daysAgo', numeric: true, disablePadding: false, label: 'Days Ago' },
 ];
+
 
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
@@ -166,20 +171,43 @@ class EnhancedTable extends React.Component {
       order: 'desc',
       orderBy: 'daysAgo',
       selected: [],
-      data: [
-        createData('Three Rivers PCS', 4, 5, 'Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here', 'Bert', 12),
-        createData('Noble Street PCS', 4, 4, 'Review placeholder review here', 'Ernie', 43),
-        createData('Jones Prep PCS', 4, 4, 'Lorem ipsum placeholder review here', 'Grover', 34),
-        createData('Peyton PCS', 4, 3, 'Review placeholder review here', 'Elmo', 101),
-        createData('Peyton PCS', 4, 4, 'Lorem ipsum placeholder review here', 'Cookie Monster', 365),
-        createData('Twain PCS', 4, 1, 'Review placeholder review here', 'Big Bird', 82),
-        createData('Crane PCS', 4, 5, 'Review placeholder review here', 'Count (The)', 1),
-        createData('Irving PCS', 4, 5, 'Lorem ipsum placeholder review here', 'Twiddle Bugs', 96),
-        createData('Washington PCS', 4, 5, 'Review placeholder review here', 'Kermit', 90),
-      ].sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1)),
+      data: this.props.data,
       page: 0,
       rowsPerPage: 5,
     };
+  }
+
+  componentWillMount(){
+    var vendorId = document.getElementById("vendor").getAttribute('value')
+    var theData;
+
+    thisAxios.get('/vendor_show_reviews_data?vendor=' + vendorId)
+    .then((response) => {
+      console.log(response.data)
+      theData = this.buildData(response.data.reviews)
+      this.setState({data: theData})
+    })
+    .catch((error) => console.error('axios error', error))
+  }
+
+  buildData(reviewsData) {
+    var data =[];
+    var i;
+    for (i = 0; i < reviewsData.length; i++) {
+      var counter = i + 1;
+      var schoolName = reviewsData[i].school_name;
+      var workQuality = reviewsData[i].work_quality;
+      var customerService = reviewsData[i].customer_service;
+      var review = reviewsData[i].review;
+      var reviewer = reviewsData[i].reviewer;
+      var daysAgo = reviewsData[i].days_ago;
+
+      var row = {id: counter, schoolName, workQuality, customerService, review, reviewer, daysAgo}
+      data.push(row)
+    }
+
+    var sortedData = data.sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1))
+    return sortedData
   }
 
   handleRequestSort = (event, property) => {
@@ -224,7 +252,7 @@ class EnhancedTable extends React.Component {
       );
     }
 
-    this.setState({ selected: newSelected });
+    // this.setState({ selected: newSelected });
   };
 
   handleChangePage = (event, page) => {
@@ -268,7 +296,7 @@ class EnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell><Button className={classes.schoolButton} size="small">{n.name}</Button></TableCell>
+                    <TableCell><Button className={classes.schoolButton} size="small">{n.schoolName}</Button></TableCell>
                     <TableCell>{n.workQuality} stars</TableCell>
                     <TableCell padding='none'>{n.customerService} stars</TableCell>
                     <TableCell className={classes.reviewText}>{n.review}</TableCell>
