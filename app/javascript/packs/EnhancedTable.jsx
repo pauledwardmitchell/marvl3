@@ -12,7 +12,7 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -20,14 +20,15 @@ import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
 let counter = 0;
-function createData(name, stars, review, reviewer, daysAgo) {
+function createData(name, workQuality, customerService, review, reviewer, daysAgo) {
   counter += 1;
-  return { id: counter, name, stars, review, reviewer, daysAgo };
+  return { id: counter, name, workQuality, customerService, review, reviewer, daysAgo };
 }
 
 const columnData = [
-  { id: 'name', numeric: false, disablePadding: true, label: 'School Name' },
-  { id: 'stars', numeric: true, disablePadding: false, label: 'Stars' },
+  { id: 'name', numeric: false, disablePadding: false, label: 'School Name' },
+  { id: 'workQuality', numeric: false, disablePadding: false, label: 'Work Quality' },
+  { id: 'customerService', numeric: false, disablePadding: true, label: 'Customer Service' },
   { id: 'review', numeric: false, disablePadding: false, label: 'Review' },
   { id: 'reviewer', numeric: false, disablePadding: false, label: 'Reviewer' },
   { id: 'daysAgo', numeric: true, disablePadding: false, label: 'Days Ago' },
@@ -44,13 +45,6 @@ class EnhancedTableHead extends React.Component {
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={numSelected === rowCount}
-              onChange={onSelectAllClick}
-            />
-          </TableCell>
           {columnData.map(column => {
             return (
               <TableCell
@@ -156,6 +150,12 @@ const styles = theme => ({
   tableWrapper: {
     overflowX: 'auto',
   },
+  schoolButton: {
+    minWidth: 130
+  },
+  reviewText: {
+    maxWidth: 400
+  }
 });
 
 class EnhancedTable extends React.Component {
@@ -167,15 +167,15 @@ class EnhancedTable extends React.Component {
       orderBy: 'daysAgo',
       selected: [],
       data: [
-        createData('Three Rivers PCS', 5, 'Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here', 'Bert', 12),
-        createData('Noble Street PCS', 4, 'Review placeholder review here', 'Ernie', 43),
-        createData('Jones Prep PCS', 4, 'Lorem ipsum placeholder review here', 'Grover', 34),
-        createData('Peyton PCS', 3, 'Review placeholder review here', 'Elmo', 101),
-        createData('Peyton PCS', 4, 'Lorem ipsum placeholder review here', 'Cookie Monster', 365),
-        createData('Twain PCS', 1, 'Review placeholder review here', 'Big Bird', 82),
-        createData('Crane PCS', 5, 'Review placeholder review here', 'Count (The)', 1),
-        createData('Irving PCS', 5, 'Lorem ipsum placeholder review here', 'Twiddle Bugs', 96),
-        createData('Washington PCS', 5, 'Review placeholder review here', 'Kermit', 90),
+        createData('Three Rivers PCS', 4, 5, 'Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here Review placeholder review here', 'Bert', 12),
+        createData('Noble Street PCS', 4, 4, 'Review placeholder review here', 'Ernie', 43),
+        createData('Jones Prep PCS', 4, 4, 'Lorem ipsum placeholder review here', 'Grover', 34),
+        createData('Peyton PCS', 4, 3, 'Review placeholder review here', 'Elmo', 101),
+        createData('Peyton PCS', 4, 4, 'Lorem ipsum placeholder review here', 'Cookie Monster', 365),
+        createData('Twain PCS', 4, 1, 'Review placeholder review here', 'Big Bird', 82),
+        createData('Crane PCS', 4, 5, 'Review placeholder review here', 'Count (The)', 1),
+        createData('Irving PCS', 4, 5, 'Lorem ipsum placeholder review here', 'Twiddle Bugs', 96),
+        createData('Washington PCS', 4, 5, 'Review placeholder review here', 'Kermit', 90),
       ].sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1)),
       page: 0,
       rowsPerPage: 5,
@@ -268,12 +268,10 @@ class EnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox checked={isSelected} />
-                    </TableCell>
-                    <TableCell padding="none">{n.name}</TableCell>
-                    <TableCell numeric>{n.stars}</TableCell>
-                    <TableCell>{n.review}</TableCell>
+                    <TableCell><Button className={classes.schoolButton} size="small">{n.name}</Button></TableCell>
+                    <TableCell>{n.workQuality} stars</TableCell>
+                    <TableCell padding='none'>{n.customerService} stars</TableCell>
+                    <TableCell className={classes.reviewText}>{n.review}</TableCell>
                     <TableCell>{n.reviewer}</TableCell>
                     <TableCell numeric>{n.daysAgo}</TableCell>
                   </TableRow>
