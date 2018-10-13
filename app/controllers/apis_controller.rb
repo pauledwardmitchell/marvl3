@@ -212,6 +212,7 @@ class ApisController < ApplicationController
       review_hash = {
         id: r.id,
         school_name: r.user.organization.name,
+        school_id: r.user.organization.id,
         work_quality: r.rating_quality,
         customer_service: r.rating_service,
         review: r.review_content,
