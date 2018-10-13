@@ -31,6 +31,8 @@ const loadingData =
    street: '800 N. Halsted Street',
    city_stat_and_zip: 'Chicago, IL 60612',
    website: 'www.amazing-hvac.com',
+   categories_array: ["Facilities - Third-Party Facilities Contracting"],
+   schools_array: ['Jones PCS', 'Young PCS'],
    point_people_array: [
      { id: 1,
        name_and_title: "Loading...",
@@ -81,7 +83,7 @@ class VendorShow extends React.Component {
             <VendorShowDetailsBox data={data} />
           </Grid>
           <Grid item xs={3}>
-            <VendorShowCategoriesTags />
+            <VendorShowCategoriesTags data={data} />
           </Grid>
         </Grid>
         <Divider />

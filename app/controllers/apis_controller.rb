@@ -172,6 +172,8 @@ class ApisController < ApplicationController
       name: vendor.name,
       street: vendor.street,
       city_state_and_zip: vendor.city_state_and_zip,
+      categories_array: categories_from_vendor(vendor),
+      schools_array: school_relationships_from_vendor(vendor),
       point_people_array: point_people_from_vendor(vendor)
     }
 
@@ -193,6 +195,19 @@ class ApisController < ApplicationController
 
 
   private
+
+  def school_relationships_from_vendor(vendor)
+    all_schools_array = []
+    vendor.reviews.each do |r|
+      all_schools_array << r.user.organization.name
+    end
+    unique_schools_array = all_schools_array.uniq
+    unique_schools_array
+  end
+
+  def categories_from_vendor(vendor)
+    vendor.categories.map { |c| c.full_name }
+  end
 
   def point_people_from_vendor(vendor)
     point_people_array = []
