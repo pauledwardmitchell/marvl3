@@ -14,20 +14,26 @@ const styles = theme => ({
 });
 
 function VendorShowDetailsBox(props) {
-  const { classes } = props;
+  const { classes, data } = props;
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
-        <Typography variant="headline" component="h3">{props.data.name}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.street}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.city}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.phone}</Typography>
-        <Typography variant="subheading" component="h3">{props.data.website}</Typography>
+        <Typography variant="headline" component="h3">{data.name}</Typography>
+        <Typography variant="subheading" component="h3">{data.street}</Typography>
+        <Typography variant="subheading" component="h3">{data.city_state_and_zip}</Typography>
+        <Typography variant="subheading" component="h3">{data.website}</Typography>
       </Paper>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">Who to Call:</Typography>
-        <Typography variant="subheading" component="h3">Mike Ditka - CEO</Typography>
-        <Typography variant="subheading" component="h3">Roquan Smith - Director of Sales</Typography>
+        {data.point_people_array.map((person) => {
+          return  <div key={person.id}>
+                    <Typography variant="subheading" component="h3">{person.name_and_title}</Typography>
+                    <Typography variant="body2">{person.email}</Typography>
+                    <Typography variant="body2" gutterBottom>{person.phone}</Typography>
+                  </div>
+          }
+        )}
+
       </Paper>
     </div>
   );
