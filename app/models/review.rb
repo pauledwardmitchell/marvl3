@@ -23,7 +23,9 @@ class Review < ApplicationRecord
   end
 
   def days_old
-    Date.today - self.updated_at.to_date
+    rational_number = Date.today - self.updated_at.to_date
+    integer = rational_number.to_i
+    integer
   end
 
 end
