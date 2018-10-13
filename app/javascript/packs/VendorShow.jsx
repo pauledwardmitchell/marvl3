@@ -29,9 +29,17 @@ const thisAxios = axios.create({
 const loadingData =
   {name: 'Amazing HVAC',
    street: '800 N. Halsted Street',
-   city: 'Chicago, IL 60612',
-   phone: '(312) 222-1234',
-   website: 'www.amazing-hvac.com'
+   city_stat_and_zip: 'Chicago, IL 60612',
+   website: 'www.amazing-hvac.com',
+   categories_array: ["Facilities - Third-Party Facilities Contracting"],
+   schools_array: ['Jones PCS', 'Young PCS'],
+   point_people_array: [
+     { id: 1,
+       name_and_title: "Loading...",
+       phone: "Loading...",
+       email: "Loading..."
+     }
+   ]
   }
 
 const styles = theme => ({
@@ -75,7 +83,7 @@ class VendorShow extends React.Component {
             <VendorShowDetailsBox data={data} />
           </Grid>
           <Grid item xs={3}>
-            <VendorShowCategoriesTags />
+            <VendorShowCategoriesTags data={data} />
           </Grid>
         </Grid>
         <Divider />

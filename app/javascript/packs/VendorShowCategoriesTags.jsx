@@ -35,7 +35,7 @@ class VendorShowCategoriesTags extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, data } = this.props;
 
     return (
       <div>
@@ -43,13 +43,14 @@ class VendorShowCategoriesTags extends React.Component {
         <Typography variant='subheading'>
           Does work in:
         </Typography>
-        <Chip label="HVAC" onClick={this.handleClick} className={classes.chip} />
-        <Chip label="Boiler" onClick={this.handleClick} className={classes.chip} />
-        <Chip label="Furnace" onClick={this.handleClick} className={classes.chip} />
+        {data.categories_array.map((category) => {
+          return <Chip key={category} label={category} onClick={this.handleClick} className={classes.chip} />
+          }
+        )}
       </Paper>
       <MuiThemeProvider theme={theme}>
       <Tooltip
-        title="Three Rivers PCS, Noble Street PCS, Jones Prep PCS, Peyton PCS, Twain PCS, Crane PCS, Irving PCS, Washington PCS"
+        title={data.schools_array.join(", ")}
         placement='bottom'
         >
       <Paper className={classes.root}>
@@ -57,7 +58,7 @@ class VendorShowCategoriesTags extends React.Component {
           Contracted with
         </Typography>
         <Typography variant='display3' align='center'>
-          8
+          {data.schools_array.length}
         </Typography>
         <Typography variant='subheading' align='center'>
           of us
