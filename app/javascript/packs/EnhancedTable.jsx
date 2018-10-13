@@ -172,6 +172,7 @@ class EnhancedTable extends React.Component {
       orderBy: 'daysAgo',
       selected: [],
       data: this.props.data,
+      rawData: null,
       page: 0,
       rowsPerPage: 5,
     };
@@ -185,6 +186,7 @@ class EnhancedTable extends React.Component {
     .then((response) => {
       console.log(response.data)
       theData = this.buildData(response.data.reviews)
+      this.setState({rawData: response.data})
       this.setState({data: theData})
     })
     .catch((error) => console.error('axios error', error))
@@ -208,6 +210,24 @@ class EnhancedTable extends React.Component {
 
     var sortedData = data.sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1))
     return sortedData
+  }
+
+  buildLink(schoolName) {
+    if (this.state.rawData != null) {
+      var rawReviewsData = this.state.rawData.reviews;
+      var id;
+      var i;
+
+      for (i = 0; i < rawReviewsData.length; i++) {
+        if (schoolName === rawReviewsData[i].school_name) {
+          id = rawReviewsData[i].school_id
+        }
+      }
+      return "/organizations/" + id
+    } else {
+      return "/"
+    }
+
   }
 
   handleRequestSort = (event, property) => {
@@ -296,7 +316,7 @@ class EnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell><Button className={classes.schoolButton} size="small">{n.schoolName}</Button></TableCell>
+                    <TableCell><Button className={classes.schoolButton} size="small" href={this.buildLink(n.schoolName)}>{n.schoolName}</Button></TableCell>
                     <TableCell>{n.workQuality} stars</TableCell>
                     <TableCell padding='none'>{n.customerService} stars</TableCell>
                     <TableCell className={classes.reviewText}>{n.review}</TableCell>
