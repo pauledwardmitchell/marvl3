@@ -39,8 +39,18 @@ const options = {
   },
   scales: {
     xAxes: [{
+      scaleLabel: {
+        display: true,
+        labelString: '# of DC PCS relationships'
+      },
       ticks: {
-        beginAtZero: true
+        beginAtZero: true,
+        userCallback: function(label, index, labels) {
+                     if (Math.floor(label) === label) {
+                         return label;
+                     }
+
+                 },
       }
     }]
   }
@@ -54,13 +64,17 @@ class CategoriesChart extends React.Component {
   }
 
   buildChartData() {
+    function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+    }
     var vendorsData = this.props.data.vendors;
     var namesArray = [];
+    var numSchoolRelationshipsArray =[]
     var numReviewsArray = [];
     var i;
     for (i = 0; i < vendorsData.length; i++) {
       namesArray.push(vendorsData[i].name)
-      numReviewsArray.push(vendorsData[i].reviews_count)
+      numSchoolRelationshipsArray.push(vendorsData[i].schools_array.filter( onlyUnique ).length)
     }
 
     var chartData = {
@@ -70,7 +84,7 @@ class CategoriesChart extends React.Component {
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: 'rgba(255,99,132,1)',
           borderWidth: 1,
-          data: numReviewsArray
+          data: numSchoolRelationshipsArray
         }
       ]
     }
