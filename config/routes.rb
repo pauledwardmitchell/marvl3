@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
 #Vendor Show
   get '/vendor_show_data', to: 'apis#vendor_show_data'
+  get '/vendor_show_reviews_data', to: 'apis#vendor_show_reviews_data'
 
 #Category Show
   get '/category_show_data', to: 'apis#category_show_data'

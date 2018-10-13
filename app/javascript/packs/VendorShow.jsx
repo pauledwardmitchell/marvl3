@@ -42,6 +42,21 @@ const loadingData =
    ]
   }
 
+const loadingReviewsData = {
+  reviews: [
+    { id: 1,
+      school_name: 'Loading...',
+      work_quality: 5,
+      customer_service: 5,
+      review: 'Loading...',
+      reviewer: 'Loading...',
+      days_ago: 100
+
+    }
+  ]
+}
+
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -52,7 +67,8 @@ class VendorShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: loadingData
+      data: loadingData,
+      reviewsData: loadingReviewsData
     };
   }
 
@@ -67,10 +83,29 @@ class VendorShow extends React.Component {
     .catch((error) => console.error('axios error', error))
   }
 
+  buildTableData(reviewsData) {
+    var data =[];
+    var i;
+    for (i = 0; i < reviewsData.length; i++) {
+      var counter = i + 1;
+      var schoolName = reviewsData[i].school_name;
+      var workQuality = reviewsData[i].work_quality;
+      var customerService = reviewsData[i].customer_service;
+      var review = reviewsData[i].review;
+      var reviewer = reviewsData[i].reviewer;
+      var daysAgo = reviewsData[i].days_ago;
+
+      var row = {id: counter, schoolName, workQuality, customerService, review, reviewer, daysAgo}
+      data.push(row)
+    }
+
+    var sortedData = data.sort((a, b) => (a.daysAgo < b.daysAgo ? -1 : 1))
+    return sortedData
+  }
 
   render () {
     const { classes } = this.props;
-    const { data } = this.state;
+    const { data, reviewsData } = this.state;
 
     return (
       <div>
@@ -90,7 +125,7 @@ class VendorShow extends React.Component {
         <div className={classes.root}>
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
-              <EnhancedTable />
+              <EnhancedTable data={this.buildTableData(reviewsData.reviews)}/>
             </Grid>
           </Grid>
         </div>

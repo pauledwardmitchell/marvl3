@@ -22,4 +22,10 @@ class Review < ApplicationRecord
     self.review_content[0..45] + "..."
   end
 
+  def days_old
+    rational_number = Date.today - self.updated_at.to_date
+    integer = rational_number.to_i
+    integer
+  end
+
 end
