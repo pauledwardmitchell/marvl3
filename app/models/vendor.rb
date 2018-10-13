@@ -1,6 +1,7 @@
 class Vendor < ApplicationRecord
   has_many :reviews
   has_many :offerings
+  has_many :point_people
   has_many :categories, through: :offerings
 
   def avg_rating

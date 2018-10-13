@@ -163,6 +163,22 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+#ENDPOINTS FOR VENDOR SHOW
+
+  def vendor_show_data
+    vendor = Vendor.find(params[:vendor])
+
+    @data = {
+      name: vendor.name,
+      street: vendor.street,
+      city_state_and_zip: vendor.city_state_and_zip,
+      point_people_array: point_people_from_vendor(vendor)
+    }
+
+    render json: @data
+  end
+
+
 #ENDPOINTS FOR CATEGORY SHOW
   def category_show_data
     category = Category.find(params[:category])
@@ -177,6 +193,20 @@ class ApisController < ApplicationController
 
 
   private
+
+  def point_people_from_vendor(vendor)
+    point_people_array = []
+    vendor.point_people.each do |pp|
+      pp_hash = {
+        id: pp.id,
+        name_and_title: pp.name_and_title,
+        phone: pp.phone,
+        email: pp.email
+      }
+      point_people_array << pp_hash
+    end
+    point_people_array
+  end
 
   def vendors_data_from_category(category)
     @data = []
