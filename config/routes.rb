@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 #App Bar
   get '/check_for_user', to:'apis#check_for_user'
+  get '/search_vendors_suggestions', to: 'apis#search_vendors_suggestions'
 
 #Landing Page
   get '/landing_search_data', to:'apis#landing_search_data'

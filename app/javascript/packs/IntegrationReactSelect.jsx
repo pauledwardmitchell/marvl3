@@ -227,7 +227,7 @@ class IntegrationReactSelect extends React.Component {
 
   endpoint() {
     if (this.props.reviewForm === true) {
-      return '/landing_search_data' //write new endpoint
+      return '/search_vendors_suggestions'
     } else {
       return '/landing_search_data'
     }
