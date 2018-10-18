@@ -294,6 +294,7 @@ class ApisController < ApplicationController
         org_reviews.each do |review|
 
           review_data = { vendorName: Vendor.find(review.vendor_id).name,
+                          vendorId: review.vendor_id,
                           dateWritten: review.created_at.strftime("%m/%d/%Y"),
                           stars: review.rating_service,
                           review: review.review_content,
