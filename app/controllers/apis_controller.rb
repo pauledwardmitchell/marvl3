@@ -70,8 +70,8 @@ class ApisController < ApplicationController
 
     vendors.each do |v|
       vendor_hash = {
-        label: v.name + " (Vendor Page)",
-        value: v.name + " (Vendor Page)",
+        label: v.name,
+        value: v.name,
         id: v.id,
         type: "vendors"
       }
