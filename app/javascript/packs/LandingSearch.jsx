@@ -48,6 +48,7 @@ class LandingSearch extends React.Component {
             MARVL
           </Typography>
         </Grid>
+
         <IntegrationReactSelect />
         <Divider className={classes.divider}/>
       </div>

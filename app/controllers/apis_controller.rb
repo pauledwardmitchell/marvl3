@@ -64,6 +64,24 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def search_vendors_suggestions
+    @unsorted_data =[]
+    vendors = Vendor.all
+
+    vendors.each do |v|
+      vendor_hash = {
+        label: v.name,
+        value: v.name,
+        id: v.id,
+        type: "vendors"
+      }
+      @unsorted_data << vendor_hash
+    end
+
+    @data = @unsorted_data.sort{|a,b| a[:label]<=>b[:label]}
+    render json: @data
+  end
+
   def landing_schools_data
     all_schools = Organization.all
     schools = all_schools.sort{|a,b| a['name']<=>b['name']}
