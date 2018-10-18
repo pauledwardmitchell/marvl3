@@ -39,7 +39,7 @@ class ExpansionPanelReviews extends React.Component {
                 className={classes.chip}
                 label={review.stars + " / 5"}
                 />
-              <Button href={'/organizations/' + review.vendorId} size='large' className={classes.button}>{review.vendorName}</Button>
+              <Button href={'/vendors/' + review.vendorId} size='large' className={classes.button}>{review.vendorName}</Button>
               <Typography variant="body2">
                 {review.review}
               </Typography>
