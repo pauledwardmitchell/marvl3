@@ -59,7 +59,7 @@ const loadingSuggestions = [
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 250,
+    height: 40,
   },
   input: {
     display: 'flex',
@@ -225,8 +225,16 @@ class IntegrationReactSelect extends React.Component {
     suggestions: loadingSuggestions,
   };
 
+  endpoint() {
+    if (this.props.reviewForm === true) {
+      return '/landing_search_data' //write new endpoint
+    } else {
+      return '/landing_search_data'
+    }
+  }
+
   componentWillMount(){
-    thisAxios.get('/landing_search_data')
+    thisAxios.get(this.endpoint())
     .then((response) => {
       this.setState({suggestions: response.data})
     })
@@ -263,6 +271,31 @@ class IntegrationReactSelect extends React.Component {
     return false
   }
 
+
+  searchGridNumber() {
+    if (this.props.reviewForm === true) {
+      return 12
+    } else {
+      return 7
+    }
+  }
+
+  renderPlaceholder() {
+    if (this.props.reviewForm === true) {
+      return "Choose vendor"
+    } else {
+      return "Start typing what you are looking for..."
+    }
+  }
+
+  renderButton() {
+    if (this.props.reviewForm === true) {
+      return (<span></span>)
+    } else {
+      return (<Grid item xs={1}><Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>SEARCH</Button></Grid>)
+    }
+  }
+
   render() {
     const { classes, theme } = this.props;
 
@@ -282,7 +315,7 @@ class IntegrationReactSelect extends React.Component {
               alignItems='flex-start'
               direction= 'row'
               justify= 'center'>
-          <Grid item xs={7}>
+          <Grid item xs={this.searchGridNumber()}>
             <NoSsr>
               <Select
                 classes={classes}
@@ -291,14 +324,12 @@ class IntegrationReactSelect extends React.Component {
                 components={components}
                 value={this.state.single}
                 onChange={this.handleChange('single')}
-                placeholder="Start typing what you are looking for..."
+                placeholder={this.renderPlaceholder()}
                 noOptionsMessage={() => "No results. \n Looking for a vendor? Add them to MARVL now! \n Looking for a specific category? Try a broader category (\"Flooring\" instead of \"Tile\" or \"Carpet\"), or email amy@cpa.coop to propose a new category."}
               />
             </NoSsr>
           </Grid>
-          <Grid item xs={1} >
-            <Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>SEARCH</Button>
-          </Grid>
+          {this.renderButton()}
         </Grid>
       </div>
     );

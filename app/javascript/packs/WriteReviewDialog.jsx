@@ -172,7 +172,7 @@ class WriteReviewDialog extends React.Component {
 
             <FormGroup>
               <FormControl className={classes.formControl}>
-                <IntegrationReactSelect data={[ { value: 'Composting', label: 'Composting' }, { value: 'Computers - Staff', label: 'Computers - Staff' } ]}/>
+                <IntegrationReactSelect reviewForm={true} data={[ { value: 'Composting', label: 'Composting' }, { value: 'Computers - Staff', label: 'Computers - Staff' } ]}/>
               </FormControl>
 
               <FormControl className={classes.review}>
