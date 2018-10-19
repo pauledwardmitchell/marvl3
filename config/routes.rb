@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   get '/supplies', to: 'apis#supplies'
   get '/student_instruction_and_services', to: 'apis#student_instruction_and_services'
 
+#Uploads
+  get '/upload', to: 'reviews#upload'
+  post '/import_reviews', to: 'reviews#import'
+
   root to: 'reviews#index'
 
 end

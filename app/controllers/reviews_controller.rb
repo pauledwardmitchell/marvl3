@@ -9,6 +9,15 @@ class ReviewsController < ApplicationController
              type: "Admin"}
   end
 
+  def upload
+
+  end
+
+  def import
+    Review.import(params[:file])
+    redirect_to root_url
+  end
+
   # # GET /posts/1
   # # GET /posts/1.json
   # def show
