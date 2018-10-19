@@ -6,6 +6,18 @@ class Review < ApplicationRecord
 
   validates :user_id, :vendor_id, :review_content, :rating_service, :rating_quality, presence: true
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      user = User.find_by(email: row["email"])
+      vendor = Vendor.find_by(name: row["vendor"])
+      Review.create(user_id: user.id,
+                    vendor_id: vendor.id,
+                    review_content: row["content"],
+                    rating_quality: row["quality"],
+                    rating_service: row["service"])
+    end
+  end
+
   def category_ids_array
     @category_ids_array =[]
     self.categories.each do |category|
