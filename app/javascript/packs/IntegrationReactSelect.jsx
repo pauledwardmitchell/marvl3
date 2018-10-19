@@ -242,10 +242,24 @@ class IntegrationReactSelect extends React.Component {
   }
 
   handleChange = name => value => {
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value }, () => { this.updateVendorId() });
   };
+
+  updateVendorId() {
+    var vendor = this.state.single.label;
+    var vendorData = this.state.suggestions;
+    var vendorId = null;
+    var i;
+
+    if (this.state.single != null) {
+      for (i = 0; i < vendorData.length; i++) {
+        if (vendor === vendorData[i].label) {
+          vendorId = vendorData[i].id
+        }
+      }
+      this.props.handleVendorChange(vendorId)
+    }
+  }
 
   buildButtonLink = () => {
     if (this.state.single != null && this.state.single.type === "super_super_categories") {

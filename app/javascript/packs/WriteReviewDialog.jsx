@@ -66,6 +66,7 @@ class WriteReviewDialog extends React.Component {
 
     this.state = {
       open: false,
+      vendorId: null,
       reviewContent: '',
       ratingService: 0,
       ratingQuality: 0,
@@ -86,6 +87,10 @@ class WriteReviewDialog extends React.Component {
     this.setState({ ratingService: 0 });
     this.setState({ ratingQuality: 0 });
     this.setState({ anonymous: false });
+  }
+
+  handleVendorChange = (id) => {
+    this.setState({ vendorId: id })
   }
 
   handleContentChange = event => {
@@ -172,7 +177,7 @@ class WriteReviewDialog extends React.Component {
 
             <FormGroup>
               <FormControl className={classes.formControl}>
-                <IntegrationReactSelect reviewForm={true} data={[ { value: 'Composting', label: 'Composting' }, { value: 'Computers - Staff', label: 'Computers - Staff' } ]}/>
+                <IntegrationReactSelect reviewForm={true} handleVendorChange={this.handleVendorChange} />
               </FormControl>
 
               <FormControl className={classes.review}>
