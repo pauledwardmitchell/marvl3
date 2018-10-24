@@ -67,7 +67,8 @@ class WriteReviewDialog extends React.Component {
     this.state = {
       open: false,
       vendorId: null,
-      reviewContent: '',
+      reviewPublicContent: '',
+      reviewPrivateContent: '',
       ratingService: 0,
       ratingQuality: 0,
       anonymous: false
@@ -83,7 +84,8 @@ class WriteReviewDialog extends React.Component {
   };
 
   resetForm = () => {
-    this.setState({ reviewContent: '' });
+    this.setState({ reviewPublicContent: '' });
+    this.setState({ reviewPrivateContent: '' });
     this.setState({ ratingService: 0 });
     this.setState({ ratingQuality: 0 });
     this.setState({ anonymous: false });
@@ -93,8 +95,12 @@ class WriteReviewDialog extends React.Component {
     this.setState({ vendorId: id })
   }
 
-  handleContentChange = event => {
-    this.setState({ reviewContent: event.target.value });
+  handlePublicContentChange = event => {
+    this.setState({ reviewPublicContent: event.target.value });
+  };
+
+  handlePrivateContentChange = event => {
+    this.setState({ reviewPrivateContent: event.target.value });
   };
 
   handleRatingServiceChange = (newRating) => {
@@ -112,7 +118,8 @@ class WriteReviewDialog extends React.Component {
   handleReviewSubmit() {
     const userId = 1
     const vendorId = 1
-    const reviewContent = this.state.reviewContent
+    const reviewPublicContent = this.state.reviewPublicContent
+    const reviewPrivateContent = this.state.reviewPrivateContent
     const ratingService = this.state.ratingService
     const ratingQuality = this.state.ratingQuality
     const anonymous = this.state.anonymous
@@ -134,10 +141,10 @@ class WriteReviewDialog extends React.Component {
       review: {
         user_id: userId,
         vendor_id: vendorId,
-        review_content: reviewContent,
+        review_content: reviewPublicContent,
+        review_private_content: reviewPublicContent,
         rating_service: ratingService,
-        rating_quality: ratingQuality,
-        anonymous: anonymous
+        rating_quality: ratingQuality
       }
     })
     .then(function (response) {
@@ -186,8 +193,19 @@ class WriteReviewDialog extends React.Component {
                   label="Write your review"
                   multiline
                   rowsMax="10"
-                  value={this.state.reviewContent}
-                  onChange={this.handleContentChange}
+                  value={this.state.reviewPublicContent}
+                  onChange={this.handlePublicContentChange}
+                />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  id="multiline-flexible"
+                  label="Write a private section of your review (visible to CPA members only)"
+                  multiline
+                  rowsMax="10"
+                  value={this.state.reviewPrivateContent}
+                  onChange={this.handlePrivateContentChange}
                 />
               </FormControl>
 
@@ -212,18 +230,6 @@ class WriteReviewDialog extends React.Component {
                   size={24}
                   color2={'#ffd700'} />
               </FormControl>
-
-              <FormControlLabel className={classes.switchAnon}
-                control={
-                  <Switch
-                    checked={this.state.anonymous}
-                    onChange={this.handleAnonChange}
-                    value="anonymous"
-                    color="primary"
-                  />
-                }
-                label={this.anonLabel()}
-              />
 
             </FormGroup>
 
