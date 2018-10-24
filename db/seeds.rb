@@ -65,7 +65,7 @@ fac_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -80,7 +80,7 @@ furn_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -95,7 +95,7 @@ util_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -110,7 +110,7 @@ constr_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -128,7 +128,7 @@ bene_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -143,7 +143,7 @@ fin_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -158,7 +158,7 @@ tprodev_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -177,7 +177,7 @@ itcon_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -192,7 +192,7 @@ itsoft_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -207,7 +207,7 @@ ithard_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -226,7 +226,7 @@ printm_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -241,7 +241,7 @@ sports_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -256,7 +256,7 @@ nslp_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -271,7 +271,7 @@ off_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -290,7 +290,7 @@ curric_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -305,7 +305,7 @@ iit_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -320,7 +320,7 @@ apps_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -335,7 +335,7 @@ sss_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -350,7 +350,7 @@ uni_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -365,7 +365,7 @@ fam_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
@@ -380,7 +380,7 @@ trans_array.each do |c|
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
     Offering.create( category_id: cat.id, vendor_id: vendor.id )
     2.times do
-      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample
+      Review.create( user_id: (1..9).to_a.sample, vendor_id: vendor.id, review_content: "Ipsum lorem", review_private_content: "Lorem ipsum", rating: (1..5).to_a.sample)
     end
   end
 end
