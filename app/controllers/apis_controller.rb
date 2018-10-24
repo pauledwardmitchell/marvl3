@@ -231,8 +231,7 @@ class ApisController < ApplicationController
         id: r.id,
         school_name: r.user.organization.name,
         school_id: r.user.organization.id,
-        work_quality: r.rating_quality,
-        customer_service: r.rating_service,
+        rating: r.rating,
         review: r.review_content,
         reviewer: r.user.full_name,
         days_ago: r.days_old
@@ -314,8 +313,7 @@ class ApisController < ApplicationController
           review_data = { vendorName: Vendor.find(review.vendor_id).name,
                           vendorId: review.vendor_id,
                           dateWritten: review.created_at.strftime("%m/%d/%Y"),
-                          stars: review.rating_service,
-                          review: review.review_content,
+                          stars: review.rating,
                           id: review.id
                         }
 
