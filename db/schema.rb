@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181024170348) do
+ActiveRecord::Schema.define(version: 20181024171539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20181024170348) do
     t.integer "rating_quality"
     t.boolean "anonymous"
     t.string "review_private_content"
+    t.integer "rating"
   end
 
   create_table "super_categories", force: :cascade do |t|

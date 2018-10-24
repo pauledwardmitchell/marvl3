@@ -41,7 +41,7 @@ const styles = theme => ({
     marginBottom: 10
   },
   stars: {
-    marginLeft: 130,
+    marginLeft: 50,
     marginTop: 12
   },
   switchAnon: {
@@ -69,9 +69,7 @@ class WriteReviewDialog extends React.Component {
       vendorId: null,
       reviewPublicContent: '',
       reviewPrivateContent: '',
-      ratingService: 0,
-      ratingQuality: 0,
-      anonymous: false
+      rating: 0
     };
   }
 
@@ -84,11 +82,10 @@ class WriteReviewDialog extends React.Component {
   };
 
   resetForm = () => {
+    this.setState({ vendorId: null });
     this.setState({ reviewPublicContent: '' });
     this.setState({ reviewPrivateContent: '' });
-    this.setState({ ratingService: 0 });
-    this.setState({ ratingQuality: 0 });
-    this.setState({ anonymous: false });
+    this.setState({ rating: 0 });
   }
 
   handleVendorChange = (id) => {
@@ -103,26 +100,16 @@ class WriteReviewDialog extends React.Component {
     this.setState({ reviewPrivateContent: event.target.value });
   };
 
-  handleRatingServiceChange = (newRating) => {
-    this.setState({ ratingService: newRating });
-  };
-
-  handleRatingQualityChange = (newRating) => {
-    this.setState({ ratingQuality: newRating });
-  };
-
-  handleAnonChange = event => {
-    this.setState({ anonymous: !this.state.anonymous });
+  handleRatingChange = (newRating) => {
+    this.setState({ rating: newRating });
   };
 
   handleReviewSubmit() {
     const userId = 1
-    const vendorId = 1
+    const vendorId = this.state.vendorId
     const reviewPublicContent = this.state.reviewPublicContent
     const reviewPrivateContent = this.state.reviewPrivateContent
-    const ratingService = this.state.ratingService
-    const ratingQuality = this.state.ratingQuality
-    const anonymous = this.state.anonymous
+    const rating = this.state.rating
     const alerts = []
     let that = this
 
@@ -142,9 +129,8 @@ class WriteReviewDialog extends React.Component {
         user_id: userId,
         vendor_id: vendorId,
         review_content: reviewPublicContent,
-        review_private_content: reviewPublicContent,
-        rating_service: ratingService,
-        rating_quality: ratingQuality
+        review_private_content: reviewPrivateContent,
+        rating: rating
       }
     })
     .then(function (response) {
@@ -155,14 +141,6 @@ class WriteReviewDialog extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
-  }
-
-  anonLabel = () => {
-    if (this.state.anonymous === false) {
-      return "Posting Publically"
-    } else {
-      return "Posting Anonymously"
-    }
   }
 
   render() {
@@ -210,23 +188,12 @@ class WriteReviewDialog extends React.Component {
               </FormControl>
 
               <FormControl>
-                <InputLabel>Customer Service</InputLabel>
+                <InputLabel>Rating</InputLabel>
                 <ReactStars
                   className={classes.stars}
                   count={5}
-                  value={this.state.ratingService}
-                  onChange={this.handleRatingServiceChange}
-                  size={24}
-                  color2={'#ffd700'} />
-              </FormControl>
-
-              <FormControl>
-                <InputLabel>Quality of Work</InputLabel>
-                <ReactStars
-                  className={classes.stars}
-                  count={5}
-                  value={this.state.ratingQuality}
-                  onChange={this.handleRatingQualityChange}
+                  value={this.state.rating}
+                  onChange={this.handleRatingChange}
                   size={24}
                   color2={'#ffd700'} />
               </FormControl>
