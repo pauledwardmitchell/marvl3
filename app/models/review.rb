@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   has_many :offerings, through: :vendor
   has_many :categories, through: :offerings
 
-  validates :user_id, :vendor_id, :review_content, :rating_service, :rating_quality, presence: true
+  validates :user_id, :vendor_id, :review_content, :rating, presence: true
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
@@ -24,10 +24,6 @@ class Review < ApplicationRecord
       @category_ids_array << category.id
     end
     @category_ids_array
-  end
-
-  def avg_rating
-    (self.rating_quality + self.rating_service) / 2
   end
 
   def content_teaser
