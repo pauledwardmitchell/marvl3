@@ -314,6 +314,7 @@ class ApisController < ApplicationController
                           vendorId: review.vendor_id,
                           dateWritten: review.created_at.strftime("%m/%d/%Y"),
                           stars: review.rating,
+                          review: review.review_content,
                           id: review.id
                         }
 

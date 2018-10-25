@@ -46,8 +46,7 @@ const loadingReviewsData = {
   reviews: [
     { id: 1,
       school_name: 'Loading...',
-      work_quality: 5,
-      customer_service: 5,
+      rating: 5,
       review: 'Loading...',
       reviewer: 'Loading...',
       days_ago: 100
@@ -89,13 +88,12 @@ class VendorShow extends React.Component {
     for (i = 0; i < reviewsData.length; i++) {
       var counter = i + 1;
       var schoolName = reviewsData[i].school_name;
-      var workQuality = reviewsData[i].work_quality;
-      var customerService = reviewsData[i].customer_service;
+      var rating = reviewsData[i].rating;
       var review = reviewsData[i].review;
       var reviewer = reviewsData[i].reviewer;
       var daysAgo = reviewsData[i].days_ago;
 
-      var row = {id: counter, schoolName, workQuality, customerService, review, reviewer, daysAgo}
+      var row = {id: counter, schoolName, rating, review, reviewer, daysAgo}
       data.push(row)
     }
 
