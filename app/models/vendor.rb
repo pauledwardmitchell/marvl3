@@ -5,7 +5,7 @@ class Vendor < ApplicationRecord
   has_many :categories, through: :offerings
 
   def avg_rating
-    ratings_array = self.reviews.map { |r| r.avg_rating }
+    ratings_array = self.reviews.map { |r| r.rating }
     avg_rating = ratings_array.inject(0){|sum,x| sum + x } / reviews.count
     avg_rating
   end
