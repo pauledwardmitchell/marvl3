@@ -114,6 +114,7 @@ class ApisController < ApplicationController
         super_category: r.categories[0].super_categories[0].name,
         super_super_category: r.categories[0].super_categories[0].super_super_category.name,
         text: r.review_content,
+        review_private_content: r.review_private_content,
         id: r.id
       }
       @data << review_hash
@@ -233,6 +234,7 @@ class ApisController < ApplicationController
         school_id: r.user.organization.id,
         rating: r.rating,
         review: r.review_content,
+        private_review: r.review_private_content,
         reviewer: r.user.full_name,
         days_ago: r.days_old
       }
@@ -315,6 +317,7 @@ class ApisController < ApplicationController
                           dateWritten: review.created_at.strftime("%m/%d/%Y"),
                           stars: review.rating,
                           review: review.review_content,
+                          private_review: review.review_private_content,
                           id: review.id
                         }
 

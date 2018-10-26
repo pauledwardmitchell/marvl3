@@ -36,4 +36,12 @@ class Review < ApplicationRecord
     integer
   end
 
+  def has_private_review
+    if self.review_private_content.length > 0
+      true
+    else
+      false
+    end
+  end
+
 end
