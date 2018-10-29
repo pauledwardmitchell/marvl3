@@ -72,6 +72,9 @@ class AddVendorDialog extends React.Component {
       vendorStreetAddress: '',
       vendorCityStateZip: '',
       categoryId: null,
+      pointPersonName: "",
+      pointPersonPhone: "",
+      pointPersonEmail: ""
     };
   }
 
@@ -110,8 +113,16 @@ class AddVendorDialog extends React.Component {
     this.setState({ vendorStreetAddress: event.target.value });
   };
 
-  handleRatingChange = (newRating) => {
-    this.setState({ rating: newRating });
+  handlePointPersonNameChange = event => {
+    this.setState({ pointPersonName: event.target.value });
+  };
+
+  handlePointPersonPhoneChange = event => {
+    this.setState({ pointPersonPhone: event.target.value });
+  };
+
+  handlePointPersonEmailChange = event => {
+    this.setState({ pointPersonEmail: event.target.value });
   };
 
   handleVendorSubmit() {
@@ -122,17 +133,6 @@ class AddVendorDialog extends React.Component {
     const rating = this.state.rating
     const alerts = []
     let that = this
-
-    var htmlparser = require("htmlparser2");
-    const parser = new htmlparser.Parser({
-      ontext: function(text){
-        if (text.length > 6) {
-          alerts.push(text)
-          console.log("-->", text);
-        }
-      }
-    }, {decodeEntities: true, recognizeSelfClosing: true });
-
 
     thisAxios.post(`/reviews`, {
       review: {
@@ -158,13 +158,14 @@ class AddVendorDialog extends React.Component {
     var vendors = this.props.existingVendors;
     var i;
     if (searchTerm.length > 4) {
-      for (i = 0; i < vendors.length; i++) {
-        if (vendorName.toUpperCase().indexOf( searchTerm.toUpperCase() ) > -1 ) {
+      var matches = vendors.filter(vendor => vendor.name.toUpperCase().indexOf(searchTerm.toUpperCase() > -1 ))
+
+        if (matches.length > 0) {
           return (
             <div>
               <Typography variant='subheading' align='center'>Here are some existing vendors that match yours.</Typography>
               {vendors
-                .filter((vendor) => `${vendor.name}`.toUpperCase().indexOf(this.props.vendorName.toUpperCase()) >= 0)
+                .filter((vendor) => vendor.name.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
                 .map((vendor) => {
                   return (
                     <Button key={vendor.id}  href={`/vendors/${vendor.id}`}>{vendor.name}</Button>
@@ -178,7 +179,7 @@ class AddVendorDialog extends React.Component {
             <Typography variant='subheading' align='center'>This vendor is new to MARVL! High five!</Typography>
           )
         }
-      }
+
     } else {
       return( <div></div> )
     }
@@ -245,6 +246,30 @@ class AddVendorDialog extends React.Component {
 
               <FormControl className={classes.formControl}>
                 <IntegrationReactSelect vendorForm={true} handleCategoryChange={this.handleCategoryChange} />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  label="Point Person Name"
+                  value={this.state.pointPersonName}
+                  onChange={this.handlePointPersonNameChange}
+                />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  label="Point Person Phone"
+                  value={this.state.pointPersonPhone}
+                  onChange={this.handlePointPersonPhoneChange}
+                />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  label="Point Person Email"
+                  value={this.state.pointPersonEmail}
+                  onChange={this.handlePointPersonEmailChange}
+                />
               </FormControl>
 
             </FormGroup>
