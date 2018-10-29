@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 
 import WriteReviewDialog from './WriteReviewDialog'
+import AddVendorDialog from './AddVendorDialog'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -33,7 +34,8 @@ class ButtonAppBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null
+      currentUser: null,
+      existingVendors: [{name: 'Loading', id: 1}]
     };
   }
 
@@ -58,6 +60,12 @@ class ButtonAppBar extends React.Component {
     .catch((error) => {
       console.log(error);
     })
+
+    thisAxios.get('/existing_vendors')
+      .then((response) => {
+        this.setState({existingVendors: response.data})
+      })
+    .catch((error) => console.error('axios error', error))
   }
 
   handleLoginClick() {
@@ -123,6 +131,7 @@ class ButtonAppBar extends React.Component {
           <Toolbar>
 
             <WriteReviewDialog />
+            <AddVendorDialog existingVendors={this.state.existingVendors} />
 
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>
