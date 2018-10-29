@@ -12,6 +12,40 @@ class ApisController < ApplicationController
     render json: @user
   end
 
+  def existing_vendors
+    @unsorted_data =[]
+    vendors = Vendor.all
+
+    vendors.each do |v|
+      vendor_hash = {
+        name: v.name,
+        id: v.id
+      }
+      @unsorted_data << vendor_hash
+    end
+
+    @data = @unsorted_data.sort{|a,b| a[:name]<=>b[:name]}
+    render json: @data
+  end
+
+  def search_categories_suggestions
+    @unsorted_data =[]
+    categories = Category.all
+
+    categories.each do |c|
+      category_hash = {
+        label: c.suggestion_label,
+        value: c.suggestion_label,
+        id: c.id,
+        type: "categories"
+      }
+      @unsorted_data << category_hash
+    end
+
+    @data = @unsorted_data.sort{|a,b| a[:label]<=>b[:label]}
+    render json: @data
+  end
+
 #ENDPOINTS FOR LANDING PAGE
   def landing_search_data
     @unsorted_data =[]

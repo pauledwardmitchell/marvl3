@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 #App Bar
   get '/check_for_user', to:'apis#check_for_user'
   get '/search_vendors_suggestions', to: 'apis#search_vendors_suggestions'
+  get '/search_categories_suggestions', to: 'apis#search_categories_suggestions'
+  get '/existing_vendors', to: 'apis#existing_vendors'
 
 #Landing Page
   get '/landing_search_data', to:'apis#landing_search_data'

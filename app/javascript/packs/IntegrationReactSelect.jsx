@@ -195,6 +195,8 @@ class IntegrationReactSelect extends React.Component {
   endpoint() {
     if (this.props.reviewForm === true) {
       return '/search_vendors_suggestions'
+    } else if (this.props.vendorForm === true) {
+      return '/search_categories_suggestions'
     } else {
       return '/landing_search_data'
     }
@@ -209,7 +211,13 @@ class IntegrationReactSelect extends React.Component {
   }
 
   handleChange = name => value => {
-    this.setState({ [name]: value }, () => { this.updateVendorId() });
+    if (this.props.reviewForm === true) {
+      this.setState({ [name]: value }, () => { this.updateVendorId() });
+    } else if (this.props.vendorForm === true) {
+      this.setState({ [name]: value }, () => { this.updateCategoryId() });
+    } else {
+      this.setState({ [name]: value });
+    }
   };
 
   updateVendorId() {
@@ -225,6 +233,22 @@ class IntegrationReactSelect extends React.Component {
         }
       }
       this.props.handleVendorChange(vendorId)
+    }
+  }
+
+  updateCategoryId() {
+    var category = this.state.single.label;
+    var categoryData = this.state.suggestions;
+    var categoryId = null;
+    var i;
+
+    if (this.state.single != null) {
+      for (i = 0; i < categoryData.length; i++) {
+        if (category === categoryData[i].label) {
+          categoryId = categoryData[i].id
+        }
+      }
+      this.props.handleCategoryChange(categoryId)
     }
   }
 
@@ -254,7 +278,7 @@ class IntegrationReactSelect extends React.Component {
 
 
   searchGridNumber() {
-    if (this.props.reviewForm === true) {
+    if (this.props.reviewForm === true || this.props.vendorForm === true) {
       return 12
     } else {
       return 7
@@ -264,13 +288,15 @@ class IntegrationReactSelect extends React.Component {
   renderPlaceholder() {
     if (this.props.reviewForm === true) {
       return "Choose vendor"
+    } else if (this.props.vendorForm === true) {
+      return "This vendor does work in..."
     } else {
       return "Start typing what you are looking for..."
     }
   }
 
   renderButton() {
-    if (this.props.reviewForm === true) {
+    if (this.props.reviewForm === true || this.props.vendorForm === true ) {
       return (<span></span>)
     } else {
       return (<Grid item xs={1}><Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>SEARCH</Button></Grid>)
