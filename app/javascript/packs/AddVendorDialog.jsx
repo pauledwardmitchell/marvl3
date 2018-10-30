@@ -41,12 +41,9 @@ const styles = theme => ({
   review: {
     marginBottom: 10
   },
-  stars: {
-    marginLeft: 50,
-    marginTop: 12
-  },
-  switchAnon: {
-    marginTop: 10
+  select: {
+    marginTop: 30,
+    marginBottom: 20
   }
 });
 
@@ -67,8 +64,9 @@ class AddVendorDialog extends React.Component {
 
     this.state = {
       open: false,
+      submitDisabled: true,
       vendorName: "",
-      vendorWebsite: "www.",
+      vendorWebsite: "",
       vendorStreetAddress: '',
       vendorCityStateZip: '',
       categoryId: null,
@@ -87,42 +85,43 @@ class AddVendorDialog extends React.Component {
   };
 
   resetForm = () => {
-    this.setState({ vendorId: null });
+    this.setState({ vendorName: '' });
     this.setState({ reviewPublicContent: '' });
     this.setState({ reviewPrivateContent: '' });
     this.setState({ rating: 0 });
   }
 
   handleCategoryChange = (id) => {
-    this.setState({ categoryId: id })
+    this.setState()
+    this.setState( { categoryId: id }, () => this.submitButtonEnabledYet() );
   }
 
   handleVendorNameChange = event => {
-    this.setState({ vendorName: event.target.value });
+    this.setState({ vendorName: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorWebsiteChange = event => {
-    this.setState({ vendorWebsite: event.target.value });
+    this.setState({ vendorWebsite: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorStreetAddressChange = event => {
-    this.setState({ vendorStreetAddress: event.target.value });
+    this.setState({ vendorStreetAddress: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorCityStateZipChange = event => {
-    this.setState({ vendorStreetAddress: event.target.value });
+    this.setState({ vendorCityStateZip: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handlePointPersonNameChange = event => {
-    this.setState({ pointPersonName: event.target.value });
+    this.setState({ pointPersonName: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handlePointPersonPhoneChange = event => {
-    this.setState({ pointPersonPhone: event.target.value });
+    this.setState({ pointPersonPhone: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handlePointPersonEmailChange = event => {
-    this.setState({ pointPersonEmail: event.target.value });
+    this.setState({ pointPersonEmail: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorSubmit() {
@@ -151,6 +150,26 @@ class AddVendorDialog extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+  }
+
+  submitButtonEnabledYet() {
+    const {vendorName, vendorWebsite, vendorStreetAddress,  vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
+
+    const inputs = [
+      vendorName,
+      vendorWebsite,
+      vendorStreetAddress,
+      vendorCityStateZip,
+      pointPersonName,
+      pointPersonPhone,
+      pointPersonEmail
+    ]
+
+    if (inputs.map(input => input.length > 0).includes(false) || categoryId === null) {
+      this.setState({ submitDisabled: true })
+    } else {
+      this.setState({ submitDisabled: false })
+    }
   }
 
   renderExistingVendorsWarning() {
@@ -213,6 +232,7 @@ class AddVendorDialog extends React.Component {
 
               <FormControl className={classes.review}>
                 <TextField
+                  required
                   id="multiline-flexible"
                   label="Vendor Name"
                   multiline
@@ -249,7 +269,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.formControl}>
+              <FormControl className={classes.select}>
                 <IntegrationReactSelect vendorForm={true} handleCategoryChange={this.handleCategoryChange} />
               </FormControl>
 
@@ -284,7 +304,7 @@ class AddVendorDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleReviewSubmit} color="primary">
+            <Button disabled={this.state.submitDisabled} onClick={this.handleReviewSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
