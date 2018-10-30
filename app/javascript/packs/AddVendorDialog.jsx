@@ -158,9 +158,14 @@ class AddVendorDialog extends React.Component {
     var vendors = this.props.existingVendors;
     var i;
     if (searchTerm.length > 4) {
-      var matches = vendors.filter(vendor => vendor.name.toUpperCase().indexOf(searchTerm.toUpperCase() > -1 ))
-
-        if (matches.length > 0) {
+      var matches = []
+      for (i = 0; i < vendors.length; i++) {
+        if (vendors[i].name.toUpperCase().indexOf(searchTerm.toUpperCase()) > -1) {
+          var match = {name: vendors[i].name, id: vendors[i].id}
+          matches.push(match)
+        }
+      }
+        if (matches.length > 1) {
           return (
             <div>
               <Typography variant='subheading' align='center'>Here are some existing vendors that match yours.</Typography>
