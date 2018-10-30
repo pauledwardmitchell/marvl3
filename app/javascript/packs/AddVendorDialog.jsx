@@ -41,12 +41,9 @@ const styles = theme => ({
   review: {
     marginBottom: 10
   },
-  stars: {
-    marginLeft: 50,
-    marginTop: 12
-  },
-  switchAnon: {
-    marginTop: 10
+  select: {
+    marginTop: 30,
+    marginBottom: 20
   }
 });
 
@@ -67,11 +64,15 @@ class AddVendorDialog extends React.Component {
 
     this.state = {
       open: false,
-      vendorName: "",
-      vendorWebsite: "www.",
+      submitDisabled: true,
+      vendorName: '',
+      vendorWebsite: '',
       vendorStreetAddress: '',
       vendorCityStateZip: '',
       categoryId: null,
+      pointPersonName: '',
+      pointPersonPhone: '',
+      pointPersonEmail: ''
     };
   }
 
@@ -84,63 +85,62 @@ class AddVendorDialog extends React.Component {
   };
 
   resetForm = () => {
-    this.setState({ vendorId: null });
-    this.setState({ reviewPublicContent: '' });
-    this.setState({ reviewPrivateContent: '' });
-    this.setState({ rating: 0 });
+    this.setState({ vendorName: '' });
+    this.setState({ vendorWebsite: '' });
+    this.setState({ vendorStreetAddress: '' });
+    this.setState({ vendorCityStateZip: '' });
+    this.setState({ categoryId: null });
+    this.setState({ pointPersonName: '' });
+    this.setState({ pointPersonPhone: '' });
+    this.setState({ pointPersonEmail: '' });
   }
 
   handleCategoryChange = (id) => {
-    this.setState({ categoryId: id })
+    this.setState()
+    this.setState( { categoryId: id }, () => this.submitButtonEnabledYet() );
   }
 
   handleVendorNameChange = event => {
-    this.setState({ vendorName: event.target.value });
+    this.setState({ vendorName: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorWebsiteChange = event => {
-    this.setState({ vendorWebsite: event.target.value });
+    this.setState({ vendorWebsite: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorStreetAddressChange = event => {
-    this.setState({ vendorStreetAddress: event.target.value });
+    this.setState({ vendorStreetAddress: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorCityStateZipChange = event => {
-    this.setState({ vendorStreetAddress: event.target.value });
+    this.setState({ vendorCityStateZip: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
-  handleRatingChange = (newRating) => {
-    this.setState({ rating: newRating });
+  handlePointPersonNameChange = event => {
+    this.setState({ pointPersonName: event.target.value }, () => this.submitButtonEnabledYet() );
+  };
+
+  handlePointPersonPhoneChange = event => {
+    this.setState({ pointPersonPhone: event.target.value }, () => this.submitButtonEnabledYet() );
+  };
+
+  handlePointPersonEmailChange = event => {
+    this.setState({ pointPersonEmail: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleVendorSubmit() {
-    const vendorName = this.state.vendorName
-    const vendorWebsite = this.state.vendorWebsite
-    const reviewPublicContent = this.state.reviewPublicContent
-    const reviewPrivateContent = this.state.reviewPrivateContent
-    const rating = this.state.rating
-    const alerts = []
-    let that = this
+    const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
 
-    var htmlparser = require("htmlparser2");
-    const parser = new htmlparser.Parser({
-      ontext: function(text){
-        if (text.length > 6) {
-          alerts.push(text)
-          console.log("-->", text);
-        }
-      }
-    }, {decodeEntities: true, recognizeSelfClosing: true });
-
-
-    thisAxios.post(`/reviews`, {
-      review: {
-        user_id: userId,
-        vendor_id: vendorId,
-        review_content: reviewPublicContent,
-        review_private_content: reviewPrivateContent,
-        rating: rating
+    thisAxios.post(`/vendor_payload`, {
+      data: {
+        vendor_name: vendorName,
+        vendor_website: vendorWebsite,
+        vendor_street_address: vendorStreetAddress,
+        vendor_city_state_zip: vendorCityStateZip,
+        category_id: categoryId,
+        point_person_name: pointPersonName,
+        point_person_phone: pointPersonPhone,
+        point_person_email: pointPersonEmail
       }
     })
     .then(function (response) {
@@ -153,18 +153,44 @@ class AddVendorDialog extends React.Component {
     });
   }
 
+  submitButtonEnabledYet() {
+    const {vendorName, vendorWebsite, vendorStreetAddress,  vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
+
+    const inputs = [
+      vendorName,
+      vendorWebsite,
+      vendorStreetAddress,
+      vendorCityStateZip,
+      pointPersonName,
+      pointPersonPhone,
+      pointPersonEmail
+    ]
+
+    if (inputs.map(input => input.length > 0).includes(false) || categoryId === null) {
+      this.setState({ submitDisabled: true })
+    } else {
+      this.setState({ submitDisabled: false })
+    }
+  }
+
   renderExistingVendorsWarning() {
     var searchTerm = this.state.vendorName;
     var vendors = this.props.existingVendors;
     var i;
     if (searchTerm.length > 4) {
+      var matches = []
       for (i = 0; i < vendors.length; i++) {
-        if (vendorName.toUpperCase().indexOf( searchTerm.toUpperCase() ) > -1 ) {
+        if (vendors[i].name.toUpperCase().indexOf(searchTerm.toUpperCase()) > -1) {
+          var match = {name: vendors[i].name, id: vendors[i].id}
+          matches.push(match)
+        }
+      }
+        if (matches.length > 1) {
           return (
             <div>
               <Typography variant='subheading' align='center'>Here are some existing vendors that match yours.</Typography>
               {vendors
-                .filter((vendor) => `${vendor.name}`.toUpperCase().indexOf(this.props.vendorName.toUpperCase()) >= 0)
+                .filter((vendor) => vendor.name.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
                 .map((vendor) => {
                   return (
                     <Button key={vendor.id}  href={`/vendors/${vendor.id}`}>{vendor.name}</Button>
@@ -178,7 +204,7 @@ class AddVendorDialog extends React.Component {
             <Typography variant='subheading' align='center'>This vendor is new to MARVL! High five!</Typography>
           )
         }
-      }
+
     } else {
       return( <div></div> )
     }
@@ -207,6 +233,7 @@ class AddVendorDialog extends React.Component {
 
               <FormControl className={classes.review}>
                 <TextField
+                  required
                   id="multiline-flexible"
                   label="Vendor Name"
                   multiline
@@ -243,8 +270,32 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.formControl}>
+              <FormControl className={classes.select}>
                 <IntegrationReactSelect vendorForm={true} handleCategoryChange={this.handleCategoryChange} />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  label="Point Person Name"
+                  value={this.state.pointPersonName}
+                  onChange={this.handlePointPersonNameChange}
+                />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  label="Point Person Phone"
+                  value={this.state.pointPersonPhone}
+                  onChange={this.handlePointPersonPhoneChange}
+                />
+              </FormControl>
+
+              <FormControl className={classes.review}>
+                <TextField
+                  label="Point Person Email"
+                  value={this.state.pointPersonEmail}
+                  onChange={this.handlePointPersonEmailChange}
+                />
               </FormControl>
 
             </FormGroup>
@@ -254,7 +305,7 @@ class AddVendorDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleReviewSubmit} color="primary">
+            <Button disabled={this.state.submitDisabled} onClick={this.handleReviewSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
