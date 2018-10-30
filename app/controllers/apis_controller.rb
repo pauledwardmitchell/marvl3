@@ -48,31 +48,31 @@ class ApisController < ApplicationController
 
   def vendor_payload
     p params
-    # @vendor = Vendor.new (
-    #             name: params[:data][:vendor_name],
-    #             website: params[:data][:vendor_website],
-    #             street: params[:data][:vendor_street_address],
-    #             city_state_and_zip: params[:data][:vendor_city_state_zip]
-    #           )
+    @vendor = Vendor.new (
+                name: params[:data][:vendor_name],
+                website: params[:data][:vendor_website],
+                street: params[:data][:vendor_street_address],
+                city_state_and_zip: params[:data][:vendor_city_state_zip]
+              )
 
-    # if @vendor.save
-    #   @offering = Offering.new (
-    #                 vendor_id: @vendor.id,
-    #                 category_id: params[:data][:category_id]
-    #               )
+    if @vendor.save
+      @offering = Offering.new (
+                    vendor_id: @vendor.id,
+                    category_id: params[:data][:category_id]
+                  )
 
-    #   if @offering.save
-    #     @point_person = PointPerson.create (
-    #                       name: params[:data][:point_person_name],
-    #                       email: params[:data][:point_person_email],
-    #                       phone: params[:data][:point_person_phone]
-    #                     )
-    #   else
-    #     render json: @offering.errors, status: :unprocessable_entity
-    #   end
-    # else
-    #   render json: @vendor.errors, status: :unprocessable_entity
-    # end
+      if @offering.save
+        @point_person = PointPerson.create (
+                          name: params[:data][:point_person_name],
+                          email: params[:data][:point_person_email],
+                          phone: params[:data][:point_person_phone]
+                        )
+      else
+        render json: @offering.errors, status: :unprocessable_entity
+      end
+    else
+      render json: @vendor.errors, status: :unprocessable_entity
+    end
   end
 
 #ENDPOINTS FOR LANDING PAGE
