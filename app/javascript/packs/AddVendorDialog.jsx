@@ -65,14 +65,14 @@ class AddVendorDialog extends React.Component {
     this.state = {
       open: false,
       submitDisabled: true,
-      vendorName: "",
-      vendorWebsite: "",
+      vendorName: '',
+      vendorWebsite: '',
       vendorStreetAddress: '',
       vendorCityStateZip: '',
       categoryId: null,
-      pointPersonName: "",
-      pointPersonPhone: "",
-      pointPersonEmail: ""
+      pointPersonName: '',
+      pointPersonPhone: '',
+      pointPersonEmail: ''
     };
   }
 
@@ -86,9 +86,13 @@ class AddVendorDialog extends React.Component {
 
   resetForm = () => {
     this.setState({ vendorName: '' });
-    this.setState({ reviewPublicContent: '' });
-    this.setState({ reviewPrivateContent: '' });
-    this.setState({ rating: 0 });
+    this.setState({ vendorWebsite: '' });
+    this.setState({ vendorStreetAddress: '' });
+    this.setState({ vendorCityStateZip: '' });
+    this.setState({ categoryId: null });
+    this.setState({ pointPersonName: '' });
+    this.setState({ pointPersonPhone: '' });
+    this.setState({ pointPersonEmail: '' });
   }
 
   handleCategoryChange = (id) => {
@@ -125,21 +129,18 @@ class AddVendorDialog extends React.Component {
   };
 
   handleVendorSubmit() {
-    const vendorName = this.state.vendorName
-    const vendorWebsite = this.state.vendorWebsite
-    const reviewPublicContent = this.state.reviewPublicContent
-    const reviewPrivateContent = this.state.reviewPrivateContent
-    const rating = this.state.rating
-    const alerts = []
-    let that = this
+    const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
 
-    thisAxios.post(`/reviews`, {
-      review: {
-        user_id: userId,
-        vendor_id: vendorId,
-        review_content: reviewPublicContent,
-        review_private_content: reviewPrivateContent,
-        rating: rating
+    thisAxios.post(`/vendor_payload`, {
+      data: {
+        vendor_name: vendorName,
+        vendor_website: vendorWebsite,
+        vendor_street_address: vendorStreetAddress,
+        vendor_city_state_zip: vendorCityStateZip,
+        category_id: categoryId,
+        point_person_name: pointPersonName,
+        point_person_phone: pointPersonPhone,
+        point_person_email: pointPersonEmail
       }
     })
     .then(function (response) {
