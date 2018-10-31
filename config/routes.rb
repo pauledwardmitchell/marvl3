@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :categories
+  resources :offerings
+  resources :point_people
   resources :vendors
   resources :users
   resources :organizations
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
   get '/search_vendors_suggestions', to: 'apis#search_vendors_suggestions'
   get '/search_categories_suggestions', to: 'apis#search_categories_suggestions'
   get '/existing_vendors', to: 'apis#existing_vendors'
-  post '/vendor_payload', to: 'apis#vendor_payload'
 
 #Landing Page
   get '/landing_search_data', to:'apis#landing_search_data'
