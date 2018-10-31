@@ -92,7 +92,6 @@ class AddVendorDialog extends React.Component {
     this.setState({ vendorWebsite: '' });
     this.setState({ vendorStreetAddress: '' });
     this.setState({ vendorCityStateZip: '' });
-    this.setState({ vendorId: null });
     this.setState({ categoryId: null });
     this.setState({ pointPersonName: '' });
     this.setState({ pointPersonPhone: '' });
@@ -100,7 +99,6 @@ class AddVendorDialog extends React.Component {
   }
 
   handleCategoryChange = (id) => {
-    this.setState()
     this.setState( { categoryId: id }, () => this.submitButtonEnabledYet() );
   }
 
@@ -135,8 +133,6 @@ class AddVendorDialog extends React.Component {
   handleVendorSubmit() {
     const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
-    var vendorId = null
-    var vendorId = null
 
     thisAxios.post(`/vendors`, {
       vendor: {
