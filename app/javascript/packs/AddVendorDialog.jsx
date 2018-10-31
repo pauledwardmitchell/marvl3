@@ -130,17 +130,15 @@ class AddVendorDialog extends React.Component {
 
   handleVendorSubmit() {
     const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
+    const that = this;
+    const vendorId = null
 
-    thisAxios.post(`/vendor_payload`, {
-      data: {
-        vendor_name: vendorName,
-        vendor_website: vendorWebsite,
-        vendor_street_address: vendorStreetAddress,
-        vendor_city_state_zip: vendorCityStateZip,
-        category_id: categoryId,
-        point_person_name: pointPersonName,
-        point_person_phone: pointPersonPhone,
-        point_person_email: pointPersonEmail
+    thisAxios.post(`/vendors`, {
+      vendor: {
+        name: vendorName,
+        website: vendorWebsite,
+        street: vendorStreetAddress,
+        city_state_and_zip: vendorCityStateZip,
       }
     })
     .then(function (response) {
@@ -151,6 +149,10 @@ class AddVendorDialog extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+        // category_id: categoryId,
+        // point_person_name: pointPersonName,
+        // point_person_phone: pointPersonPhone,
+        // point_person_email: pointPersonEmail
   }
 
   submitButtonEnabledYet() {
