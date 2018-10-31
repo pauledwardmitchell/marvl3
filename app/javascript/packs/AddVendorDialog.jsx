@@ -49,8 +49,11 @@ const styles = theme => ({
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
+  baseURL: 'http://localhost:3000',
   headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': '*',
+    'Access-Control-Allow-Headers': '*',
     'X-CSRF-Token': csrfToken,
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -89,6 +92,7 @@ class AddVendorDialog extends React.Component {
     this.setState({ vendorWebsite: '' });
     this.setState({ vendorStreetAddress: '' });
     this.setState({ vendorCityStateZip: '' });
+    this.setState({ vendorId: null });
     this.setState({ categoryId: null });
     this.setState({ pointPersonName: '' });
     this.setState({ pointPersonPhone: '' });
@@ -132,6 +136,7 @@ class AddVendorDialog extends React.Component {
     const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
     var vendorId = null
+    var vendorId = null
 
     thisAxios.post(`/vendors`, {
       vendor: {
@@ -141,20 +146,35 @@ class AddVendorDialog extends React.Component {
         city_state_and_zip: vendorCityStateZip,
       }
     })
-    .then(function (response) {
+    .then((response) => {
       console.log(response);
-      vendorId = response.data.id
+      return thisAxios.post(`/offerings`, {
+        offering: {
+          vendor_id: response.data.id,
+          category_id: categoryId
+        }
+      });
+
       that.handleClose()
       that.resetForm()
+    })
+    .then((response) => {
+      console.log(response);
+      return thisAxios.post(`/point_people`, {
+        point_person: {
+          name: pointPersonName,
+          email: pointPersonPhone,
+          phone: pointPersonEmail,
+          vendor_id: response.data.vendor_id
+        }
+      });
+    })
+    .then((response) => {
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);
     });
-    console.log(vendorId)
-        // category_id: categoryId,
-        // point_person_name: pointPersonName,
-        // point_person_phone: pointPersonPhone,
-        // point_person_email: pointPersonEmail
   }
 
   submitButtonEnabledYet() {
