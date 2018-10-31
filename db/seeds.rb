@@ -1,4 +1,10 @@
 org = Organization.create(
+  name: "Apple Tree PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/1768859973/AT_Tree_400x400.jpg",
+  website: "https://www.appletreeinstitute.org/schools/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "Briya PCS",
   logo_link: "https://pbs.twimg.com/profile_images/585529260229713920/wAAEvCwE_400x400.jpg",
   website: "https://www.briya.org/")
@@ -53,6 +59,12 @@ org = Organization.create(
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(
+  name: "Meridian PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/2603608345/e3gfi6375w5uxcbqi3ga_400x400.jpeg",
+  website: "https://www.mpcs-dc.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "Paul PCS",
   logo_link: "https://pbs.twimg.com/profile_images/532975075054477312/uyY9cZTC_400x400.png",
   website: "https://www.website.org/")
@@ -65,6 +77,12 @@ org = Organization.create(
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(
+  name: "Rocketship Public Schools",
+  logo_link: "https://pbs.twimg.com/profile_images/903345486647709697/bdgpQ0HD_400x400.jpg",
+  website: "https://www.rocketshipschools.org/area/washington-dc/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "Thurgood Marshall Academy PCS",
   logo_link: "https://pbs.twimg.com/profile_images/2432149202/1jreq9i98aoggept0ams_400x400.jpeg",
   website: "https://thurgoodmarshallacademy.org/")
@@ -74,6 +92,12 @@ org = Organization.create(
   name: "Two Rivers PCS",
   logo_link: "https://pbs.twimg.com/profile_images/378800000152200172/ce6a7a78db2c4a2ae6e74b6014da6bb9_400x400.jpeg",
   website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Yu Ying PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/635869373673046016/vpkroO3N_400x400.jpg",
+  website: "https://www.washingtonyuying.org/")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 
