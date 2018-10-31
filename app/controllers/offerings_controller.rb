@@ -68,6 +68,6 @@ class OfferingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offering_params
-      params.require(:offering).permit(:vendor_id, :name, :email, :phone, :title)
+      params.require(:offering).permit(:vendor_id, :category_id)
     end
 end
