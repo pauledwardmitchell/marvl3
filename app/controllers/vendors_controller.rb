@@ -22,7 +22,7 @@ class VendorsController < ApplicationController
     @vendor = Vendor.find(params[:id])
   end
 
-  def review_params
+  def vendor_params
     params.require(:vendor).permit(:name, :website, :street, :city_state_and_zip, :main_phone_line)
   end
 
