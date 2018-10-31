@@ -51,9 +51,9 @@ const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute
 const thisAxios = axios.create({
   baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': '*',
-    'Access-Control-Allow-Headers': '*',
+    // 'Access-Control-Allow-Origin': '*',
+    // 'Access-Control-Allow-Methods': '*',
+    // 'Access-Control-Allow-Headers': '*',
     'X-CSRF-Token': csrfToken,
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -171,6 +171,8 @@ class AddVendorDialog extends React.Component {
     })
     .then((response) => {
       console.log(response);
+      that.handleClose()
+      that.resetForm()
     })
     .catch(function (error) {
       console.log(error);
