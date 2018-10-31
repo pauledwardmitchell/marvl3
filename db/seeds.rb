@@ -1,4 +1,10 @@
 org = Organization.create(
+  name: "Briya PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/585529260229713920/wAAEvCwE_400x400.jpg",
+  website: "https://www.briya.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "Capital City PCS",
   logo_link: "https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif",
   website: "https://www.website.org/")
@@ -41,6 +47,12 @@ org = Organization.create(
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(
+  name: "Maya Angelou Schools (See Forever Foundation)",
+  logo_link: "https://pbs.twimg.com/profile_images/461932816586928129/ELOJmJT2_400x400.jpeg",
+  website: "https://www.seeforever.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "Paul PCS",
   logo_link: "https://pbs.twimg.com/profile_images/532975075054477312/uyY9cZTC_400x400.png",
   website: "https://www.website.org/")
@@ -50,6 +62,12 @@ org = Organization.create(
   name: "Perry Street Prep PCS",
   logo_link: "https://pbs.twimg.com/profile_images/895656725180813312/xmuU2NJv_400x400.jpg",
   website: "https://www.website.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
+  name: "Thurgood Marshall Academy PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/2432149202/1jreq9i98aoggept0ams_400x400.jpeg",
+  website: "https://thurgoodmarshallacademy.org/")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(

@@ -131,7 +131,7 @@ class AddVendorDialog extends React.Component {
   handleVendorSubmit() {
     const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
-    const vendorId = null
+    var vendorId = null
 
     thisAxios.post(`/vendors`, {
       vendor: {
@@ -143,12 +143,14 @@ class AddVendorDialog extends React.Component {
     })
     .then(function (response) {
       console.log(response);
+      vendorId = response.data.id
       that.handleClose()
       that.resetForm()
     })
     .catch(function (error) {
       console.log(error);
     });
+    console.log(vendorId)
         // category_id: categoryId,
         // point_person_name: pointPersonName,
         // point_person_phone: pointPersonPhone,
