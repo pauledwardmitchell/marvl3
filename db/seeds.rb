@@ -5,6 +5,12 @@ org = Organization.create(
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(
+  name: "Cesar Chavez PCS",
+  logo_link: "https://pbs.twimg.com/profile_images/578918319811608576/_8nPa6PC_400x400.jpeg",
+  website: "http://www.chavezschools.org/")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "DC Prep",
   logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg",
   website: "https://www.website.org/")
@@ -51,6 +57,7 @@ org = Organization.create(
   logo_link: "https://pbs.twimg.com/profile_images/378800000152200172/ce6a7a78db2c4a2ae6e74b6014da6bb9_400x400.jpeg",
   website: "https://www.website.org/")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
+
 
 #BUILDING AND GROUNDS
 bg = SuperSuperCategory.create( { name: 'Building and Grounds'} )
