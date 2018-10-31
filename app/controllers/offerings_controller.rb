@@ -62,12 +62,12 @@ class OfferingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_point_person
+    def set_offering
       @offering = Offering.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def point_person_params
+    def offering_params
       params.require(:offering).permit(:vendor_id, :name, :email, :phone, :title)
     end
 end
