@@ -250,7 +250,8 @@ class ApisController < ApplicationController
 
     @data = {
       name: category.full_name,
-      vendors: vendors_data_from_category(category)
+      vendors: vendors_data_from_category(category),
+      protips: protips_from_category(category)
     }
 
     render json: @data
@@ -258,6 +259,22 @@ class ApisController < ApplicationController
 
 
   private
+
+  def protips_from_category(category)
+    protips_array = []
+    category.protips.each do |p|
+      protip_hash = {
+        id: p.id,
+        category: category.name,
+        user: p.user.full_name,
+        title: p.title,
+        content: p.content,
+        date_written: p.updated_at.strftime("%m/%d/%Y")
+      }
+      protips_array << protip_hash
+    end
+    protips_array
+  end
 
   def reviews_from_vendor(vendor)
     vendor_reviews_array = []

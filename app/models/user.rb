@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :organization
   has_many :reviews
+  has_many :protips
 
   def full_name
     first_name + " " + last_name
