@@ -6,6 +6,7 @@ class Category < ApplicationRecord
   has_many :offerings
   has_many :vendors, through: :offerings
   has_many :reviews, through: :vendors
+  has_many :protips
 
   def suggestion_label
     if insurance_and_benefits_categories.include?(self.name)

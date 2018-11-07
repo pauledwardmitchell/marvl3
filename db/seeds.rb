@@ -24,7 +24,7 @@ User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" 
 
 org = Organization.create(
   name: "DC Prep",
-  logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg",
+  logo_link: "https://pbs.twimg.com/profile_images/1786302154/Twitter_Logo03_400x400.png",
   website: "http://www.dcprep.org/")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
@@ -109,6 +109,7 @@ fac_array = ['Third-Party Facilities Contracting', 'General Contracting', 'Elect
 fac_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fac.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -124,6 +125,7 @@ furn_array = ['For Students', 'For Classrooms', 'For Teachers', 'For Libraries',
 furn_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: furn.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -139,6 +141,7 @@ util_array = ['Trash Hauling', 'Electricity', 'Gas']
 util_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: util.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -154,6 +157,7 @@ constr_array = [ 'General Contracting', 'Architect', 'Roofing', 'Flooring', 'Doo
 constr_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: constr.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -172,6 +176,7 @@ bene_array = [ 'Property & Casualty Insurance Broker', 'Retirement Benefits (Bro
 bene_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: bene.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -187,6 +192,7 @@ fin_array = [ 'Accounting Firms', 'Credit Cards' ]
 fin_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fin.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -202,6 +208,7 @@ tprodev_array = [ 'Anti-Racism Training', 'E/LA - Elementary', 'Math - Elementar
 tprodev_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: tprodev.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -221,6 +228,7 @@ itcon_array = [ 'IT systems consulting / support' ]
 itcon_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: itcon.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -236,6 +244,7 @@ itsoft_array = ['Student Services / Student tracking apps', 'Grading Management 
 itsoft_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: itsoft.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -251,6 +260,7 @@ ithard_array = [ 'Security cameras', 'Telephone systems', 'Desktop computers' ]
 ithard_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: ithard.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -270,6 +280,7 @@ printm_array = [ 'Copiers', 'Copies printed off-site', 'Banners', 'Promotional m
 printm_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: printm.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -285,6 +296,7 @@ sports_array = [ 'Uniforms', 'Sports equipment', 'Used / donated sports equipmen
 sports_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: sports.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -300,6 +312,7 @@ nslp_array = [ 'Food vendors' ]
 nslp_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: nslp.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -315,6 +328,7 @@ off_array = [ 'Office supplies', 'Scanning and shredding', 'Postage meters' ]
 off_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: off.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -334,6 +348,7 @@ curric_array = [ 'E/LA - Elementary', 'Math - Elementary', 'Science - Elementary
 curric_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: curric.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -349,6 +364,7 @@ iit_array = [ 'Laptops', 'Chromebooks', 'iPads', 'Document cameras', 'STEM hardw
 iit_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: iit.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -364,6 +380,7 @@ apps_array = [ 'E/LA apps', 'Math apps', 'Science apps', 'Social Studies apps' ]
 apps_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: apps.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -379,6 +396,7 @@ sss_array = ['Special Education services', 'Counselling services', 'Speech patho
 sss_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: sss.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -394,6 +412,7 @@ uni_array = [ 'Elementary school', 'Middle school', 'High school', 'Sports' ]
 uni_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: uni.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -409,6 +428,7 @@ fam_array = [ 'Digital platforms to engage parents and families', 'Resources for
 fam_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: fam.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
@@ -424,6 +444,7 @@ trans_array = [ 'School buses', 'Charter buses']
 trans_array.each do |c|
   cat = Category.create( { name: c })
   Appearance.create( super_category_id: trans.id, category_id: cat.id)
+  Protip.create( category_id: cat.id, user_id: (1..9).to_a.sample, title: "Before you hire in this category...", content: "Sriracha enim typewriter ad. In veniam sed.")
   5.times do
     vendor = Vendor.create( name: Faker::Company.name, street: "123 Main St.", city_state_and_zip: "Washington, DC 20000", main_phone_line: "(123)456-7890")
     PointPerson.create( name: Faker::Name.name, title: "CEO", vendor_id: vendor.id, email: "ceo@vendor.com", phone: "(123)456-7890")
