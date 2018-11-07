@@ -15,6 +15,7 @@ import CategoriesChart from './CategoriesChart'
 import CategoryShowBatchRfp from './CategoryShowBatchRfp'
 import CategoryShowEnhancedTable from './CategoryShowEnhancedTable'
 import CategoryShowTitle from './CategoryShowTitle'
+import CategoryShowProTips from './CategoryShowProTips'
 
 import axios from 'axios'
 
@@ -47,6 +48,9 @@ const loadingData =
 const styles = theme => ({
   root: {
     flexGrow: 1
+  },
+  divider: {
+    marginTop: 20
   }
 });
 
@@ -110,6 +114,14 @@ class CategoryShow extends React.Component {
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
               <CategoryShowEnhancedTable data={this.buildTableData(data)} />
+            </Grid>
+          </Grid>
+        </div>
+        <Divider className={classes.divider}/>
+        <div className={classes.root}>
+          <Grid container spacing={24} justify='center'>
+            <Grid item xs={11}>
+              <CategoryShowProTips />
             </Grid>
           </Grid>
         </div>

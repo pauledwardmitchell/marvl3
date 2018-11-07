@@ -24,7 +24,7 @@ User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" 
 
 org = Organization.create(
   name: "DC Prep",
-  logo_link: "https://pbs.twimg.com/profile_images/900102187933499392/vrbWtNB__400x400.jpg",
+  logo_link: "https://pbs.twimg.com/profile_images/1786302154/Twitter_Logo03_400x400.png",
   website: "http://www.dcprep.org/")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
