@@ -20,6 +20,12 @@ const styles = {
   },
   flex: {
     flex: 1,
+  },
+  link: {
+    marginLeft: 160,
+    textDecoration: 'inherit',
+    color: 'inherit',
+    cursor: 'auto'
   }
 };
 
@@ -135,8 +141,11 @@ class ButtonAppBar extends React.Component {
             <AddVendorDialog existingVendors={this.state.existingVendors} />
             <AddProtipDialog />
 
-            <Typography variant="title" color="inherit" className={classes.flex}>
-            </Typography>
+              <Typography variant="title" color="inherit" align="justify" className={classes.flex}>
+                <a href='/' className={classes.link}>
+                  MARVL
+                </a>
+              </Typography>
 
             {this.renderSignUp}
 
