@@ -42,8 +42,20 @@ const loadingData =
         schools_array: ['Friendship', 'E.L. Haynes'],
         reviews_count: 3
       }
-   ]
+    ],
+    protips: [
+      {
+        id: 1,
+        category: "Loading...",
+        category_tag: "fencing",
+        user: "Loading...",
+        title: "",
+        content: "",
+        date_written: ""
+      }
+    ]
   }
+
 
 const styles = theme => ({
   root: {
@@ -121,7 +133,7 @@ class CategoryShow extends React.Component {
         <div className={classes.root}>
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
-              <CategoryShowProTips />
+              <CategoryShowProTips data={data.protips}/>
             </Grid>
           </Grid>
         </div>

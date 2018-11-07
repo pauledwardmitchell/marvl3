@@ -266,6 +266,7 @@ class ApisController < ApplicationController
       protip_hash = {
         id: p.id,
         category: category.name,
+        category_tag: category.name.parameterize,
         user: p.user.full_name,
         title: p.title,
         content: p.content,
