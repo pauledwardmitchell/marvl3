@@ -1,4 +1,4 @@
-class ProtipController < ApplicationController
+class ProtipsController < ApplicationController
   before_action :set_protip, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
