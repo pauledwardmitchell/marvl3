@@ -68,6 +68,6 @@ class ProtipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def protip_params
-      params.require(:protip).permit(:title, :content, :organization_id, :user_id)
+      params.require(:protip).permit(:title, :content, :category_id, :user_id)
     end
 end
