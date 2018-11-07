@@ -1,0 +1,2 @@
+class Protip < ApplicationRecord
+end
