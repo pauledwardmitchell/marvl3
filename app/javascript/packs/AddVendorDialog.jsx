@@ -237,7 +237,7 @@ class AddVendorDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Add a Vendor</Button>
+        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Add Vendor</Button>
         <Dialog
           className={classes.root}
           open={this.state.open}

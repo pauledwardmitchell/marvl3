@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :vendors
   resources :users
   resources :organizations
+  resources :protips
 
 #App Bar
   get '/check_for_user', to:'apis#check_for_user'
