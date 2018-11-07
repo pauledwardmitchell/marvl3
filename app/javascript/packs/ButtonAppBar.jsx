@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import WriteReviewDialog from './WriteReviewDialog'
 import AddVendorDialog from './AddVendorDialog'
+import AddProtipDialog from './AddProtipDialog'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -132,6 +133,7 @@ class ButtonAppBar extends React.Component {
 
             <WriteReviewDialog />
             <AddVendorDialog existingVendors={this.state.existingVendors} />
+            <AddProtipDialog />
 
             <Typography variant="title" color="inherit" className={classes.flex}>
             </Typography>

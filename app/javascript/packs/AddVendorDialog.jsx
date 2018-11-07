@@ -6,7 +6,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Switch from '@material-ui/core/Switch';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -237,7 +236,7 @@ class AddVendorDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Add a Vendor</Button>
+        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Add Vendor</Button>
         <Dialog
           className={classes.root}
           open={this.state.open}
