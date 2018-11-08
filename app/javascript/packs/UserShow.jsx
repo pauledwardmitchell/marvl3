@@ -9,8 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 
 import ButtonAppBar from './ButtonAppBar'
-import OrgShowAllCategories from './OrgShowAllCategories'
-import OrgShowDetailsBox from './OrgShowDetailsBox'
+import UserShowAllReviews from './UserShowAllReviews'
+import UserShowDetailsBox from './UserShowDetailsBox'
 import OrgShowLogo from './OrgShowLogo'
 
 import axios from 'axios'
@@ -25,9 +25,10 @@ const thisAxios = axios.create({
 
 const loadingOrgData =
   {name: 'Loading...',
-   website: 'Loading...',
+   school_name: 'Loading...',
    logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/58f3a38bebbd1a9ee47f1778/1536187527091/?format=300w",
-   users: [ { name: 'Loading...' } ]
+   reviews: [ { name: 'Loading...' } ],
+   protips: [ { } ]
   }
 
 
@@ -68,10 +69,10 @@ class UserShow extends React.Component {
             <OrgShowLogo logo_link={userData.logo_link}/>
           </Grid>
           <Grid item xs={5}>
-            <OrgShowDetailsBox data={userData} />
+            <UserShowDetailsBox data={userData} />
           </Grid>
         </Grid>
-        <OrgShowAllCategories />
+        <UserShowAllReviews />
       </div>
     )
   }
