@@ -17,4 +17,11 @@ class User < ApplicationRecord
     up_initials = intitals.upcase
     up_initials
   end
+
+  def points
+    num_reviews = self.reviews.count
+    num_protips = self.protips.count
+    points = ( num_reviews*2 ) + ( num_protips*3 )
+    points
+  end
 end

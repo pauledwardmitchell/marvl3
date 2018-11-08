@@ -216,8 +216,22 @@ class ApisController < ApplicationController
     render json: @data
   end
 
-#ENDPOINTS FOR VENDOR SHOW
+#ENDPOINTS FOR USER SHOW
+  def user_show_data
+    user = Organization.find(params[:user])
 
+    @data = {
+      name: user.full_name,
+      school_name: user.organization.name,
+      points: user.points,
+      reviews: reviews_from_user(user),
+      protips: protips_from_user(user)
+    }
+
+    render json: @data
+  end
+
+#ENDPOINTS FOR VENDOR SHOW
   def vendor_show_data
     vendor = Vendor.find(params[:vendor])
 
@@ -277,6 +291,24 @@ class ApisController < ApplicationController
     protips_array
   end
 
+  def protips_from_user(user)
+    protips_array = []
+    user.protips.each do |p|
+      protip_hash = {
+        id: p.id,
+        category_id: category.id,
+        category: category.name,
+        category_tag: category.name.parameterize,
+        user: p.user.full_name,
+        title: p.title,
+        content: p.content,
+        date_written: p.updated_at.strftime("%m/%d/%Y")
+      }
+      protips_array << protip_hash
+    end
+    protips_array
+  end
+
   def reviews_from_vendor(vendor)
     vendor_reviews_array = []
     vendor.reviews.each do |r|
@@ -293,6 +325,24 @@ class ApisController < ApplicationController
       vendor_reviews_array << review_hash
     end
     vendor_reviews_array
+  end
+
+  def reviews_from_user(user)
+    user_reviews_array = []
+    user.reviews.each do |r|
+      review_hash = {
+        id: r.id,
+        school_name: user.organization.name,
+        school_id: user.organization.id,
+        rating: r.rating,
+        review: r.review_content,
+        private_review: r.review_private_content,
+        reviewer: user.full_name,
+        days_ago: r.days_old
+      }
+      user_reviews_array << review_hash
+    end
+    user_reviews_array
   end
 
   def school_relationships_from_vendor(vendor)
