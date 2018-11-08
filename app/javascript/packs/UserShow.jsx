@@ -72,7 +72,11 @@ class UserShow extends React.Component {
             <UserShowDetailsBox data={userData} />
           </Grid>
         </Grid>
-        <UserShowAllReviews />
+        <Grid container direction='row' justify='center' spacing={16}>
+          <Grid item xs={10}>
+            <UserShowAllReviews data={userData} />
+          </Grid>
+        </Grid>
       </div>
     )
   }
