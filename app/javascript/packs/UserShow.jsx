@@ -70,8 +70,6 @@ class UserShow extends React.Component {
           <Grid item xs={5}>
             <OrgShowDetailsBox data={userData} />
           </Grid>
-          <Grid item xs={3}>
-          </Grid>
         </Grid>
         <OrgShowAllCategories />
       </div>

@@ -218,7 +218,7 @@ class ApisController < ApplicationController
 
 #ENDPOINTS FOR USER SHOW
   def user_show_data
-    user = Organization.find(params[:user])
+    user = User.find(params[:user])
 
     @data = {
       name: user.full_name,
