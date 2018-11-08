@@ -223,6 +223,7 @@ class ApisController < ApplicationController
     @data = {
       name: user.full_name,
       school_name: user.organization.name,
+      logo_link: user.organization.logo_link,
       points: user.points,
       reviews: reviews_from_user(user),
       protips: protips_from_user(user)
@@ -334,11 +335,14 @@ class ApisController < ApplicationController
         id: r.id,
         school_name: user.organization.name,
         school_id: user.organization.id,
+        vendor_name: r.vendor.name,
+        vendor_id: r.vendor.id,
         rating: r.rating,
         review: r.review_content,
         private_review: r.review_private_content,
         reviewer: user.full_name,
-        days_ago: r.days_old
+        days_ago: r.days_old,
+        date: r.updated_at.strftime("%m/%d/%Y")
       }
       user_reviews_array << review_hash
     end
