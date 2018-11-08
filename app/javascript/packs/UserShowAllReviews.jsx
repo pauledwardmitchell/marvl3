@@ -5,7 +5,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
-import EditIcon from '@material-ui/icons/Edit';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import EditReviewDialog from './EditReviewDialog'
 
@@ -45,12 +45,13 @@ class UserShowAllReviews extends React.Component {
         {data.reviews.map(review => (
           <div key={review.id} >
             <ExpansionPanel expanded={expanded === 'panel' + review.id } onChange={this.handleChange('panel' + review.id)}>
-              <ExpansionPanelSummary>
-                <Typography className={classes.heading}>Review of: {review.id} on </Typography>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography className={classes.heading}>Review of: {review.vendor_name} on {review.date}</Typography>
                 <Typography className={classes.secondaryHeading}>{review.review}</Typography>
                 <EditReviewDialog review={review}/>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
+                Whole Shabang in here. Teaser text outside. Even pics in here.  Dynamically render Edit
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </div>

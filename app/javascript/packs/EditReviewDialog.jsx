@@ -48,6 +48,7 @@ const styles = theme => ({
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
+    marginBottom: 10
   },
 });
 
@@ -127,7 +128,7 @@ class EditReviewDialog extends React.Component {
     }, {decodeEntities: true, recognizeSelfClosing: true });
 
 
-    thisAxios.post(`/reviews`, {
+    thisAxios.patch(`/reviews`, {
       review: {
         user_id: userId,
         vendor_id: vendorId,
@@ -147,7 +148,7 @@ class EditReviewDialog extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, review } = this.props;
 
     return (
       <div>
@@ -164,6 +165,9 @@ class EditReviewDialog extends React.Component {
             </DialogContentText>
 
             <FormGroup>
+              <Typography className={classes.heading}>
+                Worked with this vendor multiple times?  Create a review for each batch of work!
+              </Typography>
 
               <FormControl className={classes.review}>
                 <TextField
@@ -206,7 +210,7 @@ class EditReviewDialog extends React.Component {
               Cancel
             </Button>
             <Button onClick={this.handleReviewSubmit} color="primary">
-              Submit
+              Submit Edits
             </Button>
           </DialogActions>
         </Dialog>
