@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import UserProfile from './UserProfile'
+import UserShow from './UserShow'
 
 
 ReactDOM.render(
   <React.Fragment>
     <CssBaseline />
-      <UserProfile />
+      <UserShow />
   </React.Fragment>,
-  document.getElementById('profile')
+  document.getElementById('user')
 );
