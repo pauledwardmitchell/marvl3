@@ -296,10 +296,10 @@ class ApisController < ApplicationController
     user.protips.each do |p|
       protip_hash = {
         id: p.id,
-        category_id: category.id,
-        category: category.name,
-        category_tag: category.name.parameterize,
-        user: p.user.full_name,
+        category_id: p.category.id,
+        category: p.category.name,
+        category_tag: p.category.name.parameterize,
+        user: user.full_name,
         title: p.title,
         content: p.content,
         date_written: p.updated_at.strftime("%m/%d/%Y")
