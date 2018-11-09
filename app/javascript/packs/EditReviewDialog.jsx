@@ -127,8 +127,7 @@ class EditReviewDialog extends React.Component {
       }
     }, {decodeEntities: true, recognizeSelfClosing: true });
 
-
-    thisAxios.patch(`/reviews`, {
+    thisAxios.patch(`/reviews/`+this.props.review.id, {
       review: {
         user_id: userId,
         vendor_id: vendorId,
