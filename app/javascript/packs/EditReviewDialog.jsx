@@ -109,8 +109,6 @@ class EditReviewDialog extends React.Component {
   };
 
   handleReviewSubmit() {
-    const userId = 1
-    const vendorId = this.state.vendorId
     const reviewPublicContent = this.state.reviewPublicContent
     const reviewPrivateContent = this.state.reviewPrivateContent
     const rating = this.state.rating
@@ -129,8 +127,6 @@ class EditReviewDialog extends React.Component {
 
     thisAxios.patch(`/reviews/`+this.props.review.id, {
       review: {
-        user_id: userId,
-        vendor_id: vendorId,
         review_content: reviewPublicContent,
         review_private_content: reviewPrivateContent,
         rating: rating
