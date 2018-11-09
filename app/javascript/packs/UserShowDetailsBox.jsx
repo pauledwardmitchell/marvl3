@@ -21,7 +21,6 @@ function UserShowDetailsBox(props) {
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">{data.name}</Typography>
         <Typography variant="subheading" component="h3">{data.school_name}</Typography>
-        <Typography variant="subheading" component="h3">Points: {data.points}</Typography>
       </Paper>
     </div>
   );

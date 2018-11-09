@@ -11,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonAppBar from './ButtonAppBar'
 import UserShowAllReviews from './UserShowAllReviews'
 import UserShowDetailsBox from './UserShowDetailsBox'
+import UserPointsChart from './UserPointsChart'
 import OrgShowLogo from './OrgShowLogo'
 
 import axios from 'axios'
@@ -27,6 +28,7 @@ const loadingOrgData =
   {name: 'Loading...',
    school_name: 'Loading...',
    logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/58f3a38bebbd1a9ee47f1778/1536187527091/?format=300w",
+   points: 100,
    reviews: [ { id: 1, name: 'Loading...' } ],
    protips: [ { } ]
   }
@@ -70,6 +72,9 @@ class UserShow extends React.Component {
           </Grid>
           <Grid item xs={5}>
             <UserShowDetailsBox data={userData} />
+          </Grid>
+          <Grid item xs={3}>
+            <UserPointsChart points={userData.points} />
           </Grid>
         </Grid>
         <Grid container direction='row' justify='center' spacing={16}>
