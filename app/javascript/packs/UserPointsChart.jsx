@@ -56,7 +56,7 @@ class UserPointsChart extends React.Component {
         return "Bronze Medal"
         break;
     default:
-        return "Beginner"
+        return "Honorable Mention"
     }
   }
 
