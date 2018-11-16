@@ -99,6 +99,21 @@ class EditProtipDialog extends React.Component {
     this.setState({ content: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
+  submitButtonEnabledYet() {
+    const {title, content, categoryId, userId} = this.state;
+
+    const inputs = [
+      title,
+      content
+    ]
+
+    if (inputs.map(input => input.length > 0).includes(false) || categoryId === null) {
+      this.setState({ submitDisabled: true })
+    } else {
+      this.setState({ submitDisabled: false })
+    }
+  }
+
   handleProtipSubmit() {
     const { title, content } = this.state;
     const that = this;
