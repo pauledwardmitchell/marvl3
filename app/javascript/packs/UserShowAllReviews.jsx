@@ -5,7 +5,11 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ReactStars from 'react-stars'
 
 import EditReviewDialog from './EditReviewDialog'
 
@@ -15,13 +19,23 @@ const styles = theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
+    flexBasis: '50%',
     flexShrink: 0,
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  stars: {
+    marginLeft: 0,
+    marginTop: 0,
+    marginBottom: 12,
+    display: 'block'
+  },
+  paper: theme.mixins.gutters({
+    padding: 16,
+    margin: theme.spacing.unit * 3,
+  })
 });
 
 class UserShowAllReviews extends React.Component {
@@ -35,6 +49,14 @@ class UserShowAllReviews extends React.Component {
     });
   };
 
+  renderEditDialogButton(review) {
+    if ( 1+1 === 2) {
+      return ( <EditReviewDialog review={review}/> )
+    } else {
+      return ( <span></span> )
+    }
+  }
+
   render() {
     const { classes, data } = this.props;
     const { expanded } = this.state;
@@ -47,11 +69,22 @@ class UserShowAllReviews extends React.Component {
             <ExpansionPanel expanded={expanded === 'panel' + review.id } onChange={this.handleChange('panel' + review.id)}>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                 <Typography className={classes.heading}>Review of: {review.vendor_name} on {review.date}</Typography>
-                <Typography className={classes.secondaryHeading}>{review.review}</Typography>
-                <EditReviewDialog review={review}/>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-                Whole Shabang in here. Teaser text outside. Even pics in here.  Dynamically render Edit
+                <Grid item xs={12}>
+                  <Paper className={classes.paper} elevation={4}>
+                    <Typography component="h3" variant='subheading' gutterBottom>Review: {review.review}</Typography>
+                    <Typography component="h3" variant='subheading'>Private Review: {review.private_review}</Typography>
+                    <ReactStars
+                      className={classes.stars}
+                      count={5}
+                      value={review.rating}
+                      size={24}
+                      color2={'#ffd700'} />
+                    <Typography gutterBottom>{review.reviewer} wrote this {review.days_ago} days ago</Typography>
+                    {this.renderEditDialogButton(review)}
+                  </Paper>
+                </Grid>
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </div>
