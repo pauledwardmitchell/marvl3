@@ -223,7 +223,7 @@ class WriteReviewDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button disabled={this.state.submitDisabled} onClick={this.handleProtipSubmit} color="primary">
+            <Button disabled={this.state.submitDisabled} onClick={this.handleReviewSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
