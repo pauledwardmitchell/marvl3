@@ -105,7 +105,7 @@ class WriteReviewDialog extends React.Component {
   };
 
   handleReviewSubmit() {
-    const userId = 1
+    const userId = document.getElementById("userid").getAttribute('value')
     const vendorId = this.state.vendorId
     const reviewPublicContent = this.state.reviewPublicContent
     const reviewPrivateContent = this.state.reviewPrivateContent

@@ -69,7 +69,6 @@ class AddProtipDialog extends React.Component {
       title: '',
       content: '',
       categoryId: null,
-      userId: 1
     };
   }
 
@@ -85,7 +84,6 @@ class AddProtipDialog extends React.Component {
     this.setState({ title: '' });
     this.setState({ content: '' });
     this.setState({ categoryId: null });
-    this.setState({ userId: 1 });
   }
 
   handleCategoryChange = (id) => {
@@ -101,7 +99,8 @@ class AddProtipDialog extends React.Component {
   };
 
   handleProtipSubmit() {
-    const {title, content, categoryId, userId} = this.state;
+    const userId = document.getElementById("userid").getAttribute('value')
+    const {title, content, categoryId} = this.state;
     const that = this;
 
     thisAxios.post(`/protips`, {
@@ -123,7 +122,7 @@ class AddProtipDialog extends React.Component {
   }
 
   submitButtonEnabledYet() {
-    const {title, content, categoryId, userId} = this.state;
+    const {title, content, categoryId} = this.state;
 
     const inputs = [
       title,
