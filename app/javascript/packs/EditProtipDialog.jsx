@@ -88,7 +88,6 @@ class EditProtipDialog extends React.Component {
     this.setState({ title: '' });
     this.setState({ content: '' });
     this.setState({ categoryId: null });
-    this.setState({ userId: 1 });
   }
 
   handleTitleChange = event => {
@@ -100,7 +99,7 @@ class EditProtipDialog extends React.Component {
   };
 
   submitButtonEnabledYet() {
-    const {title, content, categoryId, userId} = this.state;
+    const {title, content, categoryId} = this.state;
 
     const inputs = [
       title,
