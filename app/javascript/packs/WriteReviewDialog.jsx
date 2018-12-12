@@ -69,7 +69,8 @@ class WriteReviewDialog extends React.Component {
       vendorId: null,
       reviewPublicContent: '',
       reviewPrivateContent: '',
-      rating: 0
+      rating: 0,
+      submitDisabled: true
     };
   }
 
@@ -89,19 +90,19 @@ class WriteReviewDialog extends React.Component {
   }
 
   handleVendorChange = (id) => {
-    this.setState({ vendorId: id })
+    this.setState({ vendorId: id } )
   }
 
   handlePublicContentChange = event => {
-    this.setState({ reviewPublicContent: event.target.value });
+    this.setState({ reviewPublicContent: event.target.value } );
   };
 
   handlePrivateContentChange = event => {
-    this.setState({ reviewPrivateContent: event.target.value });
+    this.setState({ reviewPrivateContent: event.target.value } );
   };
 
   handleRatingChange = (newRating) => {
-    this.setState({ rating: newRating });
+    this.setState({ rating: newRating } );
   };
 
   handleReviewSubmit() {
@@ -141,6 +142,21 @@ class WriteReviewDialog extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
+  }
+
+  submitButtonEnabledYet() {
+    const {reviewPublicContent, reviewPrivateContent, rating} = this.state;
+
+    const inputs = [
+      reviewPublicContent
+    ]
+
+
+    if (inputs.map(input => input.length > 0).includes(false) || vendorId === null) {
+      this.setState({ submitDisabled: true })
+    } else {
+      this.setState({ submitDisabled: false })
+    }
   }
 
   render() {
@@ -205,7 +221,7 @@ class WriteReviewDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={this.handleReviewSubmit} color="primary">
+            <Button disabled={this.state.submitDisabled} onClick={this.handleReviewSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
