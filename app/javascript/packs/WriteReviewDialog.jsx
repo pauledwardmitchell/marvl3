@@ -90,19 +90,19 @@ class WriteReviewDialog extends React.Component {
   }
 
   handleVendorChange = (id) => {
-    this.setState({ vendorId: id }, () => this.submitButtonEnabledYet() )
+    this.setState({ vendorId: id } )
   }
 
   handlePublicContentChange = event => {
-    this.setState({ reviewPublicContent: event.target.value }, () => this.submitButtonEnabledYet() );
+    this.setState({ reviewPublicContent: event.target.value } );
   };
 
   handlePrivateContentChange = event => {
-    this.setState({ reviewPrivateContent: event.target.value }, () => this.submitButtonEnabledYet() );
+    this.setState({ reviewPrivateContent: event.target.value } );
   };
 
   handleRatingChange = (newRating) => {
-    this.setState({ rating: newRating }, () => this.submitButtonEnabledYet() );
+    this.setState({ rating: newRating } );
   };
 
   handleReviewSubmit() {
@@ -148,9 +148,7 @@ class WriteReviewDialog extends React.Component {
     const {reviewPublicContent, reviewPrivateContent, rating} = this.state;
 
     const inputs = [
-      reviewPublicContent,
-      reviewPrivateContent,
-      rating
+      reviewPublicContent
     ]
 
 
