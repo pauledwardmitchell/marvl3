@@ -11,7 +11,9 @@
   </head>
 
   <body>
-    <%= tag('div', id: 'userid', value: current_user.id) %>
+    <% if current_user %>
+      <%= tag('div', id: 'userid', value: current_user.id) %>
+    <% end %>
     <span class="notice"><%= notice %></span>
     <span class="alert"><%= alert %></span>
     <%= yield %>
