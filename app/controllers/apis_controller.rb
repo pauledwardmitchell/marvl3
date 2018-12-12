@@ -1,6 +1,7 @@
 class ApisController < ApplicationController
 
   # before_filter :add_allow_credentials_headers
+  skip_before_filter :authenticate_user!
 
 #ENDPOINTS FOR APP BAR
   def check_for_user
