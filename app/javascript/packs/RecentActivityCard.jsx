@@ -76,7 +76,7 @@ class RecentActivityCard extends React.Component {
             </Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <Button style={{marginRight: 'auto'}}>Go to {this.props.post.vendor}</Button>
+            <Button href={'/vendors/'+this.props.post.vendor_id} style={{marginRight: 'auto'}}>Go to {this.props.post.vendor}</Button>
             <Button style={{marginLeft: 'auto'}}>Go to review</Button>
           </CardActions>
         </Card>
