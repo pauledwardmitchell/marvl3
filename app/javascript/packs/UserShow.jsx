@@ -50,7 +50,7 @@ class UserShow extends React.Component {
   }
 
   componentWillMount(){
-    const userId = document.getElementById("theuser").getAttribute('value')
+    const userId = document.getElementById("theuser").getAttribute('value');
 
     thisAxios.get('/user_show_data?user=' + userId)
       .then((response) => {
