@@ -108,11 +108,8 @@ class VendorShow extends React.Component {
     return (
       <div>
         <ButtonAppBar />
-        <Grid container direction='row' justify='flex-start' spacing={16}>
-          <Grid item xs={4}>
-            <OrgShowMap />
-          </Grid>
-          <Grid item xs={4}>
+        <Grid container direction='row' justify='center' spacing={16}>
+          <Grid item xs={6}>
             <VendorShowDetailsBox data={data} />
           </Grid>
           <Grid item xs={3}>
