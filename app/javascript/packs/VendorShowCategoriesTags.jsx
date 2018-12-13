@@ -15,7 +15,12 @@ const styles = theme => ({
     padding: 16,
     paddingBottom: 16,
     margin: theme.spacing.unit * 3,
-  })
+  }),
+  link: {
+    textDecoration: 'inherit',
+    color: 'inherit',
+    cursor: 'auto'
+  }
 });
 
 const theme = createMuiTheme({
@@ -44,7 +49,11 @@ class VendorShowCategoriesTags extends React.Component {
           Does work in:
         </Typography>
         {data.categories_array.map((category) => {
-          return <Chip key={category} label={category} onClick={this.handleClick} className={classes.chip} />
+          return (
+            <a href={'/categories'+category.id} key={category.id} className={classes.link}>
+              <Chip label={category.name} onClick={this.handleClick} className={classes.chip} />
+            </a>
+          )
           }
         )}
       </Paper>

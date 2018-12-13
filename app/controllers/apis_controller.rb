@@ -360,7 +360,15 @@ class ApisController < ApplicationController
   end
 
   def categories_from_vendor(vendor)
-    vendor.categories.map { |c| c.full_name }
+    categories_array =[]
+    vendor.categories.each do |category|
+      cat_hash = {
+        id: category.id,
+        name: category.full_name
+      }
+      categories_array << cat_hash
+    end
+    categories_array
   end
 
   def point_people_from_vendor(vendor)
