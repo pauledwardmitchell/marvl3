@@ -50,7 +50,10 @@ class UserShowAllReviews extends React.Component {
   };
 
   renderEditDialogButton(review) {
-    if ( 1+1 === 2) {
+    const pageUserId = document.getElementById("theuser").getAttribute('value');
+    const sessionUserId = document.getElementById("userid").getAttribute('value');
+
+    if ( pageUserId === sessionUserId ) {
       return ( <EditReviewDialog review={review}/> )
     } else {
       return ( <span></span> )
@@ -77,6 +80,7 @@ class UserShowAllReviews extends React.Component {
                     <Typography component="h3" variant='subheading'>Private Review: {review.private_review}</Typography>
                     <ReactStars
                       className={classes.stars}
+                      edit={false}
                       count={5}
                       value={review.rating}
                       size={24}
