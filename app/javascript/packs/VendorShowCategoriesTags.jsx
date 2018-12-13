@@ -50,7 +50,7 @@ class VendorShowCategoriesTags extends React.Component {
         </Typography>
         {data.categories_array.map((category) => {
           return (
-            <a href={'/categories'+category.id} key={category.id} className={classes.link}>
+            <a href={'/categories/'+category.id} key={category.id} className={classes.link}>
               <Chip label={category.name} onClick={this.handleClick} className={classes.chip} />
             </a>
           )
