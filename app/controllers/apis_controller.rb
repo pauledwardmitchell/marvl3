@@ -143,6 +143,7 @@ class ApisController < ApplicationController
         initials: r.user.initials,
         school: r.user.organization.name,
         vendor: r.vendor.name,
+        vendor_id: r.vendor.id,
         date: r.created_at.strftime("%m/%d/%Y"),
         img: r.user.organization.logo_link,
         category: r.categories[0].suggestion_label,
