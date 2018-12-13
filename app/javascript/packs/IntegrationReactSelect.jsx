@@ -301,7 +301,7 @@ class IntegrationReactSelect extends React.Component {
     if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true ) {
       return (<span></span>)
     } else {
-      return (<Grid item xs={1}><Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>SEARCH</Button></Grid>)
+      return (<Grid item xs={1}><Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>GO</Button></Grid>)
     }
   }
 

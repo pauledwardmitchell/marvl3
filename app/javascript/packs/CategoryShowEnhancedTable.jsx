@@ -252,6 +252,25 @@ class CategoryShowEnhancedTable extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
+  buildButtonLink(vendorName) {
+    const thisVendorsData = this.props.vendors;
+
+    if (thisVendorsData) {
+      var i;
+      var link = "/";
+      for (i = 0; i < thisVendorsData.length; i++) {
+        var vendorId;
+        var newLink;
+        if ( thisVendorsData[i].name === vendorName ) {
+          vendorId = thisVendorsData[i].id
+          newLink = '/vendors/' + vendorId
+          link = newLink
+        }
+      }
+      return link
+    }
+  }
+
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   render() {
@@ -285,7 +304,7 @@ class CategoryShowEnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell><Button size="small">{n.vendorName}</Button></TableCell>
+                    <TableCell><Button href={this.buildButtonLink(n.vendorName)} size="small">{n.vendorName}</Button></TableCell>
                     <TableCell padding='none'>{n.avgRating} stars</TableCell>
                     <TableCell>{n.schoolsContracted}</TableCell>
                     <TableCell padding='none'>{n.numReviews} Reviews</TableCell>
