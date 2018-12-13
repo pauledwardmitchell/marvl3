@@ -90,11 +90,11 @@ class WriteReviewDialog extends React.Component {
   }
 
   handleVendorChange = (id) => {
-    this.setState({ vendorId: id } )
+    this.setState({ vendorId: id }, () => this.submitButtonEnabledYet() )
   }
 
   handlePublicContentChange = event => {
-    this.setState({ reviewPublicContent: event.target.value } );
+    this.setState({ reviewPublicContent: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handlePrivateContentChange = event => {
@@ -102,7 +102,7 @@ class WriteReviewDialog extends React.Component {
   };
 
   handleRatingChange = (newRating) => {
-    this.setState({ rating: newRating } );
+    this.setState({ rating: newRating }, () => this.submitButtonEnabledYet() );
   };
 
   handleReviewSubmit() {
@@ -145,14 +145,14 @@ class WriteReviewDialog extends React.Component {
   }
 
   submitButtonEnabledYet() {
-    const {reviewPublicContent, reviewPrivateContent, rating} = this.state;
+    const {reviewPublicContent, reviewPrivateContent, rating, vendorId} = this.state;
 
     const inputs = [
       reviewPublicContent
     ]
 
 
-    if (inputs.map(input => input.length > 0).includes(false) || vendorId === null) {
+    if (inputs.map(input => input.length > 0).includes(false) || vendorId === null || rating === 0) {
       this.setState({ submitDisabled: true })
     } else {
       this.setState({ submitDisabled: false })
