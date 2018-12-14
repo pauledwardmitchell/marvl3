@@ -220,7 +220,7 @@ class ApisController < ApplicationController
 
 #ENDPOINTS FOR REVIEW SHOW
   def review_show_data
-    review = Review.find(params[:org])
+    review = Review.find(params[:review])
 
     @data = {
       user_name: review.user.full_name,
@@ -232,7 +232,8 @@ class ApisController < ApplicationController
       rating: review.rating,
       public_review: review.review_content,
       private_review: review.review_private_content,
-      logo_link: review.user.organization.logo_link
+      logo_link: review.user.organization.logo_link,
+      days_ago: review.days_old
     }
 
     render json: @data
