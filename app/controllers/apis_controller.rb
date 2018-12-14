@@ -218,6 +218,26 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+#ENDPOINTS FOR REVIEW SHOW
+  def review_show_data
+    review = Review.find(params[:org])
+
+    @data = {
+      user_name: review.user.full_name,
+      user_id: review.user.id,
+      org_name: review.user.organization.name,
+      org_id: review.user.organization.id,
+      vendor_name: review.vendor.name,
+      vendor_id: review.vendor.id,
+      rating: review.rating,
+      public_review: review.review_content,
+      private_review: review.review_private_content,
+      logo_link: review.user.organization.logo_link
+    }
+
+    render json: @data
+  end
+
 #ENDPOINTS FOR USER SHOW
   def user_show_data
     user = User.find(params[:user])
