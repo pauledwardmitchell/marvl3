@@ -6,13 +6,9 @@ class ReviewsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    # @reviews = Review.all
-    @user = {name: "Paul",
-             type: "Admin"}
   end
 
   def upload
-
   end
 
   def import
@@ -22,8 +18,8 @@ class ReviewsController < ApplicationController
 
   # # GET /posts/1
   # # GET /posts/1.json
-  # def show
-  # end
+  def show
+  end
 
   # # GET /posts/new
   # def new
