@@ -238,16 +238,6 @@ class ApisController < ApplicationController
     render json: @data
   end
 
-"user_id"
-    t.integer "vendor_id"
-    t.string "review_content"
-    t.integer "rating_service"
-    t.integer "rating_quality"
-    t.boolean "anonymous"
-    t.string "review_private_content"
-    t.integer "rating"
-
-
 #ENDPOINTS FOR USER SHOW
   def user_show_data
     user = User.find(params[:user])
