@@ -60,6 +60,16 @@ class UserShowAllReviews extends React.Component {
     }
   }
 
+  renderPrivateReview (review) {
+    const permission = document.getElementById("private-review-permission").getAttribute('value');
+
+    if ( permission === "true" ) {
+      return <Typography component="h3" variant='subheading' gutterBottom>Private Review: {review.private_review}</Typography>
+    } else {
+      return <span></span>
+    }
+  }
+
   render() {
     const { classes, data } = this.props;
     const { expanded } = this.state;
@@ -76,8 +86,6 @@ class UserShowAllReviews extends React.Component {
               <ExpansionPanelDetails>
                 <Grid item xs={12}>
                   <Paper className={classes.paper} elevation={4}>
-                    <Typography component="h3" variant='subheading' gutterBottom>Review: {review.review}</Typography>
-                    <Typography component="h3" variant='subheading'>Private Review: {review.private_review}</Typography>
                     <ReactStars
                       className={classes.stars}
                       edit={false}
@@ -85,6 +93,8 @@ class UserShowAllReviews extends React.Component {
                       value={review.rating}
                       size={24}
                       color2={'#ffd700'} />
+                    <Typography component="h3" variant='subheading' gutterBottom>Public Review: {review.review}</Typography>
+                    {this.renderPrivateReview(review)}
                     <Typography gutterBottom>{review.reviewer} wrote this {review.days_ago} days ago</Typography>
                     {this.renderEditDialogButton(review)}
                   </Paper>

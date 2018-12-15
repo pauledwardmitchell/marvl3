@@ -26,7 +26,20 @@ const styles = theme => ({
 });
 
 
+
 class ExpansionPanelReviews extends React.Component {
+
+  renderPrivateReview (review) {
+    const permission = document.getElementById("private-review-permission").getAttribute('value');
+
+    if ( permission === "true" ) {
+      return (<Typography variant="body2">
+                Public Review: {review.private_review}
+              </Typography>)
+    } else {
+      return <span></span>
+    }
+  }
 
   render() {
     const { classes, review } = this.props;
@@ -41,8 +54,9 @@ class ExpansionPanelReviews extends React.Component {
                 />
               <Button href={'/vendors/' + review.vendorId} size='large' className={classes.button}>{review.vendorName}</Button>
               <Typography variant="body2">
-                {review.review}
+                Public Review: {review.review}
               </Typography>
+              {this.renderPrivateReview(review)}
               <Typography variant="body1">
                 Written on: {review.dateWritten}
               </Typography>

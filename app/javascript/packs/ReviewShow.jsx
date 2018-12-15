@@ -84,6 +84,16 @@ class ReviewShow extends React.Component {
     }
   }
 
+  renderPrivateReview (reviewData) {
+    const permission = document.getElementById("private-review-permission").getAttribute('value');
+
+    if ( permission === "true" ) {
+      return <Typography component="h3" variant='subheading' gutterBottom>Private Review: {reviewData.private_review}</Typography>
+    } else {
+      return <span></span>
+    }
+  }
+
   render () {
     const { classes } = this.props;
     const { reviewData } = this.state;
@@ -110,7 +120,7 @@ class ReviewShow extends React.Component {
                 size={24}
                 color2={'#ffd700'} />
               <Typography component="h3" variant='subheading' gutterBottom>Review: {reviewData.public_review}</Typography>
-              <Typography component="h3" variant='subheading' gutterBottom>Private Review: {reviewData.private_review}</Typography>
+              {this.renderPrivateReview(reviewData)}
               <Typography gutterBottom><a href={'/users/'+reviewData.user_id}>{reviewData.user_name}</a> wrote this {reviewData.days_ago} days ago</Typography>
               {this.renderEditDialogButton(reviewData)}
             </Paper>
