@@ -26,7 +26,7 @@ const thisAxios = axios.create({
 
 const loadingReviewData =
   {user_name: "Loading...",
-   user_id: null,
+   user_id: 0,
    org_name: "Loading...",
    org_id: null,
    vendor_name: "Loading...",
@@ -41,7 +41,11 @@ const loadingReviewData =
 const styles = theme => ({
   root: {
     flexGrow: 1
-  }
+  },
+  paper: theme.mixins.gutters({
+    padding: 16,
+    margin: theme.spacing.unit * 3,
+  })
 });
 
 class ReviewShow extends React.Component {
@@ -62,9 +66,16 @@ class ReviewShow extends React.Component {
     .catch((error) => console.error('axios error', error))
   }
 
-  renderEditDialogButton(review) {
-    const pageUserId = this.state.user_id;
+  renderEditDialogButton(reviewData) {
+    const pageUserId = reviewData.user_id.toString();
     const sessionUserId = document.getElementById("userid").getAttribute('value');
+    const reviewId = document.getElementById("review").getAttribute('value');
+    const review = {
+      id: reviewId,
+      review: reviewData.public_review,
+      private_review: reviewData.private_review,
+      rating: reviewData.rating
+    }
 
     if ( pageUserId === sessionUserId ) {
       return ( <EditReviewDialog review={review}/> )
@@ -84,24 +95,24 @@ class ReviewShow extends React.Component {
           <Grid item xs={3}>
             <OrgShowLogo logo_link={reviewData.logo_link}/>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={6}>
             <ReviewShowDetailsBox data={reviewData} />
           </Grid>
         </Grid>
         <Grid container direction='row' justify='flex-start' spacing={16}>
           <Grid item xs={10}>
             <Paper className={classes.paper} elevation={4}>
-              <Typography component="h3" variant='subheading' gutterBottom>Review: {reviewData.review}</Typography>
-              <Typography component="h3" variant='subheading'>Private Review: {reviewData.private_review}</Typography>
               <ReactStars
                 className={classes.stars}
                 edit={false}
                 count={5}
-                value={review.rating}
+                value={reviewData.rating}
                 size={24}
                 color2={'#ffd700'} />
-              <Typography gutterBottom>{review.user_name} wrote this {review.days_ago} days ago</Typography>
-              {this.renderEditDialogButton(review)}
+              <Typography component="h3" variant='subheading' gutterBottom>Review: {reviewData.public_review}</Typography>
+              <Typography component="h3" variant='subheading' gutterBottom>Private Review: {reviewData.private_review}</Typography>
+              <Typography gutterBottom><a href={'/users/'+reviewData.user_id}>{reviewData.user_name}</a> wrote this {reviewData.days_ago} days ago</Typography>
+              {this.renderEditDialogButton(reviewData)}
             </Paper>
           </Grid>
         </Grid>

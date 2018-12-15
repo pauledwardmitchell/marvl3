@@ -24,8 +24,7 @@ const styles = {
   link: {
     marginLeft: 160,
     textDecoration: 'inherit',
-    color: 'inherit',
-    cursor: 'auto'
+    color: 'inherit'
   }
 };
 
