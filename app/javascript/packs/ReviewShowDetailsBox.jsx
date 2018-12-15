@@ -11,6 +11,10 @@ const styles = theme => ({
     paddingBottom: 16,
     margin: theme.spacing.unit * 3,
   }),
+  link: {
+    textDecoration: 'inherit',
+    color: 'inherit'
+  }
 });
 
 function ReviewShowDetailsBox(props) {
@@ -19,8 +23,15 @@ function ReviewShowDetailsBox(props) {
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
-        <Typography variant="headline" component="h3">{data.user_name} from {data.org_name} reviewed the work of {data.vendor_name}</Typography>
-        <Typography variant="subheading" component="h3">CATEGORY HERE?</Typography>
+        <Typography variant="headline" component="h3">
+          <a href={'/users/'+data.user_id} className={classes.link}>{data.user_name}</a> (<a href={'/organizations/'+data.organization_id} className={classes.link}>{data.org_name}</a>)
+        </Typography>
+        <Typography variant="headline" component="h3">
+          <a href={'/vendors/'+data.vendor_id} className={classes.link}>{data.vendor_name}</a>
+        </Typography>
+        <Typography variant="subheading" component="h3">
+          CATEGORY:
+        </Typography>
       </Paper>
     </div>
   );
