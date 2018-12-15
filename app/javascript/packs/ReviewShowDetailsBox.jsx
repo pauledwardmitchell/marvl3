@@ -19,7 +19,7 @@ function ReviewShowDetailsBox(props) {
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
-        <Typography variant="headline" component="h3">{data.name} from {data.org_name} reviewed the work of {data.vendor.name}</Typography>
+        <Typography variant="headline" component="h3">{data.user_name} from {data.org_name} reviewed the work of {data.vendor_name}</Typography>
         <Typography variant="subheading" component="h3">CATEGORY HERE?</Typography>
       </Paper>
     </div>
