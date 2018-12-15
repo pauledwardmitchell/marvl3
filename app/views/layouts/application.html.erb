@@ -13,6 +13,7 @@
   <body>
     <% if current_user %>
       <%= tag('div', id: 'userid', value: current_user.id) %>
+      <%= tag('div', id: 'private-review-permission', value: current_user.private_review_permission) %>
     <% end %>
     <span class="notice"><%= notice %></span>
     <span class="alert"><%= alert %></span>

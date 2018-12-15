@@ -24,4 +24,8 @@ class User < ApplicationRecord
     points = ( num_reviews*2 ) + ( num_protips*3 )
     points
   end
+
+  def private_review_permission
+    true
+  end
 end
