@@ -95,11 +95,11 @@ class ReviewShow extends React.Component {
           <Grid item xs={3}>
             <OrgShowLogo logo_link={reviewData.logo_link}/>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={6}>
             <ReviewShowDetailsBox data={reviewData} />
           </Grid>
         </Grid>
-        <Grid container direction='row' justify='center' spacing={16}>
+        <Grid container direction='row' justify='flex-start' spacing={16}>
           <Grid item xs={10}>
             <Paper className={classes.paper} elevation={4}>
               <ReactStars
@@ -110,7 +110,7 @@ class ReviewShow extends React.Component {
                 size={24}
                 color2={'#ffd700'} />
               <Typography component="h3" variant='subheading' gutterBottom>Review: {reviewData.public_review}</Typography>
-              <Typography component="h3" variant='subheading'>Private Review: {reviewData.private_review}</Typography>
+              <Typography component="h3" variant='subheading' gutterBottom>Private Review: {reviewData.private_review}</Typography>
               <Typography gutterBottom><a href={'/users/'+reviewData.user_id}>{reviewData.user_name}</a> wrote this {reviewData.days_ago} days ago</Typography>
               {this.renderEditDialogButton(reviewData)}
             </Paper>

@@ -9,7 +9,9 @@ const styles = theme => ({
   root: theme.mixins.gutters({
     padding: 16,
     paddingBottom: 16,
-    margin: theme.spacing.unit * 3,
+    paddingTop: 16,
+    margin: theme.spacing.unit * 5,
+    height: 200
   }),
   link: {
     textDecoration: 'inherit',
@@ -24,13 +26,10 @@ function ReviewShowDetailsBox(props) {
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">
-          <a href={'/users/'+data.user_id} className={classes.link}>{data.user_name}</a> (<a href={'/organizations/'+data.organization_id} className={classes.link}>{data.org_name}</a>)
+          <a href={'/vendors/'+data.vendor_id} className={classes.link}>Review of {data.vendor_name}</a>
         </Typography>
         <Typography variant="headline" component="h3">
-          <a href={'/vendors/'+data.vendor_id} className={classes.link}>{data.vendor_name}</a>
-        </Typography>
-        <Typography variant="subheading" component="h3">
-          CATEGORY:
+          by <a href={'/users/'+data.user_id} className={classes.link}>{data.user_name}</a> (<a href={'/organizations/'+data.organization_id} className={classes.link}>{data.org_name}</a>)
         </Typography>
       </Paper>
     </div>
