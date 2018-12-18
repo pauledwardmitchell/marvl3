@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181218135606) do
+ActiveRecord::Schema.define(version: 20181218143620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(version: 20181218135606) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "super_category_ids", array: true
-    t.index ["super_category_ids"], name: "index_categories_on_super_category_ids", using: :gin
   end
 
   create_table "offerings", force: :cascade do |t|
@@ -70,9 +68,6 @@ ActiveRecord::Schema.define(version: 20181218135606) do
     t.integer "user_id"
     t.integer "vendor_id"
     t.string "review_content"
-    t.integer "rating_service"
-    t.integer "rating_quality"
-    t.boolean "anonymous"
     t.string "review_private_content"
     t.integer "rating"
     t.integer "category_id"
