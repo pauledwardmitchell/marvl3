@@ -146,9 +146,9 @@ class ApisController < ApplicationController
         vendor_id: r.vendor.id,
         date: r.created_at.strftime("%m/%d/%Y"),
         img: r.user.organization.logo_link,
-        category: r.categories[0].suggestion_label,
-        super_category: r.categories[0].super_categories[0].name,
-        super_super_category: r.categories[0].super_categories[0].super_super_category.name,
+        category: r.category.suggestion_label,
+        super_category: r.category.super_categories[0].name,
+        super_super_category: r.category.super_categories[0].super_super_category.name,
         text: r.review_content,
         review_private_content: r.review_private_content,
         id: r.id

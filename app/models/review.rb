@@ -1,8 +1,8 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :vendor
-  has_many :offerings, through: :vendor
-  has_many :categories, through: :offerings
+  # has_many :offerings, through: :vendor
+  belongs_to :category
 
   validates :user_id, :vendor_id, :review_content, :rating, presence: true
 
