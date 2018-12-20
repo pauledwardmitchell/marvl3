@@ -37,6 +37,9 @@ const styles = theme => ({
   button: {
     color: 'white'
   },
+  formControl: {
+    marginBottom: 10
+  },
   review: {
     marginBottom: 10
   },
@@ -67,6 +70,7 @@ class WriteReviewDialog extends React.Component {
     this.state = {
       open: false,
       vendorId: null,
+      categoryId: null,
       reviewPublicContent: '',
       reviewPrivateContent: '',
       rating: 0,
@@ -84,6 +88,7 @@ class WriteReviewDialog extends React.Component {
 
   resetForm = () => {
     this.setState({ vendorId: null });
+    this.setState({ categoryId: null });
     this.setState({ reviewPublicContent: '' });
     this.setState({ reviewPrivateContent: '' });
     this.setState({ rating: 0 });
@@ -105,9 +110,14 @@ class WriteReviewDialog extends React.Component {
     this.setState({ rating: newRating }, () => this.submitButtonEnabledYet() );
   };
 
+  handleCategoryChange = (id) => {
+    this.setState( { categoryId: id }, () => this.submitButtonEnabledYet() );
+  }
+
   handleReviewSubmit() {
     const userId = document.getElementById("userid").getAttribute('value')
     const vendorId = this.state.vendorId
+    const categoryId = this.state.categoryId
     const reviewPublicContent = this.state.reviewPublicContent
     const reviewPrivateContent = this.state.reviewPrivateContent
     const rating = this.state.rating
@@ -129,6 +139,7 @@ class WriteReviewDialog extends React.Component {
       review: {
         user_id: userId,
         vendor_id: vendorId,
+        category_id: categoryId,
         review_content: reviewPublicContent,
         review_private_content: reviewPrivateContent,
         rating: rating
@@ -179,6 +190,10 @@ class WriteReviewDialog extends React.Component {
             <FormGroup>
               <FormControl className={classes.formControl}>
                 <IntegrationReactSelect reviewForm={true} handleVendorChange={this.handleVendorChange} />
+              </FormControl>
+
+              <FormControl className={classes.formControl}>
+                <IntegrationReactSelect categorySelect={true} handleCategoryChange={this.handleCategoryChange} />
               </FormControl>
 
               <FormControl className={classes.review}>
