@@ -12,12 +12,13 @@ class Review < ApplicationRecord
       vendor = Vendor.find_by(name: row["Vendor Name"])
       category = Category.find_by(name: row["Services"])
       point_person = PointPerson.find_by(name: row["Contact Name"])
+
       Review.create(user_id: user.id,
                     vendor_id: vendor.id,
                     category_id: category.id,
-                    review_content: row["content"],
-                    rating_quality: row["quality"],
-                    rating_service: row["service"])
+                    review_content: row["Public Review"],
+                    review_private_content: row["Private Review"],
+                    rating: row["Rating"])
       if point_person == nil
         PointPerson.create( name: row["Contact Name"],
                             vendor_id: vendor.id,
