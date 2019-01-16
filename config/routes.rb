@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 #Uploads
   get '/upload', to: 'reviews#upload'
   post '/import_organizations', to: 'organizations#import'
+  post '/import_users', to: 'users#import'
   post '/import_categories', to: 'categories#import'
   post '/import_reviews', to: 'reviews#import'
   post '/import_vendors', to: 'vendors#import'
