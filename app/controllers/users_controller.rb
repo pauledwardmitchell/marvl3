@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def import
+    User.import(params[:file])
+    redirect_to root_url
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
