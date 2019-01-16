@@ -1,4 +1,14 @@
 
+<%= form_tag import_organizations_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Organizations" %>
+<% end %>
+
+<%= form_tag import_vendors_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import Vendors" %>
+<% end %>
+
 <%= form_tag import_reviews_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import Reviews" %>

@@ -4,6 +4,16 @@ class Vendor < ApplicationRecord
   has_many :point_people
   has_many :categories, through: :reviews
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Vendor.create(name: row["Vendor Name"],
+                    website: row["Website"],
+                    street: row["Street Address"],
+                    city_state_and_zip: row["City State Zip"],
+                    main_phone_line: row["Phone"])
+    end
+  end
+
   def avg_rating
     ratings_array = self.reviews.map { |r| r.rating }
     avg_rating = ratings_array.inject(0){|sum,x| sum + x } / reviews.count
