@@ -8,6 +8,17 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :protips
 
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      organization = Organization.find_by(name: row["Organization Name"])
+      User.create(email: row["Email"],
+                  password: ('a'..'z').to_a.shuffle[0,12].join,
+                  organization_id: organization.id,
+                  first_name: row["First Name"],
+                  last_name: row["Last Name"])
+    end
+  end
+
   def full_name
     first_name + " " + last_name
   end
@@ -25,7 +36,9 @@ class User < ApplicationRecord
     points
   end
 
+  #This is a placeholder method until we decide who gets to see private reviews
   def private_review_permission
     true
   end
+
 end

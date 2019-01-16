@@ -10,6 +10,11 @@ class OrganizationsController < ApplicationController
     set_organization
   end
 
+  def import
+    Organization.import(params[:file])
+    redirect_to root_url
+  end
+
   private
   def set_organization
     @organization = Organization.find(params[:id])

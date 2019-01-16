@@ -9,6 +9,11 @@ class CategoriesController < ApplicationController
     set_category
   end
 
+  def import
+    Category.import(params[:file])
+    redirect_to root_url
+  end
+
   private
   def set_category
     @category = Category.find(params[:id])

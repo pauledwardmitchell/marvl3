@@ -18,6 +18,11 @@ class VendorsController < ApplicationController
     end
   end
 
+  def import
+    Vendor.import(params[:file])
+    redirect_to root_url
+  end
+
   private
   def set_vendor
     @vendor = Vendor.find(params[:id])
