@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   end
 
   def import
-    Review.import(params[:file])
+    Category.import(params[:file])
     redirect_to root_url
   end
 
