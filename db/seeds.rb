@@ -58,14 +58,14 @@ org = Organization.create(
   name: "KIPP DC",
   logo_link: "https://pbs.twimg.com/profile_images/1044589848668114944/SLVqDhaV_400x400.jpg",
   website: "https://www.kippdc.org/",
-  email_suffix: "")
+  email_suffix: "kippdc.org")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(
   name: "Maya Angelou Schools (See Forever Foundation)",
   logo_link: "https://pbs.twimg.com/profile_images/461932816586928129/ELOJmJT2_400x400.jpeg",
   website: "https://www.seeforever.org/",
-  email_suffix: "kippdc.org")
+  email_suffix: "seeforever.org")
 User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@email.com", password: "password", organization_id: org.id)
 
 org = Organization.create(
