@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validate :is_charter_member
+
   belongs_to :organization
   has_many :reviews
   has_many :protips
@@ -16,6 +18,12 @@ class User < ApplicationRecord
                   organization_id: organization.id,
                   first_name: row["First Name"],
                   last_name: row["Last Name"])
+    end
+  end
+
+  def is_charter_member
+    if !member_email_suffixes.include? self.email.split("@").last
+      errors.add(:member_email, "use email affiliated with member school")
     end
   end
 
@@ -39,6 +47,29 @@ class User < ApplicationRecord
   #This is a placeholder method until we decide who gets to see private reviews
   def private_review_permission
     true
+  end
+
+  private
+
+  def member_email_suffixes
+    #Change this to dynamoic look up when it is a column on the user model
+    [ "appletreeinstitute.org",
+      "briya.org",
+      "ccpcs.org",
+      "chavezschools.org",
+      "dcprep.org",
+      "elhaynes.org",
+      "friendshipschools.org",
+      "ideapcs.org",
+      "kippdc.org",
+      "seeforever.org",
+      "mpcs-dc.org",
+      "paulcharter.org",
+      "pspdc.org",
+      "rocketshipschools.org",
+      "thurgoodmarshallacademy.org",
+      "tworiverspcs.org",
+      "washingtonyuying.org" ]
   end
 
 end
