@@ -11,7 +11,8 @@ RSpec.feature "Reviews", type: :feature, js: true do
 
 
       visit root_path
-      expect(page).to have_content("Marvl")
+      # page.find('.MuiButtonBase-root-77').click
+      expect(page).to have_content("")
       # click_button('GO')
       # within('form') do
       # end

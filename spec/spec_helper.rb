@@ -112,5 +112,5 @@ end
 # Capybara.register_driver :poltergeist do |app|
 #   Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
 # end
-Capybara.javascript_driver = :poltergeist
-Capybara.default_driver = :poltergeist
+Capybara.javascript_driver = :selenium
+Capybara.default_driver = :selenium
