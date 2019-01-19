@@ -1,0 +1,69 @@
+@font-face {
+}
+
+.form-group{
+    font-family: "Roboto";
+    max-width: 600px;
+    padding: 10px 20px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea,
+.form-group select {
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    margin-bottom: 20px;
+}
+
+
+.form-group .password {
+  border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    margin-bottom: 20px;
+ }
+
+.form-group input[type="submit"],
+.form-group input[type="button"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #8a97a0;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group input[type="submit"]:hover,
+.form-group input[type="button"]:hover
+{
+    background: gray;
+}
+
+.form-group a {
+    text-decoration: none;
+    color: black;
+}
