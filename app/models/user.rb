@@ -52,24 +52,7 @@ class User < ApplicationRecord
   private
 
   def member_email_suffixes
-    #Change this to dynamoic look up when it is a column on the user model
-    [ "appletreeinstitute.org",
-      "briya.org",
-      "ccpcs.org",
-      "chavezschools.org",
-      "dcprep.org",
-      "elhaynes.org",
-      "friendshipschools.org",
-      "ideapcs.org",
-      "kippdc.org",
-      "seeforever.org",
-      "mpcs-dc.org",
-      "paulcharter.org",
-      "pspdc.org",
-      "rocketshipschools.org",
-      "thurgoodmarshallacademy.org",
-      "tworiverspcs.org",
-      "washingtonyuying.org" ]
+    Organization.all.map { |o| o.email_suffix }
   end
 
 end

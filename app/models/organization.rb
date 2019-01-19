@@ -5,7 +5,8 @@ class Organization < ApplicationRecord
     CSV.foreach(file.path, headers: true) do |row|
       Organization.create(name: row["Organization Name"],
                           website: row["Website"],
-                          logo_link: row["Logo Link"])
+                          logo_link: row["Logo Link"],
+                          email_suffix: row["Email Suffix"])
     end
   end
 end
