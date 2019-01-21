@@ -1,6 +1,9 @@
 <%# tag('div', id: 'login') %>
 <%# javascript_pack_tag 'login' %>
 
+<div class="form-group">
+
+<h2>Welcome back!</h2>
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -27,3 +30,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

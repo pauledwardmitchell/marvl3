@@ -1,6 +1,8 @@
 <%# tag('div', id: 'signup') %>
 <%# javascript_pack_tag 'signup' %>
 
+<div class="form-group">
+<h2>Welcome! We are glad you are here.</h2>
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -10,6 +12,18 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+  </br>
+
+  <div>
+    <%= f.label :school %><br><span> (If your school is not listed, please email <strong>paul@cpa.coop</strong>.)<br></span>
+    <%= f.select(:organization_id) do %>
+      <%= content_tag(:option, 'Choose a School', {value: nil, selected: "selected", disabled: true}) %>
+      <% Organization.order(:name).each do |c| -%>
+        <%= content_tag(:option, c.name, value: c.id) %>
+      <% end %>
+    <% end %>
+  </div>
+  </br>
 
   <div class="field">
     <%= f.label :password %>
@@ -18,11 +32,13 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
+  </br>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  </br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
@@ -30,4 +46,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
 

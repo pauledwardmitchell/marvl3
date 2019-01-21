@@ -20,4 +20,8 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
   end
 
+  def organization_params
+    params.require(:organization).permit(:name, :website, :logo_link, :email_suffix)
+  end
+
 end

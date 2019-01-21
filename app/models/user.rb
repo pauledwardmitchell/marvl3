@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validate :is_charter_member
+
   belongs_to :organization
   has_many :reviews
   has_many :protips
@@ -16,6 +18,12 @@ class User < ApplicationRecord
                   organization_id: organization.id,
                   first_name: row["First Name"],
                   last_name: row["Last Name"])
+    end
+  end
+
+  def is_charter_member
+    if !member_email_suffixes.include? self.email.split("@").last
+      errors.add(:member_email, "use email affiliated with member school")
     end
   end
 
@@ -39,6 +47,12 @@ class User < ApplicationRecord
   #This is a placeholder method until we decide who gets to see private reviews
   def private_review_permission
     true
+  end
+
+  private
+
+  def member_email_suffixes
+    Organization.all.map { |o| o.email_suffix }
   end
 
 end
