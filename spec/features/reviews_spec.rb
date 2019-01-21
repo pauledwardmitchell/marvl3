@@ -2,6 +2,7 @@ require 'rails_helper'
 require 'capybara/rails'
 
 RSpec.feature "Reviews", type: :feature, js: true do
+
   context 'Create new review' do
 
     scenario 'Should be successful' do
@@ -11,8 +12,11 @@ RSpec.feature "Reviews", type: :feature, js: true do
 
 
       visit root_path
-      # page.find('.MuiButtonBase-root-77').click
-      expect(page).to have_content("")
+      # wait_for_ajax
+      expect(page).to have_content("Write Review")
+      click_button('Write Review')
+      # page.find('WRITE REVIEW').click
+      expect(page).to have_content("Write a review")
       # click_button('GO')
       # within('form') do
       # end

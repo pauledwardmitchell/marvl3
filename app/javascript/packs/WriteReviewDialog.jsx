@@ -175,7 +175,7 @@ class WriteReviewDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
+        <Button id="test-target" variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
         <Dialog
           className={classes.root}
           open={this.state.open}

@@ -98,6 +98,8 @@ RSpec.configure do |config|
 =end
 end
 
+# require_relative('support/wait_for_ajax.rb')
+
 require 'capybara/poltergeist'
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, {
@@ -114,3 +116,5 @@ end
 # end
 Capybara.javascript_driver = :selenium
 Capybara.default_driver = :selenium
+
+Capybara.default_max_wait_time = 50
