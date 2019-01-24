@@ -252,7 +252,6 @@ const data = [
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
     'X-CSRF-Token': csrfToken
   }
@@ -263,30 +262,6 @@ class CenteredTabs extends React.Component {
   state = {
     value: 0,
   };
-
-  componentDidMount(){
-    // thisAxios.get('/check_for_user',{
-    // })
-    // .then((response) => {
-    //   if(response.data.email){
-    //     this.setState({
-    //       currentUser: response.data
-    //     })
-    //     console.log(response.data.email)
-    //     console.log(response.data)
-    //     console.log(this.state.currentUser)
-    //   } else {
-    //     this.setState({
-    //       currentUser: null
-    //     })
-    //     console.log("no user")
-    //   }
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-  }
-
 
   handleChange = (event, value) => {
     this.setState({ value });
