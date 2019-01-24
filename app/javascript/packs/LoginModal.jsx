@@ -48,12 +48,8 @@ const styles = theme => ({
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
     'X-CSRF-Token': csrfToken,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': '*',
-    'Access-Control-Allow-Headers': '*',
     'Content-Type': 'application/json',
     'Accept': 'application/json'
   }

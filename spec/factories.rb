@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :organization do
     name { 'Good School' }
     website { 'www.gs.com' }
-    logo_link { 'www.gs.com/picture'}
+    logo_link { 'https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif' }
     email_suffix { 'gs.com' }
   end
 
