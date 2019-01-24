@@ -6,9 +6,6 @@ RSpec.feature "Vendors", type: :feature, js: true do
   context 'Create new vendor' do
 
     scenario 'Should be successful' do
-      num_vendors_before = Vendor.all.count
-      num_point_people_before = PointPerson.all.count
-
       user = FactoryBot.build(:user)
       user.save(:validate => false)
       login_as(user, :scope => :user)
