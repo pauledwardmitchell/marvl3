@@ -98,23 +98,7 @@ RSpec.configure do |config|
 =end
 end
 
-# require_relative('support/wait_for_ajax.rb')
+require 'capybara/rspec'
 
-require 'capybara/poltergeist'
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, {
-    js_errors: false,
-    # js_errors: true, #setting this to true outputs all my console.logs to Terminal
-    phantomjs_options: ['--ignore-ssl-errors=yes', '--ssl-protocol=any'],
-    debug: false,
-    timeout: 500,
-    phantomjs: File.absolute_path(Phantomjs.path)
-  })
-end
-# Capybara.register_driver :poltergeist do |app|
-#   Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
-# end
 Capybara.javascript_driver = :selenium
 Capybara.default_driver = :selenium
-
-Capybara.default_max_wait_time = 2
