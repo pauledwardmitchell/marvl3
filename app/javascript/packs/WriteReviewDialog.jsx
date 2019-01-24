@@ -54,7 +54,6 @@ const styles = theme => ({
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
     'X-CSRF-Token': csrfToken,
     'Content-Type': 'application/json',
@@ -188,15 +187,15 @@ class WriteReviewDialog extends React.Component {
             </DialogContentText>
 
             <FormGroup>
-              <FormControl className={classes.formControl}>
+              <FormControl id="choose-vendor" className={classes.formControl}>
                 <IntegrationReactSelect reviewForm={true} handleVendorChange={this.handleVendorChange} />
               </FormControl>
 
-              <FormControl className={classes.formControl}>
+              <FormControl id="choose-category" className={classes.formControl}>
                 <IntegrationReactSelect categorySelect={true} handleCategoryChange={this.handleCategoryChange} />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="public-review" className={classes.review}>
                 <TextField
                   id="multiline-flexible"
                   label="Write your review"
@@ -207,7 +206,7 @@ class WriteReviewDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="private-review" className={classes.review}>
                 <TextField
                   id="multiline-flexible"
                   label="Write a private section of your review (visible to CPA members only)"
@@ -218,7 +217,7 @@ class WriteReviewDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl>
+              <FormControl id="rating-stars" >
                 <InputLabel>Rating</InputLabel>
                 <ReactStars
                   className={classes.stars}

@@ -48,11 +48,7 @@ const styles = theme => ({
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
-    // 'Access-Control-Allow-Origin': '*',
-    // 'Access-Control-Allow-Methods': '*',
-    // 'Access-Control-Allow-Headers': '*',
     'X-CSRF-Token': csrfToken,
     'Content-Type': 'application/json',
     'Accept': 'application/json'
@@ -71,7 +67,6 @@ class AddVendorDialog extends React.Component {
       vendorWebsite: '',
       vendorStreetAddress: '',
       vendorCityStateZip: '',
-      categoryId: null,
       pointPersonName: '',
       pointPersonPhone: '',
       pointPersonEmail: ''
@@ -91,14 +86,9 @@ class AddVendorDialog extends React.Component {
     this.setState({ vendorWebsite: '' });
     this.setState({ vendorStreetAddress: '' });
     this.setState({ vendorCityStateZip: '' });
-    this.setState({ categoryId: null });
     this.setState({ pointPersonName: '' });
     this.setState({ pointPersonPhone: '' });
     this.setState({ pointPersonEmail: '' });
-  }
-
-  handleCategoryChange = (id) => {
-    this.setState( { categoryId: id }, () => this.submitButtonEnabledYet() );
   }
 
   handleVendorNameChange = event => {
@@ -130,9 +120,8 @@ class AddVendorDialog extends React.Component {
   };
 
   handleVendorSubmit() {
-    const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
+    const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
-
     thisAxios.post(`/vendors`, {
       vendor: {
         name: vendorName,
@@ -143,24 +132,12 @@ class AddVendorDialog extends React.Component {
     })
     .then((response) => {
       console.log(response);
-      return thisAxios.post(`/offerings`, {
-        offering: {
-          vendor_id: response.data.id,
-          category_id: categoryId
-        }
-      });
-
-      that.handleClose()
-      that.resetForm()
-    })
-    .then((response) => {
-      console.log(response);
       return thisAxios.post(`/point_people`, {
         point_person: {
           name: pointPersonName,
           email: pointPersonPhone,
           phone: pointPersonEmail,
-          vendor_id: response.data.vendor_id
+          vendor_id: response.data.id
         }
       });
     })
@@ -175,7 +152,7 @@ class AddVendorDialog extends React.Component {
   }
 
   submitButtonEnabledYet() {
-    const {vendorName, vendorWebsite, vendorStreetAddress,  vendorCityStateZip, categoryId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
+    const {vendorName, vendorWebsite, vendorStreetAddress,  vendorCityStateZip, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
 
     const inputs = [
       vendorName,
@@ -187,7 +164,7 @@ class AddVendorDialog extends React.Component {
       pointPersonEmail
     ]
 
-    if (inputs.map(input => input.length > 0).includes(false) || categoryId === null) {
+    if (inputs.map(input => input.length > 0).includes(false)) {
       this.setState({ submitDisabled: true })
     } else {
       this.setState({ submitDisabled: false })
@@ -252,7 +229,7 @@ class AddVendorDialog extends React.Component {
 
               {this.renderExistingVendorsWarning()}
 
-              <FormControl className={classes.review}>
+              <FormControl id="vendor-name" className={classes.review}>
                 <TextField
                   required
                   id="multiline-flexible"
@@ -264,7 +241,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="vendor-website" className={classes.review}>
                 <TextField
                   id="multiline-flexible"
                   label="Vendor Website"
@@ -275,7 +252,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="vendor-street-address" className={classes.review}>
                 <TextField
                   label="Street Address (Include Suite # if applicable)"
                   value={this.state.vendorStreetAddress}
@@ -283,7 +260,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="vendor-city-state-zip"className={classes.review}>
                 <TextField
                   label="City, State Zip Code"
                   value={this.state.vendorCityStateZip}
@@ -291,11 +268,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.select}>
-                <IntegrationReactSelect vendorForm={true} handleCategoryChange={this.handleCategoryChange} />
-              </FormControl>
-
-              <FormControl className={classes.review}>
+              <FormControl id="point-person-name" className={classes.review}>
                 <TextField
                   label="Point Person Name"
                   value={this.state.pointPersonName}
@@ -303,7 +276,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="point-person-phone" className={classes.review}>
                 <TextField
                   label="Point Person Phone"
                   value={this.state.pointPersonPhone}
@@ -311,7 +284,7 @@ class AddVendorDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="point-person-email" className={classes.review}>
                 <TextField
                   label="Point Person Email"
                   value={this.state.pointPersonEmail}
@@ -326,7 +299,7 @@ class AddVendorDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button disabled={this.state.submitDisabled} onClick={this.handleVendorSubmit} color="primary">
+            <Button id="submit" disabled={this.state.submitDisabled} onClick={this.handleVendorSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
