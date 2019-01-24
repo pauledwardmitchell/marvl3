@@ -13,9 +13,9 @@ RSpec.feature "Users", type: :feature, js: true do
       fill_in('Password', with: 'password')
       fill_in('Password confirmation', with: 'password')
 
-      click_on('Sign up')
-
-      expect(page).to have_content 'Welcome! You have signed up successfully.'
+      expect{
+        click_on('Sign up')
+      }.to change(User, :count).by(1)
 
     end
 

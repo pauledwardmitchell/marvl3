@@ -57,4 +57,15 @@ RSpec.configure do |config|
 
   config.include Warden::Test::Helpers
 
+  # config.after(:each, type: :feature, js: true) do
+  #   logs = page.driver.browser.manage.logs.get(:browser).join("\n")
+  #   unless logs.strip.empty?
+  #     puts "------------ BROWSER LOGS -------------"
+  #     puts logs
+  #     puts "---------------------------------------"
+  #   end
+  # end
+
 end
+
+

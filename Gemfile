@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
+gem 'dotenv-rails'
 
 gem 'faker'
 gem 'pry'

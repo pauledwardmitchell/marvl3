@@ -30,7 +30,7 @@ const styles = {
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
+  baseURL: process.env['BASE_URL'],
   headers: {
     'X-CSRF-Token': csrfToken
   }
