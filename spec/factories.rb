@@ -10,8 +10,22 @@ FactoryBot.define do
     name { 'Good Vendor' }
   end
 
+  factory :super_super_category do
+    name { 'Building and Grounds' }
+  end
+
+  factory :super_category do
+    name { 'Facilities' }
+    super_super_category_id { SuperSuperCategory.last.id }
+  end
+
   factory :category do
     name { 'Construction' }
+  end
+
+  factory :appearance do
+    super_category_id { SuperCategory.last.id }
+    category_id { Category.last.id }
   end
 
   factory :user do

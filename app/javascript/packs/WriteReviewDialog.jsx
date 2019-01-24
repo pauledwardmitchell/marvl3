@@ -162,7 +162,7 @@ class WriteReviewDialog extends React.Component {
     ]
 
 
-    if (inputs.map(input => input.length > 0).includes(false) || vendorId === null || rating === 0) {
+    if (inputs.map(input => input.length > 0).includes(false) || vendorId === null) {
       this.setState({ submitDisabled: true })
     } else {
       this.setState({ submitDisabled: false })
@@ -174,7 +174,7 @@ class WriteReviewDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
+        <Button id="write-review-button" variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
         <Dialog
           className={classes.root}
           open={this.state.open}
@@ -235,7 +235,7 @@ class WriteReviewDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button disabled={this.state.submitDisabled} onClick={this.handleReviewSubmit} color="primary">
+            <Button id="submit-review" disabled={this.state.submitDisabled} onClick={this.handleReviewSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
