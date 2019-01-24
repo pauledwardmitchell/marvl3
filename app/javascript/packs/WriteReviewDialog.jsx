@@ -54,7 +54,6 @@ const styles = theme => ({
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 const thisAxios = axios.create({
-  baseURL: 'https://marvl-next.herokuapp.com',
   headers: {
     'X-CSRF-Token': csrfToken,
     'Content-Type': 'application/json',
@@ -175,7 +174,7 @@ class WriteReviewDialog extends React.Component {
 
     return (
       <div>
-        <Button id="test-target" variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
+        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
         <Dialog
           className={classes.root}
           open={this.state.open}

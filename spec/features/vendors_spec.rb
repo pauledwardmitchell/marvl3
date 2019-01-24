@@ -24,16 +24,9 @@ RSpec.feature "Vendors", type: :feature, js: true do
       page.find('#point-person-phone').fill_in(with: '(123) 432-2345')
       page.find('#point-person-email').fill_in(with: 'jdoe@email.com')
 
-binding.pry
       expect{
         page.find('#submit').click
       }.to change(Vendor, :count).by(1)
-#       num_vendors_after = Vendor.all.count
-#       num_point_people_after = PointPerson.all.count
-# binding.pry
-#       expect(num_vendors_before).to be == num_vendors_after - 1
-#       expect(num_point_people_before).to be == num_point_people_after - 1
-
     end
 
   end
