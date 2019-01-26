@@ -16,7 +16,6 @@ RSpec.feature "Navigation: ", type: :feature, js: true do
       appearance = FactoryBot.create(:appearance)
       bg_category = category
       review = FactoryBot.create(:review)
-      binding.pry
       FactoryBot.create(:super_super_category, :hr)
       super_category = FactoryBot.create(:super_category)
       category = FactoryBot.create(:category)
@@ -44,9 +43,9 @@ RSpec.feature "Navigation: ", type: :feature, js: true do
       page.find('#grid-list-link-'+organization.id.to_s).click
       page.find('#building-and-grounds-container').click
       page.find('#category-title-'+bg_category.id.to_s).click
-binding.pry
+      page.find('#vendor-page-button-'+vendor.id.to_s).click
 
-      expect(page).to have_content 'use email affiliated with member school'
+      expect(page).to have_content vendor.name.to_s
 
     end
 
