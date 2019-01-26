@@ -36,7 +36,7 @@ class OrgShowAllCategories extends React.Component {
           <Grid item xs={11}>
 
             <ExpansionPanel>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              <ExpansionPanelSummary id={"building-and-grounds-container"} expandIcon={<ExpandMoreIcon />}>
                 <Typography variant="headline">Building and Grounds</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>

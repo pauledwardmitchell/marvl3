@@ -97,6 +97,7 @@ class LandingSchoolsGridList extends React.Component {
                     <img src={school.logo_link} alt={school.name} />
                     <a href={this.buildLink(school.id)}>
                       <GridListTileBar
+                        id={"grid-list-link-"+school.id}
                         title={school.name} />
                     </a>
                   </GridListTile>

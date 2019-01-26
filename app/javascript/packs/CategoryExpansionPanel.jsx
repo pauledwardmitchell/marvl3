@@ -45,7 +45,7 @@ class CategoryExpansionPanels extends React.Component {
       <div className={classes.root}>
         {data.map((category) => {
           return <ExpansionPanel key={category.sub_id} expanded={expanded === 'panel' + category.sub} onChange={this.handleChange('panel' + category.sub)}>
-                   <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                   <ExpansionPanelSummary id={"category-title-"+category.sub_id} expandIcon={<ExpandMoreIcon />}>
                      <Typography className={classes.heading}>{category.sub}</Typography>
                      <Typography className={classes.secondaryHeading}>{category.reviews.length} Reviews</Typography>
                    </ExpansionPanelSummary>
