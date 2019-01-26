@@ -43,7 +43,7 @@ class LandingTaxonomyCategoryList extends React.Component {
           <Grid item xs={6}>
             <List component="categories-list">
               {data.map((category) => {
-                return  <a href={this.buildLink(category.sub_id)} className={classes.label}>
+                return  <a key={category.sub_id} href={this.buildLink(category.sub_id)} className={classes.label}>
                           <ListItem button key={category.id}>
                             <ListItemIcon>
                               <LabelIcon />

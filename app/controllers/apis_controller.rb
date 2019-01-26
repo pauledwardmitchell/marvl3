@@ -164,7 +164,7 @@ class ApisController < ApplicationController
     super_categories = bag.super_categories
 
     if params[:org]
-      @data = build_from_super_super_categories(super_categories, params[:org])
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
     else
       @data = build_from_super_super_categories(super_categories, 0)
     end
@@ -177,7 +177,7 @@ class ApisController < ApplicationController
     super_categories = hr.super_categories
 
     if params[:org]
-      @data = build_from_super_super_categories(super_categories, params[:org])
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
     else
       @data = build_from_super_super_categories(super_categories, 0)
     end
@@ -190,7 +190,7 @@ class ApisController < ApplicationController
     super_categories = tech.super_categories
 
     if params[:org]
-      @data = build_from_super_super_categories(super_categories, params[:org])
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
     else
       @data = build_from_super_super_categories(super_categories, 0)
     end
@@ -203,7 +203,7 @@ class ApisController < ApplicationController
     super_categories = supplies.super_categories
 
     if params[:org]
-      @data = build_from_super_super_categories(super_categories, params[:org])
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
     else
       @data = build_from_super_super_categories(super_categories, 0)
     end
@@ -216,7 +216,7 @@ class ApisController < ApplicationController
     super_categories = siss.super_categories
 
     if params[:org]
-      @data = build_from_super_super_categories(super_categories, params[:org])
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
     else
       @data = build_from_super_super_categories(super_categories, 0)
     end
