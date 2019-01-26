@@ -6,13 +6,37 @@ RSpec.feature "Reviews", type: :feature, js: true do
   context 'Create new review' do
 
     scenario 'Should be successful' do
+      organization = FactoryBot.create(:organization)
+      user = FactoryBot.create(:user)
       vendor = FactoryBot.create(:vendor)
-      super_super_category = FactoryBot.create(:super_super_category)
+
+      FactoryBot.create(:super_super_category, :bg)
       super_category = FactoryBot.create(:super_category)
       category = FactoryBot.create(:category)
       appearance = FactoryBot.create(:appearance)
-      user = FactoryBot.build(:user)
-      user.save(:validate => false)
+      bg_category = category
+      bg_review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :hr)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :tech)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :supplies)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :ss)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+
       login_as(user, :scope => :user)
 
       visit root_path

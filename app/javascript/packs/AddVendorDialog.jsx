@@ -231,7 +231,6 @@ class AddVendorDialog extends React.Component {
 
               <FormControl id="vendor-name" className={classes.review}>
                 <TextField
-                  required
                   id="multiline-flexible"
                   label="Vendor Name"
                   multiline
