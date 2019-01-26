@@ -15,7 +15,7 @@ RSpec.feature "Navigation: ", type: :feature, js: true do
       category = FactoryBot.create(:category)
       appearance = FactoryBot.create(:appearance)
       bg_category = category
-      review = FactoryBot.create(:review)
+      bg_review = FactoryBot.create(:review)
       FactoryBot.create(:super_super_category, :hr)
       super_category = FactoryBot.create(:super_category)
       category = FactoryBot.create(:category)
@@ -44,8 +44,11 @@ RSpec.feature "Navigation: ", type: :feature, js: true do
       page.find('#building-and-grounds-container').click
       page.find('#category-title-'+bg_category.id.to_s).click
       page.find('#vendor-page-button-'+vendor.id.to_s).click
+      page.find('#home-button').click
+      page.find('#review-button-'+bg_review.id.to_s).click
+      page.find('#home-button').click
 
-      expect(page).to have_content vendor.name.to_s
+      expect(page).to have_content "Browse vendors of network schools"
 
     end
 
