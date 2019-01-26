@@ -137,7 +137,9 @@ class AddProtipDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" className={classes.button} onClick={this.handleClickOpen}>Add Pro Tip</Button>
+        <Button id="add-protip-button"variant="outlined" className={classes.button} onClick={this.handleClickOpen}>
+          Add Pro Tip
+        </Button>
         <Dialog
           className={classes.root}
           open={this.state.open}
@@ -151,11 +153,11 @@ class AddProtipDialog extends React.Component {
 
             <FormGroup>
 
-              <FormControl className={classes.select}>
+              <FormControl id="choose-category" className={classes.select}>
                 <IntegrationReactSelect protipForm={true} handleCategoryChange={this.handleCategoryChange} />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="protip-title" className={classes.review}>
                 <TextField
                   required
                   id="multiline-flexible"
@@ -167,7 +169,7 @@ class AddProtipDialog extends React.Component {
                 />
               </FormControl>
 
-              <FormControl className={classes.review}>
+              <FormControl id="protip-content" className={classes.review}>
                 <TextField
                   id="multiline-flexible"
                   label="Pro Tip Content"
@@ -185,7 +187,7 @@ class AddProtipDialog extends React.Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button disabled={this.state.submitDisabled} onClick={this.handleProtipSubmit} color="primary">
+            <Button id="submit-protip" disabled={this.state.submitDisabled} onClick={this.handleProtipSubmit} color="primary">
               Submit
             </Button>
           </DialogActions>
