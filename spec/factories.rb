@@ -11,7 +11,22 @@ FactoryBot.define do
   end
 
   factory :super_super_category do
-    name { 'Building and Grounds' }
+    trait :bg do
+      name { 'Building and Grounds' }
+    end
+    trait :hr do
+      name { 'Human Resources' }
+    end
+    trait :tech do
+      name { 'Technology' }
+    end
+    trait :supplies do
+      name { 'Supplies' }
+    end
+    trait :ss do
+      name { 'Student Instruction / Student Services' }
+    end
+
   end
 
   factory :super_category do
@@ -28,11 +43,20 @@ FactoryBot.define do
     category_id { Category.last.id }
   end
 
+  factory :review do
+    user_id { User.last.id }
+    vendor_id { Vendor.last.id }
+    category_id { Category.last.id }
+    review_content { "Public review blah blah"}
+    review_private_content { "Private review blahbadiblah" }
+    rating { 4 }
+  end
+
   factory :user do
-    email { 'test@example.com' }
+    email { 'test@gs.com' }
     password { 'f4k3p455w0rd' }
     password_confirmation { 'f4k3p455w0rd' }
-    organization_id { 1 }
+    organization_id { Organization.last.id }
     first_name { 'john' }
     last_name { 'doe' }
   end

@@ -34,7 +34,7 @@ class ExpansionPanelReviews extends React.Component {
 
     if ( permission === "true" ) {
       return (<Typography variant="body2">
-                Public Review: {review.private_review}
+                Private Review: {review.private_review}
               </Typography>)
     } else {
       return <span></span>
@@ -52,7 +52,7 @@ class ExpansionPanelReviews extends React.Component {
                 className={classes.chip}
                 label={review.stars + " / 5"}
                 />
-              <Button href={'/vendors/' + review.vendorId} size='large' className={classes.button}>{review.vendorName}</Button>
+              <Button id={"vendor-page-button-" + review.vendorId} href={'/vendors/' + review.vendorId} size='large' className={classes.button}>{review.vendorName}</Button>
               <Typography variant="body2">
                 Public Review: {review.review}
               </Typography>

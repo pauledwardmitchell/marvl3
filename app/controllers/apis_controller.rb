@@ -163,7 +163,11 @@ class ApisController < ApplicationController
     bag = SuperSuperCategory.find_by(name: "Building and Grounds")
     super_categories = bag.super_categories
 
-    @data = build_from_super_super_categories(super_categories)
+    if params[:org]
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
+    else
+      @data = build_from_super_super_categories(super_categories, 0)
+    end
 
     render json: @data
   end
@@ -172,7 +176,11 @@ class ApisController < ApplicationController
     hr = SuperSuperCategory.find_by(name: "Human Resources")
     super_categories = hr.super_categories
 
-    @data = build_from_super_super_categories(super_categories)
+    if params[:org]
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
+    else
+      @data = build_from_super_super_categories(super_categories, 0)
+    end
 
     render json: @data
   end
@@ -181,7 +189,11 @@ class ApisController < ApplicationController
     tech = SuperSuperCategory.find_by(name: "Technology")
     super_categories = tech.super_categories
 
-    @data = build_from_super_super_categories(super_categories)
+    if params[:org]
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
+    else
+      @data = build_from_super_super_categories(super_categories, 0)
+    end
 
     render json: @data
   end
@@ -190,7 +202,11 @@ class ApisController < ApplicationController
     supplies = SuperSuperCategory.find_by(name: "Supplies")
     super_categories = supplies.super_categories
 
-    @data = build_from_super_super_categories(super_categories)
+    if params[:org]
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
+    else
+      @data = build_from_super_super_categories(super_categories, 0)
+    end
 
     render json: @data
   end
@@ -199,7 +215,11 @@ class ApisController < ApplicationController
     siss = SuperSuperCategory.find_by(name: "Student Instruction / Student Services")
     super_categories = siss.super_categories
 
-    @data = build_from_super_super_categories(super_categories)
+    if params[:org]
+      @data = build_from_super_super_categories(super_categories, params[:org].to_i)
+    else
+      @data = build_from_super_super_categories(super_categories, 0)
+    end
 
     render json: @data
   end
@@ -435,7 +455,7 @@ class ApisController < ApplicationController
     @data
   end
 
-  def build_from_super_super_categories(super_categories)
+  def build_from_super_super_categories(super_categories, org_id)
     @data =[]
     super_categories_sorted = super_categories.sort{|a,b| a['name']<=>b['name']}
 
@@ -445,7 +465,11 @@ class ApisController < ApplicationController
       sorted_categories = super_cat.categories.sort{|a,b| a['name']<=>b['name']}
 
       sorted_categories.each do |category|
-        org_reviews = category.reviews.find_all { |r| r.user.organization.id == 1}
+        if org_id == 0
+          org_reviews = category.reviews
+        else
+          org_reviews = category.reviews.find_all { |r| r.user.organization.id == org_id}
+        end
         org_reviews_hashes = []
         org_reviews.each do |review|
 

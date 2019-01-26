@@ -140,7 +140,7 @@ class ButtonAppBar extends React.Component {
             <AddProtipDialog />
 
               <Typography variant="title" color="inherit" align="justify" className={classes.flex}>
-                <a href='/' className={classes.link}>
+                <a id={"home-button"} href='/' className={classes.link}>
                   MARVL
                 </a>
               </Typography>
