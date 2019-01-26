@@ -63,6 +63,7 @@ const thisAxios = axios.create({
 });
 
 
+
 class BuildingAndGroundsCenteredTabs extends React.Component {
   constructor(props) {
     super(props);
@@ -73,11 +74,16 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
   }
 
   componentWillMount(){
-    thisAxios.get('/building_and_grounds')
-    .then((response) => {
-      this.setState({superSuperData: response.data})
-    })
-    .catch((error) => console.error('axios error', error))
+    var orgId = 0
+    if (document.getElementById("org")) {
+      orgId = document.getElementById("org").getAttribute('value')
+    }
+
+    thisAxios.get('/building_and_grounds?org=' + orgId)
+      .then((response) => {
+        this.setState({superSuperData: response.data})
+      })
+      .catch((error) => console.error('axios error', error))
   }
 
   handleChange = (event, value) => {
