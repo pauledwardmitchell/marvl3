@@ -1,24 +1,33 @@
-# README
+# Marvl3
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System Requirements
 
-Things you may want to cover:
+* Ruby 2.3.1
+* Postgres >= 9.5
 
-* Ruby version
+## Setup
 
-* System dependencies
+```bash
+cp .env.example .env # customize as needed
+gem install bundler
+bundle install
+bundle exec rake db:create db:migrate db:seed
+```
 
-* Configuration
+Run the server:
 
-* Database creation
+```bash
+bundle exec rails server
+```
 
-* Database initialization
+Run the background worker:
 
-* How to run the test suite
+```bash
+bundle exec rake jobs:work
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the full test suite:
 
-* Deployment instructions
-
-* ...
+```bash
+bundle exec rspec
+```

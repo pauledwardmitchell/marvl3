@@ -93,3 +93,13 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+ActionMailer::Base.smtp_settings = {
+  address: ENV['SMTP_ADDRESS'],
+  port: '587',
+  authentication: :plain,
+  user_name: ENV['SMTP_USERNAME'],
+  password: ENV['SMTP_PASSWORD'],
+  domain: ENV['SMTP_DOMAIN'],
+  enable_starttls_auto: true
+}

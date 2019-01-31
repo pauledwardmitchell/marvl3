@@ -18,6 +18,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem "activejob", ">= 5.1.6.1"
+gem 'delayed_job_active_record'
 
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
@@ -51,4 +52,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 ruby "2.3.1"
-
