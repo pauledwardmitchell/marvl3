@@ -59,6 +59,7 @@ FactoryBot.define do
     organization_id { Organization.last.id }
     first_name { 'john' }
     last_name { 'doe' }
+    confirmed_at { DateTime.now }
   end
 
 end
