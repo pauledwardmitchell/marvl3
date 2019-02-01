@@ -119,7 +119,7 @@ class ApisController < ApplicationController
 
   def landing_schools_data
     all_schools = Organization.all
-    schools = all_schools.sort{|a,b| a['name']<=>b['name']} #move sort down, sort by points
+    schools = all_schools.sort{|a,b| b.points<=>a.points}
     @data = []
 
     schools.each do |s|
