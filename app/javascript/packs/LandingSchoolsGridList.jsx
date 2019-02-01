@@ -98,7 +98,8 @@ class LandingSchoolsGridList extends React.Component {
                     <a href={this.buildLink(school.id)}>
                       <GridListTileBar
                         id={"grid-list-link-"+school.id}
-                        title={school.name} />
+                        title={school.name}
+                        subtitle={school.points + " points"} />
                     </a>
                   </GridListTile>
                 ))}

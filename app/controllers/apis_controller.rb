@@ -119,14 +119,15 @@ class ApisController < ApplicationController
 
   def landing_schools_data
     all_schools = Organization.all
-    schools = all_schools.sort{|a,b| a['name']<=>b['name']}
+    schools = all_schools.sort{|a,b| a['name']<=>b['name']} #move sort down, sort by points
     @data = []
 
     schools.each do |s|
       schools_hash = {
         id: s.id,
         name: s.name,
-        logo_link: s.logo_link
+        logo_link: s.logo_link,
+        points: s.points
       }
       @data << schools_hash
     end
