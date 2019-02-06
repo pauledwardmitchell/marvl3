@@ -20,6 +20,17 @@ module Marvl3
       end
     end
 
+    config.active_job.queue_adapter = :delayed_job
+
+    config.action_controller.default_url_options = { host: ENV['BASE_URL'] }
+
+    config.action_mailer.default_url_options = { host: ENV['BASE_URL'] }
+    config.action_mailer.asset_host = ENV['BASE_URL']
+    config.action_mailer.default_options = {
+      from: ENV['SMTP_FROM'],
+      reply_to: ENV['SMTP_REPLY_TO']
+    }
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
