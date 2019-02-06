@@ -37,12 +37,14 @@ const loadingSchoolsData = [
   {
     logo_link: "https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif",
     name: 'Capital City PCS',
-    id: 8
+    id: 8,
+    points: 200
   },
   {
     logo_link: "https://pbs.twimg.com/profile_images/1786302154/Twitter_Logo03_400x400.png",
     name: 'DC PREP',
-    id: 4
+    id: 4,
+    points: 100
   }
 ];
 
@@ -98,7 +100,8 @@ class LandingSchoolsGridList extends React.Component {
                     <a href={this.buildLink(school.id)}>
                       <GridListTileBar
                         id={"grid-list-link-"+school.id}
-                        title={school.name} />
+                        title={school.name}
+                        subtitle={school.points + " points"} />
                     </a>
                   </GridListTile>
                 ))}

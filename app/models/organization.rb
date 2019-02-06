@@ -9,4 +9,8 @@ class Organization < ApplicationRecord
                           email_suffix: row["Email Suffix"])
     end
   end
+
+  def points
+    self.users.map{ |u| u.points }.inject(:+)
+  end
 end
