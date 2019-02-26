@@ -119,7 +119,12 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
         <Grid container spacing={24} justify='center'>
           <Grid item xs={11}>
             <AppBar position="static">
-              <Tabs value={value} onChange={this.handleChange} centered>
+              <Tabs
+                value={value}
+                onChange={this.handleChange}
+                scrollable
+                scrollButtons="on"
+              >
                 {superSuperData.map((superCategory) => {
                     return <Tab
                              key={superCategory.name}
@@ -132,6 +137,9 @@ class BuildingAndGroundsCenteredTabs extends React.Component {
             {value === 1 && <TabContainer>{this.renderPanel()}</TabContainer>}
             {value === 2 && <TabContainer>{this.renderPanel()}</TabContainer>}
             {value === 3 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 4 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 5 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 6 && <TabContainer>{this.renderPanel()}</TabContainer>}
           </Grid>
         </Grid>
       </div>

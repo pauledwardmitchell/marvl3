@@ -48,7 +48,7 @@ class LandingTaxonomy extends React.Component {
 
             <ExpansionPanel>
               <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="headline">Building and Grounds</Typography>
+                <Typography variant="headline">Facilities</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <BuildingAndGroundsCenteredTabs landing={true} />
