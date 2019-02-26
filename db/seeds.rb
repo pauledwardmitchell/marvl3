@@ -1,4 +1,11 @@
 org = Organization.create(
+  name: "Community Purchasing Alliance",
+  logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/5c0ff12eaa4a99fb4c340c86/1549535829723/?format=300w",
+  website: "https://www.cpa.coop",
+  email_suffix: "cpa.coop")
+User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@" + org.email_suffix, password: "password", organization_id: org.id)
+
+org = Organization.create(
   name: "Apple Tree PCS",
   logo_link: "https://pbs.twimg.com/profile_images/1768859973/AT_Tree_400x400.jpg",
   website: "https://www.appletreeinstitute.org/schools/",
