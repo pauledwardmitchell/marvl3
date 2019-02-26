@@ -131,6 +131,8 @@ class HumanResourcesCenteredTabs extends React.Component {
             {value === 0 && <TabContainer>{this.renderPanel()}</TabContainer>}
             {value === 1 && <TabContainer>{this.renderPanel()}</TabContainer>}
             {value === 2 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 3 && <TabContainer>{this.renderPanel()}</TabContainer>}
+            {value === 4 && <TabContainer>{this.renderPanel()}</TabContainer>}
           </Grid>
         </Grid>
       </div>

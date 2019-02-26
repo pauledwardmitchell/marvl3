@@ -161,7 +161,7 @@ class ApisController < ApplicationController
 
 #END POINTS FOR TAXONOMY DATA
   def building_and_grounds
-    bag = SuperSuperCategory.find_by(name: "Building and Grounds")
+    bag = SuperSuperCategory.find_by(name: "Facilities")
     super_categories = bag.super_categories
 
     if params[:org]
@@ -213,7 +213,7 @@ class ApisController < ApplicationController
   end
 
   def student_instruction_and_services
-    siss = SuperSuperCategory.find_by(name: "Student Instruction / Student Services")
+    siss = SuperSuperCategory.find_by(name: "Student Instruction and Student Services")
     super_categories = siss.super_categories
 
     if params[:org]

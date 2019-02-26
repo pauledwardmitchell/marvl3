@@ -37,7 +37,7 @@ class OrgShowAllCategories extends React.Component {
 
             <ExpansionPanel>
               <ExpansionPanelSummary id={"building-and-grounds-container"} expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="headline">Building and Grounds</Typography>
+                <Typography variant="headline">Facilities</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <BuildingAndGroundsCenteredTabs />

@@ -121,8 +121,7 @@ class StudentInstructionAndServicesCenteredTabs extends React.Component {
               <Tabs
                 value={value}
                 onChange={this.handleChange}
-                scrollable
-                scrollButtons="on"
+                centered
               >
                 {superSuperData.map((superCategory) => {
                     return <Tab
