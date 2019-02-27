@@ -11,21 +11,21 @@ class Category < ApplicationRecord
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
 
-      if !SuperSuperCategory.find_by(name: row["Super Super Category Name"])
-        SuperSuperCategory.create(name: row["Super Super Category Name"])
+      if !SuperSuperCategory.find_by(name: row["Super Super Category Name"].strip)
+        SuperSuperCategory.create(name: row["Super Super Category Name"].strip)
       end
-      super_super_category = SuperSuperCategory.find_by(name: row["Super Super Category Name"])
+      super_super_category = SuperSuperCategory.find_by(name: row["Super Super Category Name"].strip)
 
-      if !SuperCategory.find_by(name: row["Super Category Name"])
-        SuperCategory.create(name: row["Super Category Name"],
+      if !SuperCategory.find_by(name: row["Super Category Name"].strip)
+        SuperCategory.create(name: row["Super Category Name"].strip,
                              super_super_category_id: super_super_category.id)
       end
-      super_category = SuperCategory.find_by(name: row["Super Category Name"])
+      super_category = SuperCategory.find_by(name: row["Super Category Name"].strip)
 
-      if !Category.find_by(name: row["Category Name"])
-        Category.create(name: row["Category Name"])
+      if !Category.find_by(name: row["Category Name"].strip)
+        Category.create(name: row["Category Name"].strip)
       end
-      category = Category.find_by(name: row["Category Name"])
+      category = Category.find_by(name: row["Category Name"].strip)
 
       Appearance.create(super_category_id: super_category.id,
                         category_id: category.id)

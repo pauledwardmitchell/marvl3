@@ -8,9 +8,9 @@ class Review < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      user = User.find_by(email: row["Reviewer Email"])
-      vendor = Vendor.find_by(name: row["Vendor Name"])
-      category = Category.find_by(name: row["Services"])
+      user = User.find_by(email: row["Reviewer Email"].strip)
+      vendor = Vendor.find_by(name: row["Vendor Name"].strip)
+      category = Category.find_by(name: row["Category"].strip)
       point_person = PointPerson.find_by(name: row["Contact Name"])
 
       Review.create(user_id: user.id,
@@ -22,7 +22,6 @@ class Review < ApplicationRecord
       if point_person == nil
         PointPerson.create( name: row["Contact Name"],
                             vendor_id: vendor.id,
-                            title: row["Contact Title"],
                             email: row["Contact Email"],
                             phone: row["Contact Number"])
       end
