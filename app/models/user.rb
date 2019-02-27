@@ -13,12 +13,14 @@ class User < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      organization = Organization.find_by(name: row["Organization Name"])
-      User.create(email: row["Email"],
+      organization = Organization.find_by(name: row["Organization Name"].strip)
+      User.create(email: row["Email"].strip,
                   password: ('a'..'z').to_a.shuffle[0,12].join,
                   organization_id: organization.id,
-                  first_name: row["First Name"],
-                  last_name: row["Last Name"])
+                  first_name: row["First Name"].strip,
+                  last_name: row["Last Name"].strip,
+                  title: row["Title"].strip,
+                  confirmed_at: DateTime.now)
     end
   end
 

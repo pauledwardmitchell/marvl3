@@ -118,11 +118,11 @@ class ApisController < ApplicationController
   end
 
   def landing_schools_data
-    all_schools = Organization.all
-    schools = all_schools.sort{|a,b| b.points<=>a.points}
+    all_schools = Organization.where.not(name: "Community Purchasing Alliance")
+
     @data = []
 
-    schools.each do |s|
+    all_schools.each do |s|
       schools_hash = {
         id: s.id,
         name: s.name,
@@ -132,7 +132,9 @@ class ApisController < ApplicationController
       @data << schools_hash
     end
 
-    render json: @data
+    @sorted_data = @data.sort_by {|a| a[:points]}.reverse
+
+    render json: @sorted_data
   end
 
   def landing_recent_activity_data

@@ -12,7 +12,7 @@ FactoryBot.define do
 
   factory :super_super_category do
     trait :bg do
-      name { 'Building and Grounds' }
+      name { 'Facilities' }
     end
     trait :hr do
       name { 'Human Resources' }
@@ -24,7 +24,7 @@ FactoryBot.define do
       name { 'Supplies' }
     end
     trait :ss do
-      name { 'Student Instruction / Student Services' }
+      name { 'Student Instruction and Student Services' }
     end
 
   end

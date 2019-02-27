@@ -6,7 +6,7 @@ class Vendor < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      Vendor.create(name: row["Vendor Name"],
+      Vendor.create(name: row["Vendor Name"].strip,
                     website: row["Website"],
                     street: row["Street Address"],
                     city_state_and_zip: row["City State Zip"],
