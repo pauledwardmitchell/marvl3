@@ -406,7 +406,7 @@ class ApisController < ApplicationController
 
   def categories_from_vendor(vendor)
     categories_array =[]
-    vendor.categories.each do |category|
+    vendor.categories.uniq.each do |category|
       cat_hash = {
         id: category.id,
         name: category.full_name

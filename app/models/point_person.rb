@@ -4,7 +4,11 @@ class PointPerson < ApplicationRecord
   validates :vendor_id, :name, presence: true
 
   def name_and_title
-    self.name + " - " + self.title
+    if self.title
+      self.name + " - " + self.title
+    else
+      self.name
+    end
   end
 
 end
