@@ -48,7 +48,7 @@ class LandingTaxonomyCategoryList extends React.Component {
                             <ListItemIcon>
                               <LabelIcon />
                             </ListItemIcon>
-                            <ListItemText primary={category.sub} />
+                            <ListItemText primary={category.sub} secondary={category.reviews.length + " Reviews"} />
                           </ListItem>
                         </a>
                 }
