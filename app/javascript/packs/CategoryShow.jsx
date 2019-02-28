@@ -116,9 +116,7 @@ class CategoryShow extends React.Component {
           <Grid item xs={4}>
             <CategoryShowTitle data={data} />
           </Grid>
-          <Grid item xs={4}>
-            <CategoryShowBatchRfp data={data} />
-          </Grid>
+
         </Grid>
         <Divider />
         <div className={classes.root}>
@@ -132,7 +130,7 @@ class CategoryShow extends React.Component {
         <div className={classes.root}>
           <Grid container spacing={24} justify='center'>
             <Grid item xs={11}>
-              <CategoryShowProTips data={data.protips}/>
+              <CategoryShowProTips data={data}/>
             </Grid>
           </Grid>
         </div>

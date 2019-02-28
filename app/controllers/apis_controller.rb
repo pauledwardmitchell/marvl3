@@ -433,7 +433,7 @@ class ApisController < ApplicationController
   def vendors_data_from_category(category)
     @data = []
 
-    category.vendors.each do |v|
+    category.vendors.uniq.each do |v|  #Added .uniq because duplicates were appearing.  I suspect something is off with the AR relations between category and vendors
       vendor_hash = {
         id: v.id,
         name: v.name,

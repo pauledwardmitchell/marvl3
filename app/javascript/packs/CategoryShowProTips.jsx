@@ -34,11 +34,11 @@ class CategoryShowProTip extends React.Component {
 
               <ScrollableAnchor id={'protips'}>
                 <Typography variant="display1">
-                  Pro Tips about {data[0].category}
+                  Pro Tips about {data.name}
                 </Typography>
               </ScrollableAnchor>
 
-              {data.map(protip => (
+              {data.protips.map(protip => (
                 <Paper className={classes.root} elevation={4} key={protip.id}>
                   <ScrollableAnchor id={'protip' + "-" + protip.category_tag + "-" + protip.id}>
                     <Typography variant="title">
