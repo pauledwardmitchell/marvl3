@@ -78,7 +78,7 @@ class TechnologyCenteredTabs extends React.Component {
       orgId = document.getElementById("org").getAttribute('value')
     }
 
-    thisAxios.get('/technology?org=orgId' + orgId)
+    thisAxios.get('/technology?org=' + orgId)
     .then((response) => {
       this.setState({superSuperData: response.data})
     })
