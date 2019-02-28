@@ -78,7 +78,7 @@ class StudentInstructionAndServicesCenteredTabs extends React.Component {
       orgId = document.getElementById("org").getAttribute('value')
     }
 
-    thisAxios.get('/student_instruction_and_services?org=orgId' + orgId)
+    thisAxios.get('/student_instruction_and_services?org=' + orgId)
     .then((response) => {
       this.setState({superSuperData: response.data})
     })

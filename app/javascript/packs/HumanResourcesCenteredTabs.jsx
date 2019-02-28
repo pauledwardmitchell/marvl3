@@ -79,7 +79,7 @@ class HumanResourcesCenteredTabs extends React.Component {
       orgId = document.getElementById("org").getAttribute('value')
     }
 
-    thisAxios.get('/human_resources?org=orgId' + orgId)
+    thisAxios.get('/human_resources?org=' + orgId)
     .then((response) => {
       this.setState({superSuperData: response.data})
     })

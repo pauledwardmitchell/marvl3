@@ -78,7 +78,7 @@ class SuppliesCenteredTabs extends React.Component {
       orgId = document.getElementById("org").getAttribute('value')
     }
 
-    thisAxios.get('/supplies?org=orgId' + orgId)
+    thisAxios.get('/supplies?org=' + orgId)
     .then((response) => {
       this.setState({superSuperData: response.data})
     })
