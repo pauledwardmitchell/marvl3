@@ -13,6 +13,7 @@ import ButtonAppBar from './ButtonAppBar';
 import LandingSearch from './LandingSearch';
 import LandingCategoryCard from './LandingCategoryCard';
 import LandingSchoolsGridList from './LandingSchoolsGridList';
+import LandingPopularCategories from './LandingPopularCategories';
 import LandingTaxonomy from './LandingTaxonomy';
 import RecentActivityBox from './RecentActivityBox';
 
@@ -32,6 +33,7 @@ export default class Landing extends React.Component {
         <ButtonAppBar />
         <LandingSearch/>
         <LandingSchoolsGridList />
+        <LandingPopularCategories />
         <LandingTaxonomy />
         <RecentActivityBox />
       </div>

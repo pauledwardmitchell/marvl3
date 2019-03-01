@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/landing_search_data', to:'apis#landing_search_data'
   get '/landing_schools_data', to:'apis#landing_schools_data'
   get '/landing_recent_activity_data', to: 'apis#landing_recent_activity_data'
+  get '/landing_popular_categories', to: 'apis#landing_popular_categories'
 
 #Org Show
   get '/org_show_data', to: 'apis#org_show_data'

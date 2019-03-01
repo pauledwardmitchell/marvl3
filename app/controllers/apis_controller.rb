@@ -137,6 +137,24 @@ class ApisController < ApplicationController
     render json: @sorted_data
   end
 
+  def landing_popular_categories
+    @data = []
+    popular_categories = Category.all.select { |c| c.reviews.count > 6 }
+
+    popular_categories.each do |c|
+      category_hash = {
+        id: c.id,
+        name: c.name,
+        num_reviews: c.reviews.count
+      }
+      @data << category_hash
+    end
+
+    @sorted_data = @data.sort_by {|a| a[:num_reviews]}.reverse
+
+    render json: @sorted_data
+  end
+
   def landing_recent_activity_data
     @data =[]
     reviews = Review.order(created_at: :asc).reverse_order.limit(10).reverse
