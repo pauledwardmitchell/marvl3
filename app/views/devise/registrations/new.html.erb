@@ -14,6 +14,18 @@
   </div>
   </br>
 
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+  </br>
+
   <div>
     <%= f.label :school %><br><span> (If your school is not listed, please email <strong>paul@cpa.coop</strong>.)<br></span>
     <%= f.select(:organization_id) do %>
