@@ -312,6 +312,7 @@ class ApisController < ApplicationController
     @data = {
       name: vendor.name,
       street: vendor.street,
+      website: vendor.website,
       city_state_and_zip: vendor.city_state_and_zip,
       categories_array: categories_from_vendor(vendor),
       schools_array: school_relationships_from_vendor(vendor),

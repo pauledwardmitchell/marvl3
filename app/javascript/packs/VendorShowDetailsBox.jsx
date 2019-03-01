@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -21,10 +22,10 @@ function VendorShowDetailsBox(props) {
         <Typography variant="headline" component="h3">{data.name}</Typography>
         <Typography variant="subheading" component="h3">{data.street}</Typography>
         <Typography variant="subheading" component="h3">{data.city_state_and_zip}</Typography>
-        <Typography variant="subheading" component="h3">{data.website}</Typography>
+        <Button target="_blank" href={data.website}>{data.website}</Button>
       </Paper>
       <Paper className={classes.root} elevation={4}>
-        <Typography variant="headline" component="h3">Who to Call:</Typography>
+        <Typography variant="headline" component="h3">Who to Contact:</Typography>
         {data.point_people_array.map((person) => {
           return  <div key={person.id}>
                     <Typography variant="subheading" component="h3">{person.name_and_title}</Typography>
