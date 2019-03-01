@@ -157,9 +157,18 @@ class ApisController < ApplicationController
 
   def landing_recent_activity_data
     @data =[]
-    reviews = Review.order(created_at: :asc).reverse_order.limit(10).reverse
+    reviews = []
 
-    reviews.each do |r|
+    User.all.each do |u|
+      if u.reviews.count > 0
+        r = u.reviews.last
+        reviews << r
+      end
+    end
+
+    sorted_reviews = reviews.sort_by { |a| a.created_at }.reverse
+
+    sorted_reviews.each do |r|
       review_hash = {
         initials: r.user.initials,
         school: r.user.organization.name,
