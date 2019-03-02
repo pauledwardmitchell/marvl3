@@ -224,7 +224,23 @@ class EnhancedTable extends React.Component {
     } else {
       return "/"
     }
+  }
 
+  buildReviewerLink(reviewerName) {
+    if (this.state.rawData != null) {
+      var rawReviewsData = this.state.rawData.reviews;
+      var id;
+      var i;
+
+      for (i = 0; i < rawReviewsData.length; i++) {
+        if (reviewerName === rawReviewsData[i].reviewer) {
+          id = rawReviewsData[i].reviewer_id
+        }
+      }
+      return "/users/" + id
+    } else {
+      return "/"
+    }
   }
 
   handleRequestSort = (event, property) => {
@@ -313,10 +329,18 @@ class EnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell><Button className={classes.schoolButton} size="small" href={this.buildLink(n.schoolName)}>{n.schoolName}</Button></TableCell>
+                    <TableCell>
+                      <Button className={classes.schoolButton} size="small" href={this.buildLink(n.schoolName)}>
+                        {n.schoolName}
+                      </Button>
+                    </TableCell>
                     <TableCell>{n.rating} stars</TableCell>
                     <TableCell className={classes.reviewText}>{n.review}</TableCell>
-                    <TableCell>{n.reviewer}</TableCell>
+                    <TableCell>
+                      <Button className={classes.schoolButton} size="small" href={this.buildReviewerLink(n.reviewer)}>
+                        {n.reviewer}
+                      </Button>
+                    </TableCell>
                     <TableCell numeric>{n.daysAgo}</TableCell>
                   </TableRow>
                 );
