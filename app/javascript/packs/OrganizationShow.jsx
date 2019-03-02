@@ -71,9 +71,6 @@ class OrganizationShow extends React.Component {
           <Grid item xs={5}>
             <OrgShowDetailsBox data={orgData} />
           </Grid>
-          <Grid item xs={3}>
-            <ChipsArray />
-          </Grid>
         </Grid>
         <OrgShowAllCategories />
       </div>
