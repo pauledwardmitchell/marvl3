@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import WriteReviewDialog from './WriteReviewDialog'
 import AddVendorDialog from './AddVendorDialog'
 import AddProtipDialog from './AddProtipDialog'
+import SearchModal from './SearchModal'
 import LandingProfileMenu from './LandingProfileMenu'
 
 import axios from 'axios'
@@ -21,8 +22,12 @@ const styles = {
   flex: {
     flex: 1,
   },
+  toolbar: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   link: {
-    marginLeft: 160,
+    marginLeft: 200,
     textDecoration: 'inherit',
     color: 'inherit'
   }
@@ -133,19 +138,22 @@ class ButtonAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
 
-            <WriteReviewDialog />
-            <AddVendorDialog existingVendors={this.state.existingVendors} />
-            <AddProtipDialog />
 
-              <Typography variant="title" color="inherit" align="justify" className={classes.flex}>
+              <WriteReviewDialog />
+              <AddVendorDialog existingVendors={this.state.existingVendors} />
+              <AddProtipDialog />
+              <Typography variant="title" color="inherit" className={classes.flex}>
                 <a id={"home-button"} href='/' className={classes.link}>
                   MARVL
                 </a>
               </Typography>
 
-            {this.renderSignUp}
+
+
+              <SearchModal />
+              <Button color="inherit" href="/">Home Page</Button>
 
           </Toolbar>
         </AppBar>
