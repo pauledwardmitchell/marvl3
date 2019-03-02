@@ -137,7 +137,7 @@ class AddProtipDialog extends React.Component {
 
     return (
       <div>
-        <Button id="add-protip-button"variant="outlined" className={classes.button} onClick={this.handleClickOpen}>
+        <Button id="add-protip-button" className={classes.button} onClick={this.handleClickOpen}>
           Add Pro Tip
         </Button>
         <Dialog
