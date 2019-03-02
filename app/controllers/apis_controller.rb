@@ -392,9 +392,10 @@ class ApisController < ApplicationController
         school_name: r.user.organization.name,
         school_id: r.user.organization.id,
         rating: r.rating,
-        review: r.review_content,
+        review: "(" + r.category.name + ") " + r.review_content,
         private_review: r.review_private_content,
         reviewer: r.user.full_name,
+        reviewer_id: r.user.id,
         days_ago: r.days_old
       }
       vendor_reviews_array << review_hash
