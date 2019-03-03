@@ -20,6 +20,8 @@ function UserShowDetailsBox(props) {
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">{data.name}</Typography>
+        <Typography variant="subheading" component="h3">{data.email}</Typography>
+        <Typography variant="subheading" component="h3">{data.title}</Typography>
         <Typography variant="subheading" component="h3">{data.school_name}</Typography>
       </Paper>
     </div>
