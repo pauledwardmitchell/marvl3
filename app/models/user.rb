@@ -41,9 +41,16 @@ class User < ApplicationRecord
   end
 
   def points
-    num_reviews = self.reviews.count
-    num_protips = self.protips.count
-    points = ( num_reviews*2 ) + ( num_protips*3 )
+    points = 0
+
+    if !self.reviews.empty?
+      points += self.reviews.map { |r| r.points }.reduce(:+)
+    end
+
+    if !self.protips.empty?
+      points += self.protips.map { |r| p.points }.reduce(:+)
+    end
+
     points
   end
 

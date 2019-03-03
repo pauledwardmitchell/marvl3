@@ -28,6 +28,27 @@ class Review < ApplicationRecord
     end
   end
 
+  def points
+    num_characters = self.review_content.length
+
+    if self.review_private_content != nil
+      num_characters += self.review_private_content.length
+    end
+
+    case num_characters
+    when 1..100
+      return 1
+    when 101..200
+      return 2
+    when 201..300
+      return 3
+    when 301..400
+      return 4
+    else
+      return 5
+    end
+  end
+
   def category_ids_array
     @category_ids_array =[]
     self.categories.each do |category|
