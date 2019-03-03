@@ -295,6 +295,8 @@ class ApisController < ApplicationController
 
     @data = {
       name: user.full_name,
+      email: user.email,
+      title: user.title
       school_name: user.organization.name,
       logo_link: user.organization.logo_link,
       points: user.points,
