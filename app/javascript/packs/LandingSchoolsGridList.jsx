@@ -20,8 +20,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 500,
-    height: 450,
+    width: 800,
+    height: 550,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -93,7 +93,7 @@ class LandingSchoolsGridList extends React.Component {
               </Typography>
             </Grid>
             <div className={classes.root}>
-              <GridList cellHeight={180} className={classes.gridList}>
+              <GridList cellHeight={200} className={classes.gridList} cols={4}>
                 {schoolsData.map(school => (
                   <GridListTile key={school.id}>
                     <img src={school.logo_link} alt={school.name} />
