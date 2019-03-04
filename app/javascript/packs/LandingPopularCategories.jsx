@@ -88,7 +88,7 @@ class LandingPopularCategories extends React.Component {
                 <Typography variant="headline">See Popular Categories</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
-              <List component="popular-categories-list">
+              <List component="popular-categories-list" dense={true}>
                 {this.state.data.map((category) => {
                   return  <a key={category.id} href={this.buildLink(category.id)} className={classes.label}>
                             <ListItem button key={category.id}>
