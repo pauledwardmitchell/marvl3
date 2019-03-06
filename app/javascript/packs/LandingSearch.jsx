@@ -20,7 +20,7 @@ const thisAxios = axios.create({
 const styles = theme => ({
   title: {
     paddingTop: 140,
-    paddingBottom: 20
+    paddingBottom: 100
   },
   divider: {
     marginTop: 150
@@ -43,9 +43,9 @@ class LandingSearch extends React.Component {
     return (
       <div>
         <Grid container alignItems='center' direction= 'row' justify= 'center'>
-          <Typography variant="headline" component="h1" className={classes.title}>
-            MARVL
-          </Typography>
+          <a href="/" className={classes.title}>
+            <img src="https://cordepress.com/wp-content/uploads/2019/03/marvl_owl.png" alt="marvl_logo" height="100"></img>
+          </a>
         </Grid>
 
         <IntegrationReactSelect />
