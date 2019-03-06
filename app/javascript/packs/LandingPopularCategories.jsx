@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -83,12 +84,9 @@ class LandingPopularCategories extends React.Component {
             </Grid>
           <Grid item xs={8}>
 
-            <ExpansionPanel>
-              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="headline">See Popular Categories</Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-              <List component="popular-categories-list" dense={true}>
+            <Paper>
+              <Grid container spacing={24} justify='center'>
+                <Grid container alignItems='center' direction= 'row' justify= 'center'>
                 {this.state.data.map((category) => {
                   return  <a key={category.id} href={this.buildLink(category.id)} className={classes.label}>
                             <ListItem button key={category.id}>
@@ -100,9 +98,9 @@ class LandingPopularCategories extends React.Component {
                           </a>
                   }
                 )}
-              </List>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
+                </Grid>
+              </Grid>
+            </Paper>
 
           </Grid>
         </Grid>
