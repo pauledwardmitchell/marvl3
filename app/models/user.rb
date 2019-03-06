@@ -65,7 +65,9 @@ class User < ApplicationRecord
   private
 
   def member_email_suffixes
-    Organization.all.map { |o| o.email_suffix }
+    suffixes = Organization.all.map { |o| o.email_suffix }
+    suffixes.push("focusdc.org")
+    suffixes
   end
 
   # Send Devise emails in the background
