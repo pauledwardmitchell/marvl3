@@ -209,7 +209,7 @@ class WriteReviewDialog extends React.Component {
               <FormControl id="private-review" className={classes.review}>
                 <TextField
                   id="multiline-flexible"
-                  label="Write a private section of your review (visible to CPA members only)"
+                  label="Write a private section of your review (visible to CPA staff only)"
                   multiline
                   rowsMax="10"
                   value={this.state.reviewPrivateContent}

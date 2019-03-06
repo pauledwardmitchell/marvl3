@@ -33,6 +33,7 @@ const loadingReviewData =
    rating: 5,
    public_review: "Loading...",
    private_review: "Loading...",
+   private_review_permission: false,
    logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/58f3a38bebbd1a9ee47f1778/1536187527091/?format=300w"
   }
 
@@ -84,10 +85,14 @@ class ReviewShow extends React.Component {
   }
 
   renderPrivateReview (reviewData) {
-    const permission = document.getElementById("private-review-permission").getAttribute('value');
-
-    if ( permission === "true" ) {
-      return <Typography component="h3" variant='subheading' gutterBottom>Private Review: {reviewData.private_review}</Typography>
+    if ( reviewData.private_review_permission === true && this.props.private_review ) {
+      return (<Typography component="h3" variant='subheading' gutterBottom>
+                Private Review: {review.private_review}
+              </Typography>)
+    } else if (reviewData.private_review_permission === true) {
+      return (<Typography component="h3" variant='subheading' gutterBottom>
+                Private Review: (None given)
+              </Typography>)
     } else {
       return <span></span>
     }

@@ -45,7 +45,7 @@ RSpec.feature "Navigation: ", type: :feature, js: true do
       page.find('#category-title-'+bg_category.id.to_s).click
       page.find('#vendor-page-button-'+vendor.id.to_s).click
       page.find('#home-button').click
-      page.find('#review-button-'+bg_review.id.to_s).click
+      page.find('#review-button-'+review.id.to_s).click
       page.find('#home-button').click
 
       expect(page).to have_content "Browse vendors of network schools"

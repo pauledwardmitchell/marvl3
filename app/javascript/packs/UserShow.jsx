@@ -29,7 +29,7 @@ const loadingOrgData =
    school_name: 'Loading...',
    logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/58f3a38bebbd1a9ee47f1778/1536187527091/?format=300w",
    points: 100,
-   reviews: [ { id: 1, name: 'Loading...' } ],
+   reviews: [ { id: 1, name: 'Loading...', private_review_permission: false } ],
    protips: [ { id: 1, name: 'Loading...' } ]
   }
 
