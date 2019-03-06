@@ -282,6 +282,7 @@ class ApisController < ApplicationController
       rating: review.rating,
       public_review: review.review_content,
       private_review: review.review_private_content,
+      private_review_permission: private_review_permission(review.user),
       logo_link: review.user.organization.logo_link,
       days_ago: review.days_old
     }
@@ -513,6 +514,7 @@ class ApisController < ApplicationController
                           stars: review.rating,
                           review: review.review_content,
                           private_review: review.review_private_content,
+                          private_review_permission: private_review_permission(review.user),
                           id: review.id
                         }
 
@@ -539,6 +541,16 @@ class ApisController < ApplicationController
 
     end
     @data
+  end
+
+  def private_review_permission(user)
+    if current_user.is_cpa_staff
+      true
+    elsif current_user == user
+      true
+    else
+      false
+    end
   end
 
 end

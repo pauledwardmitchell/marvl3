@@ -30,6 +30,14 @@ class User < ApplicationRecord
     end
   end
 
+  def is_cpa_staff
+    if self.organization.email_suffix == "cpa.coop"
+      true
+    else
+      false
+    end
+  end
+
   def full_name
     first_name + " " + last_name
   end
@@ -52,11 +60,6 @@ class User < ApplicationRecord
     end
 
     points
-  end
-
-  #This is a placeholder method until we decide who gets to see private reviews
-  def private_review_permission
-    true
   end
 
   private

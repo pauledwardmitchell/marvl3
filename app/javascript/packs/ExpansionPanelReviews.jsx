@@ -23,6 +23,9 @@ const styles = theme => ({
     margin: theme.spacing.unit,
     marginTop: -5
   },
+  smallButton: {
+    margin: theme.spacing.unit
+  }
 });
 
 
@@ -30,11 +33,13 @@ const styles = theme => ({
 class ExpansionPanelReviews extends React.Component {
 
   renderPrivateReview (review) {
-    const permission = document.getElementById("private-review-permission").getAttribute('value');
-
-    if ( permission === "true" ) {
+    if ( this.props.review.private_review_permission === true && this.props.private_review ) {
       return (<Typography variant="body2">
                 Private Review: {review.private_review}
+              </Typography>)
+    } else if (this.props.review.private_review_permission === true) {
+      return (<Typography variant="body2">
+                Private Review: (None given)
               </Typography>)
     } else {
       return <span></span>
@@ -52,7 +57,9 @@ class ExpansionPanelReviews extends React.Component {
                 className={classes.chip}
                 label={review.stars + " / 5"}
                 />
-              <Button id={"vendor-page-button-" + review.vendorId} href={'/vendors/' + review.vendorId} size='large' className={classes.button}>{review.vendorName}</Button>
+              <Button id={"vendor-page-button-" + review.vendorId} href={'/vendors/' + review.vendorId} size='large' className={classes.button}>
+                {review.vendorName}
+              </Button>
               <Typography variant="body2">
                 Public Review: {review.review}
               </Typography>
@@ -60,6 +67,7 @@ class ExpansionPanelReviews extends React.Component {
               <Typography variant="body1">
                 Written on: {review.dateWritten}
               </Typography>
+              <Button href={'/reviews/' + review.id} size='small' className={classes.smallButton}>Go to review page</Button>
             </Paper>
           </Grid>
     );
