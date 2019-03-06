@@ -418,6 +418,7 @@ class ApisController < ApplicationController
         rating: r.rating,
         review: r.review_content,
         private_review: r.review_private_content,
+        private_review_permission: private_review_permission(user),
         reviewer: user.full_name,
         days_ago: r.days_old,
         date: r.updated_at.strftime("%m/%d/%Y")

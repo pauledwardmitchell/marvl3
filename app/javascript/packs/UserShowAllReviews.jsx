@@ -61,10 +61,14 @@ class UserShowAllReviews extends React.Component {
   }
 
   renderPrivateReview (review) {
-    const permission = document.getElementById("private-review-permission").getAttribute('value');
-
-    if ( permission === "true" ) {
-      return <Typography component="h3" variant='subheading' gutterBottom>Private Review: {review.private_review}</Typography>
+    if ( review.private_review_permission === true && this.props.private_review ) {
+      return (<Typography component="h3" variant='subheading' gutterBottom>
+                Private Review: {review.private_review}
+              </Typography>)
+    } else if (review.private_review_permission === true) {
+      return (<Typography component="h3" variant='subheading' gutterBottom>
+                Private Review: (None given)
+              </Typography>)
     } else {
       return <span></span>
     }
