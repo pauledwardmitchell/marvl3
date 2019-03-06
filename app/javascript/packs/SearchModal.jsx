@@ -63,7 +63,7 @@ class SearchModal extends React.Component {
 
     return (
       <div>
-        <Button id="add-protip-button" className={classes.button} onClick={this.handleClickOpen}>
+        <Button className={classes.button} onClick={this.handleClickOpen}>
           Search
         </Button>
         <Dialog
