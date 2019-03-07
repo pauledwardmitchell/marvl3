@@ -44,7 +44,7 @@ class LandingSearch extends React.Component {
       <div>
         <Grid container alignItems='center' direction= 'row' justify= 'center'>
           <a href="/" className={classes.title}>
-            <img src="https://cordepress.com/wp-content/uploads/2019/03/marvl_owl.png" alt="marvl_logo" height="100"></img>
+            <img src="https://cordepress.com/wp-content/uploads/2019/03/marvl_owl.png" alt="marvl_logo" height="150"></img>
           </a>
         </Grid>
 
