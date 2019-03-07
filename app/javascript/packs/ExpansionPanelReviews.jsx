@@ -33,11 +33,11 @@ const styles = theme => ({
 class ExpansionPanelReviews extends React.Component {
 
   renderPrivateReview (review) {
-    if ( this.props.review.private_review_permission === true && this.props.private_review ) {
+    if ( review.private_review_permission === true && review.private_review != null ) {
       return (<Typography variant="body2">
                 Private Review: {review.private_review}
               </Typography>)
-    } else if (this.props.review.private_review_permission === true) {
+    } else if (review.private_review_permission === true) {
       return (<Typography variant="body2">
                 Private Review: (None given)
               </Typography>)

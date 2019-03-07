@@ -85,9 +85,9 @@ class ReviewShow extends React.Component {
   }
 
   renderPrivateReview (reviewData) {
-    if ( reviewData.private_review_permission === true && this.props.private_review ) {
+    if ( reviewData.private_review_permission === true && reviewData.private_review != null ) {
       return (<Typography component="h3" variant='subheading' gutterBottom>
-                Private Review: {review.private_review}
+                Private Review: {reviewData.private_review}
               </Typography>)
     } else if (reviewData.private_review_permission === true) {
       return (<Typography component="h3" variant='subheading' gutterBottom>
