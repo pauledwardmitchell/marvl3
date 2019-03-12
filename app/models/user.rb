@@ -65,8 +65,53 @@ class User < ApplicationRecord
   private
 
   def member_email_suffixes
+    additional_suffixes = [
+      "aprepacademy.org",
+      "cityartspcs.org",
+      "creativemindspcs.org",
+      "dcbilingual.org",
+      "dcgoodwill.org",
+      "dcinternationalschool.org",
+      "dcscholars.org",
+      "democracyprep.org",
+      "digitalpioneersacademy.org",
+      "eagleacademypcs.org",
+      "ecapcs.org",
+      "ewstokes.org",
+      "hu-ms2.org",
+      "imagineschools.org",
+      "inspiredteachingschool.org",
+      "kingsmanacademy.org",
+      "lambpcs.org",
+      "laycca.org",
+      "leemontessori.org",
+      "monumentacademydc.org",
+      "mundoverdepcs.org",
+      "nationalprepdc.org",
+      "nextsteppcs.org",
+      "pspdc.org",
+      "richardwrightpcs.org",
+      "rootspcs.org",
+      "rsed.org",
+      "seedfoundation.com",
+      "selapcs.org",
+      "shiningstarsdc.org",
+      "somersetprepdc.org",
+      "stcoletta.org",
+      "thefamilyplacedc.org",
+      "tmapchs.org",
+      "washingtonglobal.org",
+      "wlapcs.org",
+      "youthbuildpcs.org",
+      "ccprep-academy.org",
+      "statesmenboys.org",
+      "aohdc.org",
+      "harmonydc.org",
+      "mmbethune.org",
+      "focusdc.org"
+    ]
     suffixes = Organization.all.map { |o| o.email_suffix }
-    suffixes.push("focusdc.org")
+    suffixes.push(*additional_suffixes)
     suffixes
   end
 
