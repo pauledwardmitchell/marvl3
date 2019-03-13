@@ -53,6 +53,9 @@ Rails.application.routes.draw do
   post '/import_reviews', to: 'reviews#import'
   post '/import_vendors', to: 'vendors#import'
 
+#Pages
+  get 'terms_and_conditions', to: 'pages#terms_and_conditions'
+
   root to: 'reviews#index'
 
 end
