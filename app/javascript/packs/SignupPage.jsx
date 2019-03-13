@@ -13,13 +13,6 @@ import SignupModal from './SignupModal'
 
 import axios from 'axios'
 
-const orgData =
-  {name: 'Noble Street PCS - UIC Campus',
-   street: '800 N. Halsted Street',
-   city: 'Chicago, IL 60612',
-   phone: '(312) 222-1234',
-   website: 'www.noblestreetpcs.com/uic'
-  }
 
 const styles = theme => ({
   root: {

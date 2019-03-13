@@ -44,48 +44,12 @@ class ButtonAppBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null,
-      existingVendors: [{name: 'Loading', id: 1}]
     };
   }
 
-  componentDidMount(){
-    thisAxios.get('/check_for_user',{
-    })
-    .then((response) => {
-      if(response.data.email){
-        this.setState({
-          currentUser: response.data
-        })
-        console.log(response.data.email)
-        console.log(response.data)
-        console.log(this.state.currentUser)
-      } else {
-        this.setState({
-          currentUser: null
-        })
-        console.log("no user")
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    })
 
-    thisAxios.get('/existing_vendors')
-      .then((response) => {
-        this.setState({existingVendors: response.data})
-      })
-    .catch((error) => console.error('axios error', error))
-  }
-
-  handleLoginClick() {
-    this.setState({loginModalOpen: true})
-  }
-
-  handleLoginSubmitClick() {
-    thisAxios.post(`/reviews`, {
-        title: 'Test Review',
-        content: 'It is working!'
+  handleLogOutSubmitClick() {
+    thisAxios.delete(`/users/sign_out`, {
       })
       .then(function (response) {
         console.log(response);
@@ -94,19 +58,6 @@ class ButtonAppBar extends React.Component {
         console.log(error);
       });
   }
-
-  // renderSignUp() {
-  //   const { classes } = this.props;
-  //   if (this.state.currentUser === null) {
-  //     return (
-  //       <SignupModal />
-  //     )
-  //   } else {
-  //     return (
-  //       <LandingProfileMenu email={this.state.currentUser.email} />
-  //     )
-  //   }
-  // }
 
   renderProfileMenu() {
     const { classes } = this.props;
@@ -154,6 +105,7 @@ class ButtonAppBar extends React.Component {
 
               <SearchModal />
               <Button color="inherit" href="/">Home Page</Button>
+              <Button color="inherit" onClick={this.handleLogOutSubmitClick} href="/">Sign Out</Button>
 
           </Toolbar>
         </AppBar>

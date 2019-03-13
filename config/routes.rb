@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :organizations
   resources :protips
 
+#Sign up
+  get '/signup_schools_suggestions', to:'apis#signup_schools_suggestions'
+
 #App Bar
   get '/check_for_user', to:'apis#check_for_user'
   get '/search_vendors_suggestions', to: 'apis#search_vendors_suggestions'

@@ -47,6 +47,24 @@ class ApisController < ApplicationController
     render json: @data
   end
 
+  def signup_schools_suggestions
+    @unsorted_data =[]
+    schools = Organization.all
+
+    schools.each do |s|
+      school_hash = {
+        label: s.name,
+        value: s.name,
+        id: s.id,
+        type: "schools"
+      }
+      @unsorted_data << school_hash
+    end
+
+    @data = @unsorted_data.sort{|a,b| a[:label]<=>b[:label]}
+    render json: @data
+  end
+
 #ENDPOINTS FOR LANDING PAGE
   def landing_search_data
     @unsorted_data =[]
