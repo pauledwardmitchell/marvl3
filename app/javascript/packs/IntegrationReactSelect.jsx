@@ -194,6 +194,8 @@ class IntegrationReactSelect extends React.Component {
   endpoint() {
     if (this.props.reviewForm === true) {
       return '/search_vendors_suggestions'
+    } else if (this.props.signupForm === true) {
+      return '/signup_schools_suggestions'
     } else if (this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true) {
       return '/search_categories_suggestions'
     } else {
@@ -212,6 +214,8 @@ class IntegrationReactSelect extends React.Component {
   handleChange = name => value => {
     if (this.props.reviewForm === true) {
       this.setState({ [name]: value }, () => { this.updateVendorId() });
+    } else if (this.props.signupForm === true) {
+      this.setState({ [name]: value }, () => { this.updateOrganizationId() });
     } else if (this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true) {
       this.setState({ [name]: value }, () => { this.updateCategoryId() });
     } else {
@@ -251,6 +255,22 @@ class IntegrationReactSelect extends React.Component {
     }
   }
 
+  updateOrganizationId() {
+    var organization = this.state.single.label;
+    var organizationData = this.state.suggestions;
+    var organizationId = null;
+    var i;
+
+    if (this.state.single != null) {
+      for (i = 0; i < organizationData.length; i++) {
+        if (organization === organizationData[i].label) {
+          organizationId = organizationData[i].id
+        }
+      }
+      this.props.handleOrganizationChange(organizationId)
+    }
+  }
+
   buildButtonLink = () => {
     if (this.state.single != null && this.state.single.type === "super_super_categories") {
       return "#taxonomy"
@@ -277,7 +297,7 @@ class IntegrationReactSelect extends React.Component {
 
 
   searchGridNumber() {
-    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true) {
+    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true || this.props.signupForm === true) {
       return 12
     } else {
       return 7
@@ -293,13 +313,15 @@ class IntegrationReactSelect extends React.Component {
       return "Choose category to write pro tip about..."
     } else if (this.props.categorySelect === true) {
       return "Choose category of work"
+    } else if (this.props.signupForm === true) {
+      return "Your school's name"
     } else {
       return "Start typing what you are looking for..."
     }
   }
 
   renderButton() {
-    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true) {
+    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true || this.props.signupForm === true) {
       return (<span></span>)
     } else {
       return (<Grid item xs={1}><Button href={this.buildButtonLink()} disabled={this.checkButtonStatus()}>GO</Button></Grid>)

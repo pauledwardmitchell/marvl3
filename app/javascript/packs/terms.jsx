@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import LoginModal from './LoginModal'
+import TermsAndConditions from './TermsAndConditions'
 
 
 ReactDOM.render(
   <React.Fragment>
     <CssBaseline />
-      <LoginModal />
+      <TermsAndConditions />
   </React.Fragment>,
-  document.getElementById('login')
+  document.getElementById('terms')
 );

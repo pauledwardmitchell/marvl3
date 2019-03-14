@@ -78,9 +78,9 @@ class LoginModal extends React.Component {
     this.setState({ open: true });
   };
 
-  // handleClose = () => {
-  //   this.setState({ open: false });
-  // };
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   handleEmailChange = event => {
     this.setState({ email: event.target.value });
@@ -123,14 +123,14 @@ class LoginModal extends React.Component {
     })
     .then(function (response) {
       console.log(response);
-      parser.write(response.data)
-      that.setState({ alertMessage: alerts[0] })
-      that.setState({ successSnackbarOpen: true })
+      // parser.write(response.data)
+      // that.setState({ alertMessage: alerts[0] })
+      // that.setState({ successSnackbarOpen: true })
       that.handleClose()
     })
     .catch(function (error) {
       console.log(error);
-      that.setState({ errorSnackbarOpen: true })
+      // that.setState({ errorSnackbarOpen: true })
     });
   }
 

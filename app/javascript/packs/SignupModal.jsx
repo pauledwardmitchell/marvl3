@@ -19,6 +19,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 import SimpleSnackbar from './SimpleSnackbar'
+import IntegrationReactSelect from './IntegrationReactSelect'
 
 import axios from 'axios'
 
@@ -30,10 +31,14 @@ const styles = theme => ({
     right: 0,
     marginLeft: 'auto',
     marginRight: 'auto',
-    width: theme.spacing.unit * 50,
+    width: theme.spacing.unit * 70,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+  },
+  button: {
+    marginTop: 20,
+    marginBottom: 20
   },
   container: {
     display: 'flex',
@@ -42,6 +47,17 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
   },
+  formControlTall: {
+    margin: theme.spacing.unit,
+    paddingTop: theme.spacing.unit
+  },
+  heading: {
+    marginBottom: 20
+  },
+  select: {
+    marginTop: 30,
+    marginBottom: 20
+  }
 });
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -56,28 +72,20 @@ class SignupModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this);
-    this.handleCloseSuccessSnackbar = this.handleCloseSuccessSnackbar.bind(this);
-    this.handleCloseErrorSnackbar = this.handleCloseErrorSnackbar.bind(this);
 
     this.state = {
-      open: true,
       firstName: '',
       lastName: '',
       email: '',
+      organizationId: null,
       password: '',
+      passwordConfirmation: '',
       showPassword: false,
-      successSnackbarOpen: false,
-      errorSnackbarOpen: false
+      showPasswordConfirmation: false,
+      submitDisabled: true,
+      signature: ''
     };
   }
-
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  // handleClose = () => {
-  //   this.setState({ open: false });
-  // };
 
   handleFirstNameChange = event => {
     this.setState({ firstName: event.target.value })
@@ -92,7 +100,11 @@ class SignupModal extends React.Component {
   };
 
   handlePasswordChange = event => {
-    this.setState({ password: event.target.value });
+    this.setState({ password: event.target.value }, () => this.submitButtonEnabledYet() );
+  };
+
+  handlePasswordConfirmationChange = event => {
+    this.setState({ passwordConfirmation: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
   handleMouseDownPassword = event => {
@@ -103,73 +115,94 @@ class SignupModal extends React.Component {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
+  handleClickShowPassswordConfirmation = () => {
+    this.setState({ showPasswordConfirmation: !this.state.showPasswordConfirmation });
+  };
+
+  handleSignatureChange = event => {
+    this.setState({ signature: event.target.value }, () => this.submitButtonEnabledYet() );
+  };
+
+  handleOrganizationChange = (id) => {
+    this.setState( { organizationId: id }, () => this.submitButtonEnabledYet() );
+  }
+
   handleSignupSubmit() {
     const userEmail = this.state.email
-    const userPassword = this.state.password
+    const firstName = this.state.firstName
+    const lastName = this.state.lastName
+    const organizationId = this.state.organizationId
+    const password = this.state.password
+    const passwordConfirmation = this.state.passwordConfirmation
     let that = this
 
     thisAxios.post(`/users`, {
       user: {
         email: userEmail,
-        password: userPassword
+        first_name: firstName,
+        last_name: lastName,
+        organization_id: organizationId,
+        password: password,
+        password_confirmation: passwordConfirmation
       }
     })
     .then(function (response) {
       console.log(response);
-      that.setState({ successSnackbarOpen: true })
-      that.handleClose()
+      window.location.reload();
     })
     .catch(function (error) {
       console.log(error);
-      that.setState({ errorSnackbarOpen: true })
+      // that.setState({ errorSnackbarOpen: true })
     });
   }
 
-  handleCloseSuccessSnackbar() {
-    this.setState({ successSnackbarOpen: false });
-  }
+  // handleCloseSuccessSnackbar() {
+  //   this.setState({ successSnackbarOpen: false });
+  // }
 
-  handleCloseErrorSnackbar() {
-    this.setState({ errorSnackbarOpen: false });
+  // handleCloseErrorSnackbar() {
+  //   this.setState({ errorSnackbarOpen: false });
+  // }
+
+  submitButtonEnabledYet() {
+    const { password, passwordConfirmation, signature, organizationId } = this.state;
+
+    if (password != passwordConfirmation || signature != "I affirm" || organizationId === null) {
+      this.setState({ submitDisabled: true })
+    } else {
+      this.setState({ submitDisabled: false })
+    }
   }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <div>
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
           <div className={classes.paper}>
-            <Grid container alignItems='center' direction= 'column' justify= 'center' style={{marginBottom: 20}}>
+            <Grid container alignItems='center' direction= 'column' justify= 'center' className={classes.heading} style={{marginBottom: 20}}>
               <Typography variant="title" id="simple-modal-description">
                 Sign up for MARVL
               </Typography>
-              <Typography variant="subheading" id="simple-modal-description">
-                Already signed up? <a href='/users/sign_in'>Log in</a>
-              </Typography>
             </Grid>
             <FormGroup>
-            <FormControl className={classes.formControl}>
+            <FormControl id="first-name-simple" className={classes.formControl}>
               <InputLabel htmlFor="first-name-simple">First Name</InputLabel>
-              <Input id="first-name-simple" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+              <Input value={this.state.firstName} onChange={this.handleFirstNameChange} />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="last-name-simple" className={classes.formControl}>
               <InputLabel htmlFor="last-name-simple">Last Name</InputLabel>
-              <Input id="last-name-simple" value={this.state.lastName} onChange={this.handleLastNameChange} />
+              <Input value={this.state.lastName} onChange={this.handleLastNameChange} />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="email-simple" className={classes.formControl}>
               <InputLabel htmlFor="email-simple">Email</InputLabel>
-              <Input id="email-simple" value={this.state.email} onChange={this.handleEmailChange} />
+              <Input value={this.state.email} onChange={this.handleEmailChange} />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="choose-organization" className={classes.select}>
+              <IntegrationReactSelect signupForm={true} handleOrganizationChange={this.handleOrganizationChange} />
+            </FormControl>
+            <FormControl id="password" className={classes.formControl}>
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input
-                id="adornment-password"
                 type={this.state.showPassword ? 'text' : 'password'}
                 value={this.state.password}
                 onChange={this.handlePasswordChange}
@@ -185,13 +218,53 @@ class SignupModal extends React.Component {
                 }
               />
             </FormControl>
-            <Button color="inherit" onClick={this.handleSignupSubmit}>Sign up</Button>
+            <FormControl id="password-confirmation" className={classes.formControl}>
+              <InputLabel htmlFor="password">Confirm your Password</InputLabel>
+              <Input
+                type={this.state.showPasswordConfirmation ? 'text' : 'password'}
+                value={this.state.passwordConfirmation}
+                onChange={this.handlePasswordConfirmationChange}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={this.handleClickShowPassswordConfirmation}
+                      onMouseDown={this.handleMouseDownPassword}
+                    >
+                      {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+            </FormControl>
+            <FormControl id="signature-simple" className={classes.formControlTall}>
+              <InputLabel htmlFor="signature-simple">
+                Type "I affirm" to agree to MARVL Terms and Conditions.
+              </InputLabel>
+              <Input value={this.state.signature} onChange={this.handleSignatureChange} />
+            </FormControl>
+            <Typography variant="subheading" id="simple-modal-description">
+                <a href='/terms_and_conditions' target="_blank">MARVL Terms and Conditions</a>
+              </Typography>
+            <Button
+              id="sign-up"
+              color="inherit"
+              variant="outlined"
+              disabled={this.state.submitDisabled}
+              onClick={this.handleSignupSubmit}
+              className={classes.button}
+            >
+              Sign up
+            </Button>
             </FormGroup>
+            <Grid container alignItems='flex-start' direction= 'column' justify= 'center'>
+              <Typography variant="subheading" id="simple-modal-description">
+                Already signed up? <a href='/users/sign_in'>Log in</a>
+              </Typography>
+              <Typography variant="subheading" id="no-confirmation-instructions">
+                Did not receive confirmation instructions? <a href='/users/confirmation/new'>Resend</a>
+              </Typography>
+            </Grid>
           </div>
-        </Modal>
-        <SimpleSnackbar closeSnackbar={this.handleCloseSuccessSnackbar} open={this.state.successSnackbarOpen} message="You are all signed up!"/>
-        <SimpleSnackbar closeSnackbar={this.handleCloseErrorSnackbar} open={this.state.errorSnackbarOpen} message="Oops! Something went wrong. Did you remember to use your school email? Please contact Paul, MARVL mechanic, at paul@cpa.coop with any questions."/>
-      </div>
     );
   }
 }
