@@ -39,7 +39,7 @@ const styles = theme => ({
   button: {
     paddingTop: 20,
     paddingBottom: 20
-  }
+  },
   container: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -132,8 +132,8 @@ class SignupModal extends React.Component {
     const firstName = this.state.firstName
     const lastName = this.state.lastName
     const organizationId = this.state.organizationId
-    const userPassword = this.state.password
-    const userPasswordConfirmation = this.state.passwordConfirmation
+    const password = this.state.password
+    const passwordConfirmation = this.state.passwordConfirmation
     let that = this
 
     thisAxios.post(`/users`, {
@@ -141,8 +141,8 @@ class SignupModal extends React.Component {
         email: userEmail,
         first_name: firstName,
         last_name: lastName,
-        organizationId: organizationId,
-        password: userPassword,
+        organization_id: organizationId,
+        password: password,
         password_confirmation: passwordConfirmation
       }
     })
@@ -188,25 +188,24 @@ class SignupModal extends React.Component {
               </Typography>
             </Grid>
             <FormGroup>
-            <FormControl className={classes.formControl}>
+            <FormControl id="first-name-simple" className={classes.formControl}>
               <InputLabel htmlFor="first-name-simple">First Name</InputLabel>
-              <Input id="first-name-simple" value={this.state.firstName} onChange={this.handleFirstNameChange} />
+              <Input value={this.state.firstName} onChange={this.handleFirstNameChange} />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="last-name-simple" className={classes.formControl}>
               <InputLabel htmlFor="last-name-simple">Last Name</InputLabel>
-              <Input id="last-name-simple" value={this.state.lastName} onChange={this.handleLastNameChange} />
+              <Input value={this.state.lastName} onChange={this.handleLastNameChange} />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="email-simple" className={classes.formControl}>
               <InputLabel htmlFor="email-simple">Email</InputLabel>
-              <Input id="email-simple" value={this.state.email} onChange={this.handleEmailChange} />
+              <Input value={this.state.email} onChange={this.handleEmailChange} />
             </FormControl>
             <FormControl id="choose-organization" className={classes.select}>
               <IntegrationReactSelect signupForm={true} handleOrganizationChange={this.handleOrganizationChange} />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="password" className={classes.formControl}>
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input
-                id="adornment-password"
                 type={this.state.showPassword ? 'text' : 'password'}
                 value={this.state.password}
                 onChange={this.handlePasswordChange}
@@ -222,10 +221,9 @@ class SignupModal extends React.Component {
                 }
               />
             </FormControl>
-            <FormControl className={classes.formControl}>
+            <FormControl id="password-confirmation" className={classes.formControl}>
               <InputLabel htmlFor="password">Confirm your Password</InputLabel>
               <Input
-                id="adornment-password-confirmation"
                 type={this.state.showPasswordConfirmation ? 'text' : 'password'}
                 value={this.state.passwordConfirmation}
                 onChange={this.handlePasswordConfirmationChange}
@@ -241,16 +239,16 @@ class SignupModal extends React.Component {
                 }
               />
             </FormControl>
-            <FormControl className={classes.formControlTall}>
+            <FormControl id="signature-simple" className={classes.formControlTall}>
               <InputLabel htmlFor="signature-simple">
                 Type "I affirm" to agree to MARVL Terms and Conditions.
               </InputLabel>
-              <Input id="signature-simple" value={this.state.signature} onChange={this.handleSignatureChange} />
+              <Input value={this.state.signature} onChange={this.handleSignatureChange} />
             </FormControl>
             <Typography variant="subheading" id="simple-modal-description">
                 <a href='/terms_and_conditions' target="_blank">MARVL Terms and Conditions</a>
               </Typography>
-            <Button color="inherit" disabled={this.state.submitDisabled} onClick={this.handleSignupSubmit} className={classes.button}>
+            <Button id="sign-up" color="inherit" disabled={this.state.submitDisabled} onClick={this.handleSignupSubmit} className={classes.button}>
               Sign up
             </Button>
             </FormGroup>
