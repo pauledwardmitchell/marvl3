@@ -37,8 +37,8 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
   },
   button: {
-    paddingTop: 20,
-    paddingBottom: 20
+    marginTop: 20,
+    marginBottom: 20
   },
   container: {
     display: 'flex',
@@ -183,9 +183,6 @@ class SignupModal extends React.Component {
               <Typography variant="title" id="simple-modal-description">
                 Sign up for MARVL
               </Typography>
-              <Typography variant="subheading" id="simple-modal-description">
-                Already signed up? <a href='/users/sign_in'>Log in</a>
-              </Typography>
             </Grid>
             <FormGroup>
             <FormControl id="first-name-simple" className={classes.formControl}>
@@ -248,11 +245,21 @@ class SignupModal extends React.Component {
             <Typography variant="subheading" id="simple-modal-description">
                 <a href='/terms_and_conditions' target="_blank">MARVL Terms and Conditions</a>
               </Typography>
-            <Button id="sign-up" color="inherit" disabled={this.state.submitDisabled} onClick={this.handleSignupSubmit} className={classes.button}>
+            <Button
+              id="sign-up"
+              color="inherit"
+              variant="outlined"
+              disabled={this.state.submitDisabled}
+              onClick={this.handleSignupSubmit}
+              className={classes.button}
+            >
               Sign up
             </Button>
             </FormGroup>
             <Grid container alignItems='flex-start' direction= 'column' justify= 'center'>
+              <Typography variant="subheading" id="simple-modal-description">
+                Already signed up? <a href='/users/sign_in'>Log in</a>
+              </Typography>
               <Typography variant="subheading" id="no-confirmation-instructions">
                 Did not receive confirmation instructions? <a href='/users/confirmation/new'>Resend</a>
               </Typography>

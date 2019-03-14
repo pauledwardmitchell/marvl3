@@ -314,7 +314,7 @@ class IntegrationReactSelect extends React.Component {
     } else if (this.props.categorySelect === true) {
       return "Choose category of work"
     } else if (this.props.signupForm === true) {
-      return "Choose your organization"
+      return "Your school's name"
     } else {
       return "Start typing what you are looking for..."
     }
