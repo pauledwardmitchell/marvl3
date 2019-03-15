@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
 #Pages
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
+  get 'confirm_signout', to: 'pages#confirm_signout'
 
   root to: 'reviews#index'
 
