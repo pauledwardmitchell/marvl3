@@ -1,0 +1,10 @@
+<div class="form-group">
+
+  <h2>Are you sure you want to sign out?</h2>
+
+  <div class="actions">
+    <%= button_to('Logout', destroy_user_session_path, method: :delete) %>
+    <%= button_to('No! Take me back to MARVL.', root_path, method: :get) %>
+  </div>
+
+</div>

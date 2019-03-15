@@ -5,4 +5,7 @@ class PagesController < ApplicationController
   def terms_and_conditions
   end
 
+  def confirm_signout
+  end
+
 end

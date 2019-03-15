@@ -48,16 +48,16 @@ class ButtonAppBar extends React.Component {
   }
 
 
-  handleLogOutSubmitClick() {
-    thisAxios.delete(`/users/sign_out`, {
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+  // handleLogOutSubmitClick() {
+  //   thisAxios.delete(`/users/sign_out`, {
+  //     })
+  //     .then(function (response) {
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // }
 
   renderProfileMenu() {
     const { classes } = this.props;
@@ -71,18 +71,6 @@ class ButtonAppBar extends React.Component {
       )
     }
   }
-
-  // renderLogIn() {
-  //   if (this.state.currentUser === null) {
-  //     return (
-  //       <LoginModal />
-  //     )
-  //   } else {
-  //     return (
-  //       <div></div>
-  //     )
-  //   }
-  // }
 
   render() {
     const { classes } = this.props;
@@ -105,7 +93,7 @@ class ButtonAppBar extends React.Component {
 
               <SearchModal />
               <Button color="inherit" href="/">Home Page</Button>
-              <Button color="inherit" onClick={this.handleLogOutSubmitClick} href="/">Sign Out</Button>
+              <Button color="inherit" href="/confirm_signout">Sign Out</Button>
 
           </Toolbar>
         </AppBar>
