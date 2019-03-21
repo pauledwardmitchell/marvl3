@@ -159,12 +159,10 @@ class AddVendorDialog extends React.Component {
       vendorWebsite,
       vendorStreetAddress,
       vendorCityStateZip,
-      pointPersonName,
-      pointPersonPhone,
-      pointPersonEmail
+      pointPersonName
     ]
 
-    if (inputs.map(input => input.length > 0).includes(false)) {
+    if (inputs.map(input => input.length > 0).includes(false) || (pointPersonEmail.length < 1 && pointPersonPhone < 1)) {
       this.setState({ submitDisabled: true })
     } else {
       this.setState({ submitDisabled: false })
