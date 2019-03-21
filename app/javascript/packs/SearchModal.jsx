@@ -36,7 +36,8 @@ const styles = theme => ({
     marginBottom: 20
   },
   box: {
-    minHeight: 500
+    minHeight: 400,
+    minWidth: 600
   }
 });
 
@@ -77,7 +78,7 @@ class SearchModal extends React.Component {
             <DialogContentText>
             </DialogContentText>
 
-            <IntegrationReactSelect />
+            <IntegrationReactSelect landingSearch={true} />
 
           </DialogContent>
           <DialogActions>

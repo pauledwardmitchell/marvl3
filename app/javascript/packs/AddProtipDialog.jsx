@@ -42,6 +42,10 @@ const styles = theme => ({
   select: {
     marginTop: 30,
     marginBottom: 20
+  },
+  box: {
+    minHeight: 400,
+    minWidth: 600
   }
 });
 
@@ -147,7 +151,7 @@ class AddProtipDialog extends React.Component {
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title" className={classes.title}>Add a pro tip</DialogTitle>
-          <DialogContent>
+          <DialogContent className={classes.box}>
             <DialogContentText>
             </DialogContentText>
 

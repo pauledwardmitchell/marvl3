@@ -297,8 +297,10 @@ class IntegrationReactSelect extends React.Component {
 
 
   searchGridNumber() {
-    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true || this.props.signupForm === true) {
+    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true || this.props.signupForm === true ) {
       return 12
+    } else if (this.props.landingSearch === true) {
+      return 11
     } else {
       return 7
     }
