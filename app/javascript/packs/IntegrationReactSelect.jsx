@@ -297,8 +297,10 @@ class IntegrationReactSelect extends React.Component {
 
 
   searchGridNumber() {
-    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true || this.props.signupForm === true) {
+    if (this.props.reviewForm === true || this.props.vendorForm === true || this.props.protipForm === true || this.props.categorySelect === true || this.props.signupForm === true ) {
       return 12
+    } else if (this.props.landingSearch === true) {
+      return 11
     } else {
       return 7
     }
@@ -357,7 +359,7 @@ class IntegrationReactSelect extends React.Component {
                 value={this.state.single}
                 onChange={this.handleChange('single')}
                 placeholder={this.renderPlaceholder()}
-                noOptionsMessage={() => "No results. \n Looking for a vendor? Add them to MARVL now! \n Looking for a specific category? Try a broader category (\"Flooring\" instead of \"Tile\" or \"Carpet\"), or email amy@cpa.coop to propose a new category."}
+                noOptionsMessage={() => "No results. \n Looking for a vendor? Add them to MARVL now! \n Looking for a specific category? Try a broader category (\"Flooring\" instead of \"Tile\" or \"Carpet\"), or email paul@cpa.coop to propose a new category."}
               />
             </NoSsr>
           </Grid>
