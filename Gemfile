@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.6.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
@@ -16,7 +16,7 @@ gem 'webpacker', '~>3.2.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 
-gem "activejob", ">= 5.1.6.1"
+gem "activejob", ">= 5.1.6.2"
 gem 'delayed_job_active_record'
 
 gem 'rack-cors', :require => 'rack/cors'
