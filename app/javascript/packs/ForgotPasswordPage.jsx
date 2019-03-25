@@ -65,7 +65,7 @@ const thisAxios = axios.create({
   }
 });
 
-class LoginPage extends React.Component {
+class ForgotPasswordPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -74,7 +74,7 @@ class LoginPage extends React.Component {
       password: '',
       remeberMe: false,
       showPassword: false,
-      error: null
+      msg: null
     };
   }
 
@@ -82,68 +82,57 @@ class LoginPage extends React.Component {
     this.setState({ email: event.target.value });
   }
 
-  updatePassword(event) {
-    this.setState({ password: event.target.value });
+  clearMessage() {
+    this.setState({ message: null });
   }
-
-  updateRememberMe(event) {
-    this.setState({ rememberMe: event.target.checked });
-  }
-
-  togglePassword() {
-    const { showPassword } = this.state;
-    this.setState({ showPassword: !showPassword });
-  }
-
-  clearError() {
-    this.setState({ error: null });
-  }
-
 
   submit() {
-    const { email, password, rememberMe } = this.state;
+    const { email } = this.state;
 
-    this.clearError();
+    this.clearMessage();
 
-    thisAxios.post(`/users/sign_in.json`, {
+    thisAxios.post(`/users/password.json`, {
       user: {
-        email,
-        password,
-        remember_me: rememberMe
+        email
       }
     })
       .then((res) => {
         console.log(res);
-        window.location.reload();
+
+        this.setState({ message: 'Password reset instructions were sent to your email.' });
       })
       .catch((err) => {
         console.log(err);
 
-        const error = err.response.data['error'];
-        this.setState({ error });
+        const errors = err.response.data['errors'];
+        const message = Object.entries(errors).map(([key, values]) => {
+          return values.map((value) => `${key} ${value}`)
+        }).flat().join(', ');
+
+        this.setState({ message });
       });
   }
 
   render() {
     const { classes } = this.props;
-    const { email, password, rememberMe, showPassword, error } = this.state;
+    const { email, message } = this.state;
 
     return (
       <div className={classes.paper}>
         <SimpleSnackbar
-          open={!!error}
-          closeSnackbar={this.clearError.bind(this)}
-          message={error} />
+          open={!!message}
+          closeSnackbar={this.clearMessage.bind(this)}
+          message={message} />
         <Grid
           container
-          alignItems='center'
-          direction= 'column'
-          justify= 'center'
+          alignItems="center"
+          direction="column"
+          justify="center"
           className={classes.heading}
           style={{marginBottom: 20}}
         >
-          <Typography variant="title" id="simple-modal-description">
-            Log in to MARVL
+          <Typography variant="title">
+            Need to reset your password?
           </Typography>
         </Grid>
         <FormGroup>
@@ -152,54 +141,22 @@ class LoginPage extends React.Component {
             <Input value={email} onChange={this.updateEmail.bind(this)} />
           </FormControl>
 
-          <FormControl id="password" className={classes.formControl}>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={this.updatePassword.bind(this)}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton onClick={this.togglePassword.bind(this)} >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-
-          <FormControl id="rememberMe" className={classes.formControl}>
-            <FormControlLabel
-              control={
-                <Checkbox checked={rememberMe} onChange={this.updateRememberMe.bind(this)} />
-              }
-              label="Remember me"
-            />
-          </FormControl>
-
-          <Typography variant="subheading">
-            By signing in, you are agreeing to follow&nbsp;
-            <a href='/terms_and_conditions' target="_blank">
-              MARVL's Terms and Conditions
-            </a>.
-          </Typography>
-
           <Button
             color="inherit"
             variant="outlined"
             onClick={this.submit.bind(this)}
             className={classes.button}
           >
-            Log in
+            Send me reset password instructions
           </Button>
         </FormGroup>
 
         <Grid container alignItems="flex-start" direction="column" justify="center">
           <Typography variant="subheading">
-            <a href="/users/sign_up">Sign up</a>
+            <a href="/users/sign_in">Log in</a>
           </Typography>
           <Typography variant="subheading">
-            <a href="/users/password/new">Forgot your password?</a>
+            <a href="/users/sign_up">Sign up</a>
           </Typography>
           <Typography variant="subheading">
             Did not receive confirmation instructions? <a href="/users/confirmation/new">Resend</a>
@@ -210,8 +167,8 @@ class LoginPage extends React.Component {
   }
 }
 
-LoginPage.propTypes = {
+ForgotPasswordPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(LoginPage);
+export default withStyles(styles)(ForgotPasswordPage);
