@@ -1,0 +1,46 @@
+<h1>Weekly Digest</h1>
+<h2>Hey there! Here is what happened on MARVL last week...</h2>
+
+<% if @users.present? %>
+  <h2>New Users</h2>
+  <ul>
+    <% for user in @users %>
+      <li>
+        <%= link_to user.full_name, user_url(user) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @vendors.present? %>
+  <h2>New Vendors</h2>
+  <ul>
+    <% for vendor in @vendors %>
+      <li>
+        <%= link_to vendor.name, vendor_url(vendor) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @reviews.present? %>
+  <h2>New Reviews</h2>
+  <ul>
+    <% for review in @reviews %>
+      <li>
+        <%= link_to "#{review.user.full_name} review of #{review.vendor.name}", review_url(review) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @protips.present? %>
+  <h2>New Protips</h2>
+  <ul>
+    <% for protip in @protips %>
+      <li>
+        <%= link_to protip.title, category_url(protip.category) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
