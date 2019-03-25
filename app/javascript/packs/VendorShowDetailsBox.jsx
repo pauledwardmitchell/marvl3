@@ -16,13 +16,19 @@ const styles = theme => ({
 
 function VendorShowDetailsBox(props) {
   const { classes, data } = props;
+
+  let link = data.website;
+  if (link.indexOf('http') != 0) {
+    link = `http://${link}`;
+  }
+
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">{data.name}</Typography>
         <Typography variant="subheading" component="h3">{data.street}</Typography>
         <Typography variant="subheading" component="h3">{data.city_state_and_zip}</Typography>
-        <Button target="_blank" href={data.website}>{data.website}</Button>
+        <Button target="_blank" href={link}>{data.website}</Button>
       </Paper>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">Who to Contact:</Typography>
