@@ -134,7 +134,9 @@ class SignupPage extends React.Component {
     const passwordConfirmation = this.state.passwordConfirmation
     let that = this
 
-    thisAxios.post(`/users`, {
+    this.setState({ errors: null });
+
+    thisAxios.post(`/users.json`, {
       user: {
         email: userEmail,
         first_name: firstName,
@@ -148,9 +150,9 @@ class SignupPage extends React.Component {
       console.log(response);
       window.location.reload();
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
-      // that.setState({ errorSnackbarOpen: true })
+      this.setState({ errors: error.response.data.errors });
     });
   }
 
@@ -172,11 +174,31 @@ class SignupPage extends React.Component {
     }
   }
 
+  errorMessages() {
+    const { errors } = this.state;
+    if (!!errors) {
+      return Object.entries(errors).map(([key, values]) => {
+        return values.map((value) => `${key} ${value}`)
+      }).flat();
+    } else {
+      return [];
+    }
+  }
+
+  clearErrors() {
+    this.setState({ errors: null });
+  }
+
   render() {
     const { classes } = this.props;
+    const errors = this.errorMessages();
 
     return (
           <div className={classes.paper}>
+            <SimpleSnackbar
+              open={ errors.length > 0 }
+              closeSnackbar={this.clearErrors.bind(this)}
+              message={ errors.join(', ') } />
             <Grid container alignItems='center' direction= 'column' justify= 'center' className={classes.heading} style={{marginBottom: 20}}>
               <Typography variant="title" id="simple-modal-description">
                 Sign up for MARVL
