@@ -51,7 +51,10 @@ class UserShowAllProtips extends React.Component {
   };
 
   renderEditProtipDialogButton(protip) {
-    if ( 1+1 === 2) {
+    const pageUserId = document.getElementById("theuser").getAttribute('value');
+    const sessionUserId = document.getElementById("userid").getAttribute('value');
+
+    if ( pageUserId === sessionUserId ) {
       return ( <EditProtipDialog protip={protip} /> )
     } else {
       return ( <span></span> )
