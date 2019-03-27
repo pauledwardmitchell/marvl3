@@ -63,6 +63,7 @@ class AddVendorDialog extends React.Component {
     this.state = {
       open: false,
       submitDisabled: true,
+      existingVendors: [],
       vendorName: '',
       vendorWebsite: '',
       vendorStreetAddress: '',
@@ -71,6 +72,15 @@ class AddVendorDialog extends React.Component {
       pointPersonPhone: '',
       pointPersonEmail: ''
     };
+  }
+
+  componentWillMount(){
+    thisAxios.get('/existing_vendors')
+    .then((response) => {
+      console.log(response.data)
+      this.setState({existingVendors: response.data})
+    })
+    .catch((error) => console.error('axios error', error))
   }
 
   handleClickOpen = () => {
@@ -162,7 +172,7 @@ class AddVendorDialog extends React.Component {
       pointPersonName
     ]
 
-    if (inputs.map(input => input.length > 0).includes(false) || (pointPersonEmail.length < 1 && pointPersonPhone < 1)) {
+    if (inputs.map(input => input.length > 0).includes(false) || (pointPersonEmail.length < 1 && pointPersonPhone.length < 1)) {
       this.setState({ submitDisabled: true })
     } else {
       this.setState({ submitDisabled: false })
@@ -171,7 +181,7 @@ class AddVendorDialog extends React.Component {
 
   renderExistingVendorsWarning() {
     var searchTerm = this.state.vendorName;
-    var vendors = this.props.existingVendors;
+    var vendors = this.state.existingVendors;
     var i;
     if (searchTerm.length > 4) {
       var matches = []
