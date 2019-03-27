@@ -56,7 +56,7 @@ class User < ApplicationRecord
     end
 
     if !self.protips.empty?
-      points += self.protips.map { |r| p.points }.reduce(:+)
+      points += self.protips.map { |p| p.points }.reduce(:+)
     end
 
     points

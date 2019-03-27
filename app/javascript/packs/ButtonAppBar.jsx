@@ -44,20 +44,19 @@ class ButtonAppBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentUser: { id: null }
     };
   }
 
 
-  // handleLogOutSubmitClick() {
-  //   thisAxios.delete(`/users/sign_out`, {
-  //     })
-  //     .then(function (response) {
-  //       console.log(response);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
+  componentWillMount(){
+    thisAxios.get('/check_for_user')
+    .then((response) => {
+      console.log(response.data)
+      this.setState({currentUser: response.data})
+    })
+    .catch((error) => console.error('axios error', error))
+  }
 
   renderProfileMenu() {
     const { classes } = this.props;
@@ -93,6 +92,7 @@ class ButtonAppBar extends React.Component {
 
               <SearchModal />
               <Button color="inherit" href="/">Home Page</Button>
+              <Button color="inherit" href={'/users/'+this.state.currentUser.id}>My Profile</Button>
               <Button color="inherit" href="/confirm_signout">Sign Out</Button>
 
           </Toolbar>
