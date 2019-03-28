@@ -70,8 +70,7 @@ class EditProtipDialog extends React.Component {
       open: false,
       submitDisabled: true,
       title: props.protip.title,
-      content: props.protip.content,
-      categoryId: props.protip.category_id,
+      content: props.protip.content
     };
   }
 
@@ -83,34 +82,13 @@ class EditProtipDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  resetForm = () => {
-    this.setState({ title: '' });
-    this.setState({ content: '' });
-    this.setState({ categoryId: null });
-  }
-
   handleTitleChange = event => {
-    this.setState({ title: event.target.value }, () => this.submitButtonEnabledYet() );
+    this.setState({ title: event.target.value } );
   };
 
   handleContentChange = event => {
-    this.setState({ content: event.target.value }, () => this.submitButtonEnabledYet() );
+    this.setState({ content: event.target.value } );
   };
-
-  submitButtonEnabledYet() {
-    const {title, content, categoryId} = this.state;
-
-    const inputs = [
-      title,
-      content
-    ]
-
-    if (inputs.map(input => input.length > 0).includes(false) || categoryId === null) {
-      this.setState({ submitDisabled: true })
-    } else {
-      this.setState({ submitDisabled: false })
-    }
-  }
 
   handleProtipSubmit() {
     const { title, content } = this.state;
@@ -125,7 +103,6 @@ class EditProtipDialog extends React.Component {
     .then(function (response) {
       console.log(response);
       that.handleClose()
-      that.resetForm()
     })
     .catch(function (error) {
       console.log(error);
