@@ -1,5 +1,13 @@
-<h1>Weekly Digest</h1>
-<h2>Hey there! Here is what happened on MARVL last week...</h2>
+<h1>Gosh, the students at your school are awesome, aren't they?</h1>
+<h3>And your work gives them a sweet place to learn and grow.</h3>
+<h3><em>You and your team are kinda the best.</em></h3>
+<h3><a href="https://schools.marvl.org">Sign in now</a> to help other ops teams be their best too!</h3>
+
+<p>(If you do not want to receive this update, please email Paul, MARVL mechanic, at paul@cpa.coop)</p>
+
+<p>- - - - - - - - - -</p>
+
+<h2>Here is what happened on MARVL last week:</h2>
 
 <% if @users.present? %>
   <h2>New Users</h2>
@@ -44,3 +52,12 @@
     <% end %>
   </ul>
 <% end %>
+
+<h2>MARVL Leaderboard:</h2>
+<ul>
+  <li>#1: <%= @ranking_array.first[:name] %>  (<%= @ranking_array.first[:points] %> points)</li>
+  <li>#2: <%= @ranking_array.second[:name] %>  (<%= @ranking_array.second[:points] %> points)</li>
+  <li>#3: <%= @ranking_array.third[:name] %>  (<%= @ranking_array.third[:points] %> points)</li>
+  <li>#4: <%= @ranking_array.fourth[:name] %>  (<%= @ranking_array.fourth[:points] %> points)</li>
+  <li>#5: <%= @ranking_array.fifth[:name] %>  (<%= @ranking_array.fifth[:points] %> points)</li>
+</ul>
