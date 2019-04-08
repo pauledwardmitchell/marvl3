@@ -6,7 +6,7 @@ class DigestMailer < ApplicationMailer
     @reviews = created_since(Review, since)
     @protips = created_since(Protip, since)
     @ranking_array = create_ranking_array
-    mail(to: user.email, subject: 'Tiiiiiime for your (epic drum solo) MARVL Weekly Digest!')
+    mail(to: user.email, subject: 'Tiiiiiime for your MARVL Weekly Digest!')
   end
 
   private
@@ -24,7 +24,7 @@ class DigestMailer < ApplicationMailer
       }
       ranking_array << org_hash
     end
-    sorted_ranking_array = ranking_array.sort_by {|a| a[:points]}.reverse
+    sorted_ranking_array = ranking_array.sort_by {|a| a[:points]}.reverse.take(10)
     sorted_ranking_array
   end
 
