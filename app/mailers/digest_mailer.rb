@@ -24,7 +24,7 @@ class DigestMailer < ApplicationMailer
       }
       ranking_array << org_hash
     end
-    sorted_ranking_array = ranking_array.sort_by {|a| a[:points]}.reverse
+    sorted_ranking_array = ranking_array.sort_by {|a| a[:points]}.reverse.take(10)
     sorted_ranking_array
   end
 
