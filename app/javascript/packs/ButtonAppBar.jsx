@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 
 import WriteReviewDialog from './WriteReviewDialog'
 import AddVendorDialog from './AddVendorDialog'
@@ -58,42 +57,27 @@ class ButtonAppBar extends React.Component {
     .catch((error) => console.error('axios error', error))
   }
 
-  renderProfileMenu() {
-    const { classes } = this.props;
-    if (this.state.currentUser === null) {
-      return (
-        <div></div>
-      )
-    } else {
-      return (
-        <LandingProfileMenu email={this.state.currentUser.email} />
-      )
-    }
-  }
-
   render() {
     const { classes } = this.props;
+
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar className={classes.toolbar}>
 
-
               <WriteReviewDialog />
               <AddVendorDialog existingVendors={this.state.existingVendors} />
               <AddProtipDialog />
+
               <Typography variant="title" color="inherit" className={classes.flex}>
                 <a id={"home-button"} href='/' className={classes.link}>
                   MARVL
                 </a>
               </Typography>
 
-
-
               <SearchModal />
               <Button color="inherit" href="/">Home Page</Button>
-              <Button color="inherit" href={'/users/'+this.state.currentUser.id}>My Profile</Button>
-              <Button color="inherit" href="/confirm_signout">Sign Out</Button>
+              <LandingProfileMenu userId={this.state.currentUser.id}/>
 
           </Toolbar>
         </AppBar>

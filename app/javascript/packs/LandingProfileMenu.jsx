@@ -1,6 +1,16 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Menu, { MenuItem } from '@material-ui/core/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
+const styles = theme => ({
+  link: {
+    textDecoration: 'none'
+  }
+})
 
 class LandingProfileMenu extends React.Component {
   state = {
@@ -17,25 +27,30 @@ class LandingProfileMenu extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
+    const { classes } = this.props;
 
     return (
       <div>
-        <Button
-          aria-owns={anchorEl ? 'simple-menu' : null}
+        <IconButton
+          aria-owns={anchorEl ? 'landing-profile-menu' : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}
+          color="inherit"
         >
-          {this.props.email}
-        </Button>
+          <AccountCircle />
+        </IconButton>
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem>{this.props.email}</MenuItem>
-          <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-          <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          <a href={'/users/'+this.props.userId} style={{ textDecoration: 'none' }}>
+            <MenuItem onClick={this.handleClose}>My profile</MenuItem>
+          </a>
+          <a href='/confirm_signout' style={{ textDecoration: 'none' }}>
+            <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+          </a>
         </Menu>
       </div>
     );
