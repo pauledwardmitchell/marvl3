@@ -16,7 +16,6 @@ import LandingSchoolsGridList from './LandingSchoolsGridList';
 import LandingPopularCategories from './LandingPopularCategories';
 import LandingTaxonomy from './LandingTaxonomy';
 import RecentActivityBox from './RecentActivityBox';
-import SimpleMenu from './SimpleMenu';
 
 import axios from 'axios';
 
