@@ -17,9 +17,16 @@ const styles = theme => ({
 function VendorShowDetailsBox(props) {
   const { classes, data } = props;
 
+  console.log(data.website);
+
   let link = data.website;
-  if (link.indexOf('http') != 0) {
-    link = `http://${link}`;
+
+  if (link != null) {
+
+    if (link.indexOf('http') != 0) {
+      link = `http://${link}`;
+    }
+
   }
 
   return (
@@ -45,9 +52,5 @@ function VendorShowDetailsBox(props) {
     </div>
   );
 }
-
-VendorShowDetailsBox.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(VendorShowDetailsBox);
