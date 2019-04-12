@@ -17,16 +17,11 @@ const styles = theme => ({
 function VendorShowDetailsBox(props) {
   const { classes, data } = props;
 
-  console.log(data.website);
-
   let link = data.website;
-
   if (link != null) {
-
     if (link.indexOf('http') != 0) {
       link = `http://${link}`;
     }
-
   }
 
   return (
