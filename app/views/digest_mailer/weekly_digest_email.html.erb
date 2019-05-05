@@ -14,7 +14,7 @@
   <ul>
     <% for user in @users %>
       <li>
-        <%= link_to user.full_name, user_url(user) %>
+        <%= link_to "#{user.full_name} (#{user.organization.name})", user_url(user) %>
       </li>
     <% end %>
   </ul>
@@ -36,7 +36,7 @@
   <ul>
     <% for review in @reviews %>
       <li>
-        <%= link_to "#{review.user.full_name} review of #{review.vendor.name}", review_url(review) %>
+        <%= link_to "(#{review.category.name}) #{review.user.full_name} review of #{review.vendor.name}", review_url(review) %>
       </li>
     <% end %>
   </ul>
@@ -47,7 +47,7 @@
   <ul>
     <% for protip in @protips %>
       <li>
-        <%= link_to protip.title, category_url(protip.category) %>
+        <%= link_to "#{protip.title} (by #{protip.user.full_name})", "/categories/#{protip.category.id}#protips" %>
       </li>
     <% end %>
   </ul>
