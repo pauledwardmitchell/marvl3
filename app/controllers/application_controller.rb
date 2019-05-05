@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def default_url_options
+    if Rails.env.production?
+      {:host => "schools.marvl.org"}
+    else
+      {}
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
