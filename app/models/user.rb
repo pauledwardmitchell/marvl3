@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :protips
 
+  scope :receives_weekly_digest, -> { where(receives_weekly_digest: true) }
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       organization = Organization.find_by(name: row["Organization Name"].strip)
