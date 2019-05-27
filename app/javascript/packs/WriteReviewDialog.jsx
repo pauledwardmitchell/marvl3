@@ -61,7 +61,7 @@ const thisAxios = axios.create({
   }
 });
 
-class WriteReviewDialog extends React.Component {
+export class WriteReviewDialog extends React.Component {
   constructor(props) {
     super(props);
     this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
@@ -144,12 +144,17 @@ class WriteReviewDialog extends React.Component {
         rating: rating
       }
     })
-    .then(function (response) {
+    .then((response) => {
       console.log(response);
       that.handleClose()
       that.resetForm()
+
+      const { onSubmit } = this.props;
+      if (onSubmit) {
+        onSubmit();
+      }
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.log(error);
     });
   }
@@ -169,8 +174,17 @@ class WriteReviewDialog extends React.Component {
     }
   }
 
+  componentWillReceiveProps(props) {
+    const { categoryId } = props;
+
+    if (categoryId != null) {
+      this.setState({ categoryId });
+    }
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, categoryLabel } = this.props;
+    const { categoryId } = this.state;
 
     return (
       <div>
@@ -192,7 +206,7 @@ class WriteReviewDialog extends React.Component {
               </FormControl>
 
               <FormControl id="choose-category" className={classes.formControl}>
-                <IntegrationReactSelect categorySelect={true} handleCategoryChange={this.handleCategoryChange} />
+                <IntegrationReactSelect categorySelect={true} handleCategoryChange={this.handleCategoryChange} value={{ value: categoryId, label: categoryLabel }} />
               </FormControl>
 
               <FormControl id="public-review" className={classes.review}>

@@ -65,15 +65,7 @@ const data = [
 
 
 class HumanResourcesCenteredTabs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-      superSuperData: data
-    };
-  }
-
-  componentWillMount(){
+  fetchData = () => {
     var orgId = 0
     if (document.getElementById("org")) {
       orgId = document.getElementById("org").getAttribute('value')
@@ -83,7 +75,19 @@ class HumanResourcesCenteredTabs extends React.Component {
     .then((response) => {
       this.setState({superSuperData: response.data})
     })
-    .catch((error) => console.error('axios error', error))
+      .catch((error) => console.error('axios error', error))
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+      superSuperData: data
+    };
+  }
+
+  componentWillMount(){
+    this.fetchData();
   }
 
   handleChange = (event, value) => {
@@ -106,7 +110,13 @@ class HumanResourcesCenteredTabs extends React.Component {
     if (this.props.landing === true) {
       return ( <LandingTaxonomyCategoryList data={this.getCategories()}/> )
     } else {
-      return ( <CategoryExpansionPanel data={this.getCategories()}/> )
+      const superCat = this.state.superSuperData[this.state.value];
+      return (
+        <CategoryExpansionPanel
+          data={this.getCategories()}
+          superCat={superCat}
+          onSubmit={this.fetchData.bind(this)} />
+      )
     }
   }
 
@@ -145,4 +155,3 @@ HumanResourcesCenteredTabs.propTypes = {
 };
 
 export default withStyles(styles)(HumanResourcesCenteredTabs);
-

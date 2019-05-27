@@ -9,7 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import ExpansionPanelReviews from './ExpansionPanelReviews'
+import ExpansionPanelReviews from './ExpansionPanelReviews';
+import { WriteReviewDialog } from './WriteReviewDialog';
+import UserContext from './UserContext';
 
 const styles = theme => ({
   root: {
@@ -26,6 +28,32 @@ const styles = theme => ({
   },
 });
 
+const writeReviewStyles = theme => ({
+  root: {
+    visibility: 'visible'
+  },
+  title: {
+    width: 600
+  },
+  button: {
+  },
+  formControl: {
+    marginBottom: 10
+  },
+  review: {
+    marginBottom: 10
+  },
+  stars: {
+    marginLeft: 50,
+    marginTop: 12
+  },
+  switchAnon: {
+    marginTop: 10
+  }
+});
+
+const WriteReviewDialogButton = withStyles(writeReviewStyles)(WriteReviewDialog);
+
 class CategoryExpansionPanels extends React.Component {
   state = {
     expanded: null,
@@ -38,28 +66,65 @@ class CategoryExpansionPanels extends React.Component {
   };
 
   render() {
-    const { classes, data } = this.props;
+    const { classes, data, superCat, onSubmit } = this.props;
     const { expanded } = this.state;
+    const orgId = parseInt(document.getElementById("org").getAttribute('value'));
 
     return (
-      <div className={classes.root}>
-        {data.map((category) => {
-          return <ExpansionPanel key={category.sub_id} expanded={expanded === 'panel' + category.sub} onChange={this.handleChange('panel' + category.sub)}>
-                   <ExpansionPanelSummary id={"category-title-"+category.sub_id} expandIcon={<ExpandMoreIcon />}>
-                     <Typography className={classes.heading}>{category.sub}</Typography>
-                     <Typography className={classes.secondaryHeading}>{category.reviews.length} Reviews</Typography>
-                   </ExpansionPanelSummary>
-                   <ExpansionPanelDetails>
-                     <Grid container direction='row' spacing={0}>
-                       {category.reviews.map(review => (
-                          <ExpansionPanelReviews key={review.id} review={review}/>
-                       ))}
-                     </Grid>
-                   </ExpansionPanelDetails>
-                 </ExpansionPanel>
+      <UserContext.Consumer>
+        {
+          (user) => {
+            return (
+              <div className={classes.root}>
+                {
+                  data.map((category) => {
+                    let summary = (
+                      <Typography className={classes.secondaryHeading}>{category.reviews.length} Reviews</Typography>
+                    );
+
+                    if (category.reviews.length === 0) {
+                      if (orgId !== user.organization_id) {
+                        return null;
+                      }
+
+                      summary = (
+                        <WriteReviewDialogButton
+                          categoryId={category.sub_id}
+                          categoryLabel={superCat ? `${superCat.name} - ${category.sub}` : ''}
+                          onSubmit={() => {
+                            if (onSubmit) {
+                              onSubmit();
+                            }
+                          }}
+                        />
+                      );
+                    }
+
+                    return (
+                      <ExpansionPanel key={category.sub_id} expanded={expanded === 'panel' + category.sub} onChange={this.handleChange('panel' + category.sub)}>
+                        <ExpansionPanelSummary id={"category-title-"+category.sub_id} expandIcon={<ExpandMoreIcon />}>
+                          <Typography className={classes.heading}>{category.sub}</Typography>
+                          {summary}
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails>
+                          <Grid container direction='row' spacing={0}>
+                            {
+                              category.reviews.map(review => (
+                                <ExpansionPanelReviews key={review.id} review={review}/>
+                              ))
+                            }
+                          </Grid>
+                        </ExpansionPanelDetails>
+                      </ExpansionPanel>
+                    );
+                  })
+                }
+              </div>
+
+            );
           }
-        )}
-      </div>
+        }
+      </UserContext.Consumer>
     );
   }
 }

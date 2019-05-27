@@ -510,55 +510,42 @@ class ApisController < ApplicationController
   end
 
   def build_from_super_super_categories(super_categories, org_id)
-    @data =[]
-    super_categories_sorted = super_categories.sort{|a,b| a['name']<=>b['name']}
+    @data = super_categories.includes(:categories).order(:name).map do |super_cat|
+      categories = super_cat.categories.order(:name)
 
-    super_categories_sorted.each do |super_cat|
-      all_categories_array = []
+      all_categories_array = categories.map do |category|
+        org_reviews = category.reviews.includes(:vendor)
 
-      sorted_categories = super_cat.categories.sort{|a,b| a['name']<=>b['name']}
-
-      sorted_categories.each do |category|
-        if org_id == 0
-          org_reviews = category.reviews
-        else
-          org_reviews = category.reviews.find_all { |r| r.user.organization.id == org_id}
-        end
-        org_reviews_hashes = []
-        org_reviews.each do |review|
-
-          review_data = { vendorName: Vendor.find(review.vendor_id).name,
-                          vendorId: review.vendor_id,
-                          dateWritten: review.created_at.strftime("%m/%d/%Y"),
-                          stars: review.rating,
-                          review: review.review_content,
-                          private_review: review.review_private_content,
-                          private_review_permission: private_review_permission(review.user),
-                          id: review.id
-                        }
-
-          org_reviews_hashes << review_data
-
+        if org_id != 0
+          org_reviews = org_reviews.joins(:user).where(users: { organization_id: org_id })
         end
 
-        category_reviews_hash = {
+        org_reviews_hashes = org_reviews.map do |review|
+          {
+            vendorName: review.vendor.name,
+            vendorId: review.vendor_id,
+            dateWritten: review.created_at.strftime("%m/%d/%Y"),
+            stars: review.rating,
+            review: review.review_content,
+            private_review: review.review_private_content,
+            private_review_permission: private_review_permission(review.user),
+            id: review.id
+          }
+        end
+
+        {
           sub: category.name,
           sub_id: category.id,
           reviews: org_reviews_hashes
         }
-
-        all_categories_array << category_reviews_hash
-
       end
 
-      super_hash = {
+      {
         name: super_cat.name,
         subCategories: all_categories_array
       }
-
-      @data << super_hash
-
     end
+
     @data
   end
 
@@ -573,4 +560,3 @@ class ApisController < ApplicationController
   end
 
 end
-
