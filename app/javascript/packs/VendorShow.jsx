@@ -15,6 +15,7 @@ import VendorShowDetailsBox from './VendorShowDetailsBox'
 import OrgShowMap from './OrgShowMap'
 import VendorShowCategoriesTags from './VendorShowCategoriesTags'
 import EnhancedTable from './EnhancedTable'
+import EditVendorDialog from './EditVendorDialog'
 
 import axios from 'axios'
 
@@ -62,6 +63,17 @@ const styles = theme => ({
 });
 
 class VendorShow extends React.Component {
+  fetchVendor = () => {
+    var vendorId = document.getElementById("vendor").getAttribute('value')
+
+    thisAxios.get('/vendor_show_data?vendor=' + vendorId)
+    .then((response) => {
+      console.log(response.data)
+      this.setState({data: response.data})
+    })
+    .catch((error) => console.error('axios error', error))
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -71,14 +83,7 @@ class VendorShow extends React.Component {
   }
 
   componentDidMount() {
-    var vendorId = document.getElementById("vendor").getAttribute('value')
-
-    thisAxios.get('/vendor_show_data?vendor=' + vendorId)
-    .then((response) => {
-      console.log(response.data)
-      this.setState({data: response.data})
-    })
-    .catch((error) => console.error('axios error', error))
+    this.fetchVendor();
   }
 
   buildTableData(reviewsData) {
@@ -110,6 +115,7 @@ class VendorShow extends React.Component {
         <Grid container direction='row' justify='center' spacing={16}>
           <Grid item xs={6}>
             <VendorShowDetailsBox data={data} />
+            <EditVendorDialog buttonText="Edit Vendor" dialogTitle="Edit vendor" vendor={data} onSubmit={this.fetchVendor} />
           </Grid>
           <Grid item xs={3}>
             <VendorShowCategoriesTags data={data} />

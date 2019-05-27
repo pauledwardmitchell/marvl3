@@ -331,6 +331,7 @@ class ApisController < ApplicationController
     vendor = Vendor.find(params[:vendor])
 
     @data = {
+      id: vendor.id,
       name: vendor.name,
       street: vendor.street,
       website: vendor.website,
@@ -473,6 +474,7 @@ class ApisController < ApplicationController
       pp_hash = {
         id: pp.id,
         name_and_title: pp.name_and_title,
+        name: pp.name,
         phone: pp.phone,
         email: pp.email
       }
@@ -573,4 +575,3 @@ class ApisController < ApplicationController
   end
 
 end
-
