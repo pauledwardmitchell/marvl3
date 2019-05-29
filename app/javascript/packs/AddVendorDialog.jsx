@@ -21,6 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from '@material-ui/core/styles';
 
 import IntegrationReactSelect from './IntegrationReactSelect'
+import SimpleSnackbar from './SimpleSnackbar'
 
 import ReactStars from 'react-stars'
 import axios from 'axios'
@@ -70,7 +71,8 @@ class AddVendorDialog extends React.Component {
       vendorCityStateZip: '',
       pointPersonName: '',
       pointPersonPhone: '',
-      pointPersonEmail: ''
+      pointPersonEmail: '',
+      message: null
     };
   }
 
@@ -129,6 +131,10 @@ class AddVendorDialog extends React.Component {
     this.setState({ pointPersonEmail: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
+  clearMessage = () => {
+    this.setState({ message: null });
+  };
+
   handleVendorSubmit() {
     const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
@@ -155,6 +161,14 @@ class AddVendorDialog extends React.Component {
       console.log(response);
       that.handleClose()
       that.resetForm()
+
+      const link = `/vendors/${response.data.vendor_id}`;
+      that.setState({
+        message: [
+          'Vendor was sucessfully created. ',
+          <a href={link}>View</a>
+        ]
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -217,10 +231,15 @@ class AddVendorDialog extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { message } = this.state;
 
     return (
       <div>
         <Button className={classes.button} onClick={this.handleClickOpen}>Add Vendor</Button>
+        <SimpleSnackbar
+          open={ message != null }
+          closeSnackbar={ this.clearMessage.bind(this) }
+          message={ message } />
         <Dialog
           className={classes.root}
           open={this.state.open}

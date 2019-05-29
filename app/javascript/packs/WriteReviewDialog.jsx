@@ -22,6 +22,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from '@material-ui/core/styles';
 
 import IntegrationReactSelect from './IntegrationReactSelect'
+import SimpleSnackbar from './SimpleSnackbar'
 
 import ReactStars from 'react-stars'
 import axios from 'axios'
@@ -73,7 +74,8 @@ class WriteReviewDialog extends React.Component {
       reviewPublicContent: '',
       reviewPrivateContent: '',
       rating: 0,
-      submitDisabled: true
+      submitDisabled: true,
+      message: null
     };
   }
 
@@ -111,7 +113,11 @@ class WriteReviewDialog extends React.Component {
 
   handleCategoryChange = (id) => {
     this.setState( { categoryId: id }, () => this.submitButtonEnabledYet() );
-  }
+  };
+
+  clearMessage = () => {
+    this.setState({ message: null });
+  };
 
   handleReviewSubmit() {
     const userId = document.getElementById("userid").getAttribute('value')
@@ -148,6 +154,14 @@ class WriteReviewDialog extends React.Component {
       console.log(response);
       that.handleClose()
       that.resetForm()
+
+      const link = `/reviews/${response.data.id}`;
+      that.setState({
+        message: [
+          'Review was sucessfully created. ',
+          <a href={link}>View</a>
+        ]
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -171,10 +185,15 @@ class WriteReviewDialog extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { message } = this.state;
 
     return (
       <div>
         <Button id="write-review-button" className={classes.button} onClick={this.handleClickOpen}>Write Review</Button>
+        <SimpleSnackbar
+          open={ message != null }
+          closeSnackbar={ this.clearMessage.bind(this) }
+          message={ message } />
         <Dialog
           className={classes.root}
           open={this.state.open}
