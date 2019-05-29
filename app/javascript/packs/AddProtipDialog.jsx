@@ -121,7 +121,14 @@ class AddProtipDialog extends React.Component {
       console.log(response);
       that.handleClose()
       that.resetForm()
-      that.setState({ message: 'Pro tip was sucessfully created.' })
+
+      const link = `/categories/${categoryId}#protips`;
+      that.setState({
+        message: [
+          'Protip was sucessfully created. ',
+          <a href={link}>View</a>
+        ]
+      });
     })
     .catch(function (error) {
       console.log(error);
