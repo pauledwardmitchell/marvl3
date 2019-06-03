@@ -10,7 +10,8 @@ const styles = theme => ({
     width: 600
   },
   button: {
-    color: 'inherit'
+    color: 'inherit',
+    marginLeft: 20
   },
   review: {
     marginBottom: 10
