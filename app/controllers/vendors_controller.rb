@@ -18,6 +18,14 @@ class VendorsController < ApplicationController
     end
   end
 
+  def update
+    if @vendor.update(vendor_params)
+      render json: @vendor
+    else
+      render json: @vendor.errors, status: :unprocessable_entity
+    end
+  end
+
   def import
     Vendor.import(params[:file])
     redirect_to root_url
