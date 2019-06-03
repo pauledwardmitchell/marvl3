@@ -280,7 +280,7 @@ export class AddVendorDialog extends React.Component {
 
     return (
       <div>
-        <Button className={classes.button} onClick={this.handleClickOpen}>{buttonText}</Button
+        <Button className={classes.button} onClick={this.handleClickOpen}>{buttonText}</Button>
         <SimpleSnackbar
           open={ message != null }
           closeSnackbar={ this.clearMessage.bind(this) }
