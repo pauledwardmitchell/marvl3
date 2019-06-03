@@ -21,6 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from '@material-ui/core/styles';
 
 import IntegrationReactSelect from './IntegrationReactSelect'
+import SimpleSnackbar from './SimpleSnackbar'
 
 import ReactStars from 'react-stars'
 import axios from 'axios'
@@ -70,7 +71,8 @@ export class AddVendorDialog extends React.Component {
       vendorCityStateZip: '',
       pointPersonName: '',
       pointPersonPhone: '',
-      pointPersonEmail: ''
+      pointPersonEmail: '',
+      message: null
     };
   }
 
@@ -149,6 +151,10 @@ export class AddVendorDialog extends React.Component {
     this.setState({ pointPersonEmail: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
+  clearMessage = () => {
+    this.setState({ message: null });
+  };
+
   handleVendorSubmit() {
     const {vendorId, vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, pointPersonId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
@@ -198,6 +204,14 @@ export class AddVendorDialog extends React.Component {
       if (onSubmit) {
         onSubmit();
       }
+
+      const link = `/vendors/${response.data.vendor_id}`;
+      that.setState({
+        message: [
+          'Vendor was sucessfully created. ',
+          <a href={link}>View</a>
+        ]
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -262,10 +276,15 @@ export class AddVendorDialog extends React.Component {
     const { classes } = this.props;
     const buttonText = this.props.buttonText || 'Add Vendor'
     const dialogTitle = this.props.dialogTitle || 'Add a vendor'
+    const { message } = this.state;
 
     return (
       <div>
-        <Button className={classes.button} onClick={this.handleClickOpen}>{buttonText}</Button>
+        <Button className={classes.button} onClick={this.handleClickOpen}>{buttonText}</Button
+        <SimpleSnackbar
+          open={ message != null }
+          closeSnackbar={ this.clearMessage.bind(this) }
+          message={ message } />
         <Dialog
           className={classes.root}
           open={this.state.open}

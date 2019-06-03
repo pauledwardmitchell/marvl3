@@ -320,7 +320,8 @@ class ApisController < ApplicationController
       logo_link: user.organization.logo_link,
       points: user.points,
       reviews: reviews_from_user(user),
-      protips: protips_from_user(user)
+      protips: protips_from_user(user),
+      receives_weekly_digest: user.receives_weekly_digest
     }
 
     render json: @data

@@ -3,7 +3,9 @@ org = Organization.create(
   logo_link: "https://static1.squarespace.com/static/58f3a21f59cc68f36175d419/t/5c0ff12eaa4a99fb4c340c86/1549535829723/?format=300w",
   website: "https://www.cpa.coop",
   email_suffix: "cpa.coop")
-User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@" + org.email_suffix, password: "password", organization_id: org.id)
+test_user = User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" + org.id.to_s + "@" + org.email_suffix, password: "password", organization_id: org.id)
+test_user.confirmed_at = DateTime.now
+test_user.save
 
 org = Organization.create(
   name: "Apple Tree PCS",
@@ -126,7 +128,7 @@ User.create(first_name: "Test" + org.id.to_s , last_name: "User", email: "test" 
 
 
 #BUILDING AND GROUNDS
-bg = SuperSuperCategory.create( { name: 'Building and Grounds'} )
+bg = SuperSuperCategory.create( { name: 'Facilities'} )
 
 fac = SuperCategory.create( { name: 'Facilities', super_super_category_id: bg.id } )
 fac_array = ['Third-Party Facilities Contracting', 'General Contracting', 'Electrician', 'Handyman', 'Plumbing', 'Locksmith', 'Painter', 'Metal Refinishing', 'Pest Control', 'Water Fountains', 'Bathroom Installations', 'Kitchen Installations', 'Gym Installations (Seating, doors, sports installations)', 'HVAC', 'Furnace / Boiler', 'Window Cleaning', 'Security Systems', 'Fire Alarm', 'Carbon Monoxide / Gas Detector', 'Signage (outdoor / indoor)', 'Cleaning', 'Landscaping / Snow Removal', 'Security Personnel']
@@ -323,7 +325,7 @@ end
 
 
 #STUDENT INSTRUCTION / STUDENT SERVICES
-ss = SuperSuperCategory.create( { name: 'Student Instruction / Student Services'} )
+ss = SuperSuperCategory.create( { name: 'Student Instruction and Student Services'} )
 
 curric = SuperCategory.create( { name: 'Curriculum Resources', super_super_category_id: ss.id } )
 curric_array = [ 'E/LA - Elementary', 'Math - Elementary', 'Science - Elementary', 'E/LA - Middle School', 'Math - Middle School', 'Science - Middle School', 'E/LA - High School', 'Math - High School', 'Science - High School' ]

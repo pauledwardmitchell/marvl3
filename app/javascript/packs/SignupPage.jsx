@@ -83,6 +83,10 @@ class SignupPage extends React.Component {
       submitDisabled: true,
       signature: ''
     };
+
+    if (window.location.hash === '#complete') {
+      this.state.complete = true;
+    }
   }
 
   handleFirstNameChange = event => {
@@ -148,6 +152,7 @@ class SignupPage extends React.Component {
     })
     .then(function (response) {
       console.log(response);
+      window.location.href = `${window.location.href}#complete`;
       window.location.reload();
     })
     .catch((error) => {
@@ -189,8 +194,13 @@ class SignupPage extends React.Component {
     this.setState({ errors: null });
   }
 
+  clearComplete() {
+    this.setState({ complete: null });
+  }
+
   render() {
     const { classes } = this.props;
+    const { complete } = this.state;
     const errors = this.errorMessages();
 
     return (
@@ -199,6 +209,10 @@ class SignupPage extends React.Component {
               open={ errors.length > 0 }
               closeSnackbar={this.clearErrors.bind(this)}
               message={ errors.join(', ') } />
+            <SimpleSnackbar
+              open={ complete }
+              closeSnackbar={this.clearComplete.bind(this)}
+              message={ 'Please check your email for directions on how to confirm your account.' } />
             <Grid container alignItems='center' direction= 'column' justify= 'center' className={classes.heading} style={{marginBottom: 20}}>
               <Typography variant="title" id="simple-modal-description">
                 Sign up for MARVL

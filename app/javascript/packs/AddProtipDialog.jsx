@@ -21,6 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from '@material-ui/core/styles';
 
 import IntegrationReactSelect from './IntegrationReactSelect'
+import SimpleSnackbar from './SimpleSnackbar'
 
 import axios from 'axios'
 
@@ -69,6 +70,7 @@ class AddProtipDialog extends React.Component {
       title: '',
       content: '',
       categoryId: null,
+      message: null
     };
   }
 
@@ -98,6 +100,10 @@ class AddProtipDialog extends React.Component {
     this.setState({ content: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
+  clearMessage = () => {
+    this.setState({ message: null });
+  };
+
   handleProtipSubmit() {
     const userId = document.getElementById("userid").getAttribute('value')
     const {title, content, categoryId} = this.state;
@@ -115,6 +121,14 @@ class AddProtipDialog extends React.Component {
       console.log(response);
       that.handleClose()
       that.resetForm()
+
+      const link = `/categories/${categoryId}#protips`;
+      that.setState({
+        message: [
+          'Protip was sucessfully created. ',
+          <a href={link}>View</a>
+        ]
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -138,12 +152,17 @@ class AddProtipDialog extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { message } = this.state;
 
     return (
       <div>
         <Button id="add-protip-button" className={classes.button} onClick={this.handleClickOpen}>
           Add Pro Tip
         </Button>
+        <SimpleSnackbar
+          open={ message != null }
+          closeSnackbar={ this.clearMessage.bind(this) }
+          message={ message } />
         <Dialog
           className={classes.root}
           open={this.state.open}
