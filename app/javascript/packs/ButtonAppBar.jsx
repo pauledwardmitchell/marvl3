@@ -53,6 +53,8 @@ class ButtonAppBar extends React.Component {
     .then((response) => {
       console.log(response.data)
       this.setState({currentUser: response.data})
+
+      window.user = response.data;
     })
     .catch((error) => console.error('axios error', error))
   }

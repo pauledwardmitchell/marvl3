@@ -14,6 +14,7 @@ import OrgShowAllCategories from './OrgShowAllCategories'
 import OrgShowDetailsBox from './OrgShowDetailsBox'
 import OrgShowLogo from './OrgShowLogo'
 import ChipsArray from './ChipsArray'
+import UserContext from './UserContext'
 
 import axios from 'axios'
 
@@ -39,14 +40,25 @@ const styles = theme => ({
 });
 
 class OrganizationShow extends React.Component {
+  fetchUser = () => {
+    thisAxios.get('/check_for_user')
+      .then((response) => {
+        this.setState({currentUser: response.data})
+      })
+      .catch((error) => console.error('axios error', error))
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      orgData: loadingOrgData
+      orgData: loadingOrgData,
+      currentUser: {}
     };
   }
 
   componentWillMount(){
+    this.fetchUser();
+
     const orgId = document.getElementById("org").getAttribute('value')
 
     thisAxios.get('/org_show_data?org=' + orgId)
@@ -59,20 +71,22 @@ class OrganizationShow extends React.Component {
 
   render () {
     const { classes } = this.props;
-    const { orgData } = this.state;
+    const { orgData, currentUser } = this.state;
 
     return (
       <div>
-        <ButtonAppBar />
-        <Grid container direction='row' justify='flex-start' spacing={16}>
-          <Grid item xs={3}>
-            <OrgShowLogo logo_link={orgData.logo_link}/>
+        <UserContext.Provider value={currentUser}>
+          <ButtonAppBar />
+          <Grid container direction='row' justify='flex-start' spacing={16}>
+            <Grid item xs={3}>
+              <OrgShowLogo logo_link={orgData.logo_link}/>
+            </Grid>
+            <Grid item xs={5}>
+              <OrgShowDetailsBox data={orgData} />
+            </Grid>
           </Grid>
-          <Grid item xs={5}>
-            <OrgShowDetailsBox data={orgData} />
-          </Grid>
-        </Grid>
-        <OrgShowAllCategories />
+          <OrgShowAllCategories />
+        </UserContext.Provider>
       </div>
     )
   }

@@ -331,7 +331,7 @@ class IntegrationReactSelect extends React.Component {
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes, theme, value } = this.props;
 
     const selectStyles = {
       input: base => ({
@@ -356,7 +356,7 @@ class IntegrationReactSelect extends React.Component {
                 styles={selectStyles}
                 options={this.state.suggestions}
                 components={components}
-                value={this.state.single}
+                value={value || this.state.single}
                 onChange={this.handleChange('single')}
                 placeholder={this.renderPlaceholder()}
                 noOptionsMessage={() => "No results. \n Looking for a vendor? Add them to MARVL now! \n Looking for a specific category? Try a broader category (\"Flooring\" instead of \"Tile\" or \"Carpet\"), or email paul@cpa.coop to propose a new category."}
