@@ -6,7 +6,7 @@
     "@material-ui/icons": "^1.0.0-beta.43",
     "@rails/webpacker": "^3.5.5",
     "autosuggest-highlight": "^3.1.1",
-    "axios": "^0.17.1",
+    "axios": "^0.18.1",
     "babel-preset-react": "^6.24.1",
     "chart.js": "^2.7.2",
     "coffeescript": "1.12.7",
