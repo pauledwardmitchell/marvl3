@@ -21,6 +21,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { withStyles } from '@material-ui/core/styles';
 
 import IntegrationReactSelect from './IntegrationReactSelect'
+import SimpleSnackbar from './SimpleSnackbar'
 
 import ReactStars from 'react-stars'
 import axios from 'axios'
@@ -55,7 +56,7 @@ const thisAxios = axios.create({
   }
 });
 
-class AddVendorDialog extends React.Component {
+export class AddVendorDialog extends React.Component {
   constructor(props) {
     super(props);
     this.handleVendorSubmit = this.handleVendorSubmit.bind(this);
@@ -70,7 +71,8 @@ class AddVendorDialog extends React.Component {
       vendorCityStateZip: '',
       pointPersonName: '',
       pointPersonPhone: '',
-      pointPersonEmail: ''
+      pointPersonEmail: '',
+      message: null
     };
   }
 
@@ -81,6 +83,26 @@ class AddVendorDialog extends React.Component {
       this.setState({existingVendors: response.data})
     })
     .catch((error) => console.error('axios error', error))
+  }
+
+  componentWillReceiveProps(props) {
+    const vendor = props.vendor;
+
+    if (vendor != null) {
+      const pointPerson = (vendor.point_people_array || [])[0] || {};
+
+      this.setState({
+        vendorId: vendor.id,
+        vendorName: vendor.name,
+        vendorWebsite: vendor.website,
+        vendorStreetAddress: vendor.street,
+        vendorCityStateZip: vendor.city_state_and_zip,
+        pointPersonId: pointPerson.id,
+        pointPersonName: pointPerson.name,
+        pointPersonPhone: pointPerson.phone,
+        pointPersonEmail: pointPerson.email
+      })
+    }
   }
 
   handleClickOpen = () => {
@@ -129,10 +151,23 @@ class AddVendorDialog extends React.Component {
     this.setState({ pointPersonEmail: event.target.value }, () => this.submitButtonEnabledYet() );
   };
 
+  clearMessage = () => {
+    this.setState({ message: null });
+  };
+
   handleVendorSubmit() {
-    const {vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
+    const {vendorId, vendorName, vendorWebsite, vendorStreetAddress, vendorCityStateZip, pointPersonId, pointPersonName, pointPersonPhone, pointPersonEmail} = this.state;
     const that = this;
-    thisAxios.post(`/vendors`, {
+
+    let request = thisAxios.post;
+    let url = '/vendors';
+
+    if (vendorId != null) {
+      request = thisAxios.patch;
+      url = `/vendors/${vendorId}`;
+    }
+
+    request(url, {
       vendor: {
         name: vendorName,
         website: vendorWebsite,
@@ -142,7 +177,16 @@ class AddVendorDialog extends React.Component {
     })
     .then((response) => {
       console.log(response);
-      return thisAxios.post(`/point_people`, {
+
+      let request = thisAxios.post;
+      let url = '/point_people';
+
+      if (vendorId != null) {
+        request = thisAxios.patch;
+        url = `/point_people/${pointPersonId}`;
+      }
+
+      return request(url, {
         point_person: {
           name: pointPersonName,
           email: pointPersonPhone,
@@ -155,6 +199,19 @@ class AddVendorDialog extends React.Component {
       console.log(response);
       that.handleClose()
       that.resetForm()
+
+      const { onSubmit } = this.props;
+      if (onSubmit) {
+        onSubmit();
+      }
+
+      const link = `/vendors/${response.data.vendor_id}`;
+      that.setState({
+        message: [
+          'Vendor was sucessfully created. ',
+          <a href={link}>View</a>
+        ]
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -171,7 +228,7 @@ class AddVendorDialog extends React.Component {
       vendorCityStateZip
     ]
 
-    if (inputs.map(input => input.length > 0).includes(false)) {
+    if (inputs.map(input => input && input.length > 0).includes(false)) {
       this.setState({ submitDisabled: true })
     } else {
       this.setState({ submitDisabled: false })
@@ -217,17 +274,24 @@ class AddVendorDialog extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const buttonText = this.props.buttonText || 'Add Vendor'
+    const dialogTitle = this.props.dialogTitle || 'Add a vendor'
+    const { message } = this.state;
 
     return (
       <div>
-        <Button className={classes.button} onClick={this.handleClickOpen}>Add Vendor</Button>
+        <Button className={classes.button} onClick={this.handleClickOpen}>{buttonText}</Button>
+        <SimpleSnackbar
+          open={ message != null }
+          closeSnackbar={ this.clearMessage.bind(this) }
+          message={ message } />
         <Dialog
           className={classes.root}
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title" className={classes.title}>Add a vendor</DialogTitle>
+          <DialogTitle id="form-dialog-title" className={classes.title}>{dialogTitle}</DialogTitle>
           <DialogContent>
             <DialogContentText>
             </DialogContentText>
