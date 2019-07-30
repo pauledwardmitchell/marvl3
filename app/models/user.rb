@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+
   validate :is_charter_member
 
   belongs_to :organization
