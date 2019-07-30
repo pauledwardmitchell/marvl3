@@ -1,4 +1,5 @@
 FactoryBot.define do
+
   factory :organization do
     name { 'Good School' }
     website { 'www.gs.com' }
