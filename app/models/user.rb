@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :confirmable
 
   validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
 
   validate :is_charter_member
 
