@@ -11,6 +11,8 @@
     "chart.js": "^2.7.2",
     "coffeescript": "1.12.7",
     "htmlparser2": "^3.9.2",
+    "lodash.mergewith": "^4.6.2",
+    "lodash.template": "^4.5.0",
     "macaddress": "^0.2.9",
     "prop-types": "^15.6.0",
     "react": "^16.3.0",
