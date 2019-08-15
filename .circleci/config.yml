@@ -7,12 +7,19 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.3-node-browsers
+        environment:
+          PGHOST: localhost
+          PGUSER: marvl3
+          RAILS_ENV: test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      - image: circleci/postgres:9.5
+        environment:
+          POSTGRES_USER: marvl3
+          POSTGRES_DB: marvl3_test
 
     working_directory: ~/repo
 
@@ -30,6 +37,9 @@ jobs:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - run: yarn install
+      - run: bundle exec rails webpacker:compile
 
       - save_cache:
           paths:
