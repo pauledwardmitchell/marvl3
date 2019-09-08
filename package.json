@@ -2,12 +2,14 @@
   "name": "marvl3",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "3.1.2",
     "@material-ui/icons": "^1.0.0-beta.43",
-    "@rails/webpacker": "^3.5.5",
+    "@rails/webpacker": "^4.0.7",
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.18.1",
-    "babel-preset-react": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "chart.js": "^2.7.2",
     "coffeescript": "1.12.7",
     "fstream": "^1.0.12",
@@ -17,11 +19,11 @@
     "lodash.mergewith": "^4.6.2",
     "lodash.template": "^4.5.0",
     "macaddress": "^0.2.9",
-    "prop-types": "^15.6.0",
-    "react": "^16.3.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
     "react-autosuggest": "^9.3.2",
     "react-chartjs-2": "^2.7.2",
-    "react-dom": "^16.3.0",
+    "react-dom": "^16.9.0",
     "react-google-maps": "^9.4.5",
     "react-scrollable-anchor": "^0.6.1",
     "react-select": "2.1.0",
@@ -29,6 +31,6 @@
     "webpack-cli": "^3.1.2"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^3.8.0"
   }
 }
