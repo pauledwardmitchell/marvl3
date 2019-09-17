@@ -20,7 +20,7 @@ gem "activejob", ">= 5.1.6.2"
 gem 'delayed_job_active_record'
 
 gem 'rack-cors', :require => 'rack/cors'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'dotenv-rails'
 
 gem 'faker'
