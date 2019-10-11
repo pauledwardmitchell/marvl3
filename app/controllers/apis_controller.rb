@@ -505,8 +505,10 @@ class ApisController < ApplicationController
     @data = []
 
     org.users.each do |u|
-      user_hash = { name: u.first_name + " " + u.last_name + " - " + u.email }
-      @data << user_hash
+      if u.active == true
+        user_hash = { name: u.first_name + " " + u.last_name + " - " + u.email }
+        @data << user_hash
+      end
     end
 
     @data
