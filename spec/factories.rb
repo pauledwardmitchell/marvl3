@@ -54,12 +54,11 @@ FactoryBot.define do
   end
 
   factory :user do
-    email { 'test@gs.com' }
+    first_name { 'john' }
+    last_name { 'doe' }
     password { 'f4k3p455w0rd' }
     password_confirmation { 'f4k3p455w0rd' }
     organization_id { Organization.last.id }
-    first_name { 'john' }
-    last_name { 'doe' }
     confirmed_at { DateTime.now }
   end
 
