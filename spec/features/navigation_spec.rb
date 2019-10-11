@@ -8,7 +8,7 @@ RSpec.feature "Navigation: ", type: :feature, js: true do
     scenario 'should be successful' do
       organization = FactoryBot.create(:organization)
       vendor = FactoryBot.create(:vendor)
-      user = FactoryBot.create(:user)
+      user = FactoryBot.create(:user, email: 'test@gs.com')
 
       FactoryBot.create(:super_super_category, :bg)
       super_category = FactoryBot.create(:super_category)

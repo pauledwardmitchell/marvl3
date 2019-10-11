@@ -7,7 +7,7 @@ RSpec.feature "Vendors", type: :feature, js: true do
 
     scenario 'Should be successful' do
       organization = FactoryBot.create(:organization)
-      user = FactoryBot.create(:user)
+      user = FactoryBot.create(:user, email: 'test@gs.com')
 
       FactoryBot.create(:super_super_category, :bg)
       super_category = FactoryBot.create(:super_category)
