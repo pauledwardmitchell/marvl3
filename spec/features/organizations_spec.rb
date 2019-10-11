@@ -43,7 +43,7 @@ RSpec.feature "Organizations", type: :feature, js: true do
       visit root_path
       page.find('#grid-list-link-'+organization.id.to_s).click
 
-      expect(page).not_to have_content "ivan"
+      expect(page).not_to have_content "inactive_test@gs.com"
     end
 
   end
