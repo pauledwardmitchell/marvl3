@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import CpaVendorTooltip from './CpaVendorTooltip';
+
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -14,20 +16,37 @@ const styles = theme => ({
   }),
 });
 
-function VendorShowDetailsBox(props) {
-  const { classes, data } = props;
 
-  let link = data.website;
-  if (link != null) {
-    if (link.indexOf('http') != 0) {
-      link = `http://${link}`;
+class VendorShowDetailsBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  renderCpaVendorTooltip(preferred) {
+    if (preferred == true) {
+      return ( <CpaVendorTooltip />)
+    } else {
+      return ( <div></div>)
     }
   }
+
+  render() {
+    const { classes, data } = this.props;
+
+    let link = data.website;
+    if (link != null) {
+      if (link.indexOf('http') != 0) {
+        link = `http://${link}`;
+      }
+    }
 
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">{data.name}</Typography>
+        {this.renderCpaVendorTooltip(data.cpa_preferred)}
         <Typography variant="subheading" component="h3">{data.street}</Typography>
         <Typography variant="subheading" component="h3">{data.city_state_and_zip}</Typography>
         <Button target="_blank" href={link}>{data.website}</Button>
@@ -46,6 +65,7 @@ function VendorShowDetailsBox(props) {
       </Paper>
     </div>
   );
+  }
 }
 
 export default withStyles(styles)(VendorShowDetailsBox);

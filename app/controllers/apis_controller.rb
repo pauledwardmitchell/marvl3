@@ -334,6 +334,7 @@ class ApisController < ApplicationController
     @data = {
       id: vendor.id,
       name: vendor.name,
+      cpa_preferred: vendor.preferred,
       street: vendor.street,
       website: vendor.website,
       city_state_and_zip: vendor.city_state_and_zip,
