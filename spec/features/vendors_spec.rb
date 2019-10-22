@@ -3,6 +3,84 @@ require 'capybara/rails'
 
 RSpec.feature "Vendors", type: :feature, js: true do
 
+  context 'Vendor Show Page' do
+
+    scenario 'Preferred vendors should render with special badge' do
+
+      organization = FactoryBot.create(:organization)
+      user = FactoryBot.create(:user, email: 'test@gs.com')
+
+      FactoryBot.create(:super_super_category, :bg)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      bg_category = category
+      FactoryBot.create(:super_super_category, :hr)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      FactoryBot.create(:super_super_category, :tech)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      FactoryBot.create(:super_super_category, :supplies)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      FactoryBot.create(:super_super_category, :ss)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+
+      vendor = FactoryBot.create(:vendor, preferred: true)
+
+      login_as(user, :scope => :user)
+
+      visit('/vendors/'+vendor.id.to_s)
+
+      expect(page).to have_content "CPA Preferred Vendor"
+
+    end
+
+    scenario 'Non-preferred vendors should not render with special badge' do
+
+      organization = FactoryBot.create(:organization)
+      user = FactoryBot.create(:user, email: 'test@gs.com')
+
+      FactoryBot.create(:super_super_category, :bg)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      bg_category = category
+      FactoryBot.create(:super_super_category, :hr)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      FactoryBot.create(:super_super_category, :tech)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      FactoryBot.create(:super_super_category, :supplies)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      FactoryBot.create(:super_super_category, :ss)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+
+      vendor = FactoryBot.create(:vendor, preferred: false)
+
+      login_as(user, :scope => :user)
+
+      visit('/vendors/'+vendor.id.to_s)
+
+      expect(page).not_to have_content "CPA Preferred Vendor"
+
+    end
+
+  end
+
   context 'Create new vendor' do
 
     scenario 'Should be successful' do
