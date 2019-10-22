@@ -10,7 +10,7 @@ import StarIcon from '@material-ui/icons/Star';
 const styles = theme => ({
   root: ({
     width: 500,
-    marginBottom: 50
+    marginBottom: 20
   }),
   chip: ({
     margin: theme.spacing.unit,

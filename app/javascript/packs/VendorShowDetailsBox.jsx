@@ -24,8 +24,12 @@ class VendorShowDetailsBox extends React.Component {
     };
   }
 
-  renderCpaVendorTooltip() {
-    return ( <CpaVendorTooltip />)
+  renderCpaVendorTooltip(preferred) {
+    if (preferred == true) {
+      return ( <CpaVendorTooltip />)
+    } else {
+      return ( <div></div>)
+    }
   }
 
   render() {
@@ -38,12 +42,11 @@ class VendorShowDetailsBox extends React.Component {
       }
     }
 
-
   return (
     <div>
       <Paper className={classes.root} elevation={4}>
         <Typography variant="headline" component="h3">{data.name}</Typography>
-        {this.renderCpaVendorTooltip()}
+        {this.renderCpaVendorTooltip(data.cpa_preferred)}
         <Typography variant="subheading" component="h3">{data.street}</Typography>
         <Typography variant="subheading" component="h3">{data.city_state_and_zip}</Typography>
         <Button target="_blank" href={link}>{data.website}</Button>
