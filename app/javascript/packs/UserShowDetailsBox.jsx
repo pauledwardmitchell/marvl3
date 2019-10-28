@@ -24,6 +24,7 @@ const styles = theme => ({
   }),
 });
 
+
 class UserShowDetailsBox extends React.Component {
   userId = () => {
     return document.getElementById("theuser").getAttribute('value');
@@ -33,6 +34,7 @@ class UserShowDetailsBox extends React.Component {
     const currentUserId = document.getElementById("userid").getAttribute('value');
     return currentUserId === this.userId();
   };
+
 
   updateWeeklyDigest = (value) => {
     this.setState({ digest: value });
@@ -53,6 +55,30 @@ class UserShowDetailsBox extends React.Component {
 
     this.state = {
       digest: null
+    }
+  }
+
+  inactiveUserName(status) {
+    if (status == false) {
+      return ( " (Inactive Account)")
+    } else {
+      return ("")
+    }
+  }
+
+  inactiveSchoolMessage(status) {
+    if (status == false) {
+      return ( "Formerly at ")
+    } else {
+      return ("")
+    }
+  }
+
+  inactiveUserGeneralMessage(status) {
+    if (status == false) {
+      return (<Typography variant="subheading" component="h3">This user currently works at a different organization.</Typography>)
+    } else {
+      return (<div></div>)
     }
   }
 
@@ -77,10 +103,11 @@ class UserShowDetailsBox extends React.Component {
     return (
       <div>
         <Paper className={classes.root} elevation={4}>
-          <Typography variant="headline" component="h3">{data.name}</Typography>
+          <Typography variant="headline" component="h3">{data.name}{this.inactiveUserName(data.active)}</Typography>
           <Typography variant="subheading" component="h3">{data.email}</Typography>
           <Typography variant="subheading" component="h3">{data.title}</Typography>
-          <Typography variant="subheading" component="h3">{data.school_name}</Typography>
+          <Typography variant="subheading" component="h3">{this.inactiveSchoolMessage(data.active)}{data.school_name}</Typography>
+          {this.inactiveUserGeneralMessage(data.active)}
           { this.isCurrentUser() && data.receives_weekly_digest != null ? digestCheckbox : null }
         </Paper>
       </div>

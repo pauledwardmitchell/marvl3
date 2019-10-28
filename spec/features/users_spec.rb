@@ -63,6 +63,90 @@ RSpec.feature "Users", type: :feature, js: true do
 
   end
 
+  context 'Dynamically display details for active/inactive users for an organization' do
+
+    scenario 'Inactive user pages should render with inactive explanation messages' do
+      organization = FactoryBot.create(:organization)
+      vendor = FactoryBot.create(:vendor)
+      user = FactoryBot.create(:user, email: 'test@gs.com', active: true)
+      inactive_user = FactoryBot.create(:user, email: 'inactive_test@gs.com', active: false)
+
+      FactoryBot.create(:super_super_category, :bg)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      bg_category = category
+      bg_review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :hr)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :tech)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :supplies)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :ss)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+
+      login_as(user, :scope => :user)
+
+      visit('/users/'+inactive_user.id.to_s)
+
+      expect(page).to have_content "This user currently works at a different organization."
+    end
+
+    scenario 'Active user pages should not render with inactive explanation messages' do
+      organization = FactoryBot.create(:organization)
+      vendor = FactoryBot.create(:vendor)
+      user = FactoryBot.create(:user, email: 'test@gs.com', active: true)
+      inactive_user = FactoryBot.create(:user, email: 'inactive_test@gs.com', active: false)
+
+      FactoryBot.create(:super_super_category, :bg)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      bg_category = category
+      bg_review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :hr)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :tech)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :supplies)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :ss)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+
+      login_as(user, :scope => :user)
+
+      visit('/users/'+user.id.to_s)
+
+      expect(page).not_to have_content "This user currently works at a different organization."
+    end
+
+  end
+
 
 end
 

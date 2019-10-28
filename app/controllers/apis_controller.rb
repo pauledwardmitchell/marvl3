@@ -321,7 +321,8 @@ class ApisController < ApplicationController
       points: user.points,
       reviews: reviews_from_user(user),
       protips: protips_from_user(user),
-      receives_weekly_digest: user.receives_weekly_digest
+      receives_weekly_digest: user.receives_weekly_digest,
+      active: user.active
     }
 
     render json: @data
