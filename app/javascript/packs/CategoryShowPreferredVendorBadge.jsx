@@ -15,7 +15,7 @@ function CategoryShowPreferredVendorBadge(props) {
   const { classes } = props;
 
   return (
-    <span>
+    <span className="preferred">
       <Tooltip title="CPA Preferred Vendor">
         <StarBorderIcon className={classes.fab}/>
       </Tooltip>
