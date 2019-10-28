@@ -20,6 +20,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 
+import CategoryShowPreferredVendorBadge from './CategoryShowPreferredVendorBadge'
+
 import axios from 'axios'
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -150,6 +152,9 @@ const styles = theme => ({
   table: {
     minWidth: 1020,
   },
+  button: {
+    margin: theme.spacing.unit * 2,
+  },
   tableWrapper: {
     overflowX: 'auto',
   },
@@ -251,6 +256,29 @@ class CategoryShowEnhancedTable extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
+  cpaPreferredVendorBadge(preferredStatus) {
+    if (preferredStatus == true) {
+      return ( <CategoryShowPreferredVendorBadge /> )
+    } else {
+      return ( <div></div> )
+    }
+  }
+
+  fetchVendorPreferredStatus(vendorName) {
+    const thisVendorsData = this.props.vendors;
+
+    if (thisVendorsData) {
+      var i;
+      var preferredStatus = false;
+      for (i = 0; i < thisVendorsData.length; i++) {
+        if ( thisVendorsData[i].name === vendorName ) {
+          preferredStatus = thisVendorsData[i].cpa_preferred
+        }
+      }
+      return preferredStatus
+    }
+  }
+
   buildButtonLink(vendorName) {
     const thisVendorsData = this.props.vendors;
 
@@ -303,7 +331,12 @@ class CategoryShowEnhancedTable extends React.Component {
                     key={n.id}
                     selected={isSelected}
                   >
-                    <TableCell><Button href={this.buildButtonLink(n.vendorName)} size="small">{n.vendorName}</Button></TableCell>
+                    <TableCell>
+                      <Button href={this.buildButtonLink(n.vendorName)} size="small" className={classes.button}>
+                        {n.vendorName}
+                        {this.cpaPreferredVendorBadge(this.fetchVendorPreferredStatus(n.vendorName))}
+                      </Button>
+                    </TableCell>
                     <TableCell padding='none'>{n.avgRating} stars</TableCell>
                     <TableCell>{n.schoolsContracted}</TableCell>
                     <TableCell padding='none'>{n.numReviews} Reviews</TableCell>

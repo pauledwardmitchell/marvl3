@@ -492,6 +492,7 @@ class ApisController < ApplicationController
       vendor_hash = {
         id: v.id,
         name: v.name,
+        cpa_preferred: v.preferred,
         avg_rating: v.avg_rating,
         schools_array: v.schools_array,
         reviews_count: v.reviews.count
