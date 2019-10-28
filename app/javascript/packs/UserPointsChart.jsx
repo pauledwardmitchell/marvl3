@@ -76,7 +76,7 @@ class UserPointsChart extends React.Component {
       <div>
         <Paper className={classes.root} elevation={4}>
           <Typography variant='subheading' align='center'>
-            Your MARVL score: {points}
+            MARVL score: {points}
           </Typography>
           <Doughnut data={chartData} options={options}/>
           <Typography variant='subheading' align='center'>
