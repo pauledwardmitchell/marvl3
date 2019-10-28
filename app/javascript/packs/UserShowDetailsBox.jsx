@@ -103,11 +103,11 @@ class UserShowDetailsBox extends React.Component {
     return (
       <div>
         <Paper className={classes.root} elevation={4}>
-          <Typography variant="headline" component="h3">{data.name}{this.inactiveUserName(true)}</Typography>
+          <Typography variant="headline" component="h3">{data.name}{this.inactiveUserName(data.active)}</Typography>
           <Typography variant="subheading" component="h3">{data.email}</Typography>
           <Typography variant="subheading" component="h3">{data.title}</Typography>
-          <Typography variant="subheading" component="h3">{this.inactiveSchoolMessage(true)}{data.school_name}</Typography>
-          {this.inactiveUserGeneralMessage(true)}
+          <Typography variant="subheading" component="h3">{this.inactiveSchoolMessage(data.active)}{data.school_name}</Typography>
+          {this.inactiveUserGeneralMessage(data.active)}
           { this.isCurrentUser() && data.receives_weekly_digest != null ? digestCheckbox : null }
         </Paper>
       </div>
