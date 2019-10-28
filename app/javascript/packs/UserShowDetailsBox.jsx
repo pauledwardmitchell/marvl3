@@ -59,7 +59,7 @@ class UserShowDetailsBox extends React.Component {
   }
 
   inactiveUserName(status) {
-    if (status == true) {
+    if (status == false) {
       return ( " (Inactive Account)")
     } else {
       return ("")
@@ -67,7 +67,7 @@ class UserShowDetailsBox extends React.Component {
   }
 
   inactiveSchoolMessage(status) {
-    if (status == true) {
+    if (status == false) {
       return ( "Formerly at ")
     } else {
       return ("")
@@ -75,7 +75,7 @@ class UserShowDetailsBox extends React.Component {
   }
 
   inactiveUserGeneralMessage(status) {
-    if (status == true) {
+    if (status == false) {
       return (<Typography variant="subheading" component="h3">This user currently works at a different organization.</Typography>)
     } else {
       return (<div></div>)
