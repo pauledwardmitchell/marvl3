@@ -256,12 +256,26 @@ class CategoryShowEnhancedTable extends React.Component {
     this.setState({ rowsPerPage: event.target.value });
   };
 
-  CpaPreferredVendorBadge(preferredStatus) {
+  cpaPreferredVendorBadge(preferredStatus) {
     if (preferredStatus == true) {
-      // return ( <CategoryShowPreferredVendorBadge /> )
-      return ( <div></div> )
+      return ( <CategoryShowPreferredVendorBadge /> )
     } else {
       return ( <div></div> )
+    }
+  }
+
+  fetchVendorPreferredStatus(vendorName) {
+    const thisVendorsData = this.props.vendors;
+
+    if (thisVendorsData) {
+      var i;
+      var preferredStatus = false;
+      for (i = 0; i < thisVendorsData.length; i++) {
+        if ( thisVendorsData[i].name === vendorName ) {
+          preferredStatus = thisVendorsData[i].cpa_preferred
+        }
+      }
+      return preferredStatus
     }
   }
 
@@ -320,7 +334,7 @@ class CategoryShowEnhancedTable extends React.Component {
                     <TableCell>
                       <Button href={this.buildButtonLink(n.vendorName)} size="small" className={classes.button}>
                         {n.vendorName}
-                        <CategoryShowPreferredVendorBadge />
+                        {this.cpaPreferredVendorBadge(this.fetchVendorPreferredStatus(n.vendorName))}
                       </Button>
                     </TableCell>
                     <TableCell padding='none'>{n.avgRating} stars</TableCell>

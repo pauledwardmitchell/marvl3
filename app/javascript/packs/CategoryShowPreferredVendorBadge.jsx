@@ -6,8 +6,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const styles = theme => ({
   fab: {
-    marginLeft: 10
-
+    marginLeft: 10,
+    marginRight: 10
   },
 });
 
