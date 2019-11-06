@@ -76,7 +76,7 @@ export class AddVendorDialog extends React.Component {
     };
   }
 
-  componentWillMount(){
+  componentDidMount(){
     thisAxios.get('/existing_vendors')
     .then((response) => {
       console.log(response.data)

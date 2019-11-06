@@ -56,7 +56,7 @@ class ReviewShow extends React.Component {
     };
   }
 
-  componentWillMount(){
+  componentDidMount(){
     const reviewId = document.getElementById("review").getAttribute('value');
 
     thisAxios.get('/review_show_data?review=' + reviewId)

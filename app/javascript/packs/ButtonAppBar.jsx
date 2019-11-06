@@ -48,7 +48,7 @@ class ButtonAppBar extends React.Component {
   }
 
 
-  componentWillMount(){
+  componentDidMount(){
     thisAxios.get('/check_for_user')
     .then((response) => {
       console.log(response.data)
