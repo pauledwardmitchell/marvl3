@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-11-19T13:50:55-07:00">2019-11-19T13:50:55-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-11-20T13:17:44-07:00">2019-11-20T13:17:44-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">89.68%</span></span>
+    (<span class="covered_percent"><span class="yellow">89.98%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.05
+         4.03
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>47</b> files in total.
-    <b>1173</b> relevant lines. 
-    <span class="green"><b>1052</b> lines covered</span> and
+    <b>1207</b> relevant lines. 
+    <span class="green"><b>1086</b> lines covered</span> and
     <span class="red"><b>121</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -53,7 +53,7 @@
       <tr>
         <td class="strong"><a href="#375610f014ecae3156e3f5639c1f7a11dedd714c" class="src_link" title="app/controllers/apis_controller.rb">app/controllers/apis_controller.rb</a></td>
         <td class="green strong">93.18 %</td>
-        <td>570</td>
+        <td>571</td>
         <td>220</td>
         <td>205</td>
         <td>15</td>
@@ -217,7 +217,7 @@
         <td>39</td>
         <td>19</td>
         <td>20</td>
-        <td>9.6</td>
+        <td>9.7</td>
       </tr>
       
       <tr>
@@ -247,7 +247,7 @@
         <td>43</td>
         <td>37</td>
         <td>6</td>
-        <td>10.1</td>
+        <td>10.3</td>
       </tr>
       
       <tr>
@@ -417,7 +417,7 @@
         <td>41</td>
         <td>41</td>
         <td>0</td>
-        <td>18.7</td>
+        <td>20.4</td>
       </tr>
       
       <tr>
@@ -463,9 +463,9 @@
       <tr>
         <td class="strong"><a href="#f0470294b306747307d31ef52758d426ee7e28b3" class="src_link" title="spec/features/reviews_spec.rb">spec/features/reviews_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>57</td>
-        <td>43</td>
-        <td>43</td>
+        <td>100</td>
+        <td>77</td>
+        <td>77</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -592,14 +592,14 @@
           <code class="ruby">  def check_for_user</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="8">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="20" data-linenumber="8">
+          <span class="hits">20</span>
           
           <code class="ruby">    if current_user</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="9">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="20" data-linenumber="9">
+          <span class="hits">20</span>
           
           <code class="ruby">      @user = current_user</code>
         </li>
@@ -622,8 +622,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="13">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="20" data-linenumber="13">
+          <span class="hits">20</span>
           
           <code class="ruby">    render json: @user</code>
         </li>
@@ -646,14 +646,14 @@
           <code class="ruby">  def existing_vendors</code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="17">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="21" data-linenumber="17">
+          <span class="hits">21</span>
           
           <code class="ruby">    @unsorted_data =[]</code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="18">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="21" data-linenumber="18">
+          <span class="hits">21</span>
           
           <code class="ruby">    vendors = Vendor.all</code>
         </li>
@@ -664,8 +664,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="20">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="21" data-linenumber="20">
+          <span class="hits">21</span>
           
           <code class="ruby">    vendors.each do |v|</code>
         </li>
@@ -676,8 +676,8 @@
           <code class="ruby">      vendor_hash = {</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="22">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="20" data-linenumber="22">
+          <span class="hits">20</span>
           
           <code class="ruby">        name: v.name,</code>
         </li>
@@ -694,8 +694,8 @@
           <code class="ruby">      }</code>
         </li>
       
-        <li class="covered" data-hits="19" data-linenumber="25">
-          <span class="hits">19</span>
+        <li class="covered" data-hits="20" data-linenumber="25">
+          <span class="hits">20</span>
           
           <code class="ruby">      @unsorted_data &lt;&lt; vendor_hash</code>
         </li>
@@ -712,14 +712,14 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="28">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="21" data-linenumber="28">
+          <span class="hits">21</span>
           
           <code class="ruby">    @data = @unsorted_data.sort{|a,b| a[:name]&lt;=&gt;b[:name]}</code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="29">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="21" data-linenumber="29">
+          <span class="hits">21</span>
           
           <code class="ruby">    render json: @data</code>
         </li>
@@ -2290,8 +2290,8 @@
           <code class="ruby">  def review_show_data</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="291">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="291">
+          <span class="hits">2</span>
           
           <code class="ruby">    review = Review.find(params[:review])</code>
         </li>
@@ -2308,8 +2308,8 @@
           <code class="ruby">    @data = {</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="294">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="294">
+          <span class="hits">2</span>
           
           <code class="ruby">      user_name: review.user.full_name,</code>
         </li>
@@ -2323,385 +2323,385 @@
         <li class="never" data-hits="" data-linenumber="296">
           
           
-          <code class="ruby">      org_name: review.user.organization.name,</code>
+          <code class="ruby">      user_email: review.user.email,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="297">
           
           
-          <code class="ruby">      org_id: review.user.organization.id,</code>
+          <code class="ruby">      org_name: review.user.organization.name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="298">
           
           
-          <code class="ruby">      vendor_name: review.vendor.name,</code>
+          <code class="ruby">      org_id: review.user.organization.id,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="299">
           
           
-          <code class="ruby">      vendor_id: review.vendor.id,</code>
+          <code class="ruby">      vendor_name: review.vendor.name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="300">
           
           
-          <code class="ruby">      rating: review.rating,</code>
+          <code class="ruby">      vendor_id: review.vendor.id,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="301">
           
           
-          <code class="ruby">      public_review: review.review_content,</code>
+          <code class="ruby">      rating: review.rating,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="302">
           
           
-          <code class="ruby">      private_review: review.review_private_content,</code>
+          <code class="ruby">      public_review: review.review_content,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="303">
           
           
-          <code class="ruby">      private_review_permission: private_review_permission(review.user),</code>
+          <code class="ruby">      private_review: review.review_private_content,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="304">
           
           
-          <code class="ruby">      logo_link: review.user.organization.logo_link,</code>
+          <code class="ruby">      private_review_permission: private_review_permission(review.user),</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="305">
           
           
-          <code class="ruby">      days_ago: review.days_old</code>
+          <code class="ruby">      logo_link: review.user.organization.logo_link,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="306">
           
           
-          <code class="ruby">    }</code>
+          <code class="ruby">      days_ago: review.days_old</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="307">
           
           
+          <code class="ruby">    }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="308">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="308">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="309">
+          <span class="hits">2</span>
           
           <code class="ruby">    render json: @data</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="309">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="310">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="311">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="312">
+          
+          
           <code class="ruby">#ENDPOINTS FOR USER SHOW</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="312">
+        <li class="covered" data-hits="1" data-linenumber="313">
           <span class="hits">1</span>
           
           <code class="ruby">  def user_show_data</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="313">
+        <li class="covered" data-hits="2" data-linenumber="314">
           <span class="hits">2</span>
           
           <code class="ruby">    user = User.find(params[:user])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="314">
+        <li class="never" data-hits="" data-linenumber="315">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="315">
+        <li class="never" data-hits="" data-linenumber="316">
           
           
           <code class="ruby">    @data = {</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="316">
+        <li class="covered" data-hits="2" data-linenumber="317">
           <span class="hits">2</span>
           
           <code class="ruby">      name: user.full_name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="317">
+        <li class="never" data-hits="" data-linenumber="318">
           
           
           <code class="ruby">      email: user.email,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="318">
+        <li class="never" data-hits="" data-linenumber="319">
           
           
           <code class="ruby">      title: user.title,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="319">
+        <li class="never" data-hits="" data-linenumber="320">
           
           
           <code class="ruby">      school_name: user.organization.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="320">
+        <li class="never" data-hits="" data-linenumber="321">
           
           
           <code class="ruby">      logo_link: user.organization.logo_link,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="321">
+        <li class="never" data-hits="" data-linenumber="322">
           
           
           <code class="ruby">      points: user.points,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="322">
+        <li class="never" data-hits="" data-linenumber="323">
           
           
           <code class="ruby">      reviews: reviews_from_user(user),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="323">
+        <li class="never" data-hits="" data-linenumber="324">
           
           
           <code class="ruby">      protips: protips_from_user(user),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="324">
+        <li class="never" data-hits="" data-linenumber="325">
           
           
           <code class="ruby">      receives_weekly_digest: user.receives_weekly_digest,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="325">
+        <li class="never" data-hits="" data-linenumber="326">
           
           
           <code class="ruby">      active: user.active</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="326">
+        <li class="never" data-hits="" data-linenumber="327">
           
           
           <code class="ruby">    }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="327">
+        <li class="never" data-hits="" data-linenumber="328">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="328">
+        <li class="covered" data-hits="2" data-linenumber="329">
           <span class="hits">2</span>
           
           <code class="ruby">    render json: @data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="329">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="330">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="331">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="332">
+          
+          
           <code class="ruby">#ENDPOINTS FOR VENDOR SHOW</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="332">
+        <li class="covered" data-hits="1" data-linenumber="333">
           <span class="hits">1</span>
           
           <code class="ruby">  def vendor_show_data</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="333">
+        <li class="covered" data-hits="3" data-linenumber="334">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor = Vendor.find(params[:vendor])</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="334">
-          
-          
-          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="335">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="336">
+          
+          
           <code class="ruby">    @data = {</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="336">
+        <li class="covered" data-hits="3" data-linenumber="337">
           <span class="hits">3</span>
           
           <code class="ruby">      id: vendor.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="337">
+        <li class="never" data-hits="" data-linenumber="338">
           
           
           <code class="ruby">      name: vendor.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="338">
+        <li class="never" data-hits="" data-linenumber="339">
           
           
           <code class="ruby">      cpa_preferred: vendor.preferred,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="339">
+        <li class="never" data-hits="" data-linenumber="340">
           
           
           <code class="ruby">      street: vendor.street,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="340">
+        <li class="never" data-hits="" data-linenumber="341">
           
           
           <code class="ruby">      website: vendor.website,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="341">
+        <li class="never" data-hits="" data-linenumber="342">
           
           
           <code class="ruby">      city_state_and_zip: vendor.city_state_and_zip,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="342">
+        <li class="never" data-hits="" data-linenumber="343">
           
           
           <code class="ruby">      categories_array: categories_from_vendor(vendor),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="343">
+        <li class="never" data-hits="" data-linenumber="344">
           
           
           <code class="ruby">      schools_array: school_relationships_from_vendor(vendor),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="344">
+        <li class="never" data-hits="" data-linenumber="345">
           
           
           <code class="ruby">      point_people_array: point_people_from_vendor(vendor)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="345">
+        <li class="never" data-hits="" data-linenumber="346">
           
           
           <code class="ruby">    }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="346">
+        <li class="never" data-hits="" data-linenumber="347">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="347">
+        <li class="covered" data-hits="3" data-linenumber="348">
           <span class="hits">3</span>
           
           <code class="ruby">    render json: @data</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="348">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="349">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="350">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="350">
+        <li class="covered" data-hits="1" data-linenumber="351">
           <span class="hits">1</span>
           
           <code class="ruby">  def vendor_show_reviews_data</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="351">
+        <li class="covered" data-hits="3" data-linenumber="352">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor = Vendor.find(params[:vendor])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="352">
+        <li class="never" data-hits="" data-linenumber="353">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="353">
+        <li class="never" data-hits="" data-linenumber="354">
           
           
           <code class="ruby">    @data = {</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="354">
+        <li class="covered" data-hits="3" data-linenumber="355">
           <span class="hits">3</span>
           
           <code class="ruby">      reviews: reviews_from_vendor(vendor)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="355">
+        <li class="never" data-hits="" data-linenumber="356">
           
           
           <code class="ruby">    }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="356">
+        <li class="never" data-hits="" data-linenumber="357">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="357">
+        <li class="covered" data-hits="3" data-linenumber="358">
           <span class="hits">3</span>
           
           <code class="ruby">    render json: @data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="358">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="359">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="360">
@@ -2713,79 +2713,79 @@
         <li class="never" data-hits="" data-linenumber="361">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="362">
+          
+          
           <code class="ruby">#ENDPOINTS FOR CATEGORY SHOW</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="362">
+        <li class="covered" data-hits="1" data-linenumber="363">
           <span class="hits">1</span>
           
           <code class="ruby">  def category_show_data</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="363">
+        <li class="covered" data-hits="4" data-linenumber="364">
           <span class="hits">4</span>
           
           <code class="ruby">    category = Category.find(params[:category])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="364">
+        <li class="never" data-hits="" data-linenumber="365">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="365">
+        <li class="never" data-hits="" data-linenumber="366">
           
           
           <code class="ruby">    @data = {</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="366">
+        <li class="covered" data-hits="4" data-linenumber="367">
           <span class="hits">4</span>
           
           <code class="ruby">      name: category.full_name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="367">
+        <li class="never" data-hits="" data-linenumber="368">
           
           
           <code class="ruby">      vendors: vendors_data_from_category(category),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="368">
+        <li class="never" data-hits="" data-linenumber="369">
           
           
           <code class="ruby">      protips: protips_from_category(category)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="369">
+        <li class="never" data-hits="" data-linenumber="370">
           
           
           <code class="ruby">    }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="370">
+        <li class="never" data-hits="" data-linenumber="371">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="371">
+        <li class="covered" data-hits="4" data-linenumber="372">
           <span class="hits">4</span>
           
           <code class="ruby">    render json: @data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="372">
-          
-          
-          <code class="ruby">  end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="373">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="374">
@@ -2794,1177 +2794,1183 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="375">
+        <li class="never" data-hits="" data-linenumber="375">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="376">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="376">
+        <li class="never" data-hits="" data-linenumber="377">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="377">
+        <li class="covered" data-hits="1" data-linenumber="378">
           <span class="hits">1</span>
           
           <code class="ruby">  def protips_from_category(category)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="378">
+        <li class="covered" data-hits="4" data-linenumber="379">
           <span class="hits">4</span>
           
           <code class="ruby">    protips_array = []</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="379">
+        <li class="covered" data-hits="4" data-linenumber="380">
           <span class="hits">4</span>
           
           <code class="ruby">    category.protips.each do |p|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="380">
+        <li class="never" data-hits="" data-linenumber="381">
           
           
           <code class="ruby">      protip_hash = {</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="381">
+        <li class="missed" data-hits="0" data-linenumber="382">
           
           
           <code class="ruby">        id: p.id,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="382">
-          
-          
-          <code class="ruby">        category: category.name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="383">
           
           
-          <code class="ruby">        category_tag: category.name.parameterize,</code>
+          <code class="ruby">        category: category.name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="384">
           
           
-          <code class="ruby">        user: p.user.full_name,</code>
+          <code class="ruby">        category_tag: category.name.parameterize,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="385">
           
           
-          <code class="ruby">        title: p.title,</code>
+          <code class="ruby">        user: p.user.full_name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="386">
           
           
-          <code class="ruby">        content: p.content,</code>
+          <code class="ruby">        title: p.title,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="387">
           
           
-          <code class="ruby">        date_written: p.updated_at.strftime(&quot;%m/%d/%Y&quot;)</code>
+          <code class="ruby">        content: p.content,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="388">
           
           
+          <code class="ruby">        date_written: p.updated_at.strftime(&quot;%m/%d/%Y&quot;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="389">
+          
+          
           <code class="ruby">      }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="389">
+        <li class="missed" data-hits="0" data-linenumber="390">
           
           
           <code class="ruby">      protips_array &lt;&lt; protip_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="390">
+        <li class="never" data-hits="" data-linenumber="391">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="391">
+        <li class="covered" data-hits="4" data-linenumber="392">
           <span class="hits">4</span>
           
           <code class="ruby">    protips_array</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="392">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="393">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="394">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="394">
+        <li class="covered" data-hits="1" data-linenumber="395">
           <span class="hits">1</span>
           
           <code class="ruby">  def protips_from_user(user)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="395">
+        <li class="covered" data-hits="2" data-linenumber="396">
           <span class="hits">2</span>
           
           <code class="ruby">    protips_array = []</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="396">
+        <li class="covered" data-hits="2" data-linenumber="397">
           <span class="hits">2</span>
           
           <code class="ruby">    user.protips.each do |p|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="397">
+        <li class="never" data-hits="" data-linenumber="398">
           
           
           <code class="ruby">      protip_hash = {</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="398">
+        <li class="missed" data-hits="0" data-linenumber="399">
           
           
           <code class="ruby">        id: p.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="399">
+        <li class="never" data-hits="" data-linenumber="400">
           
           
           <code class="ruby">        category_id: p.category.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="400">
+        <li class="never" data-hits="" data-linenumber="401">
           
           
           <code class="ruby">        category: p.category.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="401">
+        <li class="never" data-hits="" data-linenumber="402">
           
           
           <code class="ruby">        category_tag: p.category.name.parameterize,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="402">
+        <li class="never" data-hits="" data-linenumber="403">
           
           
           <code class="ruby">        user: user.full_name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="403">
+        <li class="never" data-hits="" data-linenumber="404">
           
           
           <code class="ruby">        title: p.title,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="404">
+        <li class="never" data-hits="" data-linenumber="405">
           
           
           <code class="ruby">        content: p.content,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="405">
+        <li class="never" data-hits="" data-linenumber="406">
           
           
           <code class="ruby">        date_written: p.updated_at.strftime(&quot;%m/%d/%Y&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="406">
+        <li class="never" data-hits="" data-linenumber="407">
           
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="407">
+        <li class="missed" data-hits="0" data-linenumber="408">
           
           
           <code class="ruby">      protips_array &lt;&lt; protip_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="408">
+        <li class="never" data-hits="" data-linenumber="409">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="409">
+        <li class="covered" data-hits="2" data-linenumber="410">
           <span class="hits">2</span>
           
           <code class="ruby">    protips_array</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="410">
+        <li class="never" data-hits="" data-linenumber="411">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="411">
+        <li class="never" data-hits="" data-linenumber="412">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="412">
+        <li class="covered" data-hits="1" data-linenumber="413">
           <span class="hits">1</span>
           
           <code class="ruby">  def reviews_from_vendor(vendor)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="413">
+        <li class="covered" data-hits="3" data-linenumber="414">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor_reviews_array = []</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="414">
+        <li class="covered" data-hits="3" data-linenumber="415">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor.reviews.each do |r|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="415">
+        <li class="never" data-hits="" data-linenumber="416">
           
           
           <code class="ruby">      review_hash = {</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="416">
+        <li class="covered" data-hits="5" data-linenumber="417">
           <span class="hits">5</span>
           
           <code class="ruby">        id: r.id,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="417">
-          
-          
-          <code class="ruby">        school_name: r.user.organization.name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="418">
           
           
-          <code class="ruby">        school_id: r.user.organization.id,</code>
+          <code class="ruby">        school_name: r.user.organization.name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="419">
           
           
-          <code class="ruby">        rating: r.rating,</code>
+          <code class="ruby">        school_id: r.user.organization.id,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="420">
           
           
-          <code class="ruby">        review: &quot;(&quot; + r.category.name + &quot;) &quot; + r.review_content,</code>
+          <code class="ruby">        rating: r.rating,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="421">
           
           
-          <code class="ruby">        private_review: r.review_private_content,</code>
+          <code class="ruby">        review: &quot;(&quot; + r.category.name + &quot;) &quot; + r.review_content,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="422">
           
           
-          <code class="ruby">        reviewer: r.user.full_name,</code>
+          <code class="ruby">        private_review: r.review_private_content,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="423">
           
           
-          <code class="ruby">        reviewer_id: r.user.id,</code>
+          <code class="ruby">        reviewer: r.user.full_name,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="424">
           
           
-          <code class="ruby">        days_ago: r.days_old</code>
+          <code class="ruby">        reviewer_id: r.user.id,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="425">
           
           
+          <code class="ruby">        days_ago: r.days_old</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="426">
+          
+          
           <code class="ruby">      }</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="426">
+        <li class="covered" data-hits="5" data-linenumber="427">
           <span class="hits">5</span>
           
           <code class="ruby">      vendor_reviews_array &lt;&lt; review_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="427">
+        <li class="never" data-hits="" data-linenumber="428">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="428">
+        <li class="covered" data-hits="3" data-linenumber="429">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor_reviews_array</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="429">
+        <li class="never" data-hits="" data-linenumber="430">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="430">
+        <li class="never" data-hits="" data-linenumber="431">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="431">
+        <li class="covered" data-hits="1" data-linenumber="432">
           <span class="hits">1</span>
           
           <code class="ruby">  def reviews_from_user(user)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="432">
+        <li class="covered" data-hits="2" data-linenumber="433">
           <span class="hits">2</span>
           
           <code class="ruby">    user_reviews_array = []</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="433">
+        <li class="covered" data-hits="2" data-linenumber="434">
           <span class="hits">2</span>
           
           <code class="ruby">    user.reviews.each do |r|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="434">
+        <li class="never" data-hits="" data-linenumber="435">
           
           
           <code class="ruby">      review_hash = {</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="435">
+        <li class="covered" data-hits="5" data-linenumber="436">
           <span class="hits">5</span>
           
           <code class="ruby">        id: r.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="436">
+        <li class="never" data-hits="" data-linenumber="437">
           
           
           <code class="ruby">        school_name: user.organization.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="437">
+        <li class="never" data-hits="" data-linenumber="438">
           
           
           <code class="ruby">        school_id: user.organization.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="438">
+        <li class="never" data-hits="" data-linenumber="439">
           
           
           <code class="ruby">        vendor_name: r.vendor.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="439">
+        <li class="never" data-hits="" data-linenumber="440">
           
           
           <code class="ruby">        vendor_id: r.vendor.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="440">
+        <li class="never" data-hits="" data-linenumber="441">
           
           
           <code class="ruby">        rating: r.rating,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="441">
+        <li class="never" data-hits="" data-linenumber="442">
           
           
           <code class="ruby">        review: r.review_content,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="442">
+        <li class="never" data-hits="" data-linenumber="443">
           
           
           <code class="ruby">        private_review: r.review_private_content,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="443">
+        <li class="never" data-hits="" data-linenumber="444">
           
           
           <code class="ruby">        private_review_permission: private_review_permission(user),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="444">
+        <li class="never" data-hits="" data-linenumber="445">
           
           
           <code class="ruby">        reviewer: user.full_name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="445">
+        <li class="never" data-hits="" data-linenumber="446">
           
           
           <code class="ruby">        days_ago: r.days_old,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="446">
+        <li class="never" data-hits="" data-linenumber="447">
           
           
           <code class="ruby">        date: r.updated_at.strftime(&quot;%m/%d/%Y&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="447">
+        <li class="never" data-hits="" data-linenumber="448">
           
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="448">
+        <li class="covered" data-hits="5" data-linenumber="449">
           <span class="hits">5</span>
           
           <code class="ruby">      user_reviews_array &lt;&lt; review_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="449">
+        <li class="never" data-hits="" data-linenumber="450">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="450">
+        <li class="covered" data-hits="2" data-linenumber="451">
           <span class="hits">2</span>
           
           <code class="ruby">    user_reviews_array</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="451">
+        <li class="never" data-hits="" data-linenumber="452">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="452">
+        <li class="never" data-hits="" data-linenumber="453">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="453">
+        <li class="covered" data-hits="1" data-linenumber="454">
           <span class="hits">1</span>
           
           <code class="ruby">  def school_relationships_from_vendor(vendor)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="454">
+        <li class="covered" data-hits="3" data-linenumber="455">
           <span class="hits">3</span>
           
           <code class="ruby">    all_schools_array = []</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="455">
+        <li class="covered" data-hits="3" data-linenumber="456">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor.reviews.each do |r|</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="456">
+        <li class="covered" data-hits="5" data-linenumber="457">
           <span class="hits">5</span>
           
           <code class="ruby">      all_schools_array &lt;&lt; r.user.organization.name</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="457">
+        <li class="never" data-hits="" data-linenumber="458">
           
           
           <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="458">
-          <span class="hits">3</span>
-          
-          <code class="ruby">    unique_schools_array = all_schools_array.uniq</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="459">
           <span class="hits">3</span>
           
-          <code class="ruby">    unique_schools_array</code>
+          <code class="ruby">    unique_schools_array = all_schools_array.uniq</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="460">
+        <li class="covered" data-hits="3" data-linenumber="460">
+          <span class="hits">3</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">    unique_schools_array</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="461">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="462">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="462">
+        <li class="covered" data-hits="1" data-linenumber="463">
           <span class="hits">1</span>
           
           <code class="ruby">  def categories_from_vendor(vendor)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="463">
+        <li class="covered" data-hits="3" data-linenumber="464">
           <span class="hits">3</span>
           
           <code class="ruby">    categories_array =[]</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="464">
+        <li class="covered" data-hits="3" data-linenumber="465">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor.categories.uniq.each do |category|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="465">
+        <li class="never" data-hits="" data-linenumber="466">
           
           
           <code class="ruby">      cat_hash = {</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="466">
+        <li class="covered" data-hits="5" data-linenumber="467">
           <span class="hits">5</span>
           
           <code class="ruby">        id: category.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="467">
+        <li class="never" data-hits="" data-linenumber="468">
           
           
           <code class="ruby">        name: category.full_name</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="468">
+        <li class="never" data-hits="" data-linenumber="469">
           
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="469">
+        <li class="covered" data-hits="5" data-linenumber="470">
           <span class="hits">5</span>
           
           <code class="ruby">      categories_array &lt;&lt; cat_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="470">
+        <li class="never" data-hits="" data-linenumber="471">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="471">
+        <li class="covered" data-hits="3" data-linenumber="472">
           <span class="hits">3</span>
           
           <code class="ruby">    categories_array</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="472">
+        <li class="never" data-hits="" data-linenumber="473">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="473">
+        <li class="never" data-hits="" data-linenumber="474">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="474">
+        <li class="covered" data-hits="1" data-linenumber="475">
           <span class="hits">1</span>
           
           <code class="ruby">  def point_people_from_vendor(vendor)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="475">
+        <li class="covered" data-hits="3" data-linenumber="476">
           <span class="hits">3</span>
           
           <code class="ruby">    point_people_array = []</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="476">
+        <li class="covered" data-hits="3" data-linenumber="477">
           <span class="hits">3</span>
           
           <code class="ruby">    vendor.point_people.each do |pp|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="477">
+        <li class="never" data-hits="" data-linenumber="478">
           
           
           <code class="ruby">      pp_hash = {</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="478">
+        <li class="missed" data-hits="0" data-linenumber="479">
           
           
           <code class="ruby">        id: pp.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="479">
+        <li class="never" data-hits="" data-linenumber="480">
           
           
           <code class="ruby">        name_and_title: pp.name_and_title,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="480">
+        <li class="never" data-hits="" data-linenumber="481">
           
           
           <code class="ruby">        name: pp.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="481">
+        <li class="never" data-hits="" data-linenumber="482">
           
           
           <code class="ruby">        phone: pp.phone,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="482">
+        <li class="never" data-hits="" data-linenumber="483">
           
           
           <code class="ruby">        email: pp.email</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="483">
+        <li class="never" data-hits="" data-linenumber="484">
           
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="484">
+        <li class="missed" data-hits="0" data-linenumber="485">
           
           
           <code class="ruby">      point_people_array &lt;&lt; pp_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="485">
+        <li class="never" data-hits="" data-linenumber="486">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="486">
+        <li class="covered" data-hits="3" data-linenumber="487">
           <span class="hits">3</span>
           
           <code class="ruby">    point_people_array</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="487">
+        <li class="never" data-hits="" data-linenumber="488">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="488">
+        <li class="never" data-hits="" data-linenumber="489">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="489">
+        <li class="covered" data-hits="1" data-linenumber="490">
           <span class="hits">1</span>
           
           <code class="ruby">  def vendors_data_from_category(category)</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="490">
+        <li class="covered" data-hits="4" data-linenumber="491">
           <span class="hits">4</span>
           
           <code class="ruby">    @data = []</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="491">
+        <li class="never" data-hits="" data-linenumber="492">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="492">
+        <li class="covered" data-hits="4" data-linenumber="493">
           <span class="hits">4</span>
           
           <code class="ruby">    category.vendors.uniq.each do |v|  #Added .uniq because duplicates were appearing.  I suspect something is off with the AR relations between category and vendors</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="493">
+        <li class="never" data-hits="" data-linenumber="494">
           
           
           <code class="ruby">      vendor_hash = {</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="494">
+        <li class="covered" data-hits="4" data-linenumber="495">
           <span class="hits">4</span>
           
           <code class="ruby">        id: v.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="495">
+        <li class="never" data-hits="" data-linenumber="496">
           
           
           <code class="ruby">        name: v.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="496">
+        <li class="never" data-hits="" data-linenumber="497">
           
           
           <code class="ruby">        cpa_preferred: v.preferred,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="497">
+        <li class="never" data-hits="" data-linenumber="498">
           
           
           <code class="ruby">        avg_rating: v.avg_rating,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="498">
+        <li class="never" data-hits="" data-linenumber="499">
           
           
           <code class="ruby">        schools_array: v.schools_array,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="499">
+        <li class="never" data-hits="" data-linenumber="500">
           
           
           <code class="ruby">        reviews_count: v.reviews.count</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="500">
+        <li class="never" data-hits="" data-linenumber="501">
           
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="501">
+        <li class="covered" data-hits="4" data-linenumber="502">
           <span class="hits">4</span>
           
           <code class="ruby">      @data &lt;&lt; vendor_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="502">
+        <li class="never" data-hits="" data-linenumber="503">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="503">
+        <li class="never" data-hits="" data-linenumber="504">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="504">
+        <li class="covered" data-hits="4" data-linenumber="505">
           <span class="hits">4</span>
           
           <code class="ruby">    @data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="505">
+        <li class="never" data-hits="" data-linenumber="506">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="506">
+        <li class="never" data-hits="" data-linenumber="507">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="507">
+        <li class="covered" data-hits="1" data-linenumber="508">
           <span class="hits">1</span>
           
           <code class="ruby">  def user_names_and_emails_from_org(org)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="508">
+        <li class="covered" data-hits="2" data-linenumber="509">
           <span class="hits">2</span>
           
           <code class="ruby">    @data = []</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="509">
+        <li class="never" data-hits="" data-linenumber="510">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="510">
+        <li class="covered" data-hits="2" data-linenumber="511">
           <span class="hits">2</span>
           
           <code class="ruby">    org.users.each do |u|</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="511">
+        <li class="covered" data-hits="3" data-linenumber="512">
           <span class="hits">3</span>
           
           <code class="ruby">      if u.active == true</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="512">
+        <li class="covered" data-hits="2" data-linenumber="513">
           <span class="hits">2</span>
           
           <code class="ruby">        user_hash = { name: u.first_name + &quot; &quot; + u.last_name + &quot; - &quot; + u.email }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="513">
+        <li class="covered" data-hits="2" data-linenumber="514">
           <span class="hits">2</span>
           
           <code class="ruby">        @data &lt;&lt; user_hash</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="514">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
         <li class="never" data-hits="" data-linenumber="515">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="516">
           
           
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="517">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="517">
+        <li class="covered" data-hits="2" data-linenumber="518">
           <span class="hits">2</span>
           
           <code class="ruby">    @data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="518">
+        <li class="never" data-hits="" data-linenumber="519">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="519">
+        <li class="never" data-hits="" data-linenumber="520">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="520">
+        <li class="covered" data-hits="1" data-linenumber="521">
           <span class="hits">1</span>
           
           <code class="ruby">  def build_from_super_super_categories(super_categories, org_id)</code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="521">
+        <li class="covered" data-hits="45" data-linenumber="522">
           <span class="hits">45</span>
           
           <code class="ruby">    @data = super_categories.includes(:categories).order(:name).map do |super_cat|</code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="522">
+        <li class="covered" data-hits="45" data-linenumber="523">
           <span class="hits">45</span>
           
           <code class="ruby">      categories = super_cat.categories.order(:name)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="523">
+        <li class="never" data-hits="" data-linenumber="524">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="45" data-linenumber="524">
-          <span class="hits">45</span>
-          
-          <code class="ruby">      all_categories_array = categories.map do |category|</code>
         </li>
       
         <li class="covered" data-hits="45" data-linenumber="525">
           <span class="hits">45</span>
           
+          <code class="ruby">      all_categories_array = categories.map do |category|</code>
+        </li>
+      
+        <li class="covered" data-hits="45" data-linenumber="526">
+          <span class="hits">45</span>
+          
           <code class="ruby">        org_reviews = category.reviews.includes(:vendor)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="526">
+        <li class="never" data-hits="" data-linenumber="527">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="527">
+        <li class="covered" data-hits="45" data-linenumber="528">
           <span class="hits">45</span>
           
           <code class="ruby">        if org_id != 0</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="528">
+        <li class="covered" data-hits="10" data-linenumber="529">
           <span class="hits">10</span>
           
           <code class="ruby">          org_reviews = org_reviews.joins(:user).where(users: { organization_id: org_id })</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="529">
+        <li class="never" data-hits="" data-linenumber="530">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="530">
+        <li class="never" data-hits="" data-linenumber="531">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="531">
+        <li class="covered" data-hits="45" data-linenumber="532">
           <span class="hits">45</span>
           
           <code class="ruby">        org_reviews_hashes = org_reviews.map do |review|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="532">
+        <li class="never" data-hits="" data-linenumber="533">
           
           
           <code class="ruby">          {</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="533">
+        <li class="covered" data-hits="40" data-linenumber="534">
           <span class="hits">40</span>
           
           <code class="ruby">            vendorName: review.vendor.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="534">
+        <li class="never" data-hits="" data-linenumber="535">
           
           
           <code class="ruby">            vendorId: review.vendor_id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="535">
+        <li class="never" data-hits="" data-linenumber="536">
           
           
           <code class="ruby">            dateWritten: review.created_at.strftime(&quot;%m/%d/%Y&quot;),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="536">
+        <li class="never" data-hits="" data-linenumber="537">
           
           
           <code class="ruby">            stars: review.rating,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="537">
+        <li class="never" data-hits="" data-linenumber="538">
           
           
           <code class="ruby">            review: review.review_content,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="538">
+        <li class="never" data-hits="" data-linenumber="539">
           
           
           <code class="ruby">            private_review: review.review_private_content,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="539">
+        <li class="never" data-hits="" data-linenumber="540">
           
           
           <code class="ruby">            private_review_permission: private_review_permission(review.user),</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="540">
+        <li class="never" data-hits="" data-linenumber="541">
           
           
           <code class="ruby">            id: review.id</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="541">
+        <li class="never" data-hits="" data-linenumber="542">
           
           
           <code class="ruby">          }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="542">
+        <li class="never" data-hits="" data-linenumber="543">
           
           
           <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="543">
+        <li class="never" data-hits="" data-linenumber="544">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="544">
+        <li class="never" data-hits="" data-linenumber="545">
           
           
           <code class="ruby">        {</code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="545">
+        <li class="covered" data-hits="45" data-linenumber="546">
           <span class="hits">45</span>
           
           <code class="ruby">          sub: category.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="546">
+        <li class="never" data-hits="" data-linenumber="547">
           
           
           <code class="ruby">          sub_id: category.id,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="547">
+        <li class="never" data-hits="" data-linenumber="548">
           
           
           <code class="ruby">          reviews: org_reviews_hashes</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="548">
+        <li class="never" data-hits="" data-linenumber="549">
           
           
           <code class="ruby">        }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="549">
+        <li class="never" data-hits="" data-linenumber="550">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="550">
+        <li class="never" data-hits="" data-linenumber="551">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="551">
+        <li class="never" data-hits="" data-linenumber="552">
           
           
           <code class="ruby">      {</code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="552">
+        <li class="covered" data-hits="45" data-linenumber="553">
           <span class="hits">45</span>
           
           <code class="ruby">        name: super_cat.name,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="553">
+        <li class="never" data-hits="" data-linenumber="554">
           
           
           <code class="ruby">        subCategories: all_categories_array</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="554">
+        <li class="never" data-hits="" data-linenumber="555">
           
           
           <code class="ruby">      }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="555">
+        <li class="never" data-hits="" data-linenumber="556">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="556">
+        <li class="never" data-hits="" data-linenumber="557">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="557">
+        <li class="covered" data-hits="45" data-linenumber="558">
           <span class="hits">45</span>
           
           <code class="ruby">    @data</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="558">
+        <li class="never" data-hits="" data-linenumber="559">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="559">
+        <li class="never" data-hits="" data-linenumber="560">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="560">
+        <li class="covered" data-hits="1" data-linenumber="561">
           <span class="hits">1</span>
           
           <code class="ruby">  def private_review_permission(user)</code>
         </li>
       
-        <li class="covered" data-hits="46" data-linenumber="561">
-          <span class="hits">46</span>
+        <li class="covered" data-hits="47" data-linenumber="562">
+          <span class="hits">47</span>
           
           <code class="ruby">    if current_user.is_cpa_staff</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="562">
+        <li class="missed" data-hits="0" data-linenumber="563">
           
           
           <code class="ruby">      true</code>
         </li>
       
-        <li class="covered" data-hits="46" data-linenumber="563">
-          <span class="hits">46</span>
+        <li class="covered" data-hits="47" data-linenumber="564">
+          <span class="hits">47</span>
           
           <code class="ruby">    elsif current_user == user</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="564">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="565">
+          <span class="hits">32</span>
           
           <code class="ruby">      true</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="565">
+        <li class="never" data-hits="" data-linenumber="566">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="566">
+        <li class="covered" data-hits="15" data-linenumber="567">
           <span class="hits">15</span>
           
           <code class="ruby">      false</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="567">
+        <li class="never" data-hits="" data-linenumber="568">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="568">
+        <li class="never" data-hits="" data-linenumber="569">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="569">
+        <li class="never" data-hits="" data-linenumber="570">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="570">
+        <li class="never" data-hits="" data-linenumber="571">
           
           
           <code class="ruby">end</code>
@@ -5746,8 +5752,8 @@
           <code class="ruby">    def set_review</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="76">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="76">
+          <span class="hits">2</span>
           
           <code class="ruby">      @review = Review.find(params[:id])</code>
         </li>
@@ -7562,20 +7568,20 @@
           <code class="ruby">  def days_old</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="65">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="65">
+          <span class="hits">12</span>
           
           <code class="ruby">    rational_number = Date.today - self.updated_at.to_date</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="66">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="66">
+          <span class="hits">12</span>
           
           <code class="ruby">    integer = rational_number.to_i</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="67">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="67">
+          <span class="hits">12</span>
           
           <code class="ruby">    integer</code>
         </li>
@@ -8141,8 +8147,8 @@
           <code class="ruby">  def is_charter_member</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="34">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="22" data-linenumber="34">
+          <span class="hits">22</span>
           
           <code class="ruby">    if !member_email_suffixes.include? self.email.split(&quot;@&quot;).last</code>
         </li>
@@ -8177,8 +8183,8 @@
           <code class="ruby">  def is_cpa_staff</code>
         </li>
       
-        <li class="covered" data-hits="48" data-linenumber="40">
-          <span class="hits">48</span>
+        <li class="covered" data-hits="49" data-linenumber="40">
+          <span class="hits">49</span>
           
           <code class="ruby">    if self.organization.email_suffix == &quot;cpa.coop&quot;</code>
         </li>
@@ -8195,8 +8201,8 @@
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="48" data-linenumber="43">
-          <span class="hits">48</span>
+        <li class="covered" data-hits="49" data-linenumber="43">
+          <span class="hits">49</span>
           
           <code class="ruby">      false</code>
         </li>
@@ -8225,8 +8231,8 @@
           <code class="ruby">  def full_name</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="48">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="14" data-linenumber="48">
+          <span class="hits">14</span>
           
           <code class="ruby">    first_name + &quot; &quot; + last_name</code>
         </li>
@@ -8387,8 +8393,8 @@
           <code class="ruby">    additional_suffixes = [</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="75">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="22" data-linenumber="75">
+          <span class="hits">22</span>
           
           <code class="ruby">      &quot;aprepacademy.org&quot;,</code>
         </li>
@@ -8657,20 +8663,20 @@
           <code class="ruby">    ]</code>
         </li>
       
-        <li class="covered" data-hits="42" data-linenumber="120">
-          <span class="hits">42</span>
+        <li class="covered" data-hits="44" data-linenumber="120">
+          <span class="hits">44</span>
           
           <code class="ruby">    suffixes = Organization.all.map { |o| o.email_suffix }</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="121">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="22" data-linenumber="121">
+          <span class="hits">22</span>
           
           <code class="ruby">    suffixes.push(*additional_suffixes)</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="122">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="22" data-linenumber="122">
+          <span class="hits">22</span>
           
           <code class="ruby">    suffixes</code>
         </li>
@@ -12316,26 +12322,26 @@
           <code class="ruby">  factory :organization do</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="4">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="23" data-linenumber="4">
+          <span class="hits">23</span>
           
           <code class="ruby">    name { &#39;Good School&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="5">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="23" data-linenumber="5">
+          <span class="hits">23</span>
           
           <code class="ruby">    website { &#39;www.gs.com&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="6">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="23" data-linenumber="6">
+          <span class="hits">23</span>
           
           <code class="ruby">    logo_link { &#39;https://pbs.twimg.com/profile_images/1595191063/CCPCS-logo-icon-CMYK_WEB_400x400.gif&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="7">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="23" data-linenumber="7">
+          <span class="hits">23</span>
           
           <code class="ruby">    email_suffix { &#39;gs.com&#39; }</code>
         </li>
@@ -12358,8 +12364,8 @@
           <code class="ruby">  factory :vendor do</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="11">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="13" data-linenumber="11">
+          <span class="hits">13</span>
           
           <code class="ruby">    name { &#39;Good Vendor&#39; }</code>
         </li>
@@ -12388,8 +12394,8 @@
           <code class="ruby">    trait :bg do</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="16">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="15" data-linenumber="16">
+          <span class="hits">15</span>
           
           <code class="ruby">      name { &#39;Facilities&#39; }</code>
         </li>
@@ -12406,8 +12412,8 @@
           <code class="ruby">    trait :hr do</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="19">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="14" data-linenumber="19">
+          <span class="hits">14</span>
           
           <code class="ruby">      name { &#39;Human Resources&#39; }</code>
         </li>
@@ -12424,8 +12430,8 @@
           <code class="ruby">    trait :tech do</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="22">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="14" data-linenumber="22">
+          <span class="hits">14</span>
           
           <code class="ruby">      name { &#39;Technology&#39; }</code>
         </li>
@@ -12442,8 +12448,8 @@
           <code class="ruby">    trait :supplies do</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="25">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="14" data-linenumber="25">
+          <span class="hits">14</span>
           
           <code class="ruby">      name { &#39;Supplies&#39; }</code>
         </li>
@@ -12460,8 +12466,8 @@
           <code class="ruby">    trait :ss do</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="28">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="14" data-linenumber="28">
+          <span class="hits">14</span>
           
           <code class="ruby">      name { &#39;Student Instruction and Student Services&#39; }</code>
         </li>
@@ -12496,14 +12502,14 @@
           <code class="ruby">  factory :super_category do</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="34">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="67" data-linenumber="34">
+          <span class="hits">67</span>
           
           <code class="ruby">    name { &#39;Facilities&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="35">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="67" data-linenumber="35">
+          <span class="hits">67</span>
           
           <code class="ruby">    super_super_category_id { SuperSuperCategory.last.id }</code>
         </li>
@@ -12526,8 +12532,8 @@
           <code class="ruby">  factory :category do</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="39">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="67" data-linenumber="39">
+          <span class="hits">67</span>
           
           <code class="ruby">    name { &#39;Construction&#39; }</code>
         </li>
@@ -12550,14 +12556,14 @@
           <code class="ruby">  factory :appearance do</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="43">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="67" data-linenumber="43">
+          <span class="hits">67</span>
           
           <code class="ruby">    super_category_id { SuperCategory.last.id }</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="44">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="67" data-linenumber="44">
+          <span class="hits">67</span>
           
           <code class="ruby">    category_id { Category.last.id }</code>
         </li>
@@ -12580,38 +12586,38 @@
           <code class="ruby">  factory :review do</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="48">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="36" data-linenumber="48">
+          <span class="hits">36</span>
           
           <code class="ruby">    user_id { User.last.id }</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="49">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="36" data-linenumber="49">
+          <span class="hits">36</span>
           
           <code class="ruby">    vendor_id { Vendor.last.id }</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="50">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="36" data-linenumber="50">
+          <span class="hits">36</span>
           
           <code class="ruby">    category_id { Category.last.id }</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="51">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="36" data-linenumber="51">
+          <span class="hits">36</span>
           
           <code class="ruby">    review_content { &quot;Public review blah blah&quot;}</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="52">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="36" data-linenumber="52">
+          <span class="hits">36</span>
           
           <code class="ruby">    review_private_content { &quot;Private review blahbadiblah&quot; }</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="53">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="36" data-linenumber="53">
+          <span class="hits">36</span>
           
           <code class="ruby">    rating { 4 }</code>
         </li>
@@ -12634,38 +12640,38 @@
           <code class="ruby">  factory :user do</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="57">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="57">
+          <span class="hits">16</span>
           
           <code class="ruby">    first_name { &#39;john&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="58">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="58">
+          <span class="hits">16</span>
           
           <code class="ruby">    last_name { &#39;doe&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="59">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="59">
+          <span class="hits">16</span>
           
           <code class="ruby">    password { &#39;f4k3p455w0rd&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="60">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="60">
+          <span class="hits">16</span>
           
           <code class="ruby">    password_confirmation { &#39;f4k3p455w0rd&#39; }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="61">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="61">
+          <span class="hits">16</span>
           
           <code class="ruby">    organization_id { Organization.last.id }</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="62">
-          <span class="hits">15</span>
+        <li class="covered" data-hits="16" data-linenumber="62">
+          <span class="hits">16</span>
           
           <code class="ruby">    confirmed_at { DateTime.now }</code>
         </li>
@@ -14286,8 +14292,8 @@
     <h3>spec/features/reviews_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>43</b> relevant lines. 
-      <span class="green"><b>43</b> lines covered</span> and
+      <b>77</b> relevant lines. 
+      <span class="green"><b>77</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -14632,6 +14638,264 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="58">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  context &#39;Review Show page&#39; do</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    scenario &#39;has a button to email reviewer&#39; do</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      organization = FactoryBot.create(:organization)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      user = FactoryBot.create(:user, email: &#39;test@gs.com&#39;)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      vendor = FactoryBot.create(:vendor)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      FactoryBot.create(:super_super_category, :bg)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      super_category = FactoryBot.create(:super_category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="67">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      category = FactoryBot.create(:category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      appearance = FactoryBot.create(:appearance)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="69">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      bg_category = category</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="70">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      bg_review = FactoryBot.create(:review)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="71">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      FactoryBot.create(:super_super_category, :hr)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="72">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      super_category = FactoryBot.create(:super_category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="73">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      category = FactoryBot.create(:category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="74">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      appearance = FactoryBot.create(:appearance)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="75">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      review = FactoryBot.create(:review)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="76">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      FactoryBot.create(:super_super_category, :tech)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="77">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      super_category = FactoryBot.create(:super_category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="78">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      category = FactoryBot.create(:category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="79">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      appearance = FactoryBot.create(:appearance)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="80">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      review = FactoryBot.create(:review)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="81">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      FactoryBot.create(:super_super_category, :supplies)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="82">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      super_category = FactoryBot.create(:super_category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="83">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      category = FactoryBot.create(:category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="84">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      appearance = FactoryBot.create(:appearance)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="85">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      review = FactoryBot.create(:review)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="86">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      FactoryBot.create(:super_super_category, :ss)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="87">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      super_category = FactoryBot.create(:super_category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="88">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      category = FactoryBot.create(:category)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="89">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      appearance = FactoryBot.create(:appearance)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="90">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      review = FactoryBot.create(:review)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="91">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="92">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      login_as(user, :scope =&gt; :user)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="93">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="94">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      visit(&#39;/reviews/&#39;+review.id.to_s)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="95">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="96">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      expect(page).to have_css &#39;#mailto_button&#39; #Is this sufficient? How to test if the button launches the mail client?</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="97">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="98">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="100">
           
           
           <code class="ruby">end</code>

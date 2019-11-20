@@ -293,6 +293,7 @@ class ApisController < ApplicationController
     @data = {
       user_name: review.user.full_name,
       user_id: review.user.id,
+      user_email: review.user.email,
       org_name: review.user.organization.name,
       org_id: review.user.organization.id,
       vendor_name: review.vendor.name,
