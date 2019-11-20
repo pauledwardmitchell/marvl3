@@ -20,6 +20,12 @@ Run the server:
 bundle exec rails server
 ```
 
+Run the webpack-dev-server:
+
+```bash
+./bin/webpack-dev-server
+```
+
 Run the background worker:
 
 ```bash
