@@ -12,7 +12,7 @@ import ButtonAppBar from './ButtonAppBar'
 import ReviewShowDetailsBox from './ReviewShowDetailsBox'
 import OrgShowLogo from './OrgShowLogo'
 import EditReviewDialog from './EditReviewDialog'
-import EmailReviewerDialog from './EmailReviewerDialog'
+import EmailReviewerButton from './EmailReviewerButton'
 
 import ReactStars from 'react-stars'
 import axios from 'axios'
@@ -127,8 +127,7 @@ class ReviewShow extends React.Component {
               <Typography component="h3" variant='subheading' gutterBottom>Review: {reviewData.public_review}</Typography>
               {this.renderPrivateReview(reviewData)}
               <Typography gutterBottom><a href={'/users/'+reviewData.user_id}>{reviewData.user_name}</a> wrote this {reviewData.days_ago} days ago</Typography>
-              <EmailReviewerDialog data={reviewData} />
-              <a href="mailto:?to=damore.wolff@example.com&body=Hi there! I would love to be in touch about the following MARVL review you wrote">Send Email</a>
+              <EmailReviewerButton data={reviewData} />
               {this.renderEditDialogButton(reviewData)}
             </Paper>
           </Grid>
