@@ -128,6 +128,7 @@ class ReviewShow extends React.Component {
               {this.renderPrivateReview(reviewData)}
               <Typography gutterBottom><a href={'/users/'+reviewData.user_id}>{reviewData.user_name}</a> wrote this {reviewData.days_ago} days ago</Typography>
               <EmailReviewerDialog data={reviewData} />
+              <a href="mailto:?to=damore.wolff@example.com&body=Hi there! I would love to be in touch about the following MARVL review you wrote">Send Email</a>
               {this.renderEditDialogButton(reviewData)}
             </Paper>
           </Grid>

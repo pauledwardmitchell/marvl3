@@ -54,4 +54,47 @@ RSpec.feature "Reviews", type: :feature, js: true do
     end
 
   end
+
+  context 'Review Show page' do
+
+    scenario 'has a button to email reviewer' do
+      organization = FactoryBot.create(:organization)
+      user = FactoryBot.create(:user, email: 'test@gs.com')
+      vendor = FactoryBot.create(:vendor)
+
+      FactoryBot.create(:super_super_category, :bg)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      bg_category = category
+      bg_review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :hr)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :tech)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :supplies)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+      FactoryBot.create(:super_super_category, :ss)
+      super_category = FactoryBot.create(:super_category)
+      category = FactoryBot.create(:category)
+      appearance = FactoryBot.create(:appearance)
+      review = FactoryBot.create(:review)
+
+      login_as(user, :scope => :user)
+
+      visit('/reviews/'+review.id.to_s)
+
+      expect(page).to have_css '#mailto_button' #Is this sufficient? How to test if the button launches the mail client?
+    end
+
+  end
 end

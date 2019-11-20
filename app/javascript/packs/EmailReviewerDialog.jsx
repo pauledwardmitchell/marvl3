@@ -96,55 +96,9 @@ class EmailReviewerDialog extends React.Component {
 
     return (
       <div>
-        <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+        <Button id="mailto_button" variant="outlined" color="primary" href={`mailto:?to=${this.props.data.user_email}&body=Hi there! I would love to be in touch about the following MARVL review you wrote about ${this.props.data.vendor_name}: ${this.props.data.public_review}.`}>
           Email {this.props.data.user_name} about this review
         </Button>
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">Email {this.props.data.user_name}</DialogTitle>
-          <DialogContent className={classes.box}>
-
-          <FormGroup>
-
-            <FormControl>
-              <TextField
-                id="multiline-flexible"
-                label="Edit email content"
-                multiline
-                rowsMax="10"
-                value={this.state.message}
-                onChange={this.handleMessageChange}
-              />
-              <Typography gutterBottom>
-                Vendor: {this.props.data.vendor_name}
-              </Typography>
-              <Typography gutterBottom>
-                Review: {this.props.data.public_review}
-              </Typography>
-              <Typography gutterBottom>
-                Written {this.props.data.days_ago} days ago
-              </Typography>
-            </FormControl>
-
-
-
-
-          </FormGroup>
-
-          </DialogContent>
-
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Send Email
-            </Button>
-          </DialogActions>
-        </Dialog>
       </div>
     );
   }
