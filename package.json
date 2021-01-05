@@ -8,7 +8,7 @@
     "@material-ui/icons": "^1.0.0-beta.43",
     "@rails/webpacker": "^4.0.7",
     "autosuggest-highlight": "^3.1.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "chart.js": "^2.7.2",
     "coffeescript": "1.12.7",
