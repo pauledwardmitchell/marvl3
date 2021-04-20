@@ -116,7 +116,9 @@ class User < ApplicationRecord
       "mmbethune.org",
       "focusdc.org",
       "yale.edu",
-      "colab.coop"
+      "colab.coop",
+      "bebalanceo.com",
+      "communitywealthbuilding.org"
     ]
     suffixes = Organization.all.map { |o| o.email_suffix }
     suffixes.push(*additional_suffixes)
