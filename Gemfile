@@ -22,7 +22,7 @@ gem 'delayed_job_active_record'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise', '~> 4.7.3'
 gem 'dotenv-rails'
-gem 'rubyzip', '~> 2.3.0'
+gem 'rubyzip', '~> 2.3.2'
 
 gem 'faker'
 gem 'pry'
