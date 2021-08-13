@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 6.1.3.2'
 gem 'pg', '~> 1.2.3'
-gem 'puma', '~> 5.2.2'
+gem "puma", ">= 5.3.1"
 gem 'sass-rails', '~> 6.0.0'
 gem 'uglifier', '~> 4.2.0'
 gem 'webpacker', '~> 5.2.1'
