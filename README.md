@@ -2,7 +2,7 @@
 
 ## System Requirements
 
-* Ruby 2.6.3
+* Ruby 3.0.1
 * Postgres >= 9.5
 
 ## Setup
