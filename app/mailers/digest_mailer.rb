@@ -6,7 +6,7 @@ class DigestMailer < ApplicationMailer
     @reviews = created_since(Review, since)
     @protips = created_since(Protip, since)
     @ranking_array = create_ranking_array
-    mail(to: user.email, subject: 'Tiiiiiime for your MARVL Weekly Digest!')
+    mail(to: user.email, subject: 'Your MARVL Quarterly Digest!')
   end
 
   private
