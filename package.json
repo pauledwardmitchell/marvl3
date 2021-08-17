@@ -10,7 +10,7 @@
     "autosuggest-highlight": "^3.1.1",
     "axios": "^0.21.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.9.4",
     "coffeescript": "1.12.7",
     "fstream": "^1.0.12",
     "htmlparser2": "^3.9.2",
