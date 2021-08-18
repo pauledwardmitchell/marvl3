@@ -189,7 +189,7 @@ export class WriteReviewDialog extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
+  componentDidUpdate(props) {
     const { categoryId } = props;
 
     if (categoryId != null) {
@@ -225,7 +225,7 @@ export class WriteReviewDialog extends React.Component {
               </FormControl>
 
               <FormControl id="choose-category" className={classes.formControl}>
-                <IntegrationReactSelect categorySelect={true} handleCategoryChange={this.handleCategoryChange} value={{ value: categoryId, label: categoryLabel }} />
+                <IntegrationReactSelect categorySelect={true} handleCategoryChange={this.handleCategoryChange} />
               </FormControl>
 
               <FormControl id="public-review" className={classes.review}>
